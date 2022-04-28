@@ -27,9 +27,9 @@
     </genClasses>
     <genClasses ecoreClass="ComponentBasedSystems.ecore#//Signature">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentBasedSystems.ecore#//Signature/name"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//Signature/parameters"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//Signature/parameters"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//Signature/returnType"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="ComponentBasedSystems.ecore#//Type"/>
     <genClasses ecoreClass="ComponentBasedSystems.ecore#//Parameter">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentBasedSystems.ecore#//Parameter/name"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//Parameter/type"/>
@@ -59,6 +59,27 @@
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
             ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//Assembly/AssemblyContext/instantiates"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentBasedSystems.ecore#//Assembly/AssemblyContext/name"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="NewPackage3" disposableProviderFactory="true" ecorePackage="ComponentBasedSystems.ecore#//Types">
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="ComponentBasedSystems.ecore#//Types/SimpleTypeEnum">
+        <genEnumLiterals ecoreEnumLiteral="ComponentBasedSystems.ecore#//Types/SimpleTypeEnum/String"/>
+        <genEnumLiterals ecoreEnumLiteral="ComponentBasedSystems.ecore#//Types/SimpleTypeEnum/Integer"/>
+      </genEnums>
+      <genClasses image="false" ecoreClass="ComponentBasedSystems.ecore#//Types/Type"/>
+      <genClasses image="false" ecoreClass="ComponentBasedSystems.ecore#//Types/ParameterType"/>
+      <genClasses ecoreClass="ComponentBasedSystems.ecore#//Types/Void"/>
+      <genClasses ecoreClass="ComponentBasedSystems.ecore#//Types/SimpleType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentBasedSystems.ecore#//Types/SimpleType/type"/>
+      </genClasses>
+      <genClasses ecoreClass="ComponentBasedSystems.ecore#//Types/ComplexType">
+        <genFeatures children="true" createChild="true" propertySortChoices="true"
+            ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//Types/ComplexType/members"/>
+      </genClasses>
+      <genClasses ecoreClass="ComponentBasedSystems.ecore#//Types/ComplexMember">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentBasedSystems.ecore#//Types/ComplexMember/name"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//Types/ComplexMember/type"/>
       </genClasses>
     </nestedGenPackages>
   </genPackages>

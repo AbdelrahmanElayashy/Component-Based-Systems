@@ -25,12 +25,13 @@
   <eClassifiers xsi:type="ecore:EClass" name="Signature">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
-        eType="#//Parameter"/>
+        eType="#//Parameter" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="returnType" lowerBound="1"
+        eType="#//Types/Type"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Type" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="Parameter">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="#//Type"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="#//Types/ParameterType"/>
   </eClassifiers>
   <eSubpackages name="BehavioralDescription">
     <eClassifiers xsi:type="ecore:EClass" name="AbstractAction" abstract="true">
@@ -65,6 +66,28 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="instantiates" lowerBound="1"
           eType="#//Component"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="Types">
+    <eClassifiers xsi:type="ecore:EClass" name="Type" abstract="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ParameterType" abstract="true" eSuperTypes="#//Types/Type"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Void" eSuperTypes="#//Types/Type"/>
+    <eClassifiers xsi:type="ecore:EClass" name="SimpleType" eSuperTypes="#//Types/ParameterType">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1"
+          eType="#//Types/SimpleTypeEnum"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="SimpleTypeEnum">
+      <eLiterals name="String"/>
+      <eLiterals name="Integer" value="1"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ComplexType" eSuperTypes="#//Types/ParameterType">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="members" upperBound="-1"
+          eType="#//Types/ComplexMember" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ComplexMember">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1"
+          eType="#//Types/ParameterType"/>
     </eClassifiers>
   </eSubpackages>
 </ecore:EPackage>
