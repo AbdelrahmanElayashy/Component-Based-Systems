@@ -34,6 +34,26 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentBasedSystems.ecore#//Parameter/name"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//Parameter/type"/>
     </genClasses>
+    <genClasses ecoreClass="ComponentBasedSystems.ecore#//CompositeComponent">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//CompositeComponent/childContexts"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//CompositeComponent/assemblyconnector"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//CompositeComponent/requireddelegationconnector"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//CompositeComponent/provideddelegationconnector"/>
+    </genClasses>
+    <genClasses ecoreClass="ComponentBasedSystems.ecore#//AssemblyConnector">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//AssemblyConnector/requires"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//AssemblyConnector/provides"/>
+    </genClasses>
+    <genClasses ecoreClass="ComponentBasedSystems.ecore#//ProvidedDelegationConnector">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//ProvidedDelegationConnector/providedRole"/>
+    </genClasses>
+    <genClasses ecoreClass="ComponentBasedSystems.ecore#//RequiredDelegationConnector">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//RequiredDelegationConnector/RequiredRole"/>
+    </genClasses>
+    <genClasses ecoreClass="ComponentBasedSystems.ecore#//Interface.1">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentBasedSystems.ecore#//Interface.1/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//Interface.1/signatures"/>
+    </genClasses>
     <nestedGenPackages prefix="NewPackage1" disposableProviderFactory="true" ecorePackage="ComponentBasedSystems.ecore#//BehavioralDescription">
       <genClasses image="false" ecoreClass="ComponentBasedSystems.ecore#//BehavioralDescription/AbstractAction"/>
       <genClasses ecoreClass="ComponentBasedSystems.ecore#//BehavioralDescription/InternalAction"/>
