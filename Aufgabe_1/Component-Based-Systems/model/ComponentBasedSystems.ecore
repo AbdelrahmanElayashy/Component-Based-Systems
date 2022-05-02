@@ -54,17 +54,21 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="ProvidedDelegationConnector">
       <eStructuralFeatures xsi:type="ecore:EReference" name="providedRole" lowerBound="1"
-          eType="#//Assembly/AssemblyConnector"/>
+          eType="#//Repository/Interface"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="AssemblyConnector">
       <eStructuralFeatures xsi:type="ecore:EReference" name="requires" lowerBound="1"
           eType="#//Repository/Interface"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="provides" lowerBound="1"
           eType="#//Repository/Interface"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="providingAssemblyContext"
+          lowerBound="1" eType="#//Assembly/AssemblyContext"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="requiringAssemblyContext"
+          lowerBound="1" eType="#//Assembly/AssemblyContext"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="RequiredDelegationConnector">
       <eStructuralFeatures xsi:type="ecore:EReference" name="requiredRole" lowerBound="1"
-          eType="#//Assembly/AssemblyConnector"/>
+          eType="#//Repository/Interface"/>
     </eClassifiers>
   </eSubpackages>
   <eSubpackages name="Types">
