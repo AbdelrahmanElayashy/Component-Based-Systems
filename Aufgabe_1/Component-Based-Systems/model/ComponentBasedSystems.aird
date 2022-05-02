@@ -8,31 +8,31 @@
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_0Q-HAMbsEey0z-jHwJtZ8Q" name="Types class diagram" repPath="#_0Q7DsMbsEey0z-jHwJtZ8Q" changeId="feda67db-6771-4ab4-b108-a4d0e834f60f">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_iroJUMlPEeyZiLHQBY-vMQ" name="Repository" repPath="#_irdxQMlPEeyZiLHQBY-vMQ" changeId="4b793531-2de9-424a-9fd3-e0364179aa9a">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_iroJUMlPEeyZiLHQBY-vMQ" name="Repository" repPath="#_irdxQMlPEeyZiLHQBY-vMQ" changeId="0b06270b-7d73-4fa2-98e4-483d80655ad6">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="ComponentBasedSystems.ecore#//Repository"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_0KOHIMlPEeyZiLHQBY-vMQ" name="Allocation" repPath="#_0KFkQMlPEeyZiLHQBY-vMQ" changeId="eee2b529-48e5-45c0-9df4-92f0438569b0">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_0KOHIMlPEeyZiLHQBY-vMQ" name="Allocation" repPath="#_0KFkQMlPEeyZiLHQBY-vMQ" changeId="753a6d66-a2c0-4384-936b-b06ca43df39f">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="ComponentBasedSystems.ecore#//Allocation"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_9_hYUMlPEeyZiLHQBY-vMQ" name="Enviroment" repPath="#_9_gKMMlPEeyZiLHQBY-vMQ" changeId="98495b50-4059-4b90-8129-8b141d80cf83">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_9_hYUMlPEeyZiLHQBY-vMQ" name="Enviroment" repPath="#_9_gKMMlPEeyZiLHQBY-vMQ" changeId="10648ec6-dd4c-4282-8e80-85db9683e090">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="ComponentBasedSystems.ecore#//Enviroment"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_EW3U4MlQEeyZiLHQBY-vMQ" name="Types" repPath="#_EW2GwMlQEeyZiLHQBY-vMQ" changeId="d440a7d9-b46d-4bda-8e0b-20c046d8de23">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_EW3U4MlQEeyZiLHQBY-vMQ" name="Types" repPath="#_EW2GwMlQEeyZiLHQBY-vMQ" changeId="2651385d-9916-420b-ab0b-fb6bb0de0c2b">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="ComponentBasedSystems.ecore#//Types"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_MXNPkMlQEeyZiLHQBY-vMQ" name="Assembly" repPath="#_MXMogMlQEeyZiLHQBY-vMQ" changeId="864395be-1878-4578-8a8d-1f76065575b0">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_MXNPkMlQEeyZiLHQBY-vMQ" name="Assembly" repPath="#_MXMogMlQEeyZiLHQBY-vMQ" changeId="152fa27f-ed0e-4567-8352-aa1daa5ffcb5">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="ComponentBasedSystems.ecore#//Assembly"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_W2qRAMlQEeyZiLHQBY-vMQ" name="BehavioralDescription" repPath="#_W2pC4MlQEeyZiLHQBY-vMQ" changeId="568fb7d5-2036-45fc-b9ef-216904fbc3be">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_W2qRAMlQEeyZiLHQBY-vMQ" name="BehavioralDescription" repPath="#_W2pC4MlQEeyZiLHQBY-vMQ" changeId="3cdc5de4-9ca7-4610-a525-eee8264cb078">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="ComponentBasedSystems.ecore#//BehavioralDescription"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_3-42IclQEeyZiLHQBY-vMQ" name="ComponentBasedSystems" repPath="#_3-4PEMlQEeyZiLHQBY-vMQ" changeId="2694f654-4422-4d03-97a9-b28faf4ac421">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_3-42IclQEeyZiLHQBY-vMQ" name="ComponentBasedSystems" repPath="#_3-4PEMlQEeyZiLHQBY-vMQ" changeId="bb2cdb9e-9904-402f-8087-30dde09489ea">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="ComponentBasedSystems.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -481,7 +481,7 @@
         <styles xmi:type="notation:DiagramStyle" xmi:id="_isMxEclPEeyZiLHQBY-vMQ"/>
         <edges xmi:type="notation:Edge" xmi:id="_jP4F4MlPEeyZiLHQBY-vMQ" type="4001" element="_jPtGwMlPEeyZiLHQBY-vMQ" source="_jPymUMlPEeyZiLHQBY-vMQ" target="_jP1poMlPEeyZiLHQBY-vMQ">
           <children xmi:type="notation:Node" xmi:id="_jP4F5MlPEeyZiLHQBY-vMQ" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jP4F5clPEeyZiLHQBY-vMQ" x="-3" y="1"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jP4F5clPEeyZiLHQBY-vMQ" x="-61" y="1"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_jP4s8MlPEeyZiLHQBY-vMQ" type="6002">
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jP4s8clPEeyZiLHQBY-vMQ" x="10" y="-4"/>
@@ -497,7 +497,7 @@
         </edges>
         <edges xmi:type="notation:Edge" xmi:id="_jP4s9slPEeyZiLHQBY-vMQ" type="4001" element="_jPtt1slPEeyZiLHQBY-vMQ" source="_jPymUMlPEeyZiLHQBY-vMQ" target="_jP1ClMlPEeyZiLHQBY-vMQ">
           <children xmi:type="notation:Node" xmi:id="_jP5UAMlPEeyZiLHQBY-vMQ" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jP5UAclPEeyZiLHQBY-vMQ" x="29"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jP5UAclPEeyZiLHQBY-vMQ" x="-15" y="-4"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_jP5UAslPEeyZiLHQBY-vMQ" type="6002">
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jP5UA8lPEeyZiLHQBY-vMQ" x="100" y="-75"/>
@@ -838,6 +838,51 @@
           <styles xmi:type="notation:ShapeStyle" xmi:id="_0rAgBMlPEeyZiLHQBY-vMQ" fontName="Segoe UI" fontHeight="8"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0rAgBclPEeyZiLHQBY-vMQ" x="835" y="290"/>
         </children>
+        <children xmi:type="notation:Shape" xmi:id="_5Cf8UMldEeyZiLHQBY-vMQ" type="Note" fontName="Segoe UI" description="Concept of system missing:⁣&#xD;&#xA;- high level composed component⁣&#xD;&#xA;- AllocationContext maps system/top level assembly context to a container⁣&#xD;&#xA;- High-Level Konzept" fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_5Cf8UcldEeyZiLHQBY-vMQ" source="specificStyles">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_5Cf8UsldEeyZiLHQBY-vMQ" key="verticalAlignment" value="8"/>
+          </eAnnotations>
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_5Cf8VsldEeyZiLHQBY-vMQ" type="DiagramName">
+            <element xsi:nil="true"/>
+          </children>
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_5Cf8V8ldEeyZiLHQBY-vMQ" type="Description">
+            <element xsi:nil="true"/>
+          </children>
+          <styles xmi:type="notation:TextStyle" xmi:id="_5Cf8U8ldEeyZiLHQBY-vMQ" textAlignment="Center"/>
+          <styles xmi:type="notation:LineTypeStyle" xmi:id="_5Cf8VMldEeyZiLHQBY-vMQ"/>
+          <element xsi:nil="true"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5Cf8VcldEeyZiLHQBY-vMQ" x="140" y="145"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_wrgmwMleEeyZiLHQBY-vMQ" type="Note" fontName="Segoe UI" description="Missing: &quot;If the roles of two assembly contexts are connected by an assembly connector they either have to be allocated on the same container or the containers on which they are allocated have to be linked.&quot;" fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_wrgmwcleEeyZiLHQBY-vMQ" source="specificStyles">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_wrgmwsleEeyZiLHQBY-vMQ" key="verticalAlignment" value="8"/>
+          </eAnnotations>
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_wrgmxsleEeyZiLHQBY-vMQ" type="DiagramName">
+            <element xsi:nil="true"/>
+          </children>
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_wrhN0MleEeyZiLHQBY-vMQ" type="Description">
+            <element xsi:nil="true"/>
+          </children>
+          <styles xmi:type="notation:TextStyle" xmi:id="_wrgmw8leEeyZiLHQBY-vMQ" textAlignment="Center"/>
+          <styles xmi:type="notation:LineTypeStyle" xmi:id="_wrgmxMleEeyZiLHQBY-vMQ"/>
+          <element xsi:nil="true"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_wrgmxcleEeyZiLHQBY-vMQ" x="142" y="443" width="304"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_Zs9WoMl6EeyZiLHQBY-vMQ" type="Note" fontName="Segoe UI" description="&quot;A system provides at least one interface&quot; -> we didn't model that." fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ZtCPIMl6EeyZiLHQBY-vMQ" source="specificStyles">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ZtCPIcl6EeyZiLHQBY-vMQ" key="verticalAlignment" value="8"/>
+          </eAnnotations>
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_ZtC2Mcl6EeyZiLHQBY-vMQ" type="DiagramName">
+            <element xsi:nil="true"/>
+          </children>
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_ZtC2Msl6EeyZiLHQBY-vMQ" type="Description">
+            <element xsi:nil="true"/>
+          </children>
+          <styles xmi:type="notation:TextStyle" xmi:id="_ZtCPIsl6EeyZiLHQBY-vMQ" textAlignment="Center"/>
+          <styles xmi:type="notation:LineTypeStyle" xmi:id="_ZtCPI8l6EeyZiLHQBY-vMQ"/>
+          <element xsi:nil="true"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ZtC2MMl6EeyZiLHQBY-vMQ" x="475" y="442" width="186"/>
+        </children>
         <styles xmi:type="notation:DiagramStyle" xmi:id="_0KRKcslPEeyZiLHQBY-vMQ"/>
         <edges xmi:type="notation:Edge" xmi:id="_0rCVM8lPEeyZiLHQBY-vMQ" type="4001" element="_0q-DwclPEeyZiLHQBY-vMQ" source="_0q_49MlPEeyZiLHQBY-vMQ" target="_0rAgA8lPEeyZiLHQBY-vMQ">
           <children xmi:type="notation:Node" xmi:id="_0rC8QMlPEeyZiLHQBY-vMQ" type="6001">
@@ -967,9 +1012,9 @@
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EReferenceNode']"/>
       </ownedElements>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_0q-DwclPEeyZiLHQBY-vMQ" name="[0..*] allocationcontext" sourceNode="_0q5LQMlPEeyZiLHQBY-vMQ" targetNode="_0q5yUMlPEeyZiLHQBY-vMQ">
-      <target xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Allocation/Allocation/allocationcontext"/>
-      <semanticElements xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Allocation/Allocation/allocationcontext"/>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_0q-DwclPEeyZiLHQBY-vMQ" name="[0..*] allocationContext" sourceNode="_0q5LQMlPEeyZiLHQBY-vMQ" targetNode="_0q5yUMlPEeyZiLHQBY-vMQ">
+      <target xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Allocation/Allocation/allocationContext"/>
+      <semanticElements xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Allocation/Allocation/allocationContext"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_0q-q0MlPEeyZiLHQBY-vMQ" description="_0q-DwslPEeyZiLHQBY-vMQ" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_0q-q0slPEeyZiLHQBY-vMQ" showIcon="false">
           <customFeatures>labelSize</customFeatures>
@@ -1063,7 +1108,7 @@
         </edges>
         <edges xmi:type="notation:Edge" xmi:id="_-VzxYslPEeyZiLHQBY-vMQ" type="4001" element="_-VuR2clPEeyZiLHQBY-vMQ" source="_-VxVJ8lPEeyZiLHQBY-vMQ" target="_-VxVIMlPEeyZiLHQBY-vMQ">
           <children xmi:type="notation:Node" xmi:id="_-VzxZslPEeyZiLHQBY-vMQ" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-VzxZ8lPEeyZiLHQBY-vMQ" y="-10"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-VzxZ8lPEeyZiLHQBY-vMQ" x="1" y="48"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_-VzxaMlPEeyZiLHQBY-vMQ" type="6002">
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-VzxaclPEeyZiLHQBY-vMQ" y="10"/>
@@ -1079,7 +1124,7 @@
         </edges>
         <edges xmi:type="notation:Edge" xmi:id="_-V0YcslPEeyZiLHQBY-vMQ" type="4001" element="_-Vvf8MlPEeyZiLHQBY-vMQ" source="_-VxVJ8lPEeyZiLHQBY-vMQ" target="_-VwuEMlPEeyZiLHQBY-vMQ">
           <children xmi:type="notation:Node" xmi:id="_-V0YdslPEeyZiLHQBY-vMQ" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-V0Yd8lPEeyZiLHQBY-vMQ" x="-11" y="90"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-V0Yd8lPEeyZiLHQBY-vMQ" x="-12" y="47"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_-V0YeMlPEeyZiLHQBY-vMQ" type="6002">
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-V0YeclPEeyZiLHQBY-vMQ" y="-10"/>
@@ -1341,6 +1386,36 @@
           <styles xmi:type="notation:ShapeStyle" xmi:id="_FfH9dclQEeyZiLHQBY-vMQ" fontName="Segoe UI" fontHeight="8"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_FfH9dslQEeyZiLHQBY-vMQ" x="150" y="325"/>
         </children>
+        <children xmi:type="notation:Shape" xmi:id="_GyU4oMl6EeyZiLHQBY-vMQ" type="Note" fontName="Segoe UI" description="Seperation between collection and primitive data types?" fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_GyZKEMl6EeyZiLHQBY-vMQ" source="specificStyles">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_GyZKEcl6EeyZiLHQBY-vMQ" key="verticalAlignment" value="8"/>
+          </eAnnotations>
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_GyZxIsl6EeyZiLHQBY-vMQ" type="DiagramName">
+            <element xsi:nil="true"/>
+          </children>
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_GyZxI8l6EeyZiLHQBY-vMQ" type="Description">
+            <element xsi:nil="true"/>
+          </children>
+          <styles xmi:type="notation:TextStyle" xmi:id="_GyZKEsl6EeyZiLHQBY-vMQ" textAlignment="Center"/>
+          <styles xmi:type="notation:LineTypeStyle" xmi:id="_GyZxIMl6EeyZiLHQBY-vMQ"/>
+          <element xsi:nil="true"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_GyZxIcl6EeyZiLHQBY-vMQ" x="605" y="14" width="158" height="69"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_UhIDkMl9EeyZiLHQBY-vMQ" type="Note" fontName="Segoe UI" description="Check Containment of Types?" fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_UhIDkcl9EeyZiLHQBY-vMQ" source="specificStyles">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_UhIqoMl9EeyZiLHQBY-vMQ" key="verticalAlignment" value="8"/>
+          </eAnnotations>
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_UhJ4wMl9EeyZiLHQBY-vMQ" type="DiagramName">
+            <element xsi:nil="true"/>
+          </children>
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_UhKf0Ml9EeyZiLHQBY-vMQ" type="Description">
+            <element xsi:nil="true"/>
+          </children>
+          <styles xmi:type="notation:TextStyle" xmi:id="_UhJRsMl9EeyZiLHQBY-vMQ" textAlignment="Center"/>
+          <styles xmi:type="notation:LineTypeStyle" xmi:id="_UhJRscl9EeyZiLHQBY-vMQ"/>
+          <element xsi:nil="true"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_UhJRssl9EeyZiLHQBY-vMQ" x="604" y="111"/>
+        </children>
         <styles xmi:type="notation:DiagramStyle" xmi:id="_EW378clQEeyZiLHQBY-vMQ"/>
         <edges xmi:type="notation:Edge" xmi:id="_FfLn0MlQEeyZiLHQBY-vMQ" type="4001" element="_FfB20MlQEeyZiLHQBY-vMQ" source="_FfHWZMlQEeyZiLHQBY-vMQ" target="_FfH9dMlQEeyZiLHQBY-vMQ">
           <children xmi:type="notation:Node" xmi:id="_FfLn1MlQEeyZiLHQBY-vMQ" type="6001">
@@ -1442,12 +1517,6 @@
     </ownedAnnotationEntries>
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_EW6_QclQEeyZiLHQBY-vMQ" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_EW7mUMlQEeyZiLHQBY-vMQ">
-        <computedStyleDescriptions xmi:type="style:BundledImageDescription" xmi:id="_Fe9lYclQEeyZiLHQBY-vMQ" labelExpression="service:render" labelAlignment="LEFT" tooltipExpression="service:renderTooltip" sizeComputationExpression="1">
-          <borderColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-          <labelFormat>bold</labelFormat>
-          <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-          <color xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-        </computedStyleDescriptions>
         <computedStyleDescriptions xmi:type="style:EdgeStyleDescription" xmi:id="_FfB20clQEeyZiLHQBY-vMQ" sourceArrow="FillDiamond" routingStyle="manhattan">
           <strokeColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <centerLabelStyleDescription xmi:type="style:CenterLabelStyleDescription" xmi:id="_FfB20slQEeyZiLHQBY-vMQ" showIcon="false" labelExpression="service:render">
@@ -1466,6 +1535,12 @@
           <endLabelStyleDescription xmi:type="style:EndLabelStyleDescription" xmi:id="_FfCd5slQEeyZiLHQBY-vMQ" labelSize="6" showIcon="false" labelExpression="service:eKeysLabel">
             <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
           </endLabelStyleDescription>
+        </computedStyleDescriptions>
+        <computedStyleDescriptions xmi:type="style:BundledImageDescription" xmi:id="_wRGRwMlVEeyZiLHQBY-vMQ" labelExpression="service:render" labelAlignment="LEFT" tooltipExpression="service:renderTooltip" sizeComputationExpression="1">
+          <borderColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <labelFormat>bold</labelFormat>
+          <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <color xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
         </computedStyleDescriptions>
       </data>
     </ownedAnnotationEntries>
@@ -1508,7 +1583,7 @@
       <ownedElements xmi:type="diagram:DNodeListElement" uid="_Fe9lYMlQEeyZiLHQBY-vMQ" name="type : SimpleTypeEnum = String" tooltipText="">
         <target xmi:type="ecore:EAttribute" href="ComponentBasedSystems.ecore#//Types/SimpleType/type"/>
         <semanticElements xmi:type="ecore:EAttribute" href="ComponentBasedSystems.ecore#//Types/SimpleType/type"/>
-        <ownedStyle xmi:type="diagram:BundledImage" uid="_Fe-McMlQEeyZiLHQBY-vMQ" labelAlignment="LEFT" description="_Fe9lYclQEeyZiLHQBY-vMQ">
+        <ownedStyle xmi:type="diagram:BundledImage" uid="_wRGRwslVEeyZiLHQBY-vMQ" labelAlignment="LEFT" description="_wRGRwMlVEeyZiLHQBY-vMQ">
           <labelFormat>bold</labelFormat>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
@@ -1651,6 +1726,7 @@
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_FfCd58lQEeyZiLHQBY-vMQ" description="_FfCd5MlQEeyZiLHQBY-vMQ" routingStyle="manhattan" strokeColor="0,0,0">
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_FfCd6clQEeyZiLHQBY-vMQ" showIcon="false">
           <customFeatures>labelSize</customFeatures>
+          <labelFormat>bold</labelFormat>
         </centerLabelStyle>
         <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_FfCd6MlQEeyZiLHQBY-vMQ" showIcon="false" labelColor="39,76,114">
           <customFeatures>labelSize</customFeatures>
@@ -1750,19 +1826,11 @@
             <styles xmi:type="notation:FilteringStyle" xmi:id="_Msdt6slQEeyZiLHQBY-vMQ"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_Msdt5clQEeyZiLHQBY-vMQ" fontName="Segoe UI" fontHeight="8"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Msdt5slQEeyZiLHQBY-vMQ" x="465" y="160"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Msdt5slQEeyZiLHQBY-vMQ" x="700" y="160"/>
         </children>
         <children xmi:type="notation:Node" xmi:id="_MseU8MlQEeyZiLHQBY-vMQ" type="2003" element="_MsSuw8lQEeyZiLHQBY-vMQ">
           <children xmi:type="notation:Node" xmi:id="_MseU88lQEeyZiLHQBY-vMQ" type="5007"/>
           <children xmi:type="notation:Node" xmi:id="_MseU9MlQEeyZiLHQBY-vMQ" type="7004">
-            <children xmi:type="notation:Node" xmi:id="_MsfjE8lQEeyZiLHQBY-vMQ" type="3010" element="_MsWZIslQEeyZiLHQBY-vMQ">
-              <styles xmi:type="notation:FontStyle" xmi:id="_MsfjFMlQEeyZiLHQBY-vMQ" fontName="Segoe UI" fontHeight="8" bold="true"/>
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_MsfjFclQEeyZiLHQBY-vMQ"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_MsfjFslQEeyZiLHQBY-vMQ" type="3010" element="_MsXAMclQEeyZiLHQBY-vMQ">
-              <styles xmi:type="notation:FontStyle" xmi:id="_MsfjF8lQEeyZiLHQBY-vMQ" fontName="Segoe UI" fontHeight="8" bold="true"/>
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_MsfjGMlQEeyZiLHQBY-vMQ"/>
-            </children>
             <styles xmi:type="notation:SortingStyle" xmi:id="_MseU9clQEeyZiLHQBY-vMQ"/>
             <styles xmi:type="notation:FilteringStyle" xmi:id="_MseU9slQEeyZiLHQBY-vMQ"/>
           </children>
@@ -1777,6 +1845,98 @@
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_Mse8AclQEeyZiLHQBY-vMQ" fontName="Segoe UI" fontHeight="8"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Mse8AslQEeyZiLHQBY-vMQ" x="225" y="160"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_XwX4gMlWEeyZiLHQBY-vMQ" type="Note" fontName="Segoe UI" description="&quot;Composite Components are Components ....&quot; -> is-a-relation?" fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_XwX4gclWEeyZiLHQBY-vMQ" source="specificStyles">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_XwX4gslWEeyZiLHQBY-vMQ" key="verticalAlignment" value="8"/>
+          </eAnnotations>
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_XwX4hslWEeyZiLHQBY-vMQ" type="DiagramName">
+            <element xsi:nil="true"/>
+          </children>
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_XwX4h8lWEeyZiLHQBY-vMQ" type="Description">
+            <element xsi:nil="true"/>
+          </children>
+          <styles xmi:type="notation:TextStyle" xmi:id="_XwX4g8lWEeyZiLHQBY-vMQ" textAlignment="Center"/>
+          <styles xmi:type="notation:LineTypeStyle" xmi:id="_XwX4hMlWEeyZiLHQBY-vMQ"/>
+          <element xsi:nil="true"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XwX4hclWEeyZiLHQBY-vMQ" x="481" y="450" width="138" height="81"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_YjnL8MlZEeyZiLHQBY-vMQ" type="Note" fontName="Segoe UI" description="&quot;Provided and required interfaces of a component result in provided and required roles for the assembly contexts of the component.&quot; -> we didn't model that" fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_YjnL8clZEeyZiLHQBY-vMQ" source="specificStyles">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_YjnL8slZEeyZiLHQBY-vMQ" key="verticalAlignment" value="8"/>
+          </eAnnotations>
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_YjnL9slZEeyZiLHQBY-vMQ" type="DiagramName">
+            <element xsi:nil="true"/>
+          </children>
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_YjnL98lZEeyZiLHQBY-vMQ" type="Description">
+            <element xsi:nil="true"/>
+          </children>
+          <styles xmi:type="notation:TextStyle" xmi:id="_YjnL88lZEeyZiLHQBY-vMQ" textAlignment="Center"/>
+          <styles xmi:type="notation:LineTypeStyle" xmi:id="_YjnL9MlZEeyZiLHQBY-vMQ"/>
+          <element xsi:nil="true"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YjnL9clZEeyZiLHQBY-vMQ" x="15" y="475" width="178"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_J_gh8MlcEeyZiLHQBY-vMQ" type="2003" element="_J_ZNMMlcEeyZiLHQBY-vMQ">
+          <children xmi:type="notation:Node" xmi:id="_J_hJAMlcEeyZiLHQBY-vMQ" type="5007"/>
+          <children xmi:type="notation:Node" xmi:id="_J_hJAclcEeyZiLHQBY-vMQ" type="7004">
+            <children xmi:type="notation:Node" xmi:id="_J_hJBMlcEeyZiLHQBY-vMQ" type="3010" element="_J_c3kMlcEeyZiLHQBY-vMQ">
+              <styles xmi:type="notation:FontStyle" xmi:id="_J_hJBclcEeyZiLHQBY-vMQ" fontName="Segoe UI" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_J_hJBslcEeyZiLHQBY-vMQ"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_J_hwEMlcEeyZiLHQBY-vMQ" type="3010" element="_J_deoMlcEeyZiLHQBY-vMQ">
+              <styles xmi:type="notation:FontStyle" xmi:id="_J_hwEclcEeyZiLHQBY-vMQ" fontName="Segoe UI" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_J_hwEslcEeyZiLHQBY-vMQ"/>
+            </children>
+            <styles xmi:type="notation:SortingStyle" xmi:id="_J_hJAslcEeyZiLHQBY-vMQ"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_J_hJA8lcEeyZiLHQBY-vMQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_J_gh8clcEeyZiLHQBY-vMQ" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_J_gh8slcEeyZiLHQBY-vMQ" x="477" y="-230"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_oqJqUMlcEeyZiLHQBY-vMQ" type="Note" fontName="Segoe UI" description="Should Delegation Connectors reference Interface (Role) directly? Base class?" fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_oqJqUclcEeyZiLHQBY-vMQ" source="specificStyles">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_oqJqUslcEeyZiLHQBY-vMQ" key="verticalAlignment" value="8"/>
+          </eAnnotations>
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_oqKRYMlcEeyZiLHQBY-vMQ" type="DiagramName">
+            <element xsi:nil="true"/>
+          </children>
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_oqKRYclcEeyZiLHQBY-vMQ" type="Description">
+            <element xsi:nil="true"/>
+          </children>
+          <styles xmi:type="notation:TextStyle" xmi:id="_oqJqU8lcEeyZiLHQBY-vMQ" textAlignment="Center"/>
+          <styles xmi:type="notation:LineTypeStyle" xmi:id="_oqJqVMlcEeyZiLHQBY-vMQ"/>
+          <element xsi:nil="true"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_oqJqVclcEeyZiLHQBY-vMQ" x="840" y="50"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_DGls4MldEeyZiLHQBY-vMQ" type="Note" fontName="Segoe UI" description="A assembly connector should reference 2 assembly contexts (required/provided)" fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_DGls4cldEeyZiLHQBY-vMQ" source="specificStyles">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_DGls4sldEeyZiLHQBY-vMQ" key="verticalAlignment" value="8"/>
+          </eAnnotations>
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_DGls5sldEeyZiLHQBY-vMQ" type="DiagramName">
+            <element xsi:nil="true"/>
+          </children>
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_DGls58ldEeyZiLHQBY-vMQ" type="Description">
+            <element xsi:nil="true"/>
+          </children>
+          <styles xmi:type="notation:TextStyle" xmi:id="_DGls48ldEeyZiLHQBY-vMQ" textAlignment="Center"/>
+          <styles xmi:type="notation:LineTypeStyle" xmi:id="_DGls5MldEeyZiLHQBY-vMQ"/>
+          <element xsi:nil="true"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_DGls5cldEeyZiLHQBY-vMQ" x="680" y="-55"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_te0NAMl5EeyZiLHQBY-vMQ" type="Note" fontName="Segoe UI" description="Do we need constraints to check that components are connected correctly?" fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_te2CMMl5EeyZiLHQBY-vMQ" source="specificStyles">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_te2pQMl5EeyZiLHQBY-vMQ" key="verticalAlignment" value="8"/>
+          </eAnnotations>
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_tfC2gMl5EeyZiLHQBY-vMQ" type="DiagramName">
+            <element xsi:nil="true"/>
+          </children>
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_tfDdkMl5EeyZiLHQBY-vMQ" type="Description">
+            <element xsi:nil="true"/>
+          </children>
+          <styles xmi:type="notation:TextStyle" xmi:id="_te2pQcl5EeyZiLHQBY-vMQ" textAlignment="Center"/>
+          <styles xmi:type="notation:LineTypeStyle" xmi:id="_te3QUMl5EeyZiLHQBY-vMQ"/>
+          <element xsi:nil="true"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_te3QUcl5EeyZiLHQBY-vMQ" x="770" y="462" width="196"/>
         </children>
         <styles xmi:type="notation:DiagramStyle" xmi:id="_MXN2oslQEeyZiLHQBY-vMQ"/>
         <edges xmi:type="notation:Edge" xmi:id="_MsgKIMlQEeyZiLHQBY-vMQ" type="4001" element="_MsYOUMlQEeyZiLHQBY-vMQ" source="_MsdG1MlQEeyZiLHQBY-vMQ" target="_MscfwMlQEeyZiLHQBY-vMQ">
@@ -1797,17 +1957,17 @@
         </edges>
         <edges xmi:type="notation:Edge" xmi:id="_MsgxMslQEeyZiLHQBY-vMQ" type="4001" element="_MsY1aclQEeyZiLHQBY-vMQ" source="_MsdG1MlQEeyZiLHQBY-vMQ" target="_MseU8MlQEeyZiLHQBY-vMQ">
           <children xmi:type="notation:Node" xmi:id="_MsgxNslQEeyZiLHQBY-vMQ" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MsgxN8lQEeyZiLHQBY-vMQ" x="-30" y="69"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MsgxN8lQEeyZiLHQBY-vMQ" x="1" y="74"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_MsgxOMlQEeyZiLHQBY-vMQ" type="6002">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MsgxOclQEeyZiLHQBY-vMQ" x="-16" y="10"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MsgxOclQEeyZiLHQBY-vMQ" x="-10"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_MsgxOslQEeyZiLHQBY-vMQ" type="6003">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MsgxO8lQEeyZiLHQBY-vMQ" x="-32" y="10"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MsgxO8lQEeyZiLHQBY-vMQ" x="-10"/>
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_MsgxM8lQEeyZiLHQBY-vMQ" routing="Rectilinear"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_MsgxNMlQEeyZiLHQBY-vMQ" fontColor="7490599" fontName="Segoe UI" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_MsgxNclQEeyZiLHQBY-vMQ" points="[69, -19, 69, 301]$[210, -19, 210, 301]$[210, -314, 210, 6]$[66, -314, 66, 6]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_MsgxNclQEeyZiLHQBY-vMQ" points="[0, -49, 0, 271]$[0, -271, 0, 49]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MshYQMlQEeyZiLHQBY-vMQ" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MshYQclQEeyZiLHQBY-vMQ" id="(0.5,0.5)"/>
         </edges>
@@ -1829,33 +1989,33 @@
         </edges>
         <edges xmi:type="notation:Edge" xmi:id="_Msh_UslQEeyZiLHQBY-vMQ" type="4001" element="_MsaDg8lQEeyZiLHQBY-vMQ" source="_MsdG1MlQEeyZiLHQBY-vMQ" target="_Msdt5MlQEeyZiLHQBY-vMQ">
           <children xmi:type="notation:Node" xmi:id="_Msh_VslQEeyZiLHQBY-vMQ" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Msh_V8lQEeyZiLHQBY-vMQ" x="-2" y="97"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Msh_V8lQEeyZiLHQBY-vMQ" x="-18" y="12"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_Msh_WMlQEeyZiLHQBY-vMQ" type="6002">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Msh_WclQEeyZiLHQBY-vMQ" y="10"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Msh_WclQEeyZiLHQBY-vMQ" x="-1" y="10"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_Msh_WslQEeyZiLHQBY-vMQ" type="6003">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Msh_W8lQEeyZiLHQBY-vMQ" y="10"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Msh_W8lQEeyZiLHQBY-vMQ" x="1" y="10"/>
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_Msh_U8lQEeyZiLHQBY-vMQ" routing="Rectilinear"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_Msh_VMlQEeyZiLHQBY-vMQ" fontColor="7490599" fontName="Segoe UI" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Msh_VclQEeyZiLHQBY-vMQ" points="[0, -49, 0, 111]$[0, -111, 0, 49]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Msh_VclQEeyZiLHQBY-vMQ" points="[69, -25, -166, 135]$[235, -25, 0, 135]$[235, -111, 0, 49]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MsimYMlQEeyZiLHQBY-vMQ" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MsimYclQEeyZiLHQBY-vMQ" id="(0.5,0.5)"/>
         </edges>
         <edges xmi:type="notation:Edge" xmi:id="_MsimYslQEeyZiLHQBY-vMQ" type="4001" element="_MsaqkMlQEeyZiLHQBY-vMQ" source="_Msdt5MlQEeyZiLHQBY-vMQ" target="_MseU8MlQEeyZiLHQBY-vMQ">
           <children xmi:type="notation:Node" xmi:id="_MsimZslQEeyZiLHQBY-vMQ" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MsimZ8lQEeyZiLHQBY-vMQ" x="-2" y="55"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MsimZ8lQEeyZiLHQBY-vMQ" x="17" y="14"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_MsimaMlQEeyZiLHQBY-vMQ" type="6002">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MsimaclQEeyZiLHQBY-vMQ" y="10"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MsimaclQEeyZiLHQBY-vMQ" x="-4" y="10"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_MsjNcMlQEeyZiLHQBY-vMQ" type="6003">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MsjNcclQEeyZiLHQBY-vMQ" y="10"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MsjNcclQEeyZiLHQBY-vMQ" x="4" y="10"/>
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_MsimY8lQEeyZiLHQBY-vMQ" routing="Rectilinear"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_MsimZMlQEeyZiLHQBY-vMQ" fontColor="7490599" fontName="Segoe UI" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_MsimZclQEeyZiLHQBY-vMQ" points="[0, -50, -45, 110]$[45, -110, 0, 50]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_MsimZclQEeyZiLHQBY-vMQ" points="[0, -49, 235, 111]$[0, -154, 235, 6]$[-169, -154, 66, 6]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MsjNcslQEeyZiLHQBY-vMQ" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MsjNc8lQEeyZiLHQBY-vMQ" id="(0.5,0.5)"/>
         </edges>
@@ -1874,6 +2034,76 @@
           <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_MsjNd8lQEeyZiLHQBY-vMQ" points="[0, -49, -239, 111]$[0, -154, -239, 6]$[174, -154, -65, 6]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Msj0hslQEeyZiLHQBY-vMQ" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Msj0h8lQEeyZiLHQBY-vMQ" id="(0.5,0.5)"/>
+        </edges>
+        <edges xmi:type="notation:Connector" xmi:id="_fJn-AMlWEeyZiLHQBY-vMQ" type="NoteAttachment" source="_XwX4gMlWEeyZiLHQBY-vMQ" target="_MsdG1MlQEeyZiLHQBY-vMQ" lineWidth="1">
+          <styles xmi:type="notation:ArrowStyle" xmi:id="_fJolEMlWEeyZiLHQBY-vMQ"/>
+          <styles xmi:type="notation:LineTypeStyle" xmi:id="_fJolEclWEeyZiLHQBY-vMQ"/>
+          <element xsi:nil="true"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_fJolEslWEeyZiLHQBY-vMQ" points="[0, 0, -9, 52]$[5, -32, -4, 20]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_fJyWEMlWEeyZiLHQBY-vMQ" id="(0.43478260869565216,0.0)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_fJyWEclWEeyZiLHQBY-vMQ" id="(0.4744525547445255,0.7959183673469388)"/>
+        </edges>
+        <edges xmi:type="notation:Connector" xmi:id="_itVN8MlZEeyZiLHQBY-vMQ" type="NoteAttachment" source="_YjnL8MlZEeyZiLHQBY-vMQ" target="_MscfwMlQEeyZiLHQBY-vMQ" lineWidth="1">
+          <styles xmi:type="notation:ArrowStyle" xmi:id="_itVN8clZEeyZiLHQBY-vMQ"/>
+          <styles xmi:type="notation:LineTypeStyle" xmi:id="_itVN8slZEeyZiLHQBY-vMQ"/>
+          <element xsi:nil="true"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_itVN88lZEeyZiLHQBY-vMQ" points="[-22, -35, 60, 101]$[-53, -87, 29, 49]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_itXqMMlZEeyZiLHQBY-vMQ" id="(0.5449438202247191,0.03418803418803419)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_J_i-MMlcEeyZiLHQBY-vMQ" type="4001" element="_J_fT0MlcEeyZiLHQBY-vMQ" source="_MseU8MlQEeyZiLHQBY-vMQ" target="_J_gh8MlcEeyZiLHQBY-vMQ">
+          <children xmi:type="notation:Node" xmi:id="_J_i-NMlcEeyZiLHQBY-vMQ" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_J_i-NclcEeyZiLHQBY-vMQ" x="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_J_i-NslcEeyZiLHQBY-vMQ" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_J_i-N8lcEeyZiLHQBY-vMQ" x="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_J_i-OMlcEeyZiLHQBY-vMQ" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_J_i-OclcEeyZiLHQBY-vMQ" x="-10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_J_i-MclcEeyZiLHQBY-vMQ" routing="Rectilinear"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_J_i-MslcEeyZiLHQBY-vMQ" fontColor="7490599" fontName="Segoe UI" fontHeight="8"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_J_i-M8lcEeyZiLHQBY-vMQ" points="[41, -49, 41, 181]$[41, -181, 41, 49]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_J_i-OslcEeyZiLHQBY-vMQ" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_J_i-O8lcEeyZiLHQBY-vMQ" id="(0.5,0.5)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_J_i-PMlcEeyZiLHQBY-vMQ" type="4001" element="_J_fT18lcEeyZiLHQBY-vMQ" source="_MseU8MlQEeyZiLHQBY-vMQ" target="_J_gh8MlcEeyZiLHQBY-vMQ">
+          <children xmi:type="notation:Node" xmi:id="_J_jlQMlcEeyZiLHQBY-vMQ" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_J_jlQclcEeyZiLHQBY-vMQ" x="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_J_jlQslcEeyZiLHQBY-vMQ" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_J_jlQ8lcEeyZiLHQBY-vMQ" x="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_J_jlRMlcEeyZiLHQBY-vMQ" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_J_jlRclcEeyZiLHQBY-vMQ" x="-10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_J_i-PclcEeyZiLHQBY-vMQ" routing="Rectilinear"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_J_i-PslcEeyZiLHQBY-vMQ" fontColor="7490599" fontName="Segoe UI" fontHeight="8"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_J_i-P8lcEeyZiLHQBY-vMQ" points="[-39, -49, -39, 181]$[-39, -181, -39, 49]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_J_jlRslcEeyZiLHQBY-vMQ" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_J_jlR8lcEeyZiLHQBY-vMQ" id="(0.5,0.5)"/>
+        </edges>
+        <edges xmi:type="notation:Connector" xmi:id="_yQBYYMlcEeyZiLHQBY-vMQ" type="NoteAttachment" source="_oqJqUMlcEeyZiLHQBY-vMQ" target="_Msdt5MlQEeyZiLHQBY-vMQ" lineWidth="1">
+          <styles xmi:type="notation:ArrowStyle" xmi:id="_yQBYYclcEeyZiLHQBY-vMQ"/>
+          <styles xmi:type="notation:LineTypeStyle" xmi:id="_yQBYYslcEeyZiLHQBY-vMQ"/>
+          <element xsi:nil="true"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_yQBYY8lcEeyZiLHQBY-vMQ" points="[0, 0, 186, -106]$[-180, 102, 6, -4]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_yQDNkMlcEeyZiLHQBY-vMQ" id="(0.0821917808219178,0.7678571428571429)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_yQDNkclcEeyZiLHQBY-vMQ" id="(0.9661016949152542,0.5306122448979592)"/>
+        </edges>
+        <edges xmi:type="notation:Connector" xmi:id="_ysZyYMlcEeyZiLHQBY-vMQ" type="NoteAttachment" source="_oqJqUMlcEeyZiLHQBY-vMQ" target="_Mse8AMlQEeyZiLHQBY-vMQ" lineWidth="1">
+          <styles xmi:type="notation:ArrowStyle" xmi:id="_ysZyYclcEeyZiLHQBY-vMQ"/>
+          <styles xmi:type="notation:LineTypeStyle" xmi:id="_ysZyYslcEeyZiLHQBY-vMQ"/>
+          <element xsi:nil="true"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_ysZyY8lcEeyZiLHQBY-vMQ" points="[0, 0, 676, -91]$[-253, 6, 423, -85]$[-644, 84, 32, -7]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_ysbnkMlcEeyZiLHQBY-vMQ" id="(0.5698630136986301,1.0)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_ysbnkclcEeyZiLHQBY-vMQ" id="(0.8212290502793296,0.37755102040816324)"/>
+        </edges>
+        <edges xmi:type="notation:Connector" xmi:id="_JRjaUMldEeyZiLHQBY-vMQ" type="NoteAttachment" source="_DGls4MldEeyZiLHQBY-vMQ" target="_MseU8MlQEeyZiLHQBY-vMQ" lineWidth="1">
+          <styles xmi:type="notation:ArrowStyle" xmi:id="_JRjaUcldEeyZiLHQBY-vMQ"/>
+          <styles xmi:type="notation:LineTypeStyle" xmi:id="_JRjaUsldEeyZiLHQBY-vMQ"/>
+          <element xsi:nil="true"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JRjaU8ldEeyZiLHQBY-vMQ" points="[0, 0, 173, -48]$[-28, -7, 145, -55]$[-112, 24, 61, -24]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JRlPgMldEeyZiLHQBY-vMQ" id="(0.09438202247191012,1.0)"/>
         </edges>
       </data>
     </ownedAnnotationEntries>
@@ -1944,34 +2174,21 @@
     <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_MsSuwMlQEeyZiLHQBY-vMQ" name="ProvidedDelegationConnector" tooltipText="" outgoingEdges="_MsaqkMlQEeyZiLHQBY-vMQ" incomingEdges="_MsaDg8lQEeyZiLHQBY-vMQ" width="12" height="10">
       <target xmi:type="ecore:EClass" href="ComponentBasedSystems.ecore#//Assembly/ProvidedDelegationConnector"/>
       <semanticElements xmi:type="ecore:EClass" href="ComponentBasedSystems.ecore#//Assembly/ProvidedDelegationConnector"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_MsSuwclQEeyZiLHQBY-vMQ" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="Liquid" foregroundColor="255,252,216">
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_MsSuw8lQEeyZiLHQBY-vMQ" name="AssemblyConnector" tooltipText="" incomingEdges="_MsY1aclQEeyZiLHQBY-vMQ _MsaqkMlQEeyZiLHQBY-vMQ _MsbRoMlQEeyZiLHQBY-vMQ" width="12" height="10">
+    <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_MsSuw8lQEeyZiLHQBY-vMQ" name="AssemblyConnector" tooltipText="" outgoingEdges="_J_fT0MlcEeyZiLHQBY-vMQ _J_fT18lcEeyZiLHQBY-vMQ" incomingEdges="_MsY1aclQEeyZiLHQBY-vMQ _MsaqkMlQEeyZiLHQBY-vMQ _MsbRoMlQEeyZiLHQBY-vMQ" width="12" height="10">
       <target xmi:type="ecore:EClass" href="ComponentBasedSystems.ecore#//Assembly/AssemblyConnector"/>
       <semanticElements xmi:type="ecore:EClass" href="ComponentBasedSystems.ecore#//Assembly/AssemblyConnector"/>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_MsSuxMlQEeyZiLHQBY-vMQ" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="Liquid" foregroundColor="255,252,216">
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_MsWZIslQEeyZiLHQBY-vMQ" name=" requires : Interface" tooltipText="">
-        <target xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Assembly/AssemblyConnector/requires"/>
-        <semanticElements xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Assembly/AssemblyConnector/requires"/>
-        <ownedStyle xmi:type="diagram:BundledImage" uid="_MsXAMMlQEeyZiLHQBY-vMQ" labelAlignment="LEFT" description="_MsWZIMlQEeyZiLHQBY-vMQ" color="114,159,207">
-          <labelFormat>bold</labelFormat>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EReferenceNode']"/>
-      </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_MsXAMclQEeyZiLHQBY-vMQ" name=" provides : Interface" tooltipText="">
-        <target xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Assembly/AssemblyConnector/provides"/>
-        <semanticElements xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Assembly/AssemblyConnector/provides"/>
-        <ownedStyle xmi:type="diagram:BundledImage" uid="_MsXnQMlQEeyZiLHQBY-vMQ" labelAlignment="LEFT" description="_MsWZIMlQEeyZiLHQBY-vMQ" color="114,159,207">
-          <labelFormat>bold</labelFormat>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EReferenceNode']"/>
-      </ownedElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_MsTV0MlQEeyZiLHQBY-vMQ" name="RequiredDelegationConnector" tooltipText="" outgoingEdges="_MsbRoMlQEeyZiLHQBY-vMQ" incomingEdges="_MsZcdslQEeyZiLHQBY-vMQ" width="12" height="10">
       <target xmi:type="ecore:EClass" href="ComponentBasedSystems.ecore#//Assembly/RequiredDelegationConnector"/>
@@ -1994,9 +2211,9 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_MsY1aclQEeyZiLHQBY-vMQ" name="[0..*] assemblyconnector" sourceNode="_MsSHsclQEeyZiLHQBY-vMQ" targetNode="_MsSuw8lQEeyZiLHQBY-vMQ">
-      <target xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Assembly/CompositeComponent/assemblyconnector"/>
-      <semanticElements xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Assembly/CompositeComponent/assemblyconnector"/>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_MsY1aclQEeyZiLHQBY-vMQ" name="[0..*] assemblyConnector" sourceNode="_MsSHsclQEeyZiLHQBY-vMQ" targetNode="_MsSuw8lQEeyZiLHQBY-vMQ">
+      <target xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Assembly/CompositeComponent/assemblyConnector"/>
+      <semanticElements xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Assembly/CompositeComponent/assemblyConnector"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_MsZccMlQEeyZiLHQBY-vMQ" description="_MsY1YMlQEeyZiLHQBY-vMQ" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_MsZccslQEeyZiLHQBY-vMQ" showIcon="false">
           <customFeatures>labelSize</customFeatures>
@@ -2007,9 +2224,9 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_MsZcdslQEeyZiLHQBY-vMQ" name="[0..*] requireddelegationconnector" sourceNode="_MsSHsclQEeyZiLHQBY-vMQ" targetNode="_MsTV0MlQEeyZiLHQBY-vMQ">
-      <target xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Assembly/CompositeComponent/requireddelegationconnector"/>
-      <semanticElements xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Assembly/CompositeComponent/requireddelegationconnector"/>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_MsZcdslQEeyZiLHQBY-vMQ" name="[0..*] requiredDelegationConnectors" sourceNode="_MsSHsclQEeyZiLHQBY-vMQ" targetNode="_MsTV0MlQEeyZiLHQBY-vMQ">
+      <target xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Assembly/CompositeComponent/requiredDelegationConnectors"/>
+      <semanticElements xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Assembly/CompositeComponent/requiredDelegationConnectors"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_MsZcd8lQEeyZiLHQBY-vMQ" description="_MsY1YMlQEeyZiLHQBY-vMQ" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_MsZceclQEeyZiLHQBY-vMQ" showIcon="false">
           <customFeatures>labelSize</customFeatures>
@@ -2020,9 +2237,9 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_MsaDg8lQEeyZiLHQBY-vMQ" name="[0..*] provideddelegationconnector" sourceNode="_MsSHsclQEeyZiLHQBY-vMQ" targetNode="_MsSuwMlQEeyZiLHQBY-vMQ">
-      <target xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Assembly/CompositeComponent/provideddelegationconnector"/>
-      <semanticElements xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Assembly/CompositeComponent/provideddelegationconnector"/>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_MsaDg8lQEeyZiLHQBY-vMQ" name="[0..*] providedDelegationConnectors" sourceNode="_MsSHsclQEeyZiLHQBY-vMQ" targetNode="_MsSuwMlQEeyZiLHQBY-vMQ">
+      <target xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Assembly/CompositeComponent/providedDelegationConnectors"/>
+      <semanticElements xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Assembly/CompositeComponent/providedDelegationConnectors"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_MsaDhMlQEeyZiLHQBY-vMQ" description="_MsY1YMlQEeyZiLHQBY-vMQ" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_MsaDhslQEeyZiLHQBY-vMQ" showIcon="false">
           <customFeatures>labelSize</customFeatures>
@@ -2039,6 +2256,7 @@
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_MsaqlMlQEeyZiLHQBY-vMQ" description="_MsaqkclQEeyZiLHQBY-vMQ" routingStyle="manhattan" strokeColor="0,0,0">
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_MsaqlslQEeyZiLHQBY-vMQ" showIcon="false">
           <customFeatures>labelSize</customFeatures>
+          <labelFormat>bold</labelFormat>
         </centerLabelStyle>
         <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_MsaqlclQEeyZiLHQBY-vMQ" showIcon="false" labelColor="39,76,114">
           <customFeatures>labelSize</customFeatures>
@@ -2046,14 +2264,73 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_MsbRoMlQEeyZiLHQBY-vMQ" name="[1..1] RequiredRole" sourceNode="_MsTV0MlQEeyZiLHQBY-vMQ" targetNode="_MsSuw8lQEeyZiLHQBY-vMQ">
-      <target xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Assembly/RequiredDelegationConnector/RequiredRole"/>
-      <semanticElements xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Assembly/RequiredDelegationConnector/RequiredRole"/>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_MsbRoMlQEeyZiLHQBY-vMQ" name="[1..1] requiredRole" sourceNode="_MsTV0MlQEeyZiLHQBY-vMQ" targetNode="_MsSuw8lQEeyZiLHQBY-vMQ">
+      <target xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Assembly/RequiredDelegationConnector/requiredRole"/>
+      <semanticElements xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Assembly/RequiredDelegationConnector/requiredRole"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_MsbRoclQEeyZiLHQBY-vMQ" description="_MsaqkclQEeyZiLHQBY-vMQ" routingStyle="manhattan" strokeColor="0,0,0">
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_MsbRo8lQEeyZiLHQBY-vMQ" showIcon="false">
           <customFeatures>labelSize</customFeatures>
+          <labelFormat>bold</labelFormat>
         </centerLabelStyle>
         <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_MsbRoslQEeyZiLHQBY-vMQ" showIcon="false" labelColor="39,76,114">
+          <customFeatures>labelSize</customFeatures>
+        </endLabelStyle>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_J_ZNMMlcEeyZiLHQBY-vMQ" name="Interface" tooltipText="" incomingEdges="_J_fT0MlcEeyZiLHQBY-vMQ _J_fT18lcEeyZiLHQBY-vMQ" width="12" height="10">
+      <target xmi:type="ecore:EClass" href="ComponentBasedSystems.ecore#//Repository/Interface"/>
+      <semanticElements xmi:type="ecore:EClass" href="ComponentBasedSystems.ecore#//Repository/Interface"/>
+      <decorations xmi:type="viewpoint:Decoration" uid="_J_ZNMslcEeyZiLHQBY-vMQ">
+        <description xmi:type="description:SemanticBasedDecoration" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@decorationDescriptionsSet/@decorationDescriptions[name='External']"/>
+      </decorations>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_J_ZNMclcEeyZiLHQBY-vMQ" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="Liquid" foregroundColor="255,252,216">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_J_c3kMlcEeyZiLHQBY-vMQ" name="name : EString" tooltipText="">
+        <target xmi:type="ecore:EAttribute" href="ComponentBasedSystems.ecore#//Repository/Interface/name"/>
+        <semanticElements xmi:type="ecore:EAttribute" href="ComponentBasedSystems.ecore#//Repository/Interface/name"/>
+        <ownedStyle xmi:type="diagram:BundledImage" uid="_J_c3kclcEeyZiLHQBY-vMQ" labelAlignment="LEFT">
+          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_J_deoMlcEeyZiLHQBY-vMQ" name=" signatures : Signature" tooltipText="">
+        <target xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Repository/Interface/signatures"/>
+        <semanticElements xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Repository/Interface/signatures"/>
+        <ownedStyle xmi:type="diagram:BundledImage" uid="_J_deoclcEeyZiLHQBY-vMQ" labelAlignment="LEFT" color="114,159,207">
+          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EReferenceNode']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EReferenceNode']"/>
+      </ownedElements>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_J_fT0MlcEeyZiLHQBY-vMQ" name="[1..1] requires" sourceNode="_MsSuw8lQEeyZiLHQBY-vMQ" targetNode="_J_ZNMMlcEeyZiLHQBY-vMQ">
+      <target xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Assembly/AssemblyConnector/requires"/>
+      <semanticElements xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Assembly/AssemblyConnector/requires"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_J_fT0clcEeyZiLHQBY-vMQ" description="_MsaqkclQEeyZiLHQBY-vMQ" routingStyle="manhattan" strokeColor="0,0,0">
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_J_fT08lcEeyZiLHQBY-vMQ" showIcon="false">
+          <customFeatures>labelSize</customFeatures>
+          <labelFormat>bold</labelFormat>
+        </centerLabelStyle>
+        <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_J_fT0slcEeyZiLHQBY-vMQ" showIcon="false" labelColor="39,76,114">
+          <customFeatures>labelSize</customFeatures>
+        </endLabelStyle>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_J_fT18lcEeyZiLHQBY-vMQ" name="[1..1] provides" sourceNode="_MsSuw8lQEeyZiLHQBY-vMQ" targetNode="_J_ZNMMlcEeyZiLHQBY-vMQ">
+      <target xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Assembly/AssemblyConnector/provides"/>
+      <semanticElements xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Assembly/AssemblyConnector/provides"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_J_f64MlcEeyZiLHQBY-vMQ" description="_MsaqkclQEeyZiLHQBY-vMQ" routingStyle="manhattan" strokeColor="0,0,0">
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_J_f64slcEeyZiLHQBY-vMQ" showIcon="false">
+          <customFeatures>labelSize</customFeatures>
+          <labelFormat>bold</labelFormat>
+        </centerLabelStyle>
+        <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_J_f64clcEeyZiLHQBY-vMQ" showIcon="false" labelColor="39,76,114">
           <customFeatures>labelSize</customFeatures>
         </endLabelStyle>
       </ownedStyle>
@@ -2423,6 +2700,7 @@
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_Xpwh48lQEeyZiLHQBY-vMQ" description="_Xpwh4MlQEeyZiLHQBY-vMQ" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_Xpwh5clQEeyZiLHQBY-vMQ" showIcon="false">
           <customFeatures>labelSize</customFeatures>
+          <labelFormat>bold</labelFormat>
         </centerLabelStyle>
         <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_Xpwh5MlQEeyZiLHQBY-vMQ" showIcon="false" labelColor="39,76,114">
           <customFeatures>labelSize</customFeatures>
@@ -2449,6 +2727,7 @@
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_XpxwAMlQEeyZiLHQBY-vMQ" description="_Xpwh4MlQEeyZiLHQBY-vMQ" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_XpxwAslQEeyZiLHQBY-vMQ" showIcon="false">
           <customFeatures>labelSize</customFeatures>
+          <labelFormat>bold</labelFormat>
         </centerLabelStyle>
         <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_XpxwAclQEeyZiLHQBY-vMQ" showIcon="false" labelColor="39,76,114">
           <customFeatures>labelSize</customFeatures>
@@ -2462,6 +2741,7 @@
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_XpyXEMlQEeyZiLHQBY-vMQ" description="_Xpwh4MlQEeyZiLHQBY-vMQ" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_XpyXEslQEeyZiLHQBY-vMQ" showIcon="false">
           <customFeatures>labelSize</customFeatures>
+          <labelFormat>bold</labelFormat>
         </centerLabelStyle>
         <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_XpyXEclQEeyZiLHQBY-vMQ" showIcon="false" labelColor="39,76,114">
           <customFeatures>labelSize</customFeatures>
@@ -2891,6 +3171,21 @@
           <styles xmi:type="notation:ShapeStyle" xmi:id="_grHYMclREeyZiLHQBY-vMQ" fontName="Segoe UI" fontHeight="8"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_grHYMslREeyZiLHQBY-vMQ" x="490" y="1305" width="567" height="283"/>
         </children>
+        <children xmi:type="notation:Shape" xmi:id="_6jXg4MlXEeyZiLHQBY-vMQ" type="Note" fontName="Segoe UI" description="Reference needed?" fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_6jXg4clXEeyZiLHQBY-vMQ" source="specificStyles">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_6jXg4slXEeyZiLHQBY-vMQ" key="verticalAlignment" value="8"/>
+          </eAnnotations>
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_6jYH8MlXEeyZiLHQBY-vMQ" type="DiagramName">
+            <element xsi:nil="true"/>
+          </children>
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_6jYH8clXEeyZiLHQBY-vMQ" type="Description">
+            <element xsi:nil="true"/>
+          </children>
+          <styles xmi:type="notation:TextStyle" xmi:id="_6jXg48lXEeyZiLHQBY-vMQ" textAlignment="Center"/>
+          <styles xmi:type="notation:LineTypeStyle" xmi:id="_6jXg5MlXEeyZiLHQBY-vMQ"/>
+          <element xsi:nil="true"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6jXg5clXEeyZiLHQBY-vMQ" x="-35" y="1430"/>
+        </children>
         <styles xmi:type="notation:DiagramStyle" xmi:id="_3-5dMslQEeyZiLHQBY-vMQ"/>
         <edges xmi:type="notation:Edge" xmi:id="_-ErIqclQEeyZiLHQBY-vMQ" type="4001" element="_9vuMUMlQEeyZiLHQBY-vMQ" source="_-Ep6islQEeyZiLHQBY-vMQ" target="_-Ep6g8lQEeyZiLHQBY-vMQ">
           <children xmi:type="notation:Node" xmi:id="_-Ervs8lQEeyZiLHQBY-vMQ" type="6001">
@@ -2958,7 +3253,7 @@
         </edges>
         <edges xmi:type="notation:Edge" xmi:id="_-Es93slQEeyZiLHQBY-vMQ" type="4001" element="_9vuzcclQEeyZiLHQBY-vMQ" source="_-EpTdMlQEeyZiLHQBY-vMQ" target="_-Ep6g8lQEeyZiLHQBY-vMQ">
           <children xmi:type="notation:Node" xmi:id="_-Es94slQEeyZiLHQBY-vMQ" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-Es948lQEeyZiLHQBY-vMQ" x="4" y="-38"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-Es948lQEeyZiLHQBY-vMQ" x="-1" y="-17"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_-Es95MlQEeyZiLHQBY-vMQ" type="6002">
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-Es95clQEeyZiLHQBY-vMQ" x="-4" y="10"/>
@@ -3342,7 +3637,7 @@
         </edges>
         <edges xmi:type="notation:Edge" xmi:id="_Xq_blMlREeyZiLHQBY-vMQ" type="4001" element="_XVUGcMlREeyZiLHQBY-vMQ" source="_Xq8_QMlREeyZiLHQBY-vMQ" target="_Xq-NZ8lREeyZiLHQBY-vMQ">
           <children xmi:type="notation:Node" xmi:id="_XrACkMlREeyZiLHQBY-vMQ" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XrACkclREeyZiLHQBY-vMQ" x="-20" y="-7"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XrACkclREeyZiLHQBY-vMQ" x="-5" y="-8"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_XrACkslREeyZiLHQBY-vMQ" type="6002">
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XrACk8lREeyZiLHQBY-vMQ" x="-16" y="-10"/>
@@ -3464,7 +3759,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_ffCmoclREeyZiLHQBY-vMQ" routing="Rectilinear"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_ffCmoslREeyZiLHQBY-vMQ" fontColor="7490599" fontName="Segoe UI" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_ffCmo8lREeyZiLHQBY-vMQ" points="[58, 84, -312, -19]$[310, 84, -60, -19]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_ffCmo8lREeyZiLHQBY-vMQ" points="[58, 53, -312, -50]$[310, 53, -60, -50]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_ffCmqslREeyZiLHQBY-vMQ" id="(0.5084745762711864,0.0)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_ffCmq8lREeyZiLHQBY-vMQ" id="(0.5084745762711864,1.0)"/>
         </edges>
@@ -3518,7 +3813,7 @@
         </edges>
         <edges xmi:type="notation:Edge" xmi:id="_k3HekslREeyZiLHQBY-vMQ" type="4001" element="_khAEp8lREeyZiLHQBY-vMQ" source="_k3FCVMlREeyZiLHQBY-vMQ" target="_Xq8_QMlREeyZiLHQBY-vMQ">
           <children xmi:type="notation:Node" xmi:id="_k3HelslREeyZiLHQBY-vMQ" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_k3Hel8lREeyZiLHQBY-vMQ" x="10"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_k3Hel8lREeyZiLHQBY-vMQ" x="-47" y="81"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_k3HemMlREeyZiLHQBY-vMQ" type="6002">
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_k3HemclREeyZiLHQBY-vMQ" x="-10"/>
@@ -3534,7 +3829,7 @@
         </edges>
         <edges xmi:type="notation:Edge" xmi:id="_k3HenslREeyZiLHQBY-vMQ" type="4001" element="_khAErslREeyZiLHQBY-vMQ" source="_k3FCVMlREeyZiLHQBY-vMQ" target="_ffAKZ8lREeyZiLHQBY-vMQ">
           <children xmi:type="notation:Node" xmi:id="_k3HeoslREeyZiLHQBY-vMQ" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_k3Heo8lREeyZiLHQBY-vMQ" x="183" y="83"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_k3Heo8lREeyZiLHQBY-vMQ" x="133" y="13"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_k3HepMlREeyZiLHQBY-vMQ" type="6002">
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_k3HepclREeyZiLHQBY-vMQ" x="433" y="101"/>
@@ -3564,6 +3859,14 @@
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_k3IFrslREeyZiLHQBY-vMQ" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_k3IFr8lREeyZiLHQBY-vMQ" id="(0.5,0.5)"/>
         </edges>
+        <edges xmi:type="notation:Connector" xmi:id="__Ke18MlXEeyZiLHQBY-vMQ" type="NoteAttachment" source="_6jXg4MlXEeyZiLHQBY-vMQ" target="_k3IFpMlREeyZiLHQBY-vMQ" lineWidth="1">
+          <styles xmi:type="notation:ArrowStyle" xmi:id="__Ke18clXEeyZiLHQBY-vMQ"/>
+          <styles xmi:type="notation:LineTypeStyle" xmi:id="__Ke18slXEeyZiLHQBY-vMQ"/>
+          <element xsi:nil="true"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="__Ke188lXEeyZiLHQBY-vMQ" points="[-19, -56, 327, 25]$[-24, -82, 322, -1]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="__KmKsMlXEeyZiLHQBY-vMQ" id="(0.5950413223140496,0.0)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="__KmKsclXEeyZiLHQBY-vMQ" id="(0.35737704918032787,0.9385964912280702)"/>
+        </edges>
       </data>
     </ownedAnnotationEntries>
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_3-6EQMlQEeyZiLHQBY-vMQ" source="DANNOTATION_CUSTOMIZATION_KEY">
@@ -3576,12 +3879,6 @@
           <endLabelStyleDescription xmi:type="style:EndLabelStyleDescription" xmi:id="_9vuMU8lQEeyZiLHQBY-vMQ" labelSize="6" showIcon="false" labelExpression="service:eKeysLabel">
             <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
           </endLabelStyleDescription>
-        </computedStyleDescriptions>
-        <computedStyleDescriptions xmi:type="style:BundledImageDescription" xmi:id="_I5sxfMlREeyZiLHQBY-vMQ" labelExpression="service:render" labelAlignment="LEFT" tooltipExpression="service:renderTooltip" sizeComputationExpression="1">
-          <borderColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-          <labelFormat>bold</labelFormat>
-          <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-          <color xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
         </computedStyleDescriptions>
         <computedStyleDescriptions xmi:type="style:EdgeStyleDescription" xmi:id="_I5wb4MlREeyZiLHQBY-vMQ" routingStyle="manhattan">
           <strokeColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -3615,6 +3912,12 @@
           <endLabelStyleDescription xmi:type="style:EndLabelStyleDescription" xmi:id="_Pl2gY8lREeyZiLHQBY-vMQ" labelSize="6" showIcon="false" labelExpression="service:eKeysLabel">
             <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
           </endLabelStyleDescription>
+        </computedStyleDescriptions>
+        <computedStyleDescriptions xmi:type="style:BundledImageDescription" xmi:id="_wRQp0MlVEeyZiLHQBY-vMQ" labelExpression="service:render" labelAlignment="LEFT" tooltipExpression="service:renderTooltip" sizeComputationExpression="1">
+          <borderColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <labelFormat>bold</labelFormat>
+          <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <color xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
         </computedStyleDescriptions>
       </data>
     </ownedAnnotationEntries>
@@ -3853,7 +4156,7 @@
         <ownedElements xmi:type="diagram:DNodeListElement" uid="_I5sxe8lREeyZiLHQBY-vMQ" name="type : SimpleTypeEnum = String" tooltipText="">
           <target xmi:type="ecore:EAttribute" href="ComponentBasedSystems.ecore#//Types/SimpleType/type"/>
           <semanticElements xmi:type="ecore:EAttribute" href="ComponentBasedSystems.ecore#//Types/SimpleType/type"/>
-          <ownedStyle xmi:type="diagram:BundledImage" uid="_I5tYgMlREeyZiLHQBY-vMQ" labelAlignment="LEFT" description="_I5sxfMlREeyZiLHQBY-vMQ">
+          <ownedStyle xmi:type="diagram:BundledImage" uid="_wRQp0slVEeyZiLHQBY-vMQ" labelAlignment="LEFT" description="_wRQp0MlVEeyZiLHQBY-vMQ">
             <labelFormat>bold</labelFormat>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
@@ -4357,9 +4660,9 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_XVTfZslREeyZiLHQBY-vMQ" name="[0..*] assemblyconnector" sourceNode="_XVJHUMlREeyZiLHQBY-vMQ" targetNode="_XVJuYslREeyZiLHQBY-vMQ">
-      <target xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Assembly/CompositeComponent/assemblyconnector"/>
-      <semanticElements xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Assembly/CompositeComponent/assemblyconnector"/>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_XVTfZslREeyZiLHQBY-vMQ" name="[0..*] assemblyConnector" sourceNode="_XVJHUMlREeyZiLHQBY-vMQ" targetNode="_XVJuYslREeyZiLHQBY-vMQ">
+      <target xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Assembly/CompositeComponent/assemblyConnector"/>
+      <semanticElements xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Assembly/CompositeComponent/assemblyConnector"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_XVTfZ8lREeyZiLHQBY-vMQ" description="_9vuMUclQEeyZiLHQBY-vMQ" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_XVTfaclREeyZiLHQBY-vMQ" showIcon="false">
           <customFeatures>labelSize</customFeatures>
@@ -4370,9 +4673,9 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_XVUGcMlREeyZiLHQBY-vMQ" name="[0..*] requireddelegationconnector" sourceNode="_XVJHUMlREeyZiLHQBY-vMQ" targetNode="_XVKVcMlREeyZiLHQBY-vMQ">
-      <target xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Assembly/CompositeComponent/requireddelegationconnector"/>
-      <semanticElements xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Assembly/CompositeComponent/requireddelegationconnector"/>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_XVUGcMlREeyZiLHQBY-vMQ" name="[0..*] requiredDelegationConnectors" sourceNode="_XVJHUMlREeyZiLHQBY-vMQ" targetNode="_XVKVcMlREeyZiLHQBY-vMQ">
+      <target xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Assembly/CompositeComponent/requiredDelegationConnectors"/>
+      <semanticElements xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Assembly/CompositeComponent/requiredDelegationConnectors"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_XVUGcclREeyZiLHQBY-vMQ" description="_9vuMUclQEeyZiLHQBY-vMQ" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_XVUGc8lREeyZiLHQBY-vMQ" showIcon="false">
           <customFeatures>labelSize</customFeatures>
@@ -4383,9 +4686,9 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_XVUGd8lREeyZiLHQBY-vMQ" name="[0..*] provideddelegationconnector" sourceNode="_XVJHUMlREeyZiLHQBY-vMQ" targetNode="_XVJHVMlREeyZiLHQBY-vMQ">
-      <target xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Assembly/CompositeComponent/provideddelegationconnector"/>
-      <semanticElements xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Assembly/CompositeComponent/provideddelegationconnector"/>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_XVUGd8lREeyZiLHQBY-vMQ" name="[0..*] providedDelegationConnectors" sourceNode="_XVJHUMlREeyZiLHQBY-vMQ" targetNode="_XVJHVMlREeyZiLHQBY-vMQ">
+      <target xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Assembly/CompositeComponent/providedDelegationConnectors"/>
+      <semanticElements xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Assembly/CompositeComponent/providedDelegationConnectors"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_XVUGeMlREeyZiLHQBY-vMQ" description="_9vuMUclQEeyZiLHQBY-vMQ" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_XVUGeslREeyZiLHQBY-vMQ" showIcon="false">
           <customFeatures>labelSize</customFeatures>
@@ -4438,9 +4741,9 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_XVVUlslREeyZiLHQBY-vMQ" name="[1..1] RequiredRole" sourceNode="_XVKVcMlREeyZiLHQBY-vMQ" targetNode="_XVJuYslREeyZiLHQBY-vMQ">
-      <target xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Assembly/RequiredDelegationConnector/RequiredRole"/>
-      <semanticElements xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Assembly/RequiredDelegationConnector/RequiredRole"/>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_XVVUlslREeyZiLHQBY-vMQ" name="[1..1] requiredRole" sourceNode="_XVKVcMlREeyZiLHQBY-vMQ" targetNode="_XVJuYslREeyZiLHQBY-vMQ">
+      <target xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Assembly/RequiredDelegationConnector/requiredRole"/>
+      <semanticElements xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Assembly/RequiredDelegationConnector/requiredRole"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_XVVUl8lREeyZiLHQBY-vMQ" description="_I5wb4MlREeyZiLHQBY-vMQ" routingStyle="manhattan" strokeColor="0,0,0">
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_XVVUmclREeyZiLHQBY-vMQ" showIcon="false">
           <customFeatures>labelSize</customFeatures>
@@ -4610,9 +4913,9 @@
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
       </ownedDiagramElements>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_kg_dqMlREeyZiLHQBY-vMQ" name="[0..*] allocationcontext" sourceNode="_kgzQUslREeyZiLHQBY-vMQ" targetNode="_kgz3YMlREeyZiLHQBY-vMQ">
-      <target xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Allocation/Allocation/allocationcontext"/>
-      <semanticElements xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Allocation/Allocation/allocationcontext"/>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_kg_dqMlREeyZiLHQBY-vMQ" name="[0..*] allocationContext" sourceNode="_kgzQUslREeyZiLHQBY-vMQ" targetNode="_kgz3YMlREeyZiLHQBY-vMQ">
+      <target xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Allocation/Allocation/allocationContext"/>
+      <semanticElements xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Allocation/Allocation/allocationContext"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_kg_dqclREeyZiLHQBY-vMQ" description="_9vuMUclQEeyZiLHQBY-vMQ" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_kg_dq8lREeyZiLHQBY-vMQ" showIcon="false">
           <customFeatures>labelSize</customFeatures>

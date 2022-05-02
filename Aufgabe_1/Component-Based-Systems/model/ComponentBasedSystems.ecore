@@ -45,11 +45,11 @@
     <eClassifiers xsi:type="ecore:EClass" name="CompositeComponent">
       <eStructuralFeatures xsi:type="ecore:EReference" name="childContexts" upperBound="-1"
           eType="#//Assembly/AssemblyContext" containment="true"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="assemblyconnector" upperBound="-1"
+      <eStructuralFeatures xsi:type="ecore:EReference" name="assemblyConnector" upperBound="-1"
           eType="#//Assembly/AssemblyConnector" containment="true"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="requireddelegationconnector"
+      <eStructuralFeatures xsi:type="ecore:EReference" name="requiredDelegationConnectors"
           upperBound="-1" eType="#//Assembly/RequiredDelegationConnector" containment="true"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="provideddelegationconnector"
+      <eStructuralFeatures xsi:type="ecore:EReference" name="providedDelegationConnectors"
           upperBound="-1" eType="#//Assembly/ProvidedDelegationConnector" containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="ProvidedDelegationConnector">
@@ -63,7 +63,7 @@
           eType="#//Repository/Interface"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="RequiredDelegationConnector">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="RequiredRole" lowerBound="1"
+      <eStructuralFeatures xsi:type="ecore:EReference" name="requiredRole" lowerBound="1"
           eType="#//Assembly/AssemblyConnector"/>
     </eClassifiers>
   </eSubpackages>
@@ -122,7 +122,7 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Allocation">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="allocationcontext" upperBound="-1"
+      <eStructuralFeatures xsi:type="ecore:EReference" name="allocationContext" upperBound="-1"
           eType="#//Allocation/AllocationContext" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="system" lowerBound="1"
           eType="#//Allocation/System"/>
