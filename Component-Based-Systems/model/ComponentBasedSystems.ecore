@@ -2,7 +2,8 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="ComponentBasedSystems" nsURI="http://www.example.org/ComponentBasedSystems"
     nsPrefix="ComponentBasedSystems">
-  <eSubpackages name="BehavioralDescription">
+  <eSubpackages name="BehavioralDescription" nsURI="http://www.example.org/BehavioralDescription"
+      nsPrefix="BehavioralDescription">
     <eClassifiers xsi:type="ecore:EClass" name="AbstractAction" abstract="true">
       <eAnnotations source="http://www.obeo.fr/dsl/dnc/archetype">
         <details key="archetype" value="Role"/>
@@ -36,7 +37,7 @@
           eType="#//Repository/Signature"/>
     </eClassifiers>
   </eSubpackages>
-  <eSubpackages name="Assembly">
+  <eSubpackages name="Assembly" nsURI="http://www.example.org/Assembly" nsPrefix="Assembly">
     <eClassifiers xsi:type="ecore:EClass" name="AssemblyContext">
       <eStructuralFeatures xsi:type="ecore:EReference" name="instantiates" lowerBound="1"
           eType="#//Repository/Component"/>
@@ -67,7 +68,7 @@
           eType="#//Assembly/AssemblyConnector"/>
     </eClassifiers>
   </eSubpackages>
-  <eSubpackages name="Types">
+  <eSubpackages name="Types" nsURI="http://www.example.org/Types" nsPrefix="Types">
     <eClassifiers xsi:type="ecore:EClass" name="Type" abstract="true"/>
     <eClassifiers xsi:type="ecore:EClass" name="ParameterType" abstract="true" eSuperTypes="#//Types/Type"/>
     <eClassifiers xsi:type="ecore:EClass" name="Void" eSuperTypes="#//Types/Type"/>
@@ -97,7 +98,7 @@
           eType="#//Types/ParameterType"/>
     </eClassifiers>
   </eSubpackages>
-  <eSubpackages name="Enviroment">
+  <eSubpackages name="Enviroment" nsURI="http://www.example.org/Enviroment" nsPrefix="Enviroment">
     <eClassifiers xsi:type="ecore:EClass" name="Linker">
       <eAnnotations source="http://www.obeo.fr/dsl/dnc/archetype">
         <details key="archetype" value="Role"/>
@@ -117,7 +118,7 @@
           eType="#//Enviroment/Linker" containment="true"/>
     </eClassifiers>
   </eSubpackages>
-  <eSubpackages name="Allocation">
+  <eSubpackages name="Allocation" nsURI="http://www.example.org/Allocation" nsPrefix="Allocation">
     <eClassifiers xsi:type="ecore:EClass" name="System">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
@@ -136,7 +137,7 @@
           eType="#//Enviroment/Enviroment"/>
     </eClassifiers>
   </eSubpackages>
-  <eSubpackages name="Repository">
+  <eSubpackages name="Repository" nsURI="http://www.example.org/Repository" nsPrefix="Repository">
     <eClassifiers xsi:type="ecore:EClass" name="Repository">
       <eStructuralFeatures xsi:type="ecore:EReference" name="interfaces" upperBound="-1"
           eType="#//Repository/Interface" containment="true"/>
