@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<enviroment:Space xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:enviroment="http://www.example.org/enviroment">
+  <enviroment name="Application Server Env">
+    <container name="Application Sever Container"/>
+  </enviroment>
+  <enviroment name="Database Server Env">
+    <container name="Database Server Container"/>
+  </enviroment>
+</enviroment:Space>
