@@ -2,7 +2,7 @@
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
   <viewpoint:DAnalysis uid="_76KIMMY3Eey-mfgV5taJSQ" selectedViews="_79d64MY3Eey-mfgV5taJSQ _qOEv4MZWEeyC1rcxPrlI6g _qOmUUMZWEeyC1rcxPrlI6g _qQM20MZWEeyC1rcxPrlI6g" version="15.0.0.202201261500">
     <semanticResources>ComponentBasedSystems.ecore</semanticResources>
-    <semanticResources>ComponentBasedSystems.genmodel</semanticResources>
+    <semanticResources>Component-Based-Systems.genmodel</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_79d64MY3Eey-mfgV5taJSQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_0Q-HAMbsEey0z-jHwJtZ8Q" name="Types class diagram" repPath="#_0Q7DsMbsEey0z-jHwJtZ8Q" changeId="feda67db-6771-4ab4-b108-a4d0e834f60f">
@@ -18,7 +18,7 @@
       </ownedRepresentationDescriptors>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_9_hYUMlPEeyZiLHQBY-vMQ" name="Enviroment" repPath="#_9_gKMMlPEeyZiLHQBY-vMQ" changeId="98495b50-4059-4b90-8129-8b141d80cf83">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
-        <target xmi:type="ecore:EPackage" href="ComponentBasedSystems.ecore#//Enviroment"/>
+        <target xmi:type="ecore:EPackage" href="ComponentBasedSystems.ecore#//enviroment"/>
       </ownedRepresentationDescriptors>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_EW3U4MlQEeyZiLHQBY-vMQ" name="Types" repPath="#_EW2GwMlQEeyZiLHQBY-vMQ" changeId="d440a7d9-b46d-4bda-8e0b-20c046d8de23">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
@@ -1187,16 +1187,16 @@
       </data>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_-VoLMMlPEeyZiLHQBY-vMQ" name="Linker" tooltipText="" outgoingEdges="_-VtqwMlPEeyZiLHQBY-vMQ" incomingEdges="_-Vvf8MlPEeyZiLHQBY-vMQ" width="12" height="10">
-      <target xmi:type="ecore:EClass" href="ComponentBasedSystems.ecore#//Enviroment/Linker"/>
-      <semanticElements xmi:type="ecore:EClass" href="ComponentBasedSystems.ecore#//Enviroment/Linker"/>
+      <target xmi:type="ecore:EClass" href="ComponentBasedSystems.ecore#//enviroment/Linker"/>
+      <semanticElements xmi:type="ecore:EClass" href="ComponentBasedSystems.ecore#//enviroment/Linker"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_-VoLMslPEeyZiLHQBY-vMQ" description="_-VoLMclPEeyZiLHQBY-vMQ" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="Liquid" foregroundColor="250,240,180"/>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
       <ownedElements xmi:type="diagram:DNodeListElement" uid="_-Vr1kclPEeyZiLHQBY-vMQ" name="name : EString" tooltipText="">
-        <target xmi:type="ecore:EAttribute" href="ComponentBasedSystems.ecore#//Enviroment/Linker/name"/>
-        <semanticElements xmi:type="ecore:EAttribute" href="ComponentBasedSystems.ecore#//Enviroment/Linker/name"/>
+        <target xmi:type="ecore:EAttribute" href="ComponentBasedSystems.ecore#//enviroment/Linker/name"/>
+        <semanticElements xmi:type="ecore:EAttribute" href="ComponentBasedSystems.ecore#//enviroment/Linker/name"/>
         <ownedStyle xmi:type="diagram:BundledImage" uid="_-Vr1kslPEeyZiLHQBY-vMQ" labelAlignment="LEFT">
           <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
         </ownedStyle>
@@ -1204,8 +1204,8 @@
       </ownedElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_-VoyQMlPEeyZiLHQBY-vMQ" name="Container" tooltipText="" incomingEdges="_-VtqwMlPEeyZiLHQBY-vMQ _-VuR2clPEeyZiLHQBY-vMQ" width="12" height="10">
-      <target xmi:type="ecore:EClass" href="ComponentBasedSystems.ecore#//Enviroment/Container"/>
-      <semanticElements xmi:type="ecore:EClass" href="ComponentBasedSystems.ecore#//Enviroment/Container"/>
+      <target xmi:type="ecore:EClass" href="ComponentBasedSystems.ecore#//enviroment/Container"/>
+      <semanticElements xmi:type="ecore:EClass" href="ComponentBasedSystems.ecore#//enviroment/Container"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1214,8 +1214,8 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
       <ownedElements xmi:type="diagram:DNodeListElement" uid="_-Vr1k8lPEeyZiLHQBY-vMQ" name="name : EString" tooltipText="">
-        <target xmi:type="ecore:EAttribute" href="ComponentBasedSystems.ecore#//Enviroment/Container/name"/>
-        <semanticElements xmi:type="ecore:EAttribute" href="ComponentBasedSystems.ecore#//Enviroment/Container/name"/>
+        <target xmi:type="ecore:EAttribute" href="ComponentBasedSystems.ecore#//enviroment/Container/name"/>
+        <semanticElements xmi:type="ecore:EAttribute" href="ComponentBasedSystems.ecore#//enviroment/Container/name"/>
         <ownedStyle xmi:type="diagram:BundledImage" uid="_-VscoMlPEeyZiLHQBY-vMQ" labelAlignment="LEFT">
           <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
         </ownedStyle>
@@ -1223,8 +1223,8 @@
       </ownedElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_-VoyQ8lPEeyZiLHQBY-vMQ" name="Enviroment" tooltipText="" outgoingEdges="_-VuR2clPEeyZiLHQBY-vMQ _-Vvf8MlPEeyZiLHQBY-vMQ" width="12" height="10">
-      <target xmi:type="ecore:EClass" href="ComponentBasedSystems.ecore#//Enviroment/Enviroment"/>
-      <semanticElements xmi:type="ecore:EClass" href="ComponentBasedSystems.ecore#//Enviroment/Enviroment"/>
+      <target xmi:type="ecore:EClass" href="ComponentBasedSystems.ecore#//enviroment/Enviroment"/>
+      <semanticElements xmi:type="ecore:EClass" href="ComponentBasedSystems.ecore#//enviroment/Enviroment"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1233,8 +1233,8 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
       <ownedElements xmi:type="diagram:DNodeListElement" uid="_-VtDsMlPEeyZiLHQBY-vMQ" name="name : EString" tooltipText="">
-        <target xmi:type="ecore:EAttribute" href="ComponentBasedSystems.ecore#//Enviroment/Enviroment/name"/>
-        <semanticElements xmi:type="ecore:EAttribute" href="ComponentBasedSystems.ecore#//Enviroment/Enviroment/name"/>
+        <target xmi:type="ecore:EAttribute" href="ComponentBasedSystems.ecore#//enviroment/Enviroment/name"/>
+        <semanticElements xmi:type="ecore:EAttribute" href="ComponentBasedSystems.ecore#//enviroment/Enviroment/name"/>
         <ownedStyle xmi:type="diagram:BundledImage" uid="_-VtDsclPEeyZiLHQBY-vMQ" labelAlignment="LEFT">
           <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
         </ownedStyle>
@@ -1242,8 +1242,8 @@
       </ownedElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_-VtqwMlPEeyZiLHQBY-vMQ" name="[2..*] link" sourceNode="_-VoLMMlPEeyZiLHQBY-vMQ" targetNode="_-VoyQMlPEeyZiLHQBY-vMQ">
-      <target xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Enviroment/Linker/link"/>
-      <semanticElements xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Enviroment/Linker/link"/>
+      <target xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//enviroment/Linker/link"/>
+      <semanticElements xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//enviroment/Linker/link"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_-VuR08lPEeyZiLHQBY-vMQ" description="_-VuR0MlPEeyZiLHQBY-vMQ" routingStyle="manhattan" strokeColor="0,0,0">
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_-VuR1clPEeyZiLHQBY-vMQ" showIcon="false">
           <customFeatures>labelSize</customFeatures>
@@ -1256,8 +1256,8 @@
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_-VuR2clPEeyZiLHQBY-vMQ" name="[0..*] container" sourceNode="_-VoyQ8lPEeyZiLHQBY-vMQ" targetNode="_-VoyQMlPEeyZiLHQBY-vMQ">
-      <target xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Enviroment/Enviroment/container"/>
-      <semanticElements xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Enviroment/Enviroment/container"/>
+      <target xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//enviroment/Enviroment/container"/>
+      <semanticElements xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//enviroment/Enviroment/container"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_-Vu448lPEeyZiLHQBY-vMQ" description="_-Vu44MlPEeyZiLHQBY-vMQ" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_-Vu45clPEeyZiLHQBY-vMQ" showIcon="false">
           <customFeatures>labelSize</customFeatures>
@@ -1269,8 +1269,8 @@
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_-Vvf8MlPEeyZiLHQBY-vMQ" name="[0..*] linker" sourceNode="_-VoyQ8lPEeyZiLHQBY-vMQ" targetNode="_-VoLMMlPEeyZiLHQBY-vMQ">
-      <target xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Enviroment/Enviroment/linker"/>
-      <semanticElements xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Enviroment/Enviroment/linker"/>
+      <target xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//enviroment/Enviroment/linker"/>
+      <semanticElements xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//enviroment/Enviroment/linker"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_-Vvf8clPEeyZiLHQBY-vMQ" description="_-Vu44MlPEeyZiLHQBY-vMQ" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_-Vvf88lPEeyZiLHQBY-vMQ" showIcon="false">
           <customFeatures>labelSize</customFeatures>
@@ -1287,7 +1287,7 @@
     <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Package']"/>
     <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Validation']"/>
     <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Archetype']/@ownedRepresentationExtensions[name='Entities%20With%20Archetypes']/@layers[name='Archetypes']"/>
-    <target xmi:type="ecore:EPackage" href="ComponentBasedSystems.ecore#//Enviroment"/>
+    <target xmi:type="ecore:EPackage" href="ComponentBasedSystems.ecore#//enviroment"/>
   </diagram:DSemanticDiagram>
   <diagram:DSemanticDiagram uid="_EW2GwMlQEeyZiLHQBY-vMQ">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_EW3U4slQEeyZiLHQBY-vMQ" source="GMF_DIAGRAMS">
@@ -3220,8 +3220,8 @@
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_bE-2IMlREeyZiLHQBY-vMQ" name="Enviroment" width="24" height="16">
-      <target xmi:type="ecore:EPackage" href="ComponentBasedSystems.ecore#//Enviroment"/>
-      <semanticElements xmi:type="ecore:EPackage" href="ComponentBasedSystems.ecore#//Enviroment"/>
+      <target xmi:type="ecore:EPackage" href="ComponentBasedSystems.ecore#//enviroment"/>
+      <semanticElements xmi:type="ecore:EPackage" href="ComponentBasedSystems.ecore#//enviroment"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -3230,8 +3230,8 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Package']/@containerMappings[name='Dropped%20Package']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_et6rsMlREeyZiLHQBY-vMQ" name="Enviroment" tooltipText="" outgoingEdges="_euG48MlREeyZiLHQBY-vMQ _euG498lREeyZiLHQBY-vMQ" incomingEdges="_khArs8lREeyZiLHQBY-vMQ" width="12" height="10">
-        <target xmi:type="ecore:EClass" href="ComponentBasedSystems.ecore#//Enviroment/Enviroment"/>
-        <semanticElements xmi:type="ecore:EClass" href="ComponentBasedSystems.ecore#//Enviroment/Enviroment"/>
+        <target xmi:type="ecore:EClass" href="ComponentBasedSystems.ecore#//enviroment/Enviroment"/>
+        <semanticElements xmi:type="ecore:EClass" href="ComponentBasedSystems.ecore#//enviroment/Enviroment"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -3240,8 +3240,8 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" uid="_euBZYslREeyZiLHQBY-vMQ" name="name : EString" tooltipText="">
-          <target xmi:type="ecore:EAttribute" href="ComponentBasedSystems.ecore#//Enviroment/Enviroment/name"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="ComponentBasedSystems.ecore#//Enviroment/Enviroment/name"/>
+          <target xmi:type="ecore:EAttribute" href="ComponentBasedSystems.ecore#//enviroment/Enviroment/name"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="ComponentBasedSystems.ecore#//enviroment/Enviroment/name"/>
           <ownedStyle xmi:type="diagram:BundledImage" uid="_euBZY8lREeyZiLHQBY-vMQ" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
           </ownedStyle>
@@ -3249,8 +3249,8 @@
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_et6Eo8lREeyZiLHQBY-vMQ" name="Container" tooltipText="" incomingEdges="_euGR7MlREeyZiLHQBY-vMQ _euG48MlREeyZiLHQBY-vMQ _khAErslREeyZiLHQBY-vMQ" width="12" height="10">
-        <target xmi:type="ecore:EClass" href="ComponentBasedSystems.ecore#//Enviroment/Container"/>
-        <semanticElements xmi:type="ecore:EClass" href="ComponentBasedSystems.ecore#//Enviroment/Container"/>
+        <target xmi:type="ecore:EClass" href="ComponentBasedSystems.ecore#//enviroment/Container"/>
+        <semanticElements xmi:type="ecore:EClass" href="ComponentBasedSystems.ecore#//enviroment/Container"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -3259,8 +3259,8 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" uid="_euBZYMlREeyZiLHQBY-vMQ" name="name : EString" tooltipText="">
-          <target xmi:type="ecore:EAttribute" href="ComponentBasedSystems.ecore#//Enviroment/Container/name"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="ComponentBasedSystems.ecore#//Enviroment/Container/name"/>
+          <target xmi:type="ecore:EAttribute" href="ComponentBasedSystems.ecore#//enviroment/Container/name"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="ComponentBasedSystems.ecore#//enviroment/Container/name"/>
           <ownedStyle xmi:type="diagram:BundledImage" uid="_euBZYclREeyZiLHQBY-vMQ" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
           </ownedStyle>
@@ -3268,16 +3268,16 @@
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_et5dkMlREeyZiLHQBY-vMQ" name="Linker" tooltipText="" outgoingEdges="_euGR7MlREeyZiLHQBY-vMQ" incomingEdges="_euG498lREeyZiLHQBY-vMQ" width="12" height="10">
-        <target xmi:type="ecore:EClass" href="ComponentBasedSystems.ecore#//Enviroment/Linker"/>
-        <semanticElements xmi:type="ecore:EClass" href="ComponentBasedSystems.ecore#//Enviroment/Linker"/>
+        <target xmi:type="ecore:EClass" href="ComponentBasedSystems.ecore#//enviroment/Linker"/>
+        <semanticElements xmi:type="ecore:EClass" href="ComponentBasedSystems.ecore#//enviroment/Linker"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_et6EoMlREeyZiLHQBY-vMQ" description="_Pln24MlREeyZiLHQBY-vMQ" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="Liquid" foregroundColor="250,240,180"/>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" uid="_euAyV8lREeyZiLHQBY-vMQ" name="name : EString" tooltipText="">
-          <target xmi:type="ecore:EAttribute" href="ComponentBasedSystems.ecore#//Enviroment/Linker/name"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="ComponentBasedSystems.ecore#//Enviroment/Linker/name"/>
+          <target xmi:type="ecore:EAttribute" href="ComponentBasedSystems.ecore#//enviroment/Linker/name"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="ComponentBasedSystems.ecore#//enviroment/Linker/name"/>
           <ownedStyle xmi:type="diagram:BundledImage" uid="_euAyWMlREeyZiLHQBY-vMQ" labelAlignment="LEFT">
             <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
           </ownedStyle>
@@ -3286,8 +3286,8 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_euGR7MlREeyZiLHQBY-vMQ" name="[2..*] link" sourceNode="_et5dkMlREeyZiLHQBY-vMQ" targetNode="_et6Eo8lREeyZiLHQBY-vMQ">
-      <target xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Enviroment/Linker/link"/>
-      <semanticElements xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Enviroment/Linker/link"/>
+      <target xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//enviroment/Linker/link"/>
+      <semanticElements xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//enviroment/Linker/link"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_euGR7clREeyZiLHQBY-vMQ" description="_I5wb4MlREeyZiLHQBY-vMQ" routingStyle="manhattan" strokeColor="0,0,0">
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_euGR78lREeyZiLHQBY-vMQ" showIcon="false">
           <customFeatures>labelSize</customFeatures>
@@ -3300,8 +3300,8 @@
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_euG48MlREeyZiLHQBY-vMQ" name="[0..*] container" sourceNode="_et6rsMlREeyZiLHQBY-vMQ" targetNode="_et6Eo8lREeyZiLHQBY-vMQ">
-      <target xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Enviroment/Enviroment/container"/>
-      <semanticElements xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Enviroment/Enviroment/container"/>
+      <target xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//enviroment/Enviroment/container"/>
+      <semanticElements xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//enviroment/Enviroment/container"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_euG48clREeyZiLHQBY-vMQ" description="_9vuMUclQEeyZiLHQBY-vMQ" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_euG488lREeyZiLHQBY-vMQ" showIcon="false">
           <customFeatures>labelSize</customFeatures>
@@ -3313,8 +3313,8 @@
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_euG498lREeyZiLHQBY-vMQ" name="[0..*] linker" sourceNode="_et6rsMlREeyZiLHQBY-vMQ" targetNode="_et5dkMlREeyZiLHQBY-vMQ">
-      <target xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Enviroment/Enviroment/linker"/>
-      <semanticElements xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//Enviroment/Enviroment/linker"/>
+      <target xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//enviroment/Enviroment/linker"/>
+      <semanticElements xmi:type="ecore:EReference" href="ComponentBasedSystems.ecore#//enviroment/Enviroment/linker"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_euG4-MlREeyZiLHQBY-vMQ" description="_9vuMUclQEeyZiLHQBY-vMQ" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_euG4-slREeyZiLHQBY-vMQ" showIcon="false">
           <customFeatures>labelSize</customFeatures>
