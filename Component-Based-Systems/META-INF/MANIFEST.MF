@@ -1,7 +1,31 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Component-Based-Systems
-Bundle-SymbolicName: Component-Based-Systems; singleton:=true
+Bundle-Name: %pluginName
+Bundle-SymbolicName: Component-Based-Systems;singleton:=true
+Automatic-Module-Name: Component-Based-Systems
 Bundle-Version: 0.1.0.qualifier
+Bundle-ClassPath: .
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: ComponentBasedSystems.Allocation,
+ ComponentBasedSystems.Allocation.impl,
+ ComponentBasedSystems.Allocation.util,
+ ComponentBasedSystems.Assembly,
+ ComponentBasedSystems.Assembly.impl,
+ ComponentBasedSystems.Assembly.util,
+ ComponentBasedSystems.Enviroment,
+ ComponentBasedSystems.Enviroment.impl,
+ ComponentBasedSystems.Enviroment.util,
+ ComponentBasedSystems.Repository,
+ ComponentBasedSystems.Repository.BehavioralDescription,
+ ComponentBasedSystems.Repository.BehavioralDescription.impl,
+ ComponentBasedSystems.Repository.BehavioralDescription.util,
+ ComponentBasedSystems.Repository.Types,
+ ComponentBasedSystems.Repository.Types.impl,
+ ComponentBasedSystems.Repository.Types.util,
+ ComponentBasedSystems.Repository.impl,
+ ComponentBasedSystems.Repository.util
 Require-Bundle: org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.core.runtime
+Bundle-ActivationPolicy: lazy

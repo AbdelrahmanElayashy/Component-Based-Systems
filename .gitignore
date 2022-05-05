@@ -1,6 +1,8 @@
 # Compiled class file
 *.class
-
+Component-Based-Systems/
+Component-Based-Systems.edit/
+Component-Based-Systems.editor/
 # Log file
 *.log
 
