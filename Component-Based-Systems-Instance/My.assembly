@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Assembly:Assembly xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:Assembly="http://www.example.org/Assembly">
+  <compositecomponent name="ApplicationLayer">
+    <requires href="My.repository#//@interfaces.2"/>
+    <provides href="My.repository#//@interfaces.0"/>
+    <childContexts name="DBCachContext">
+      <instantiates href="My.repository#//@components.1"/>
+      <providedrole name="AutdioDBProvider">
+        <interface href="My.repository#//@interfaces.2"/>
+      </providedrole>
+      <requiredrole name="AudioDBRequired">
+        <interface href="My.repository#//@interfaces.2"/>
+      </requiredrole>
+    </childContexts>
+    <childContexts name="DigitalContext">
+      <instantiates href="My.repository#//@components.2"/>
+      <providedrole name="SoundProvider">
+        <interface href="My.repository#//@interfaces.1"/>
+      </providedrole>
+    </childContexts>
+    <childContexts name="MediaManagerContext">
+      <instantiates href="My.repository#//@components.0"/>
+      <providedrole name="MediaStoreProvider">
+        <interface href="My.repository#//@interfaces.0"/>
+      </providedrole>
+      <requiredrole name="SoundRequired">
+        <interface href="My.repository#//@interfaces.1"/>
+      </requiredrole>
+      <requiredrole name="MMAudioDBRequired">
+        <interface href="My.repository#//@interfaces.2"/>
+      </requiredrole>
+    </childContexts>
+    <assemblyconnector requires="//@compositecomponent.0/@childContexts.2/@requiredrole.0" provides="//@compositecomponent.0/@childContexts.1/@providedrole.0" name="MDConnector"/>
+    <assemblyconnector requires="//@compositecomponent.0/@childContexts.2/@requiredrole.1" provides="//@compositecomponent.0/@childContexts.0/@providedrole.0" name="MDBConnector"/>
+    <requireddelegationconnector RequiredRole="//@compositecomponent.0/@childContexts.0/@requiredrole.0" name="AudioDBdelegator"/>
+    <provideddelegationconnector providedRole="//@compositecomponent.0/@childContexts.2/@providedrole.0" name="MediaStoreDelegator"/>
+  </compositecomponent>
+</Assembly:Assembly>
