@@ -74,6 +74,10 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="linker" upperBound="-1"
           eType="#//enviroment/Linker" containment="true"/>
     </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Space">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="enviroment" upperBound="-1"
+          eType="#//enviroment/Enviroment" containment="true"/>
+    </eClassifiers>
   </eSubpackages>
   <eSubpackages name="allocation" nsURI="http://www.example.org/allocation" nsPrefix="allocation">
     <eClassifiers xsi:type="ecore:EClass" name="System">
