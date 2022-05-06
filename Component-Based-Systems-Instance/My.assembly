@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Assembly:Assembly xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:Assembly="http://www.example.org/assembly">
-  <compositeComponents name="ApplicationLayer">
+<assembly:Assembly xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:assembly="http://www.example.org/assembly">
+  <compositeComponents name="MediaStore">
     <requires href="My.repository#//@interfaces.2"/>
     <provides href="My.repository#//@interfaces.0"/>
-    <childContexts name="DBCachContext">
+    <childContexts name="DBCacheContext">
       <instantiates href="My.repository#//@components.1"/>
-      <providedRoles name="AutdioDBProvider">
+      <providedRoles name="AudioDB Provider (DBCache)">
         <interface href="My.repository#//@interfaces.2"/>
       </providedRoles>
-      <requiredRoles name="AudioDBRequired">
+      <requiredRoles name="AudioDB Consumer (DBCache)">
         <interface href="My.repository#//@interfaces.2"/>
       </requiredRoles>
     </childContexts>
-    <childContexts name="DigitalContext">
+    <childContexts name="DigitalWatermarkingContext">
       <instantiates href="My.repository#//@components.2"/>
-      <providedRoles name="SoundProvider">
+      <providedRoles name="Sound Provider (DigitalWatermarking)">
         <interface href="My.repository#//@interfaces.1"/>
       </providedRoles>
     </childContexts>
     <childContexts name="MediaManagerContext">
       <instantiates href="My.repository#//@components.0"/>
-      <providedRoles name="MediaStoreProvider">
+      <providedRoles name="MediaStore Provider (MediaManager)">
         <interface href="My.repository#//@interfaces.0"/>
       </providedRoles>
-      <requiredRoles name="SoundRequired">
+      <requiredRoles name="Sound Consumer (MediaManager)">
         <interface href="My.repository#//@interfaces.1"/>
       </requiredRoles>
-      <requiredRoles name="MMAudioDBRequired">
+      <requiredRoles name="AudioDB Consumer (MediaManager)">
         <interface href="My.repository#//@interfaces.2"/>
       </requiredRoles>
     </childContexts>
-    <assemblyConnectors requiredRole="//@compositeComponents.0/@childContexts.2/@requiredRoles.0" providedRole="//@compositeComponents.0/@childContexts.1/@providedRoles.0" name="MDConnector"/>
-	<assemblyConnectors requiredRole="//@compositeComponents.0/@childContexts.2/@requiredRoles.1" providedRole="//@compositeComponents.0/@childContexts.0/@providedRoles.0" name="MDBConnector"/>
-    <requiredDelegationConnectors requiredRole="//@compositeComponents.0/@childContexts.0/@requiredRoles.0" name="AudioDBdelegator"/>
-    <providedDelegationConnectors providedRole="//@compositeComponents.0/@childContexts.2/@providedRoles.0" name="MediaStoreDelegator"/>  
+    <assemblyConnectors requiredRole="//@compositeComponents.0/@childContexts.2/@requiredRoles.0" providedRole="//@compositeComponents.0/@childContexts.1/@providedRoles.0" name="Sound Connector (MediaManager - DigitalWatermarking)"/>
+    <assemblyConnectors requiredRole="//@compositeComponents.0/@childContexts.2/@requiredRoles.1" providedRole="//@compositeComponents.0/@childContexts.0/@providedRoles.0" name="AudioDB Connector (MediaManager - DBCache)"/>
+    <requiredDelegationConnectors requiredRole="//@compositeComponents.0/@childContexts.0/@requiredRoles.0" name="AudioDB RequiredDelegationConnector (DBCache)"/>
+    <providedDelegationConnectors providedRole="//@compositeComponents.0/@childContexts.2/@providedRoles.0" name="MediaStore ProvidedDelegationConnector (MediaManager)"/>
   </compositeComponents>
-</Assembly:Assembly>
+</assembly:Assembly>

@@ -1,10 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Repository:Repository xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:Repository="http://www.example.org/repository">
-  <interfaces name="MediaStore"/>
-  <interfaces name="Sound"/>
-  <interfaces name="AudioDB"/>
-  <interfaces name="HTTP"/>
-  <components name="MediaManager" requires="//@interfaces.1 //@interfaces.2" provides="//@interfaces.0"/>
-  <components name="DBCach" requires="//@interfaces.2" provides="//@interfaces.2"/>
-  <components name="DigitalWatermarking" provides="//@interfaces.1"/>
-</Repository:Repository>
+<repository:Repository xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:behavioraldescription="http://www.example.org/behavioraldescription" xmlns:repository="http://www.example.org/repository" xmlns:types="http://www.example.org/types">
+  <interfaces name="MediaStore">
+    <signatures name="download" returnType="//@types.0"/>
+    <signatures name="upload" returnType="//@types.0"/>
+  </interfaces>
+  <interfaces name="Sound">
+    <signatures name="watermark" returnType="//@types.0"/>
+  </interfaces>
+  <interfaces name="AudioDB">
+    <signatures name="queryDB" returnType="//@types.0"/>
+    <signatures name="addFile" returnType="//@types.0"/>
+  </interfaces>
+  <interfaces name="HTTP">
+    <signatures name="HTTPDownload" returnType="//@types.0"/>
+    <signatures name="HTTPUpload" returnType="//@types.0"/>
+  </interfaces>
+  <components name="MediaManager" requires="//@interfaces.1 //@interfaces.2" provides="//@interfaces.0">
+    <services implements="//@interfaces.0/@signatures.0">
+      <actions xsi:type="behavioraldescription:InternalAction"/>
+    </services>
+    <services implements="//@interfaces.0/@signatures.1">
+      <actions xsi:type="behavioraldescription:InternalAction"/>
+    </services>
+  </components>
+  <components name="DBCache" requires="//@interfaces.2" provides="//@interfaces.2">
+    <services implements="//@interfaces.2/@signatures.0">
+      <actions xsi:type="behavioraldescription:InternalAction"/>
+    </services>
+    <services implements="//@interfaces.2/@signatures.1">
+      <actions xsi:type="behavioraldescription:InternalAction"/>
+    </services>
+  </components>
+  <components name="DigitalWatermarking" provides="//@interfaces.1">
+    <services implements="//@interfaces.1/@signatures.0">
+      <actions xsi:type="behavioraldescription:InternalAction"/>
+    </services>
+  </components>
+  <components name="WebGUI" requires="//@interfaces.0" provides="//@interfaces.3">
+    <services implements="//@interfaces.3/@signatures.0">
+      <actions xsi:type="behavioraldescription:InternalAction"/>
+    </services>
+    <services implements="//@interfaces.3/@signatures.1">
+      <actions xsi:type="behavioraldescription:InternalAction"/>
+    </services>
+  </components>
+  <components name="PoolingAudioDB" provides="//@interfaces.2">
+    <services implements="//@interfaces.2/@signatures.0">
+      <actions xsi:type="behavioraldescription:InternalAction"/>
+    </services>
+    <services implements="//@interfaces.2/@signatures.1">
+      <actions xsi:type="behavioraldescription:InternalAction"/>
+    </services>
+  </components>
+  <types xsi:type="types:Void"/>
+</repository:Repository>

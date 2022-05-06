@@ -94,7 +94,8 @@
           upperBound="-1" eType="#//assembly/ProvidedDelegationConnector" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="assemblyContexts" upperBound="-1"
           eType="#//assembly/AssemblyContext" containment="true"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="assemblyConnectors" eType="#//assembly/AssemblyConnector"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="assemblyConnectors" upperBound="-1"
+          eType="#//assembly/AssemblyConnector" containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Allocation">
       <eStructuralFeatures xsi:type="ecore:EReference" name="allocationContexts" upperBound="-1"

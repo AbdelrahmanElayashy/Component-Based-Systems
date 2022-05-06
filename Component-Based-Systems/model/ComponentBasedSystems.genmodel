@@ -82,7 +82,7 @@
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//allocation/System/requiredDelegationConnectors"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//allocation/System/providedDelegationConnectors"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//allocation/System/assemblyContexts"/>
-        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+        <genFeatures children="true" createChild="true" propertySortChoices="true"
             ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//allocation/System/assemblyConnectors"/>
       </genClasses>
       <genClasses ecoreClass="ComponentBasedSystems.ecore#//allocation/Allocation">
