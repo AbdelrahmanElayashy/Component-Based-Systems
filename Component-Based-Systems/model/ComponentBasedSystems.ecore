@@ -35,7 +35,7 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="RequiredDelegationConnector">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="RequiredRole" lowerBound="1"
+      <eStructuralFeatures xsi:type="ecore:EReference" name="requiredRole" lowerBound="1"
           eType="#//assembly/RequiredRole"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
@@ -55,28 +55,28 @@
           eType="#//repository/Interface"/>
     </eClassifiers>
   </eSubpackages>
-  <eSubpackages name="enviroment" nsURI="http://www.example.org/enviroment" nsPrefix="enviroment">
+  <eSubpackages name="environment" nsURI="http://www.example.org/environment" nsPrefix="environment">
     <eClassifiers xsi:type="ecore:EClass" name="Linker">
       <eAnnotations source="http://www.obeo.fr/dsl/dnc/archetype">
         <details key="archetype" value="Role"/>
       </eAnnotations>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="link" lowerBound="2"
-          upperBound="-1" eType="#//enviroment/Container"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="links" lowerBound="2"
+          upperBound="-1" eType="#//environment/Container"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Container">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Enviroment">
+    <eClassifiers xsi:type="ecore:EClass" name="Environment">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="container" upperBound="-1"
-          eType="#//enviroment/Container" containment="true"/>
+          eType="#//environment/Container" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="linker" upperBound="-1"
-          eType="#//enviroment/Linker" containment="true"/>
+          eType="#//environment/Linker" containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Space">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="enviroment" upperBound="-1"
-          eType="#//enviroment/Enviroment" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="environment" upperBound="-1"
+          eType="#//environment/Environment" containment="true"/>
     </eClassifiers>
   </eSubpackages>
   <eSubpackages name="allocation" nsURI="http://www.example.org/allocation" nsPrefix="allocation">
@@ -93,9 +93,9 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="compositecomponent" lowerBound="1"
           eType="#//assembly/CompositeComponent"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="container" lowerBound="1"
-          eType="#//enviroment/Container"/>
+          eType="#//environment/Container"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="enviroment" lowerBound="1"
-          eType="#//enviroment/Enviroment"/>
+          eType="#//environment/Environment"/>
     </eClassifiers>
   </eSubpackages>
   <eSubpackages name="repository" nsURI="http://www.example.org/repository" nsPrefix="repository">
@@ -104,6 +104,8 @@
           eType="#//repository/Interface" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="components" upperBound="-1"
           eType="#//repository/AtomicComponent" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="types" upperBound="-1"
+          eType="#//repository/types/Type" containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Signature">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -118,9 +120,8 @@
           eType="#//repository/types/ParameterType"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="AtomicComponent" eSuperTypes="#//repository/Component">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="behaviorDescriptions"
-          upperBound="-1" eType="#//repository/behavioraldescription/SignatureImplementation"
-          containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="services" upperBound="-1"
+          eType="#//repository/behavioraldescription/Service" containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Interface">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -164,7 +165,7 @@
             eType="#//repository/behavioraldescription/AbstractAction" containment="true"/>
         <eStructuralFeatures xsi:type="ecore:EAttribute" name="branchCondition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="SignatureImplementation">
+      <eClassifiers xsi:type="ecore:EClass" name="Service">
         <eStructuralFeatures xsi:type="ecore:EReference" name="actions" lowerBound="1"
             upperBound="-1" eType="#//repository/behavioraldescription/AbstractAction"
             containment="true"/>
@@ -188,9 +189,7 @@
         <eLiterals name="Date" value="4"/>
         <eLiterals name="Double" value="5"/>
         <eLiterals name="Float" value="6"/>
-        <eLiterals name="List" value="7"/>
         <eLiterals name="Long" value="8"/>
-        <eLiterals name="Map" value="9"/>
       </eClassifiers>
       <eClassifiers xsi:type="ecore:EClass" name="ComplexType" eSuperTypes="#//repository/types/ParameterType">
         <eStructuralFeatures xsi:type="ecore:EReference" name="members" upperBound="-1"
@@ -200,6 +199,15 @@
         <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
         <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1"
             eType="#//repository/types/ParameterType"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="CollectionType">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="innerType" lowerBound="1"
+            eType="#//repository/types/ParameterType"/>
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//repository/types/CollectionTypeEnum"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EEnum" name="CollectionTypeEnum">
+        <eLiterals name="List"/>
+        <eLiterals name="Map" value="1"/>
       </eClassifiers>
     </eSubpackages>
   </eSubpackages>

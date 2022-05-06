@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Repository:Repository xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:Repository="http://www.example.org/Repository">
+<Repository:Repository xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:Repository="http://www.example.org/repository">
   <interfaces name="MediaStore"/>
   <interfaces name="Sound"/>
   <interfaces name="AudioDB"/>
