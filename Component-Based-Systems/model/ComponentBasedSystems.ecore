@@ -7,19 +7,19 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="instantiates" lowerBound="1"
           eType="#//repository/Component"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="providedRole" upperBound="-1"
-          eType="#//assembly/ProvidedRole" containment="true"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="requiredRole" upperBound="-1"
-          eType="#//assembly/RequiredRole" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="providedRoles" upperBound="-1"
+          eType="#//assembly/ProvidedRole" containment="true" eOpposite="#//assembly/ProvidedRole/assemblyContext"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="requiredRoles" upperBound="-1"
+          eType="#//assembly/RequiredRole" containment="true" eOpposite="#//assembly/RequiredRole/assemblyContext"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="CompositeComponent" eSuperTypes="#//repository/Component">
       <eStructuralFeatures xsi:type="ecore:EReference" name="childContexts" upperBound="-1"
           eType="#//assembly/AssemblyContext" containment="true"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="assemblyConnector" upperBound="-1"
+      <eStructuralFeatures xsi:type="ecore:EReference" name="assemblyConnectors" upperBound="-1"
           eType="#//assembly/AssemblyConnector" containment="true"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="requiredDelegationConnector"
+      <eStructuralFeatures xsi:type="ecore:EReference" name="requiredDelegationConnectors"
           upperBound="-1" eType="#//assembly/RequiredDelegationConnector" containment="true"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="providedDelegationConnector"
+      <eStructuralFeatures xsi:type="ecore:EReference" name="providedDelegationConnectors"
           upperBound="-1" eType="#//assembly/ProvidedDelegationConnector" containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="ProvidedDelegationConnector">
@@ -28,9 +28,9 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="AssemblyConnector">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="requires" lowerBound="1"
+      <eStructuralFeatures xsi:type="ecore:EReference" name="requiredRole" lowerBound="1"
           eType="#//assembly/RequiredRole"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="provides" lowerBound="1"
+      <eStructuralFeatures xsi:type="ecore:EReference" name="providedRole" lowerBound="1"
           eType="#//assembly/ProvidedRole"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
@@ -40,19 +40,23 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Assembly">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="compositeComponent" upperBound="-1"
-          eType="#//assembly/CompositeComponent" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="compositeComponents"
+          upperBound="-1" eType="#//assembly/CompositeComponent" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="ProvidedRole">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="interface" lowerBound="1"
           eType="#//repository/Interface"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="assemblyContext" lowerBound="1"
+          eType="#//assembly/AssemblyContext" eOpposite="#//assembly/AssemblyContext/providedRoles"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="RequiredRole">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="interface" lowerBound="1"
           eType="#//repository/Interface"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="assemblyContext" lowerBound="1"
+          eType="#//assembly/AssemblyContext" eOpposite="#//assembly/AssemblyContext/requiredRoles"/>
     </eClassifiers>
   </eSubpackages>
   <eSubpackages name="environment" nsURI="http://www.example.org/environment" nsPrefix="environment">
@@ -75,27 +79,34 @@
           eType="#//environment/Linker" containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Space">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="environment" upperBound="-1"
+      <eStructuralFeatures xsi:type="ecore:EReference" name="environments" upperBound="-1"
           eType="#//environment/Environment" containment="true"/>
     </eClassifiers>
   </eSubpackages>
   <eSubpackages name="allocation" nsURI="http://www.example.org/allocation" nsPrefix="allocation">
     <eClassifiers xsi:type="ecore:EClass" name="System">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="allocation" lowerBound="1"
+          eType="#//allocation/Allocation" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="requiredDelegationConnectors"
+          upperBound="-1" eType="#//assembly/RequiredDelegationConnector" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="providedDelegationConnectors"
+          upperBound="-1" eType="#//assembly/ProvidedDelegationConnector" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="assemblyContexts" upperBound="-1"
+          eType="#//assembly/AssemblyContext" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="assemblyConnectors" eType="#//assembly/AssemblyConnector"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Allocation">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="allocationContext" upperBound="-1"
+      <eStructuralFeatures xsi:type="ecore:EReference" name="allocationContexts" upperBound="-1"
           eType="#//allocation/AllocationContext" containment="true"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="system" lowerBound="1"
-          eType="#//allocation/System"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="environment" lowerBound="1"
+          eType="#//environment/Environment"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="AllocationContext">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="compositecomponent" lowerBound="1"
-          eType="#//assembly/CompositeComponent"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="container" lowerBound="1"
           eType="#//environment/Container"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="enviroment" lowerBound="1"
-          eType="#//environment/Environment"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="allocates" lowerBound="1"
+          eType="#//assembly/AssemblyContext"/>
     </eClassifiers>
   </eSubpackages>
   <eSubpackages name="repository" nsURI="http://www.example.org/repository" nsPrefix="repository">
@@ -161,7 +172,7 @@
             eType="#//repository/behavioraldescription/AbstractAction" containment="true"/>
       </eClassifiers>
       <eClassifiers xsi:type="ecore:EClass" name="BranchTransition">
-        <eStructuralFeatures xsi:type="ecore:EReference" name="abstractaction" lowerBound="1"
+        <eStructuralFeatures xsi:type="ecore:EReference" name="action" lowerBound="1"
             eType="#//repository/behavioraldescription/AbstractAction" containment="true"/>
         <eStructuralFeatures xsi:type="ecore:EAttribute" name="branchCondition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eClassifiers>

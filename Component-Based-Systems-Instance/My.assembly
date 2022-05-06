@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Assembly:Assembly xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:Assembly="http://www.example.org/assembly">
-  <compositeComponent name="ApplicationLayer">
+  <compositeComponents name="ApplicationLayer">
     <requires href="My.repository#//@interfaces.2"/>
     <provides href="My.repository#//@interfaces.0"/>
     <childContexts name="DBCachContext">
       <instantiates href="My.repository#//@components.1"/>
-      <providedRole name="AutdioDBProvider">
+      <providedRoles name="AutdioDBProvider">
         <interface href="My.repository#//@interfaces.2"/>
-      </providedRole>
-      <requiredRole name="AudioDBRequired">
+      </providedRoles>
+      <requiredRoles name="AudioDBRequired">
         <interface href="My.repository#//@interfaces.2"/>
-      </requiredRole>
+      </requiredRoles>
     </childContexts>
     <childContexts name="DigitalContext">
       <instantiates href="My.repository#//@components.2"/>
-      <providedRole name="SoundProvider">
+      <providedRoles name="SoundProvider">
         <interface href="My.repository#//@interfaces.1"/>
-      </providedRole>
+      </providedRoles>
     </childContexts>
     <childContexts name="MediaManagerContext">
       <instantiates href="My.repository#//@components.0"/>
-      <providedRole name="MediaStoreProvider">
+      <providedRoles name="MediaStoreProvider">
         <interface href="My.repository#//@interfaces.0"/>
-      </providedRole>
-      <requiredRole name="SoundRequired">
+      </providedRoles>
+      <requiredRoles name="SoundRequired">
         <interface href="My.repository#//@interfaces.1"/>
-      </requiredRole>
-      <requiredRole name="MMAudioDBRequired">
+      </requiredRoles>
+      <requiredRoles name="MMAudioDBRequired">
         <interface href="My.repository#//@interfaces.2"/>
-      </requiredRole>
+      </requiredRoles>
     </childContexts>
-    <assemblyConnector requires="//@compositeComponent.0/@childContexts.2/@requiredRole.0" provides="//@compositeComponent.0/@childContexts.1/@providedRole.0" name="MDConnector"/>
-    <assemblyConnector requires="//@compositeComponent.0/@childContexts.2/@requiredRole.1" provides="//@compositeComponent.0/@childContexts.0/@providedRole.0" name="MDBConnector"/>
-    <requiredDelegationConnector requiredRole="//@compositeComponent.0/@childContexts.0/@requiredRole.0" name="AudioDBdelegator"/>
-    <providedDelegationConnector providedRole="//@compositeComponent.0/@childContexts.2/@providedRole.0" name="MediaStoreDelegator"/>
-  </compositeComponent>
+    <assemblyConnectors requiredRole="//@compositeComponents.0/@childContexts.2/@requiredRoles.0" providedRole="//@compositeComponents.0/@childContexts.1/@providedRoles.0" name="MDConnector"/>
+	<assemblyConnectors requiredRole="//@compositeComponents.0/@childContexts.2/@requiredRoles.1" providedRole="//@compositeComponents.0/@childContexts.0/@providedRoles.0" name="MDBConnector"/>
+    <requiredDelegationConnectors requiredRole="//@compositeComponents.0/@childContexts.0/@requiredRoles.0" name="AudioDBdelegator"/>
+    <providedDelegationConnectors providedRole="//@compositeComponents.0/@childContexts.2/@providedRoles.0" name="MediaStoreDelegator"/>  
+  </compositeComponents>
 </Assembly:Assembly>
