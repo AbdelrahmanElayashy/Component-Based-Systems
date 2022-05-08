@@ -111,6 +111,11 @@
     </eClassifiers>
   </eSubpackages>
   <eSubpackages name="repository" nsURI="http://www.example.org/repository" nsPrefix="repository">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+      <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+      <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    </eAnnotations>
     <eClassifiers xsi:type="ecore:EClass" name="Repository">
       <eStructuralFeatures xsi:type="ecore:EReference" name="interfaces" upperBound="-1"
           eType="#//repository/Interface" containment="true"/>
@@ -127,11 +132,18 @@
           eType="#//repository/types/Type"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Parameter">
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1"
           eType="#//repository/types/ParameterType"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="AtomicComponent" eSuperTypes="#//repository/Component">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+        <details key="constraints" value="providedInterfacesAreImplemented signaturesUsedByExternalCallsAreRequired"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+        <details key="providedInterfacesAreImplemented" value="&#xA;&#x9;&#x9;&#x9;&#x9;self.services -> collect(implements) -> includesAll(self.provides.signatures)"/>
+        <details key="signaturesUsedByExternalCallsAreRequired" value="&#xA;&#x9;&#x9;&#x9;&#x9;let requiredSignaturesByServices : Set(Signature) =&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;self.services -> collect(actions) -> asSet() &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;-> closure(&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;action: behavioraldescription::AbstractAction |&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;if action.oclIsKindOf(behavioraldescription::BranchAction) then&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;action.oclAsType(behavioraldescription::BranchAction).branches.action -> asSet()&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;else &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;if action.oclIsKindOf(behavioraldescription::LoopAction) then&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;action.oclAsType(behavioraldescription::LoopAction).bodyActions&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;else &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;Set{action}&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;endif&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;endif&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;-> iterate (action : behavioraldescription::AbstractAction; acc : Set(Signature) = Set{} |&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;if action.oclIsKindOf(behavioraldescription::ExternalCallAction) then&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;acc -> including(action.oclAsType(behavioraldescription::ExternalCallAction).requiredService)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;else&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;acc&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;endif&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;)&#xA;&#x9;&#x9;&#x9;&#x9;in&#xA;&#x9;&#x9;&#x9;&#x9;if requiredSignaturesByServices -> size() > 0 then&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;self.requires -> collect(signatures) -> includesAll(requiredSignaturesByServices)&#xA;&#x9;&#x9;&#x9;&#x9;else&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;true&#xA;&#x9;&#x9;&#x9;&#x9;endif"/>
+      </eAnnotations>
       <eStructuralFeatures xsi:type="ecore:EReference" name="services" upperBound="-1"
           eType="#//repository/behavioraldescription/Service" containment="true"/>
     </eClassifiers>
@@ -208,7 +220,7 @@
             eType="#//repository/types/ComplexMember" containment="true"/>
       </eClassifiers>
       <eClassifiers xsi:type="ecore:EClass" name="ComplexMember">
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
         <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1"
             eType="#//repository/types/ParameterType"/>
       </eClassifiers>
