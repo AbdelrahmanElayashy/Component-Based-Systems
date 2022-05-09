@@ -12,7 +12,7 @@
     </allocationContexts>
     <environment href="My.environment#/"/>
   </allocation>
-  <providedDelegationConnectors providedRole="//@assemblyContexts.0/@providedRoles.0" name="HTTP Provider ProvidedDelegationConnector (System)"/>
+  <providedDelegationConnectors providingRole="//@assemblyContexts.0/@providedRoles.0" name="HTTP Provider ProvidedDelegationConnector (System)"/>
   <assemblyContexts name="WebGUI Context">
     <instantiates href="My.repository#//@components.3"/>
     <providedRoles name="HTTP Provider (WebGUI)">
@@ -37,6 +37,6 @@
       <interface href="My.repository#//@interfaces.2"/>
     </providedRoles>
   </assemblyContexts>
-  <assemblyConnectors requiredRole="//@assemblyContexts.0/@requiredRoles.0" providedRole="//@assemblyContexts.1/@providedRoles.0" name="MediaStore Connector (WebGUI - MediaStore)"/>
-  <assemblyConnectors requiredRole="//@assemblyContexts.1/@requiredRoles.0" providedRole="//@assemblyContexts.2/@providedRoles.0" name="AudioDB Connector (MediaStore - PoolingAudioDB)"/>
+  <assemblyConnectors requiringRole="//@assemblyContexts.0/@requiredRoles.0" providingRole="//@assemblyContexts.1/@providedRoles.0" name="MediaStore Connector (WebGUI - MediaStore)"/>
+  <assemblyConnectors requiringRole="//@assemblyContexts.1/@requiredRoles.0" providingRole="//@assemblyContexts.2/@providedRoles.0" name="AudioDB Connector (MediaStore - PoolingAudioDB)"/>
 </allocation:System>

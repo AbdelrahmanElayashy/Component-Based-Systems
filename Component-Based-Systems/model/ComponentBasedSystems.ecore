@@ -3,7 +3,19 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="componentbasedsystem" nsURI="http://www.example.org/componentbasedsystem"
     nsPrefix="componentbasedsystem">
   <eSubpackages name="assembly" nsURI="http://www.example.org/assembly" nsPrefix="assembly">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+      <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+      <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    </eAnnotations>
     <eClassifiers xsi:type="ecore:EClass" name="AssemblyContext">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+        <details key="constraints" value="providedInterfaceLeadsToProvidedRole requiredInterfaceLeadsToRequiredRole"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+        <details key="providedInterfaceLeadsToProvidedRole" value="&#xA;&#x9;&#x9;&#x9;self.instantiates -> collect(instantiates) -> collect(provides) -> forAll(providedInterface | self.providedRoles -> exists(providedRole | providedRole.interface = providedInterface))"/>
+        <details key="requiredInterfaceLeadsToRequiredRole" value="&#xA;&#x9;&#x9;&#x9;self.instantiates -> collect(instantiates) -> collect(requires) -> forAll(requiredInterface | self.requiredRoles -> exists(requiredRole | requiredRole.interface = requiredInterface))"/>
+      </eAnnotations>
       <eStructuralFeatures xsi:type="ecore:EReference" name="instantiates" lowerBound="1"
           eType="#//repository/Component"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -13,6 +25,17 @@
           eType="#//assembly/RequiredRole" containment="true" eOpposite="#//assembly/RequiredRole/assemblyContext"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="CompositeComponent" eSuperTypes="#//repository/Component">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+        <details key="constraints" value="requiredDelegationConnectorsConsistentToRequiredInterfaces providedDelegationConnectorsConsistentToProvidedInterfaces allRequiredRolesConnected allProvidedRolesConnected"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+        <details key="requiredDelegationConnectorsConsistentToRequiredInterfaces"
+            value="&#xA;&#x9;&#x9;&#x9;self.requiredDelegationConnectors -> collect(requiringRole) -> collect(interface) -> asSet() = self.requires -> asSet()"/>
+        <details key="providedDelegationConnectorsConsistentToProvidedInterfaces"
+            value="&#xA;&#x9;&#x9;&#x9;self.providedDelegationConnectors -> collect(providingRole) -> collect(interface) -> asSet() = self.provides -> asSet()"/>
+        <details key="allRequiredRolesConnected" value="&#xA;&#x9;&#x9;&#x9;let connectedRequiredRoles : Set(RequiredRole) =&#xA;&#x9;&#x9;&#x9;&#x9;self.requiredDelegationConnectors -> collect(requiringRole) -> asSet() -> union(&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;self.assemblyConnectors -> collect(requiringRole) -> asSet())&#xA;&#x9;&#x9;&#x9;in&#xA;&#x9;&#x9;&#x9;self.childContexts -> collect(requiredRoles) -> asSet() = connectedRequiredRoles"/>
+        <details key="allProvidedRolesConnected" value="&#xA;&#x9;&#x9;&#x9;let connectedProvidedRoles : Set(ProvidedRole) =&#xA;&#x9;&#x9;&#x9;&#x9;self.providedDelegationConnectors -> collect(providingRole) -> asSet() -> union(&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;self.assemblyConnectors -> collect(providingRole) -> asSet())&#xA;&#x9;&#x9;&#x9;in&#xA;&#x9;&#x9;&#x9;self.childContexts -> collect(providedRoles) -> asSet() = connectedProvidedRoles"/>
+      </eAnnotations>
       <eStructuralFeatures xsi:type="ecore:EReference" name="childContexts" upperBound="-1"
           eType="#//assembly/AssemblyContext" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="assemblyConnectors" upperBound="-1"
@@ -23,19 +46,25 @@
           upperBound="-1" eType="#//assembly/ProvidedDelegationConnector" containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="ProvidedDelegationConnector">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="providedRole" lowerBound="1"
+      <eStructuralFeatures xsi:type="ecore:EReference" name="providingRole" lowerBound="1"
           eType="#//assembly/ProvidedRole"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="AssemblyConnector">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="requiredRole" lowerBound="1"
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+        <details key="constraints" value="interfacesConsistent"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+        <details key="interfacesConsistent" value="&#xA;&#x9;&#x9;&#x9;self.requiringRole.interface = self.providingRole.interface"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="requiringRole" lowerBound="1"
           eType="#//assembly/RequiredRole"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="providedRole" lowerBound="1"
+      <eStructuralFeatures xsi:type="ecore:EReference" name="providingRole" lowerBound="1"
           eType="#//assembly/ProvidedRole"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="RequiredDelegationConnector">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="requiredRole" lowerBound="1"
+      <eStructuralFeatures xsi:type="ecore:EReference" name="requiringRole" lowerBound="1"
           eType="#//assembly/RequiredRole"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>

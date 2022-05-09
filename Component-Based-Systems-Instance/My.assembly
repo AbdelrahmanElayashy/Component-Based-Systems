@@ -30,9 +30,9 @@
         <interface href="My.repository#//@interfaces.2"/>
       </requiredRoles>
     </childContexts>
-    <assemblyConnectors requiredRole="//@compositeComponents.0/@childContexts.2/@requiredRoles.0" providedRole="//@compositeComponents.0/@childContexts.1/@providedRoles.0" name="Sound Connector (MediaManager - DigitalWatermarking)"/>
-    <assemblyConnectors requiredRole="//@compositeComponents.0/@childContexts.2/@requiredRoles.1" providedRole="//@compositeComponents.0/@childContexts.0/@providedRoles.0" name="AudioDB Connector (MediaManager - DBCache)"/>
-    <requiredDelegationConnectors requiredRole="//@compositeComponents.0/@childContexts.0/@requiredRoles.0" name="AudioDB RequiredDelegationConnector (DBCache)"/>
-    <providedDelegationConnectors providedRole="//@compositeComponents.0/@childContexts.2/@providedRoles.0" name="MediaStore ProvidedDelegationConnector (MediaManager)"/>
+    <assemblyConnectors requiringRole="//@compositeComponents.0/@childContexts.2/@requiredRoles.0" providingRole="//@compositeComponents.0/@childContexts.1/@providedRoles.0" name="Sound Connector (MediaManager - DigitalWatermarking)"/>
+    <assemblyConnectors requiringRole="//@compositeComponents.0/@childContexts.2/@requiredRoles.1" providingRole="//@compositeComponents.0/@childContexts.0/@providedRoles.0" name="AudioDB Connector (MediaManager - DBCache)"/>
+    <requiredDelegationConnectors requiringRole="//@compositeComponents.0/@childContexts.0/@requiredRoles.0" name="AudioDB RequiredDelegationConnector (DBCache)"/>
+    <providedDelegationConnectors providingRole="//@compositeComponents.0/@childContexts.2/@providedRoles.0" name="MediaStore ProvidedDelegationConnector (MediaManager)"/>
   </compositeComponents>
 </assembly:Assembly>
