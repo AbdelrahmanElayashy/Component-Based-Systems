@@ -113,14 +113,30 @@
     </eClassifiers>
   </eSubpackages>
   <eSubpackages name="allocation" nsURI="http://www.example.org/allocation" nsPrefix="allocation">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+      <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+      <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    </eAnnotations>
     <eClassifiers xsi:type="ecore:EClass" name="System">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+        <details key="constraints" value="assemblyContextsIsExactlyOnceAllocated onlyTopLevelContextsAllocated connectedContextsAreOnSameContainerOrLinked allRequiredRolesConnected allProvidedRolesConnected"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+        <details key="assemblyContextsIsExactlyOnceAllocated" value="&#xA;&#x9;&#x9;&#x9;self.assemblyContexts -> forAll(assemblyContext | self.allocation.allocationContexts -> select(allocationContext | allocationContext.allocates = assemblyContext) -> size() = 1)"/>
+        <details key="onlyTopLevelContextsAllocated" value="&#xA;&#x9;&#x9;&#x9;self.assemblyContexts -> includesAll(self.allocation -> collect(allocationContexts) -> collect(allocates))"/>
+        <details key="connectedContextsAreOnSameContainerOrLinked" value="&#xA;&#x9;&#x9;&#x9;self.assemblyConnectors -> forAll(assemblyConnector |&#xA;&#x9;&#x9;&#x9;&#x9;let aContext : assembly::AssemblyContext = assemblyConnector.requiringRole.assemblyContext&#xA;&#x9;&#x9;&#x9;&#x9;in&#xA;&#x9;&#x9;&#x9;&#x9;let aContainer : environment::Container = self.allocation.allocationContexts -> any(allocationContext | allocationContext.allocates = aContext).container&#xA;&#x9;&#x9;&#x9;&#x9;in &#xA;&#x9;&#x9;&#x9;&#x9;let bContext : assembly::AssemblyContext = assemblyConnector.providingRole.assemblyContext&#xA;&#x9;&#x9;&#x9;&#x9;in&#xA;&#x9;&#x9;&#x9;&#x9;let bContainer : environment::Container = self.allocation.allocationContexts -> any(allocationContext | allocationContext.allocates = bContext).container&#xA;&#x9;&#x9;&#x9;&#x9;in&#xA;&#x9;&#x9;&#x9;&#x9;(&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;aContainer = bContainer&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;or&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;self.allocation.environment.linker -> exists(link | link.links -> includesAll(Set{aContainer, bContainer}))&#xA;&#x9;&#x9;&#x9;&#x9;)&#xA;&#x9;&#x9;&#x9;)"/>
+        <details key="allRequiredRolesConnected" value="&#xA;&#x9;&#x9;&#x9;let connectedRequiredRoles : Set(assembly::RequiredRole) =&#xA;&#x9;&#x9;&#x9;&#x9;self.requiredDelegationConnectors -> collect(requiringRole) -> asSet() -> union(&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;self.assemblyConnectors -> collect(requiringRole) -> asSet())&#xA;&#x9;&#x9;&#x9;in&#xA;&#x9;&#x9;&#x9;self.assemblyContexts -> collect(requiredRoles) -> asSet() = connectedRequiredRoles"/>
+        <details key="allProvidedRolesConnected" value="&#xA;&#x9;&#x9;&#x9;let connectedProvidedRoles : Set(assembly::ProvidedRole) =&#xA;&#x9;&#x9;&#x9;&#x9;self.providedDelegationConnectors -> collect(providingRole) -> asSet() -> union(&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;self.assemblyConnectors -> collect(providingRole) -> asSet())&#xA;&#x9;&#x9;&#x9;in&#xA;&#x9;&#x9;&#x9;self.assemblyContexts -> collect(providedRoles) -> asSet() = connectedProvidedRoles"/>
+      </eAnnotations>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="allocation" lowerBound="1"
           eType="#//allocation/Allocation" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="requiredDelegationConnectors"
           upperBound="-1" eType="#//assembly/RequiredDelegationConnector" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="providedDelegationConnectors"
-          upperBound="-1" eType="#//assembly/ProvidedDelegationConnector" containment="true"/>
+          lowerBound="1" upperBound="-1" eType="#//assembly/ProvidedDelegationConnector"
+          containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="assemblyContexts" upperBound="-1"
           eType="#//assembly/AssemblyContext" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="assemblyConnectors" upperBound="-1"
