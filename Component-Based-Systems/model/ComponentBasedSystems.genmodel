@@ -6,7 +6,8 @@
     operationReflection="true" importOrganizing="true">
   <foreignModel>ComponentBasedSystems.ecore</foreignModel>
   <genPackages prefix="Componentbasedsystem" disposableProviderFactory="true" ecorePackage="ComponentBasedSystems.ecore#/">
-    <nestedGenPackages prefix="Assembly" disposableProviderFactory="true" ecorePackage="ComponentBasedSystems.ecore#//assembly">
+    <nestedGenPackages prefix="Assembly" basePackage="componentbasedsystem" disposableProviderFactory="true"
+        ecorePackage="ComponentBasedSystems.ecore#//assembly">
       <genClasses ecoreClass="ComponentBasedSystems.ecore#//assembly/AssemblyContext">
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
             ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//assembly/AssemblyContext/instantiates"/>
@@ -56,7 +57,8 @@
             ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//assembly/RequiredRole/assemblyContext"/>
       </genClasses>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Environment" disposableProviderFactory="true" ecorePackage="ComponentBasedSystems.ecore#//environment">
+    <nestedGenPackages prefix="Environment" basePackage="componentbasedsystem" disposableProviderFactory="true"
+        ecorePackage="ComponentBasedSystems.ecore#//environment">
       <genClasses ecoreClass="ComponentBasedSystems.ecore#//environment/Linker">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentBasedSystems.ecore#//environment/Linker/name"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
@@ -74,7 +76,8 @@
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//environment/Space/environments"/>
       </genClasses>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Allocation" disposableProviderFactory="true" ecorePackage="ComponentBasedSystems.ecore#//allocation">
+    <nestedGenPackages prefix="Allocation" basePackage="componentbasedsystem" disposableProviderFactory="true"
+        ecorePackage="ComponentBasedSystems.ecore#//allocation">
       <genClasses ecoreClass="ComponentBasedSystems.ecore#//allocation/System">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentBasedSystems.ecore#//allocation/System/name"/>
         <genFeatures children="true" createChild="true" propertySortChoices="true"
@@ -97,7 +100,8 @@
             ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//allocation/AllocationContext/allocates"/>
       </genClasses>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Repository" disposableProviderFactory="true" ecorePackage="ComponentBasedSystems.ecore#//repository">
+    <nestedGenPackages prefix="Repository" basePackage="componentbasedsystem" disposableProviderFactory="true"
+        ecorePackage="ComponentBasedSystems.ecore#//repository">
       <genClasses ecoreClass="ComponentBasedSystems.ecore#//repository/Repository">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//repository/Repository/interfaces"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//repository/Repository/components"/>
@@ -128,8 +132,8 @@
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
             ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//repository/Component/provides"/>
       </genClasses>
-      <nestedGenPackages prefix="Behavioraldescription" disposableProviderFactory="true"
-          ecorePackage="ComponentBasedSystems.ecore#//repository/behavioraldescription">
+      <nestedGenPackages prefix="Behavioraldescription" basePackage="componentbasedsystem.repository"
+          disposableProviderFactory="true" ecorePackage="ComponentBasedSystems.ecore#//repository/behavioraldescription">
         <genClasses image="false" ecoreClass="ComponentBasedSystems.ecore#//repository/behavioraldescription/AbstractAction"/>
         <genClasses ecoreClass="ComponentBasedSystems.ecore#//repository/behavioraldescription/InternalAction"/>
         <genClasses ecoreClass="ComponentBasedSystems.ecore#//repository/behavioraldescription/ExternalCallAction">
@@ -152,7 +156,8 @@
               ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//repository/behavioraldescription/Service/implements"/>
         </genClasses>
       </nestedGenPackages>
-      <nestedGenPackages prefix="Types" disposableProviderFactory="true" ecorePackage="ComponentBasedSystems.ecore#//repository/types">
+      <nestedGenPackages prefix="Types" basePackage="componentbasedsystem.repository"
+          disposableProviderFactory="true" ecorePackage="ComponentBasedSystems.ecore#//repository/types">
         <genEnums typeSafeEnumCompatible="false" ecoreEnum="ComponentBasedSystems.ecore#//repository/types/SimpleTypeEnum">
           <genEnumLiterals ecoreEnumLiteral="ComponentBasedSystems.ecore#//repository/types/SimpleTypeEnum/String"/>
           <genEnumLiterals ecoreEnumLiteral="ComponentBasedSystems.ecore#//repository/types/SimpleTypeEnum/Int"/>
