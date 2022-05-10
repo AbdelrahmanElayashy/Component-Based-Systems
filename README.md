@@ -15,6 +15,7 @@ Developing a metamodel that can one day be used to design, illustrate and genera
 | 35c4d84 | Simple,Collection,Complex was derived class from type as void class | Set Type as abstract class, Create ParamaterType class and set it and void as derived class to Type class | To ensure that the parameter of signature cannot have void as type |
 | 35c4d84 | parameter type class has only complexType and simpleType as child classes | create collectionType class as child class & move map,list from simplyType to collectionType | map, list should modeled as collectionType not as SimplyType  |
 | cd1d72a | AllocationContext has Enviroment reference | move enviroment reference to Allocation | AllocationContexts of one allocation should refere to same enviroment |
+| c4fe087 | System and CompositeComponent have no shared base class | Abstract class ComposedStructure as base class for System and Composite Component | System and CompositeComponent are both composed structures and share many references and invariants |
 
 
 
