@@ -6,10 +6,10 @@
 
 Component-Based-Systems.edit/
 Component-Based-Systems.editor/
-/Component-Based-Systems-DSL/ort.xtext.ecample.cbs.ide
-/Component-Based-Systems-DSL/ort.xtext.ecample.cbs.tests
-/Component-Based-Systems-DSL/ort.xtext.ecample.cbs.ui
-/Component-Based-Systems-DSL/ort.xtext.ecample.cbs.ui.tests
+Component-Based-Systems-DSL/ort.xtext.ecample.cbs.ide/
+Component-Based-Systems-DSL/ort.xtext.ecample.cbs.tests/
+Component-Based-Systems-DSL/ort.xtext.ecample.cbs.ui/
+Component-Based-Systems-DSL/ort.xtext.ecample.cbs.ui.tests/
 
 # Log file
 *.log
