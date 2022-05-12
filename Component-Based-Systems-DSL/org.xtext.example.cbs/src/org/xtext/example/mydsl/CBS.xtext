@@ -2,7 +2,7 @@
 grammar org.xtext.example.mydsl.CBS with org.eclipse.xtext.common.Terminals
 
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
-import "platform:/resource/Component-Based-Systems/model/ComponentBasedSystems.ecore#//assembly"
+import "platform:/resource/Component-Based-Systems/model/ComponentBasedSystems.ecore#//assembly" as assembly
 import "platform:/resource/Component-Based-Systems/model/ComponentBasedSystems.ecore#//repository" as repository
 import "platform:/resource/Component-Based-Systems/model/ComponentBasedSystems.ecore#//repository/behavioraldescription" as behavioraldescription
 import "platform:/resource/Component-Based-Systems/model/ComponentBasedSystems.ecore#//repository/types" as types
@@ -38,7 +38,7 @@ AbstractAction returns behavioraldescription::AbstractAction:
 
 
 
-AssemblyContext returns AssemblyContext:
+AssemblyContext returns assembly::AssemblyContext:
 	'AssemblyContext'
 	name=EString
 	'{'
@@ -47,26 +47,26 @@ AssemblyContext returns AssemblyContext:
 		('requiredRoles' '{' requiredRoles+=RequiredRole ( "," requiredRoles+=RequiredRole)* '}' )?
 	'}';
 
-AssemblyConnector returns AssemblyConnector:
+AssemblyConnector returns assembly::AssemblyConnector:
 	'AssemblyConnector'
 	name=EString
 	'{'
-		'requiringRole' requiringRole=[RequiredRole|EString]
-		'providingRole' providingRole=[ProvidedRole|EString]
+		'requiringRole' requiringRole=[assembly::RequiredRole|EString]
+		'providingRole' providingRole=[assembly::ProvidedRole|EString]
 	'}';
 
-RequiredDelegationConnector returns RequiredDelegationConnector:
+RequiredDelegationConnector returns assembly::RequiredDelegationConnector:
 	'RequiredDelegationConnector'
 	name=EString
 	'{'
-		'requiringRole' requiringRole=[RequiredRole|EString]
+		'requiringRole' requiringRole=[assembly::RequiredRole|EString]
 	'}';
 
-ProvidedDelegationConnector returns ProvidedDelegationConnector:
+ProvidedDelegationConnector returns assembly::ProvidedDelegationConnector:
 	'ProvidedDelegationConnector'
 	name=EString
 	'{'
-		'providingRole' providingRole=[ProvidedRole|EString]
+		'providingRole' providingRole=[assembly::ProvidedRole|EString]
 	'}';
 
 EString returns ecore::EString:
@@ -79,14 +79,14 @@ Allocation returns allocation::Allocation:
 		('allocationContexts' '{' allocationContexts+=AllocationContext ( "," allocationContexts+=AllocationContext)* '}' )?
 	'}';
 
-ProvidedRole returns ProvidedRole:
+ProvidedRole returns assembly::ProvidedRole:
 	'ProvidedRole'
 	name=EString
 	'{'
 		'interface' interface=[repository::Interface|EString]
 	'}';
 
-RequiredRole returns RequiredRole:
+RequiredRole returns assembly::RequiredRole:
 	'RequiredRole'
 	name=EString
 	'{'
@@ -196,7 +196,7 @@ AllocationContext returns allocation::AllocationContext:
 	'AllocationContext'
 	'{'
 		'container' container=[environment::Container|EString]
-		'allocates' allocates=[AssemblyContext|EString]
+		'allocates' allocates=[assembly::AssemblyContext|EString]
 	'}';
 
 Environment returns environment::Environment:

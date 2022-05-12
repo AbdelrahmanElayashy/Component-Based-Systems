@@ -358,7 +358,7 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		private final Keyword cRightCurlyBracketKeyword_6_4 = (Keyword)cGroup_6.eContents().get(4);
 		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
-		//AssemblyContext returns AssemblyContext:
+		//AssemblyContext returns assembly::AssemblyContext:
 		//    'AssemblyContext'
 		//    name=EString
 		//    '{'
@@ -481,20 +481,20 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		private final RuleCall cProvidingRoleProvidedRoleEStringParserRuleCall_6_0_1 = (RuleCall)cProvidingRoleProvidedRoleCrossReference_6_0.eContents().get(1);
 		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
-		//AssemblyConnector returns AssemblyConnector:
+		//AssemblyConnector returns assembly::AssemblyConnector:
 		//    'AssemblyConnector'
 		//    name=EString
 		//    '{'
-		//        'requiringRole' requiringRole=[RequiredRole|EString]
-		//        'providingRole' providingRole=[ProvidedRole|EString]
+		//        'requiringRole' requiringRole=[assembly::RequiredRole|EString]
+		//        'providingRole' providingRole=[assembly::ProvidedRole|EString]
 		//    '}';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'AssemblyConnector'
 		//name=EString
 		//'{'
-		//    'requiringRole' requiringRole=[RequiredRole|EString]
-		//    'providingRole' providingRole=[ProvidedRole|EString]
+		//    'requiringRole' requiringRole=[assembly::RequiredRole|EString]
+		//    'providingRole' providingRole=[assembly::ProvidedRole|EString]
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
@@ -513,10 +513,10 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		//'requiringRole'
 		public Keyword getRequiringRoleKeyword_3() { return cRequiringRoleKeyword_3; }
 		
-		//requiringRole=[RequiredRole|EString]
+		//requiringRole=[assembly::RequiredRole|EString]
 		public Assignment getRequiringRoleAssignment_4() { return cRequiringRoleAssignment_4; }
 		
-		//[RequiredRole|EString]
+		//[assembly::RequiredRole|EString]
 		public CrossReference getRequiringRoleRequiredRoleCrossReference_4_0() { return cRequiringRoleRequiredRoleCrossReference_4_0; }
 		
 		//EString
@@ -525,10 +525,10 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		//'providingRole'
 		public Keyword getProvidingRoleKeyword_5() { return cProvidingRoleKeyword_5; }
 		
-		//providingRole=[ProvidedRole|EString]
+		//providingRole=[assembly::ProvidedRole|EString]
 		public Assignment getProvidingRoleAssignment_6() { return cProvidingRoleAssignment_6; }
 		
-		//[ProvidedRole|EString]
+		//[assembly::ProvidedRole|EString]
 		public CrossReference getProvidingRoleProvidedRoleCrossReference_6_0() { return cProvidingRoleProvidedRoleCrossReference_6_0; }
 		
 		//EString
@@ -550,18 +550,18 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		private final RuleCall cRequiringRoleRequiredRoleEStringParserRuleCall_4_0_1 = (RuleCall)cRequiringRoleRequiredRoleCrossReference_4_0.eContents().get(1);
 		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
-		//RequiredDelegationConnector returns RequiredDelegationConnector:
+		//RequiredDelegationConnector returns assembly::RequiredDelegationConnector:
 		//    'RequiredDelegationConnector'
 		//    name=EString
 		//    '{'
-		//        'requiringRole' requiringRole=[RequiredRole|EString]
+		//        'requiringRole' requiringRole=[assembly::RequiredRole|EString]
 		//    '}';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'RequiredDelegationConnector'
 		//name=EString
 		//'{'
-		//    'requiringRole' requiringRole=[RequiredRole|EString]
+		//    'requiringRole' requiringRole=[assembly::RequiredRole|EString]
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
@@ -580,10 +580,10 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		//'requiringRole'
 		public Keyword getRequiringRoleKeyword_3() { return cRequiringRoleKeyword_3; }
 		
-		//requiringRole=[RequiredRole|EString]
+		//requiringRole=[assembly::RequiredRole|EString]
 		public Assignment getRequiringRoleAssignment_4() { return cRequiringRoleAssignment_4; }
 		
-		//[RequiredRole|EString]
+		//[assembly::RequiredRole|EString]
 		public CrossReference getRequiringRoleRequiredRoleCrossReference_4_0() { return cRequiringRoleRequiredRoleCrossReference_4_0; }
 		
 		//EString
@@ -605,18 +605,18 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		private final RuleCall cProvidingRoleProvidedRoleEStringParserRuleCall_4_0_1 = (RuleCall)cProvidingRoleProvidedRoleCrossReference_4_0.eContents().get(1);
 		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
-		//ProvidedDelegationConnector returns ProvidedDelegationConnector:
+		//ProvidedDelegationConnector returns assembly::ProvidedDelegationConnector:
 		//    'ProvidedDelegationConnector'
 		//    name=EString
 		//    '{'
-		//        'providingRole' providingRole=[ProvidedRole|EString]
+		//        'providingRole' providingRole=[assembly::ProvidedRole|EString]
 		//    '}';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'ProvidedDelegationConnector'
 		//name=EString
 		//'{'
-		//    'providingRole' providingRole=[ProvidedRole|EString]
+		//    'providingRole' providingRole=[assembly::ProvidedRole|EString]
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
@@ -635,10 +635,10 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		//'providingRole'
 		public Keyword getProvidingRoleKeyword_3() { return cProvidingRoleKeyword_3; }
 		
-		//providingRole=[ProvidedRole|EString]
+		//providingRole=[assembly::ProvidedRole|EString]
 		public Assignment getProvidingRoleAssignment_4() { return cProvidingRoleAssignment_4; }
 		
-		//[ProvidedRole|EString]
+		//[assembly::ProvidedRole|EString]
 		public CrossReference getProvidingRoleProvidedRoleCrossReference_4_0() { return cProvidingRoleProvidedRoleCrossReference_4_0; }
 		
 		//EString
@@ -766,7 +766,7 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		private final RuleCall cInterfaceInterfaceEStringParserRuleCall_4_0_1 = (RuleCall)cInterfaceInterfaceCrossReference_4_0.eContents().get(1);
 		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
-		//ProvidedRole returns ProvidedRole:
+		//ProvidedRole returns assembly::ProvidedRole:
 		//    'ProvidedRole'
 		//    name=EString
 		//    '{'
@@ -821,7 +821,7 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		private final RuleCall cInterfaceInterfaceEStringParserRuleCall_4_0_1 = (RuleCall)cInterfaceInterfaceCrossReference_4_0.eContents().get(1);
 		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
-		//RequiredRole returns RequiredRole:
+		//RequiredRole returns assembly::RequiredRole:
 		//    'RequiredRole'
 		//    name=EString
 		//    '{'
@@ -1846,14 +1846,14 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		//    'AllocationContext'
 		//    '{'
 		//        'container' container=[environment::Container|EString]
-		//        'allocates' allocates=[AssemblyContext|EString]
+		//        'allocates' allocates=[assembly::AssemblyContext|EString]
 		//    '}';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'AllocationContext'
 		//'{'
 		//    'container' container=[environment::Container|EString]
-		//    'allocates' allocates=[AssemblyContext|EString]
+		//    'allocates' allocates=[assembly::AssemblyContext|EString]
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
@@ -1878,10 +1878,10 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		//'allocates'
 		public Keyword getAllocatesKeyword_4() { return cAllocatesKeyword_4; }
 		
-		//allocates=[AssemblyContext|EString]
+		//allocates=[assembly::AssemblyContext|EString]
 		public Assignment getAllocatesAssignment_5() { return cAllocatesAssignment_5; }
 		
-		//[AssemblyContext|EString]
+		//[assembly::AssemblyContext|EString]
 		public CrossReference getAllocatesAssemblyContextCrossReference_5_0() { return cAllocatesAssemblyContextCrossReference_5_0; }
 		
 		//EString
@@ -2369,7 +2369,7 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		return getAbstractActionAccess().getRule();
 	}
 	
-	//AssemblyContext returns AssemblyContext:
+	//AssemblyContext returns assembly::AssemblyContext:
 	//    'AssemblyContext'
 	//    name=EString
 	//    '{'
@@ -2385,12 +2385,12 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		return getAssemblyContextAccess().getRule();
 	}
 	
-	//AssemblyConnector returns AssemblyConnector:
+	//AssemblyConnector returns assembly::AssemblyConnector:
 	//    'AssemblyConnector'
 	//    name=EString
 	//    '{'
-	//        'requiringRole' requiringRole=[RequiredRole|EString]
-	//        'providingRole' providingRole=[ProvidedRole|EString]
+	//        'requiringRole' requiringRole=[assembly::RequiredRole|EString]
+	//        'providingRole' providingRole=[assembly::ProvidedRole|EString]
 	//    '}';
 	public AssemblyConnectorElements getAssemblyConnectorAccess() {
 		return pAssemblyConnector;
@@ -2400,11 +2400,11 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		return getAssemblyConnectorAccess().getRule();
 	}
 	
-	//RequiredDelegationConnector returns RequiredDelegationConnector:
+	//RequiredDelegationConnector returns assembly::RequiredDelegationConnector:
 	//    'RequiredDelegationConnector'
 	//    name=EString
 	//    '{'
-	//        'requiringRole' requiringRole=[RequiredRole|EString]
+	//        'requiringRole' requiringRole=[assembly::RequiredRole|EString]
 	//    '}';
 	public RequiredDelegationConnectorElements getRequiredDelegationConnectorAccess() {
 		return pRequiredDelegationConnector;
@@ -2414,11 +2414,11 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		return getRequiredDelegationConnectorAccess().getRule();
 	}
 	
-	//ProvidedDelegationConnector returns ProvidedDelegationConnector:
+	//ProvidedDelegationConnector returns assembly::ProvidedDelegationConnector:
 	//    'ProvidedDelegationConnector'
 	//    name=EString
 	//    '{'
-	//        'providingRole' providingRole=[ProvidedRole|EString]
+	//        'providingRole' providingRole=[assembly::ProvidedRole|EString]
 	//    '}';
 	public ProvidedDelegationConnectorElements getProvidedDelegationConnectorAccess() {
 		return pProvidedDelegationConnector;
@@ -2452,7 +2452,7 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		return getAllocationAccess().getRule();
 	}
 	
-	//ProvidedRole returns ProvidedRole:
+	//ProvidedRole returns assembly::ProvidedRole:
 	//    'ProvidedRole'
 	//    name=EString
 	//    '{'
@@ -2466,7 +2466,7 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		return getProvidedRoleAccess().getRule();
 	}
 	
-	//RequiredRole returns RequiredRole:
+	//RequiredRole returns assembly::RequiredRole:
 	//    'RequiredRole'
 	//    name=EString
 	//    '{'
@@ -2688,7 +2688,7 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	//    'AllocationContext'
 	//    '{'
 	//        'container' container=[environment::Container|EString]
-	//        'allocates' allocates=[AssemblyContext|EString]
+	//        'allocates' allocates=[assembly::AssemblyContext|EString]
 	//    '}';
 	public AllocationContextElements getAllocationContextAccess() {
 		return pAllocationContext;

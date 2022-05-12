@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated ComponentBasedSystems -->
+      <package
+            uri="http://www.example.org/assembly"
+            class="componentbasedsystem.assembly.AssemblyPackage"
+            genModel="model/ComponentBasedSystems.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated ComponentBasedSystems -->
+      <package
+            uri="http://www.example.org/environment"
+            class="componentbasedsystem.environment.EnvironmentPackage"
+            genModel="model/ComponentBasedSystems.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated ComponentBasedSystems -->
+      <package
+            uri="http://www.example.org/allocation"
+            class="componentbasedsystem.allocation.AllocationPackage"
+            genModel="model/ComponentBasedSystems.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated ComponentBasedSystems -->
+      <package
+            uri="http://www.example.org/repository"
+            class="componentbasedsystem.repository.RepositoryPackage"
+            genModel="model/ComponentBasedSystems.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated ComponentBasedSystems -->
+      <package
+            uri="http://www.example.org/behavioraldescription"
+            class="componentbasedsystem.repository.behavioraldescription.BehavioraldescriptionPackage"
+            genModel="model/ComponentBasedSystems.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated ComponentBasedSystems -->
+      <package
+            uri="http://www.example.org/types"
+            class="componentbasedsystem.repository.types.TypesPackage"
+            genModel="model/ComponentBasedSystems.genmodel"/>
+   </extension>
+
+</plugin>
