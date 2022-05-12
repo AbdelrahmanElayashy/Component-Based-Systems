@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="Component-Based-Systems-DSL/org.xtext.example.cbs.ide/src"/>
+	<classpathentry kind="src" path="Component-Based-Systems-DSL/org.xtext.example.cbs.ide/src-gen"/>
+	<classpathentry kind="src" path="Component-Based-Systems-DSL/org.xtext.example.cbs.tests/src-gen"/>
+	<classpathentry kind="src" path="Component-Based-Systems-DSL/org.xtext.example.cbs.tests/xtend-gen"/>
+	<classpathentry kind="src" path="Component-Based-Systems-DSL/org.xtext.example.cbs.ui.tests/src-gen"/>
+	<classpathentry kind="src" path="Component-Based-Systems-DSL/org.xtext.example.cbs.ui/src"/>
+	<classpathentry kind="src" path="Component-Based-Systems-DSL/org.xtext.example.cbs.ui/src-gen"/>
+	<classpathentry kind="src" path="Component-Based-Systems-DSL/org.xtext.example.cbs/src"/>
+	<classpathentry kind="src" path="Component-Based-Systems-DSL/org.xtext.example.cbs/src-gen"/>
+	<classpathentry kind="src" path="Component-Based-Systems-DSL/org.xtext.example.cbs/xtend-gen"/>
+	<classpathentry kind="src" path="Component-Based-Systems.edit/src"/>
+	<classpathentry kind="src" path="Component-Based-Systems.editor/src"/>
+	<classpathentry kind="src" path="Component-Based-Systems/src"/>
+	<classpathentry kind="lib" path="Component-Based-Systems-DSL/org.xtext.example.cbs/.antlr-generator-3.2.0-patch.jar"/>
+	<classpathentry kind="output" path="Component-Based-Systems/bin"/>
+</classpath>

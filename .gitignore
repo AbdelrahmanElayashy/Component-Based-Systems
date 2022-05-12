@@ -1,8 +1,16 @@
 # Compiled class file
 *.class
 
+# generated source
+/Component-Based-Systems/src/
+
 Component-Based-Systems.edit/
 Component-Based-Systems.editor/
+/Component-Based-Systems-DSL/ort.xtext.ecample.cbs.ide
+/Component-Based-Systems-DSL/ort.xtext.ecample.cbs.tests
+/Component-Based-Systems-DSL/ort.xtext.ecample.cbs.ui
+/Component-Based-Systems-DSL/ort.xtext.ecample.cbs.ui.tests
+
 # Log file
 *.log
 
@@ -23,3 +31,4 @@ Component-Based-Systems.editor/
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
