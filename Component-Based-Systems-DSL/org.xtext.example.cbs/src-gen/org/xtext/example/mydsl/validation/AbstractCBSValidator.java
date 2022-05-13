@@ -14,11 +14,11 @@ public abstract class AbstractCBSValidator extends AbstractDeclarativeValidator 
 	protected List<EPackage> getEPackages() {
 		List<EPackage> result = new ArrayList<EPackage>();
 		result.add(EPackage.Registry.INSTANCE.getEPackage("http://www.example.org/allocation"));
+		result.add(EPackage.Registry.INSTANCE.getEPackage("http://www.example.org/environment"));
+		result.add(EPackage.Registry.INSTANCE.getEPackage("http://www.example.org/assembly"));
 		result.add(EPackage.Registry.INSTANCE.getEPackage("http://www.example.org/repository"));
 		result.add(EPackage.Registry.INSTANCE.getEPackage("http://www.example.org/types"));
 		result.add(EPackage.Registry.INSTANCE.getEPackage("http://www.example.org/behavioraldescription"));
-		result.add(EPackage.Registry.INSTANCE.getEPackage("http://www.example.org/assembly"));
-		result.add(EPackage.Registry.INSTANCE.getEPackage("http://www.example.org/environment"));
 		return result;
 	}
 }

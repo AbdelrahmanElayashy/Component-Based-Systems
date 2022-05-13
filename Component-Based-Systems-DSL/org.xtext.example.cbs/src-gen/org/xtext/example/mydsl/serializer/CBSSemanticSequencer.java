@@ -29,6 +29,7 @@ import componentbasedsystem.repository.behavioraldescription.ExternalCallAction;
 import componentbasedsystem.repository.behavioraldescription.InternalAction;
 import componentbasedsystem.repository.behavioraldescription.LoopAction;
 import componentbasedsystem.repository.behavioraldescription.Service;
+import componentbasedsystem.repository.types.CollectionType;
 import componentbasedsystem.repository.types.ComplexMember;
 import componentbasedsystem.repository.types.ComplexType;
 import componentbasedsystem.repository.types.SimpleType;
@@ -140,6 +141,9 @@ public class CBSSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			}
 		else if (epackage == TypesPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
+			case TypesPackage.COLLECTION_TYPE:
+				sequence_CollectionType(context, (CollectionType) semanticObject); 
+				return; 
 			case TypesPackage.COMPLEX_MEMBER:
 				sequence_ComplexMember(context, (ComplexMember) semanticObject); 
 				return; 
@@ -280,11 +284,35 @@ public class CBSSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     BranchTransition returns BranchTransition
 	 *
 	 * Constraint:
-	 *     (branchCondition=EString? action=AbstractAction)
+	 *     (branchCondition=EString actions+=AbstractAction actions+=AbstractAction*)
 	 * </pre>
 	 */
 	protected void sequence_BranchTransition(ISerializationContext context, BranchTransition semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     ParameterType returns CollectionType
+	 *     CollectionType returns CollectionType
+	 *
+	 * Constraint:
+	 *     (type=CollectionTypeEnum innerType=[ParameterType|EString])
+	 * </pre>
+	 */
+	protected void sequence_CollectionType(ISerializationContext context, CollectionType semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, TypesPackage.Literals.COLLECTION_TYPE__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TypesPackage.Literals.COLLECTION_TYPE__TYPE));
+			if (transientValues.isValueTransient(semanticObject, TypesPackage.Literals.COLLECTION_TYPE__INNER_TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TypesPackage.Literals.COLLECTION_TYPE__INNER_TYPE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getCollectionTypeAccess().getTypeCollectionTypeEnumEnumRuleCall_0_0(), semanticObject.getType());
+		feeder.accept(grammarAccess.getCollectionTypeAccess().getInnerTypeParameterTypeEStringParserRuleCall_2_0_1(), semanticObject.eGet(TypesPackage.Literals.COLLECTION_TYPE__INNER_TYPE, false));
+		feeder.finish();
 	}
 	
 	
@@ -305,8 +333,8 @@ public class CBSSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TypesPackage.Literals.COMPLEX_MEMBER__TYPE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getComplexMemberAccess().getNameEStringParserRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getComplexMemberAccess().getTypeParameterTypeEStringParserRuleCall_4_0_1(), semanticObject.eGet(TypesPackage.Literals.COMPLEX_MEMBER__TYPE, false));
+		feeder.accept(grammarAccess.getComplexMemberAccess().getNameEStringParserRuleCall_0_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getComplexMemberAccess().getTypeParameterTypeEStringParserRuleCall_2_0_1(), semanticObject.eGet(TypesPackage.Literals.COMPLEX_MEMBER__TYPE, false));
 		feeder.finish();
 	}
 	
@@ -377,7 +405,7 @@ public class CBSSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BehavioraldescriptionPackage.Literals.EXTERNAL_CALL_ACTION__REQUIRED_SERVICE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getExternalCallActionAccess().getRequiredServiceSignatureEStringParserRuleCall_3_0_1(), semanticObject.eGet(BehavioraldescriptionPackage.Literals.EXTERNAL_CALL_ACTION__REQUIRED_SERVICE, false));
+		feeder.accept(grammarAccess.getExternalCallActionAccess().getRequiredServiceSignatureEStringParserRuleCall_1_0_1(), semanticObject.eGet(BehavioraldescriptionPackage.Literals.EXTERNAL_CALL_ACTION__REQUIRED_SERVICE, false));
 		feeder.finish();
 	}
 	
@@ -432,7 +460,7 @@ public class CBSSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     LoopAction returns LoopAction
 	 *
 	 * Constraint:
-	 *     (bodyActions+=AbstractAction bodyActions+=AbstractAction*)?
+	 *     (bodyActions+=AbstractAction bodyActions+=AbstractAction*)
 	 * </pre>
 	 */
 	protected void sequence_LoopAction(ISerializationContext context, LoopAction semanticObject) {
@@ -446,19 +474,19 @@ public class CBSSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Parameter returns Parameter
 	 *
 	 * Constraint:
-	 *     (name=EString type=[ParameterType|EString])
+	 *     (type=[ParameterType|EString] name=EString)
 	 * </pre>
 	 */
 	protected void sequence_Parameter(ISerializationContext context, componentbasedsystem.repository.Parameter semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, RepositoryPackage.Literals.PARAMETER__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RepositoryPackage.Literals.PARAMETER__NAME));
 			if (transientValues.isValueTransient(semanticObject, RepositoryPackage.Literals.PARAMETER__TYPE) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RepositoryPackage.Literals.PARAMETER__TYPE));
+			if (transientValues.isValueTransient(semanticObject, RepositoryPackage.Literals.PARAMETER__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RepositoryPackage.Literals.PARAMETER__NAME));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getParameterAccess().getTypeParameterTypeEStringParserRuleCall_0_0_1(), semanticObject.eGet(RepositoryPackage.Literals.PARAMETER__TYPE, false));
 		feeder.accept(grammarAccess.getParameterAccess().getNameEStringParserRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getParameterAccess().getTypeParameterTypeEStringParserRuleCall_4_0_1(), semanticObject.eGet(RepositoryPackage.Literals.PARAMETER__TYPE, false));
 		feeder.finish();
 	}
 	
@@ -575,7 +603,7 @@ public class CBSSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Signature returns Signature
 	 *
 	 * Constraint:
-	 *     (name=EString returnType=[Type|EString] (parameters+=Parameter parameters+=Parameter*)?)
+	 *     (returnType=[Type|EString] name=EString (parameters+=Parameter parameters+=Parameter*)?)
 	 * </pre>
 	 */
 	protected void sequence_Signature(ISerializationContext context, Signature semanticObject) {
@@ -600,7 +628,7 @@ public class CBSSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TypesPackage.Literals.SIMPLE_TYPE__TYPE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getSimpleTypeAccess().getTypeSimpleTypeEnumEnumRuleCall_3_0(), semanticObject.getType());
+		feeder.accept(grammarAccess.getSimpleTypeAccess().getTypeSimpleTypeEnumEnumRuleCall_1_0(), semanticObject.getType());
 		feeder.finish();
 	}
 	

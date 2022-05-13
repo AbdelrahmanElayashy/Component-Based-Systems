@@ -167,14 +167,16 @@
           eType="#//repository/types/Type" containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Signature">
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
           eType="#//repository/Parameter" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="returnType" lowerBound="1"
           eType="#//repository/types/Type"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Parameter">
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1"
           eType="#//repository/types/ParameterType"/>
     </eClassifiers>
@@ -184,13 +186,14 @@
       </eAnnotations>
       <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
         <details key="providedInterfacesAreImplemented" value="&#xA;&#x9;&#x9;&#x9;&#x9;self.services -> collect(implements) -> includesAll(self.provides.signatures)"/>
-        <details key="signaturesUsedByExternalCallsAreRequired" value="&#xA;&#x9;&#x9;&#x9;&#x9;let requiredSignaturesByServices : Set(Signature) =&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;self.services -> collect(actions) -> asSet() &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;-> closure(&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;action: behavioraldescription::AbstractAction |&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;if action.oclIsKindOf(behavioraldescription::BranchAction) then&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;action.oclAsType(behavioraldescription::BranchAction).branches.action -> asSet()&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;else &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;if action.oclIsKindOf(behavioraldescription::LoopAction) then&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;action.oclAsType(behavioraldescription::LoopAction).bodyActions&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;else &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;Set{action}&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;endif&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;endif&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;-> iterate (action : behavioraldescription::AbstractAction; acc : Set(Signature) = Set{} |&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;if action.oclIsKindOf(behavioraldescription::ExternalCallAction) then&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;acc -> including(action.oclAsType(behavioraldescription::ExternalCallAction).requiredService)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;else&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;acc&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;endif&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;)&#xA;&#x9;&#x9;&#x9;&#x9;in&#xA;&#x9;&#x9;&#x9;&#x9;if requiredSignaturesByServices -> size() > 0 then&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;self.requires -> collect(signatures) -> includesAll(requiredSignaturesByServices)&#xA;&#x9;&#x9;&#x9;&#x9;else&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;true&#xA;&#x9;&#x9;&#x9;&#x9;endif"/>
+        <details key="signaturesUsedByExternalCallsAreRequired" value="&#xA;&#x9;&#x9;&#x9;&#x9;let requiredSignaturesByServices : Set(Signature) =&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;self.services -> collect(actions) -> asSet() &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;-> closure(&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;action: behavioraldescription::AbstractAction |&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;if action.oclIsKindOf(behavioraldescription::BranchAction) then&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;action.oclAsType(behavioraldescription::BranchAction).branches.actions -> asSet()&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;else &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;if action.oclIsKindOf(behavioraldescription::LoopAction) then&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;action.oclAsType(behavioraldescription::LoopAction).bodyActions&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;else &#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;Set{action}&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;endif&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;endif&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;-> iterate (action : behavioraldescription::AbstractAction; acc : Set(Signature) = Set{} |&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;if action.oclIsKindOf(behavioraldescription::ExternalCallAction) then&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;acc -> including(action.oclAsType(behavioraldescription::ExternalCallAction).requiredService)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;else&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;acc&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;endif&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;)&#xA;&#x9;&#x9;&#x9;&#x9;in&#xA;&#x9;&#x9;&#x9;&#x9;if requiredSignaturesByServices -> size() > 0 then&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;self.requires -> collect(signatures) -> includesAll(requiredSignaturesByServices)&#xA;&#x9;&#x9;&#x9;&#x9;else&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;true&#xA;&#x9;&#x9;&#x9;&#x9;endif"/>
       </eAnnotations>
       <eStructuralFeatures xsi:type="ecore:EReference" name="services" upperBound="-1"
           eType="#//repository/behavioraldescription/Service" containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Interface">
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="signatures" upperBound="-1"
           eType="#//repository/Signature" containment="true"/>
     </eClassifiers>
@@ -223,13 +226,16 @@
             containment="true"/>
       </eClassifiers>
       <eClassifiers xsi:type="ecore:EClass" name="LoopAction" eSuperTypes="#//repository/behavioraldescription/AbstractAction">
-        <eStructuralFeatures xsi:type="ecore:EReference" name="bodyActions" upperBound="-1"
-            eType="#//repository/behavioraldescription/AbstractAction" containment="true"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="bodyActions" lowerBound="1"
+            upperBound="-1" eType="#//repository/behavioraldescription/AbstractAction"
+            containment="true"/>
       </eClassifiers>
       <eClassifiers xsi:type="ecore:EClass" name="BranchTransition">
-        <eStructuralFeatures xsi:type="ecore:EReference" name="action" lowerBound="1"
-            eType="#//repository/behavioraldescription/AbstractAction" containment="true"/>
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="branchCondition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="actions" lowerBound="1"
+            upperBound="-1" eType="#//repository/behavioraldescription/AbstractAction"
+            containment="true"/>
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="branchCondition" lowerBound="1"
+            eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eClassifiers>
       <eClassifiers xsi:type="ecore:EClass" name="Service">
         <eStructuralFeatures xsi:type="ecore:EReference" name="actions" lowerBound="1"
@@ -260,16 +266,20 @@
       <eClassifiers xsi:type="ecore:EClass" name="ComplexType" eSuperTypes="#//repository/types/ParameterType">
         <eStructuralFeatures xsi:type="ecore:EReference" name="members" upperBound="-1"
             eType="#//repository/types/ComplexMember" containment="true"/>
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1"
+            eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eClassifiers>
       <eClassifiers xsi:type="ecore:EClass" name="ComplexMember">
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1"
+            eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
         <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1"
             eType="#//repository/types/ParameterType"/>
       </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="CollectionType">
+      <eClassifiers xsi:type="ecore:EClass" name="CollectionType" eSuperTypes="#//repository/types/ParameterType">
         <eStructuralFeatures xsi:type="ecore:EReference" name="innerType" lowerBound="1"
             eType="#//repository/types/ParameterType"/>
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//repository/types/CollectionTypeEnum"/>
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1"
+            eType="#//repository/types/CollectionTypeEnum"/>
       </eClassifiers>
       <eClassifiers xsi:type="ecore:EEnum" name="CollectionTypeEnum">
         <eLiterals name="List"/>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<assembly:Assembly xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:assembly="http://www.example.org/assembly">
+<assembly:Assembly xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:assembly="http://www.example.org/assembly" xmlns:repository="http://www.example.org/repository">
   <compositeComponents name="MediaStore">
     <requires href="My.repository#//@interfaces.2"/>
     <provides href="My.repository#//@interfaces.0"/>
     <childContexts name="DBCacheContext">
-      <instantiates href="My.repository#//@components.1"/>
+      <instantiates xsi:type="repository:AtomicComponent" href="My.repository#//@components.1"/>
       <providedRoles name="AudioDB Provider (DBCache)">
         <interface href="My.repository#//@interfaces.2"/>
       </providedRoles>
@@ -13,13 +13,13 @@
       </requiredRoles>
     </childContexts>
     <childContexts name="DigitalWatermarkingContext">
-      <instantiates href="My.repository#//@components.2"/>
+      <instantiates xsi:type="repository:AtomicComponent" href="My.repository#//@components.2"/>
       <providedRoles name="Sound Provider (DigitalWatermarking)">
         <interface href="My.repository#//@interfaces.1"/>
       </providedRoles>
     </childContexts>
     <childContexts name="MediaManagerContext">
-      <instantiates href="My.repository#//@components.0"/>
+      <instantiates xsi:type="repository:AtomicComponent" href="My.repository#//@components.0"/>
       <providedRoles name="MediaStore Provider (MediaManager)">
         <interface href="My.repository#//@interfaces.0"/>
       </providedRoles>

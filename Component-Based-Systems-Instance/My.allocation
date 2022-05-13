@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<allocation:System xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:allocation="http://www.example.org/allocation">
+<allocation:System xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:allocation="http://www.example.org/allocation" xmlns:assembly="http://www.example.org/assembly" xmlns:repository="http://www.example.org/repository">
+  <childContexts name="WebGUI Context">
+    <instantiates xsi:type="repository:AtomicComponent" href="My.repository#//@components.3"/>
+    <providedRoles name="HTTP Provider (WebGUI)">
+      <interface href="My.repository#//@interfaces.3"/>
+    </providedRoles>
+    <requiredRoles name="MediaStore Consumer (WebGUI)">
+      <interface href="My.repository#//@interfaces.0"/>
+    </requiredRoles>
+  </childContexts>
+  <childContexts name="MediaStore Context">
+    <instantiates xsi:type="assembly:CompositeComponent" href="My.assembly#//@compositeComponents.0"/>
+    <providedRoles name="MediaStore Provider (MediaStore)">
+      <interface href="My.repository#//@interfaces.0"/>
+    </providedRoles>
+    <requiredRoles name="AudioDB Consumer (MediaStore)">
+      <interface href="My.repository#//@interfaces.2"/>
+    </requiredRoles>
+  </childContexts>
+  <childContexts name="PoolingAudioDB Context">
+    <instantiates xsi:type="repository:AtomicComponent" href="My.repository#//@components.4"/>
+    <providedRoles name="AudioDB Provider (PoolingAudioDB)">
+      <interface href="My.repository#//@interfaces.2"/>
+    </providedRoles>
+  </childContexts>
+  <assemblyConnectors requiringRole="//@childContexts.0/@requiredRoles.0" providingRole="//@childContexts.1/@providedRoles.0" name="MediaStore Connector (WebGUI - MediaStore)"/>
+  <assemblyConnectors requiringRole="//@childContexts.1/@requiredRoles.0" providingRole="//@childContexts.2/@providedRoles.0" name="AudioDB Connector (MediaStore - PoolingAudioDB)"/>
+  <providedDelegationConnectors providingRole="//@childContexts.0/@providedRoles.0" name="HTTP Provider ProvidedDelegationConnector (System)"/>
   <allocation>
     <allocationContexts allocates="//@childContexts.0">
       <container href="My.environment#//@container.0"/>
@@ -12,31 +39,4 @@
     </allocationContexts>
     <environment href="My.environment#/"/>
   </allocation>
-  <providedDelegationConnectors providingRole="//@childContexts.0/@providedRoles.0" name="HTTP Provider ProvidedDelegationConnector (System)"/>
-  <childContexts name="WebGUI Context">
-    <instantiates href="My.repository#//@components.3"/>
-    <providedRoles name="HTTP Provider (WebGUI)">
-      <interface href="My.repository#//@interfaces.3"/>
-    </providedRoles>
-    <requiredRoles name="MediaStore Consumer (WebGUI)">
-      <interface href="My.repository#//@interfaces.0"/>
-    </requiredRoles>
-  </childContexts>
-  <childContexts name="MediaStore Context">
-    <instantiates href="My.assembly#//@compositeComponents.0"/>
-    <providedRoles name="MediaStore Provider (MediaStore)">
-      <interface href="My.repository#//@interfaces.0"/>
-    </providedRoles>
-    <requiredRoles name="AudioDB Consumer (MediaStore)">
-      <interface href="My.repository#//@interfaces.2"/>
-    </requiredRoles>
-  </childContexts>
-  <childContexts name="PoolingAudioDB Context">
-    <instantiates href="My.repository#//@components.4"/>
-    <providedRoles name="AudioDB Provider (PoolingAudioDB)">
-      <interface href="My.repository#//@interfaces.2"/>
-    </providedRoles>
-  </childContexts>
-  <assemblyConnectors requiringRole="//@childContexts.0/@requiredRoles.0" providingRole="//@childContexts.1/@providedRoles.0" name="MediaStore Connector (WebGUI - MediaStore)"/>
-  <assemblyConnectors requiringRole="//@childContexts.1/@requiredRoles.0" providingRole="//@childContexts.2/@providedRoles.0" name="AudioDB Connector (MediaStore - PoolingAudioDB)"/>
 </allocation:System>

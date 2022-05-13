@@ -143,7 +143,7 @@
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//repository/behavioraldescription/LoopAction/bodyActions"/>
         </genClasses>
         <genClasses ecoreClass="ComponentBasedSystems.ecore#//repository/behavioraldescription/BranchTransition">
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//repository/behavioraldescription/BranchTransition/action"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//repository/behavioraldescription/BranchTransition/actions"/>
           <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentBasedSystems.ecore#//repository/behavioraldescription/BranchTransition/branchCondition"/>
         </genClasses>
         <genClasses ecoreClass="ComponentBasedSystems.ecore#//repository/behavioraldescription/Service">
@@ -176,6 +176,7 @@
         </genClasses>
         <genClasses ecoreClass="ComponentBasedSystems.ecore#//repository/types/ComplexType">
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//repository/types/ComplexType/members"/>
+          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentBasedSystems.ecore#//repository/types/ComplexType/name"/>
         </genClasses>
         <genClasses ecoreClass="ComponentBasedSystems.ecore#//repository/types/ComplexMember">
           <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentBasedSystems.ecore#//repository/types/ComplexMember/name"/>
