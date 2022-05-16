@@ -6,6 +6,7 @@
 
 Component-Based-Systems.edit/
 Component-Based-Systems.editor/
+Component-Based-Systems.tests/
 
 # Log file
 *.log
