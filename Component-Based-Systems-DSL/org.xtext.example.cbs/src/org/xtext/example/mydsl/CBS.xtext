@@ -61,6 +61,30 @@ Linker returns environment::Linker:
 
 // region assembly
 
+Assembly returns assembly::Assembly:
+	{assembly::Assembly}
+	'assembly'
+	name=EString
+	'{'
+		( compositeComponents+=CompositeComponent ( "," compositeComponents+=CompositeComponent)* )?
+	'}';
+
+Component returns repository::Component:
+	AtomicComponent | CompositeComponent;
+	
+CompositeComponent returns assembly::CompositeComponent:
+	{assembly::CompositeComponent}
+	'CompositeComponent'
+	name=EString
+	'{'
+		('requires' '{' requires+=[repository::Interface|EString] ( "," requires+=[repository::Interface|EString])* '}' )?
+		('provides' '{' provides+=[repository::Interface|EString] ( "," provides+=[repository::Interface|EString])* '}' )?
+		('childContexts' '{' childContexts+=AssemblyContext ( "," childContexts+=AssemblyContext)* '}' )?
+		('assemblyConnectors' '{' assemblyConnectors+=AssemblyConnector ( "," assemblyConnectors+=AssemblyConnector)* '}' )?
+		('requiredDelegationConnectors' '{' requiredDelegationConnectors+=RequiredDelegationConnector ( "," requiredDelegationConnectors+=RequiredDelegationConnector)* '}' )?
+		('providedDelegationConnectors' '{' providedDelegationConnectors+=ProvidedDelegationConnector ( "," providedDelegationConnectors+=ProvidedDelegationConnector)* '}' )?
+	'}';
+
 AssemblyContext returns assembly::AssemblyContext:
 	'AssemblyContext'
 	name=EString
@@ -108,8 +132,14 @@ RequiredRole returns assembly::RequiredRole:
 
 // region repository
 
-Component returns repository::Component:
-	AtomicComponent;
+Repository returns repository::Repository:
+	{repository::Repository}
+	'repository'
+	'{'	
+		('interfaces' '{' interfaces+=Interface ("," interfaces+=Interface)* '}' )?
+		('components' '{' components+=AtomicComponent ("," components+=AtomicComponent)* '}' )?
+		('types' '{' types+=Type ("," types+=Type)* '}' )?
+	'}';
 
 Interface returns repository::Interface:
 	{repository::Interface}
@@ -121,7 +151,7 @@ Interface returns repository::Interface:
 
 AtomicComponent returns repository::AtomicComponent:
 	{repository::AtomicComponent}
-	'AtomicComponent'
+	'atomicComponent'
 	name=EString
 	'{'
 		('requires' '{' requires+=[repository::Interface|EString] ( "," requires+=[repository::Interface|EString])* '}' )?
@@ -141,7 +171,7 @@ Parameter returns repository::Parameter:
 // region types
 
 Type returns types::Type:
-	Void | SimpleType | ComplexType;
+	Void | ParameterType;
 
 ParameterType returns types::ParameterType:
 	SimpleType | ComplexType | CollectionType;
@@ -178,7 +208,7 @@ AbstractAction returns behavioraldescription::AbstractAction:
 	InternalAction | ExternalCallAction | BranchAction | LoopAction;
 
 Service returns behavioraldescription::Service:
-	'Service' implements=[repository::Signature|EString]
+	'service' implements=[repository::Signature|EString]
 	'{'
 		actions+=AbstractAction ( ";" actions+=AbstractAction)*
 	'}';
