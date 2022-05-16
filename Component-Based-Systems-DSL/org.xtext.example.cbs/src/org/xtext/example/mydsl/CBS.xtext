@@ -15,22 +15,18 @@ System returns allocation::System:
 	'System'
 	name=EString
 	'{'
-		('childContexts' '{' childContexts+=AssemblyContext ( "," childContexts+=AssemblyContext)* '}' )?
-		('assemblyConnectors' '{' assemblyConnectors+=AssemblyConnector ( "," assemblyConnectors+=AssemblyConnector)* '}' )?
-		('requiredDelegationConnectors' '{' requiredDelegationConnectors+=RequiredDelegationConnector ( "," requiredDelegationConnectors+=RequiredDelegationConnector)* '}' )?
-		('providedDelegationConnectors' '{' providedDelegationConnectors+=ProvidedDelegationConnector ( "," providedDelegationConnectors+=ProvidedDelegationConnector)* '}' )?
-		'allocation' allocation=Allocation
+		('childContexts=' '{' childContexts+=AssemblyContext ( "," childContexts+=AssemblyContext)* '}' )?
+		('assemblyConnectors=' '{' assemblyConnectors+=AssemblyConnector ( "," assemblyConnectors+=AssemblyConnector)* '}' )?
+		('requiredDelegationConnectors=' '{' requiredDelegationConnectors+=RequiredDelegationConnector ( "," requiredDelegationConnectors+=RequiredDelegationConnector)* '}' )?
+		('providedDelegationConnectors=' '{' providedDelegationConnectors+=ProvidedDelegationConnector ( "," providedDelegationConnectors+=ProvidedDelegationConnector)* '}' )?
+		'allocation=' 	'{' allocation=Allocation 	'}'
 	'}';
 	
 Allocation returns allocation::Allocation:
-	'Allocation'
-	'{'
-		'environment' environment=[environment::Environment|EString]
-		('allocationContexts' '{' allocationContexts+=AllocationContext ( "," allocationContexts+=AllocationContext)* '}' )?
-	'}';
+	'env=' environment=[environment::Environment|EString]
+	('allocationContexts=' '{' allocationContexts+=AllocationContext ( "," allocationContexts+=AllocationContext)* '}' )?;
 
 AllocationContext returns allocation::AllocationContext:
-	'AllocationContext'
 	'{'
 		'container' container=[environment::Container|EString]
 		'allocates' allocates=[assembly::AssemblyContext|EString]
@@ -43,68 +39,49 @@ Environment returns environment::Environment:
 	'Environment'
 	name=EString
 	'{'
-		('container' '{' container+=Container ( "," container+=Container)* '}' )?
-		('linker' '{' linker+=Linker ( "," linker+=Linker)* '}' )?
+		('containers=' '{' container+=Container ( "," container+=Container)* '}' )?
+		('linkers=' '{' linker+=Linker ( "," linker+=Linker)* '}' )?
 	'}';
 
 Container returns environment::Container:
 	{environment::Container}
-	'Container'
 	name=EString;
 
 Linker returns environment::Linker:
-	'Linker'
-	name=EString
-	'{'
-		'links' '(' links+=[environment::Container|EString] ( "," links+=[environment::Container|EString])* ')' 
-	'}';
+	'link' '(' links+=[environment::Container|EString] ( "," links+=[environment::Container|EString])* ')' ;
+	
 
 // region assembly
 
 AssemblyContext returns assembly::AssemblyContext:
-	'AssemblyContext'
 	name=EString
 	'{'
-		'instantiates' instantiates=[repository::Component|EString]
-		('providedRoles' '{' providedRoles+=ProvidedRole ( "," providedRoles+=ProvidedRole)* '}' )?
-		('requiredRoles' '{' requiredRoles+=RequiredRole ( "," requiredRoles+=RequiredRole)* '}' )?
+		'instance' instantiates=[repository::Component|EString]
+		('provide' '(' providedRoles+=ProvidedRole ( "," providedRoles+=ProvidedRole)* ')' )?
+		('require' '(' requiredRoles+=RequiredRole ( "," requiredRoles+=RequiredRole)* ')' )?
 	'}';
 
 AssemblyConnector returns assembly::AssemblyConnector:
-	'AssemblyConnector'
-	name=EString
-	'{'
-		'requiringRole' requiringRole=[assembly::RequiredRole|EString]
-		'providingRole' providingRole=[assembly::ProvidedRole|EString]
-	'}';
+	'('
+	    requiringRole=[assembly::RequiredRole|EString]
+	',' 
+		providingRole=[assembly::ProvidedRole|EString]
+	')';
 
 RequiredDelegationConnector returns assembly::RequiredDelegationConnector:
-	'RequiredDelegationConnector'
-	name=EString
-	'{'
-		'requiringRole' requiringRole=[assembly::RequiredRole|EString]
-	'}';
+	requiringRole=[assembly::RequiredRole|EString];
+	
 
 ProvidedDelegationConnector returns assembly::ProvidedDelegationConnector:
-	'ProvidedDelegationConnector'
-	name=EString
-	'{'
-		'providingRole' providingRole=[assembly::ProvidedRole|EString]
-	'}';
+	 providingRole=[assembly::ProvidedRole|EString];
 
 ProvidedRole returns assembly::ProvidedRole:
-	'ProvidedRole'
-	name=EString
-	'{'
-		'interface' interface=[repository::Interface|EString]
-	'}';
+		interface=[repository::Interface|EString];
+	
 
 RequiredRole returns assembly::RequiredRole:
-	'RequiredRole'
-	name=EString
-	'{'
-		'interface' interface=[repository::Interface|EString]
-	'}';
+	interface=[repository::Interface|EString];
+	
 
 // region repository
 
