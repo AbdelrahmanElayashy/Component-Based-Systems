@@ -6,6 +6,12 @@
     operationReflection="true" importOrganizing="true">
   <foreignModel>ComponentBasedSystems.ecore</foreignModel>
   <genPackages prefix="Componentbasedsystem" disposableProviderFactory="true" ecorePackage="ComponentBasedSystems.ecore#/">
+    <genClasses ecoreClass="ComponentBasedSystems.ecore#//ComponentBasedSystemContainer">
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//ComponentBasedSystemContainer/repository"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//ComponentBasedSystemContainer/environments"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//ComponentBasedSystemContainer/assemblies"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//ComponentBasedSystemContainer/systems"/>
+    </genClasses>
     <nestedGenPackages prefix="Assembly" basePackage="componentbasedsystem" disposableProviderFactory="true"
         ecorePackage="ComponentBasedSystems.ecore#//assembly">
       <genClasses ecoreClass="ComponentBasedSystems.ecore#//assembly/AssemblyContext">

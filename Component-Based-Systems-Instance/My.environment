@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<environment:Environment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:environment="http://www.example.org/environment" name="Main Environment">
-  <container name="Application Server"/>
-  <container name="Database Server"/>
-  <linker name="LAN" links="//@container.0 //@container.1"/>
-</environment:Environment>

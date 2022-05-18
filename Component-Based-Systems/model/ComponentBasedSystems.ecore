@@ -2,6 +2,16 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="componentbasedsystem" nsURI="http://www.example.org/componentbasedsystem"
     nsPrefix="componentbasedsystem">
+  <eClassifiers xsi:type="ecore:EClass" name="ComponentBasedSystemContainer">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="repository" eType="#//repository/Repository"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="environments" upperBound="-1"
+        eType="#//environment/Environment" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="assemblies" upperBound="-1"
+        eType="#//assembly/Assembly" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="systems" upperBound="-1"
+        eType="#//allocation/System" containment="true"/>
+  </eClassifiers>
   <eSubpackages name="assembly" nsURI="http://www.example.org/assembly" nsPrefix="assembly">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
       <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>

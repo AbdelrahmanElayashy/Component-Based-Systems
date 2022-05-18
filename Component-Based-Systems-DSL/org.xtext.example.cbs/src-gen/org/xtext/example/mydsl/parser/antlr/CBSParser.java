@@ -27,7 +27,7 @@ public class CBSParser extends AbstractAntlrParser {
 
 	@Override 
 	protected String getDefaultRuleName() {
-		return "System";
+		return "ComponentBasedSystemContainer";
 	}
 
 	public CBSGrammarAccess getGrammarAccess() {

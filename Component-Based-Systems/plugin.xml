@@ -9,6 +9,14 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated ComponentBasedSystems -->
       <package
+            uri="http://www.example.org/componentbasedsystem"
+            class="componentbasedsystem.ComponentbasedsystemPackage"
+            genModel="model/ComponentBasedSystems.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated ComponentBasedSystems -->
+      <package
             uri="http://www.example.org/assembly"
             class="componentbasedsystem.assembly.AssemblyPackage"
             genModel="model/ComponentBasedSystems.genmodel"/>

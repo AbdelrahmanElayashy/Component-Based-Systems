@@ -9,7 +9,8 @@ Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: J2SE-1.5,
  
-Export-Package: componentbasedsystem.allocation,
+Export-Package: componentbasedsystem,
+ componentbasedsystem.allocation,
  componentbasedsystem.allocation.impl,
  componentbasedsystem.allocation.util,
  componentbasedsystem.assembly,
@@ -18,6 +19,7 @@ Export-Package: componentbasedsystem.allocation,
  componentbasedsystem.environment,
  componentbasedsystem.environment.impl,
  componentbasedsystem.environment.util,
+ componentbasedsystem.impl,
  componentbasedsystem.repository,
  componentbasedsystem.repository.behavioraldescription,
  componentbasedsystem.repository.behavioraldescription.impl,
@@ -26,7 +28,8 @@ Export-Package: componentbasedsystem.allocation,
  componentbasedsystem.repository.types,
  componentbasedsystem.repository.types.impl,
  componentbasedsystem.repository.types.util,
- componentbasedsystem.repository.util
+ componentbasedsystem.repository.util,
+ componentbasedsystem.util
 Require-Bundle: org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.ocl.pivot;visibility:=reexport,
  org.eclipse.ocl.examples.codegen;visibility:=reexport,

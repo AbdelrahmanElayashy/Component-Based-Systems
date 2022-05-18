@@ -31,12 +31,20 @@ public class CBSParser extends AbstractContentAssistParser {
 		}
 		
 		private static void init(ImmutableMap.Builder<AbstractElement, String> builder, CBSGrammarAccess grammarAccess) {
+			builder.put(grammarAccess.getComponentAccess().getAlternatives(), "rule__Component__Alternatives");
 			builder.put(grammarAccess.getTypeAccess().getAlternatives(), "rule__Type__Alternatives");
 			builder.put(grammarAccess.getParameterTypeAccess().getAlternatives(), "rule__ParameterType__Alternatives");
 			builder.put(grammarAccess.getAbstractActionAccess().getAlternatives(), "rule__AbstractAction__Alternatives");
 			builder.put(grammarAccess.getEStringAccess().getAlternatives(), "rule__EString__Alternatives");
 			builder.put(grammarAccess.getSimpleTypeEnumAccess().getAlternatives(), "rule__SimpleTypeEnum__Alternatives");
 			builder.put(grammarAccess.getCollectionTypeEnumAccess().getAlternatives(), "rule__CollectionTypeEnum__Alternatives");
+			builder.put(grammarAccess.getComponentBasedSystemContainerAccess().getGroup_0(), "rule__ComponentBasedSystemContainer__Group_0__0");
+			builder.put(grammarAccess.getComponentBasedSystemContainerAccess().getGroup_1(), "rule__ComponentBasedSystemContainer__Group_1__0");
+			builder.put(grammarAccess.getComponentBasedSystemContainerAccess().getGroup_1_3(), "rule__ComponentBasedSystemContainer__Group_1_3__0");
+			builder.put(grammarAccess.getComponentBasedSystemContainerAccess().getGroup_2(), "rule__ComponentBasedSystemContainer__Group_2__0");
+			builder.put(grammarAccess.getComponentBasedSystemContainerAccess().getGroup_2_3(), "rule__ComponentBasedSystemContainer__Group_2_3__0");
+			builder.put(grammarAccess.getComponentBasedSystemContainerAccess().getGroup_3(), "rule__ComponentBasedSystemContainer__Group_3__0");
+			builder.put(grammarAccess.getComponentBasedSystemContainerAccess().getGroup_3_3(), "rule__ComponentBasedSystemContainer__Group_3_3__0");
 			builder.put(grammarAccess.getSystemAccess().getGroup(), "rule__System__Group__0");
 			builder.put(grammarAccess.getSystemAccess().getGroup_3(), "rule__System__Group_3__0");
 			builder.put(grammarAccess.getSystemAccess().getGroup_3_3(), "rule__System__Group_3_3__0");
@@ -58,12 +66,35 @@ public class CBSParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getContainerAccess().getGroup(), "rule__Container__Group__0");
 			builder.put(grammarAccess.getLinkerAccess().getGroup(), "rule__Linker__Group__0");
 			builder.put(grammarAccess.getLinkerAccess().getGroup_3(), "rule__Linker__Group_3__0");
+			builder.put(grammarAccess.getAssemblyAccess().getGroup(), "rule__Assembly__Group__0");
+			builder.put(grammarAccess.getAssemblyAccess().getGroup_4(), "rule__Assembly__Group_4__0");
+			builder.put(grammarAccess.getAssemblyAccess().getGroup_4_1(), "rule__Assembly__Group_4_1__0");
+			builder.put(grammarAccess.getCompositeComponentAccess().getGroup(), "rule__CompositeComponent__Group__0");
+			builder.put(grammarAccess.getCompositeComponentAccess().getGroup_4(), "rule__CompositeComponent__Group_4__0");
+			builder.put(grammarAccess.getCompositeComponentAccess().getGroup_4_3(), "rule__CompositeComponent__Group_4_3__0");
+			builder.put(grammarAccess.getCompositeComponentAccess().getGroup_5(), "rule__CompositeComponent__Group_5__0");
+			builder.put(grammarAccess.getCompositeComponentAccess().getGroup_5_3(), "rule__CompositeComponent__Group_5_3__0");
+			builder.put(grammarAccess.getCompositeComponentAccess().getGroup_6(), "rule__CompositeComponent__Group_6__0");
+			builder.put(grammarAccess.getCompositeComponentAccess().getGroup_6_3(), "rule__CompositeComponent__Group_6_3__0");
+			builder.put(grammarAccess.getCompositeComponentAccess().getGroup_7(), "rule__CompositeComponent__Group_7__0");
+			builder.put(grammarAccess.getCompositeComponentAccess().getGroup_7_3(), "rule__CompositeComponent__Group_7_3__0");
+			builder.put(grammarAccess.getCompositeComponentAccess().getGroup_8(), "rule__CompositeComponent__Group_8__0");
+			builder.put(grammarAccess.getCompositeComponentAccess().getGroup_8_3(), "rule__CompositeComponent__Group_8_3__0");
+			builder.put(grammarAccess.getCompositeComponentAccess().getGroup_9(), "rule__CompositeComponent__Group_9__0");
+			builder.put(grammarAccess.getCompositeComponentAccess().getGroup_9_3(), "rule__CompositeComponent__Group_9_3__0");
 			builder.put(grammarAccess.getAssemblyContextAccess().getGroup(), "rule__AssemblyContext__Group__0");
 			builder.put(grammarAccess.getAssemblyContextAccess().getGroup_4(), "rule__AssemblyContext__Group_4__0");
 			builder.put(grammarAccess.getAssemblyContextAccess().getGroup_4_3(), "rule__AssemblyContext__Group_4_3__0");
 			builder.put(grammarAccess.getAssemblyContextAccess().getGroup_5(), "rule__AssemblyContext__Group_5__0");
 			builder.put(grammarAccess.getAssemblyContextAccess().getGroup_5_3(), "rule__AssemblyContext__Group_5_3__0");
 			builder.put(grammarAccess.getAssemblyConnectorAccess().getGroup(), "rule__AssemblyConnector__Group__0");
+			builder.put(grammarAccess.getRepositoryAccess().getGroup(), "rule__Repository__Group__0");
+			builder.put(grammarAccess.getRepositoryAccess().getGroup_3(), "rule__Repository__Group_3__0");
+			builder.put(grammarAccess.getRepositoryAccess().getGroup_3_3(), "rule__Repository__Group_3_3__0");
+			builder.put(grammarAccess.getRepositoryAccess().getGroup_4(), "rule__Repository__Group_4__0");
+			builder.put(grammarAccess.getRepositoryAccess().getGroup_4_3(), "rule__Repository__Group_4_3__0");
+			builder.put(grammarAccess.getRepositoryAccess().getGroup_5(), "rule__Repository__Group_5__0");
+			builder.put(grammarAccess.getRepositoryAccess().getGroup_5_3(), "rule__Repository__Group_5_3__0");
 			builder.put(grammarAccess.getInterfaceAccess().getGroup(), "rule__Interface__Group__0");
 			builder.put(grammarAccess.getInterfaceAccess().getGroup_4(), "rule__Interface__Group_4__0");
 			builder.put(grammarAccess.getInterfaceAccess().getGroup_4_1(), "rule__Interface__Group_4_1__0");
@@ -95,6 +126,13 @@ public class CBSParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getBranchTransitionAccess().getGroup_4(), "rule__BranchTransition__Group_4__0");
 			builder.put(grammarAccess.getLoopActionAccess().getGroup(), "rule__LoopAction__Group__0");
 			builder.put(grammarAccess.getLoopActionAccess().getGroup_4(), "rule__LoopAction__Group_4__0");
+			builder.put(grammarAccess.getComponentBasedSystemContainerAccess().getRepositoryAssignment_0_2(), "rule__ComponentBasedSystemContainer__RepositoryAssignment_0_2");
+			builder.put(grammarAccess.getComponentBasedSystemContainerAccess().getAssembliesAssignment_1_2(), "rule__ComponentBasedSystemContainer__AssembliesAssignment_1_2");
+			builder.put(grammarAccess.getComponentBasedSystemContainerAccess().getAssembliesAssignment_1_3_1(), "rule__ComponentBasedSystemContainer__AssembliesAssignment_1_3_1");
+			builder.put(grammarAccess.getComponentBasedSystemContainerAccess().getEnvironmentsAssignment_2_2(), "rule__ComponentBasedSystemContainer__EnvironmentsAssignment_2_2");
+			builder.put(grammarAccess.getComponentBasedSystemContainerAccess().getEnvironmentsAssignment_2_3_1(), "rule__ComponentBasedSystemContainer__EnvironmentsAssignment_2_3_1");
+			builder.put(grammarAccess.getComponentBasedSystemContainerAccess().getSystemsAssignment_3_2(), "rule__ComponentBasedSystemContainer__SystemsAssignment_3_2");
+			builder.put(grammarAccess.getComponentBasedSystemContainerAccess().getSystemsAssignment_3_3_1(), "rule__ComponentBasedSystemContainer__SystemsAssignment_3_3_1");
 			builder.put(grammarAccess.getSystemAccess().getNameAssignment_1(), "rule__System__NameAssignment_1");
 			builder.put(grammarAccess.getSystemAccess().getChildContextsAssignment_3_2(), "rule__System__ChildContextsAssignment_3_2");
 			builder.put(grammarAccess.getSystemAccess().getChildContextsAssignment_3_3_1(), "rule__System__ChildContextsAssignment_3_3_1");
@@ -118,6 +156,22 @@ public class CBSParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getContainerAccess().getNameAssignment_1(), "rule__Container__NameAssignment_1");
 			builder.put(grammarAccess.getLinkerAccess().getLinksAssignment_2(), "rule__Linker__LinksAssignment_2");
 			builder.put(grammarAccess.getLinkerAccess().getLinksAssignment_3_1(), "rule__Linker__LinksAssignment_3_1");
+			builder.put(grammarAccess.getAssemblyAccess().getNameAssignment_2(), "rule__Assembly__NameAssignment_2");
+			builder.put(grammarAccess.getAssemblyAccess().getCompositeComponentsAssignment_4_0(), "rule__Assembly__CompositeComponentsAssignment_4_0");
+			builder.put(grammarAccess.getAssemblyAccess().getCompositeComponentsAssignment_4_1_1(), "rule__Assembly__CompositeComponentsAssignment_4_1_1");
+			builder.put(grammarAccess.getCompositeComponentAccess().getNameAssignment_2(), "rule__CompositeComponent__NameAssignment_2");
+			builder.put(grammarAccess.getCompositeComponentAccess().getRequiresAssignment_4_2(), "rule__CompositeComponent__RequiresAssignment_4_2");
+			builder.put(grammarAccess.getCompositeComponentAccess().getRequiresAssignment_4_3_1(), "rule__CompositeComponent__RequiresAssignment_4_3_1");
+			builder.put(grammarAccess.getCompositeComponentAccess().getProvidesAssignment_5_2(), "rule__CompositeComponent__ProvidesAssignment_5_2");
+			builder.put(grammarAccess.getCompositeComponentAccess().getProvidesAssignment_5_3_1(), "rule__CompositeComponent__ProvidesAssignment_5_3_1");
+			builder.put(grammarAccess.getCompositeComponentAccess().getChildContextsAssignment_6_2(), "rule__CompositeComponent__ChildContextsAssignment_6_2");
+			builder.put(grammarAccess.getCompositeComponentAccess().getChildContextsAssignment_6_3_1(), "rule__CompositeComponent__ChildContextsAssignment_6_3_1");
+			builder.put(grammarAccess.getCompositeComponentAccess().getAssemblyConnectorsAssignment_7_2(), "rule__CompositeComponent__AssemblyConnectorsAssignment_7_2");
+			builder.put(grammarAccess.getCompositeComponentAccess().getAssemblyConnectorsAssignment_7_3_1(), "rule__CompositeComponent__AssemblyConnectorsAssignment_7_3_1");
+			builder.put(grammarAccess.getCompositeComponentAccess().getRequiredDelegationConnectorsAssignment_8_2(), "rule__CompositeComponent__RequiredDelegationConnectorsAssignment_8_2");
+			builder.put(grammarAccess.getCompositeComponentAccess().getRequiredDelegationConnectorsAssignment_8_3_1(), "rule__CompositeComponent__RequiredDelegationConnectorsAssignment_8_3_1");
+			builder.put(grammarAccess.getCompositeComponentAccess().getProvidedDelegationConnectorsAssignment_9_2(), "rule__CompositeComponent__ProvidedDelegationConnectorsAssignment_9_2");
+			builder.put(grammarAccess.getCompositeComponentAccess().getProvidedDelegationConnectorsAssignment_9_3_1(), "rule__CompositeComponent__ProvidedDelegationConnectorsAssignment_9_3_1");
 			builder.put(grammarAccess.getAssemblyContextAccess().getNameAssignment_0(), "rule__AssemblyContext__NameAssignment_0");
 			builder.put(grammarAccess.getAssemblyContextAccess().getInstantiatesAssignment_3(), "rule__AssemblyContext__InstantiatesAssignment_3");
 			builder.put(grammarAccess.getAssemblyContextAccess().getProvidedRolesAssignment_4_2(), "rule__AssemblyContext__ProvidedRolesAssignment_4_2");
@@ -130,6 +184,12 @@ public class CBSParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getProvidedDelegationConnectorAccess().getProvidingRoleAssignment(), "rule__ProvidedDelegationConnector__ProvidingRoleAssignment");
 			builder.put(grammarAccess.getProvidedRoleAccess().getInterfaceAssignment(), "rule__ProvidedRole__InterfaceAssignment");
 			builder.put(grammarAccess.getRequiredRoleAccess().getInterfaceAssignment(), "rule__RequiredRole__InterfaceAssignment");
+			builder.put(grammarAccess.getRepositoryAccess().getInterfacesAssignment_3_2(), "rule__Repository__InterfacesAssignment_3_2");
+			builder.put(grammarAccess.getRepositoryAccess().getInterfacesAssignment_3_3_1(), "rule__Repository__InterfacesAssignment_3_3_1");
+			builder.put(grammarAccess.getRepositoryAccess().getComponentsAssignment_4_2(), "rule__Repository__ComponentsAssignment_4_2");
+			builder.put(grammarAccess.getRepositoryAccess().getComponentsAssignment_4_3_1(), "rule__Repository__ComponentsAssignment_4_3_1");
+			builder.put(grammarAccess.getRepositoryAccess().getTypesAssignment_5_2(), "rule__Repository__TypesAssignment_5_2");
+			builder.put(grammarAccess.getRepositoryAccess().getTypesAssignment_5_3_1(), "rule__Repository__TypesAssignment_5_3_1");
 			builder.put(grammarAccess.getInterfaceAccess().getNameAssignment_2(), "rule__Interface__NameAssignment_2");
 			builder.put(grammarAccess.getInterfaceAccess().getSignaturesAssignment_4_0(), "rule__Interface__SignaturesAssignment_4_0");
 			builder.put(grammarAccess.getInterfaceAccess().getSignaturesAssignment_4_1_1(), "rule__Interface__SignaturesAssignment_4_1_1");
@@ -164,6 +224,7 @@ public class CBSParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getBranchTransitionAccess().getActionsAssignment_4_1(), "rule__BranchTransition__ActionsAssignment_4_1");
 			builder.put(grammarAccess.getLoopActionAccess().getBodyActionsAssignment_3(), "rule__LoopAction__BodyActionsAssignment_3");
 			builder.put(grammarAccess.getLoopActionAccess().getBodyActionsAssignment_4_1(), "rule__LoopAction__BodyActionsAssignment_4_1");
+			builder.put(grammarAccess.getComponentBasedSystemContainerAccess().getUnorderedGroup(), "rule__ComponentBasedSystemContainer__UnorderedGroup");
 		}
 	}
 	

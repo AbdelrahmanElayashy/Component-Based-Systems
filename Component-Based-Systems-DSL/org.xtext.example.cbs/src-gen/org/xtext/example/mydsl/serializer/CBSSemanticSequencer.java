@@ -4,12 +4,16 @@
 package org.xtext.example.mydsl.serializer;
 
 import com.google.inject.Inject;
+import componentbasedsystem.ComponentBasedSystemContainer;
+import componentbasedsystem.ComponentbasedsystemPackage;
 import componentbasedsystem.allocation.Allocation;
 import componentbasedsystem.allocation.AllocationContext;
 import componentbasedsystem.allocation.AllocationPackage;
+import componentbasedsystem.assembly.Assembly;
 import componentbasedsystem.assembly.AssemblyConnector;
 import componentbasedsystem.assembly.AssemblyContext;
 import componentbasedsystem.assembly.AssemblyPackage;
+import componentbasedsystem.assembly.CompositeComponent;
 import componentbasedsystem.assembly.ProvidedDelegationConnector;
 import componentbasedsystem.assembly.ProvidedRole;
 import componentbasedsystem.assembly.RequiredDelegationConnector;
@@ -20,6 +24,7 @@ import componentbasedsystem.environment.EnvironmentPackage;
 import componentbasedsystem.environment.Linker;
 import componentbasedsystem.repository.AtomicComponent;
 import componentbasedsystem.repository.Interface;
+import componentbasedsystem.repository.Repository;
 import componentbasedsystem.repository.RepositoryPackage;
 import componentbasedsystem.repository.Signature;
 import componentbasedsystem.repository.behavioraldescription.BehavioraldescriptionPackage;
@@ -72,11 +77,17 @@ public class CBSSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			}
 		else if (epackage == AssemblyPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
+			case AssemblyPackage.ASSEMBLY:
+				sequence_Assembly(context, (Assembly) semanticObject); 
+				return; 
 			case AssemblyPackage.ASSEMBLY_CONNECTOR:
 				sequence_AssemblyConnector(context, (AssemblyConnector) semanticObject); 
 				return; 
 			case AssemblyPackage.ASSEMBLY_CONTEXT:
 				sequence_AssemblyContext(context, (AssemblyContext) semanticObject); 
+				return; 
+			case AssemblyPackage.COMPOSITE_COMPONENT:
+				sequence_CompositeComponent(context, (CompositeComponent) semanticObject); 
 				return; 
 			case AssemblyPackage.PROVIDED_DELEGATION_CONNECTOR:
 				sequence_ProvidedDelegationConnector(context, (ProvidedDelegationConnector) semanticObject); 
@@ -112,6 +123,12 @@ public class CBSSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				sequence_Service(context, (Service) semanticObject); 
 				return; 
 			}
+		else if (epackage == ComponentbasedsystemPackage.eINSTANCE)
+			switch (semanticObject.eClass().getClassifierID()) {
+			case ComponentbasedsystemPackage.COMPONENT_BASED_SYSTEM_CONTAINER:
+				sequence_ComponentBasedSystemContainer(context, (ComponentBasedSystemContainer) semanticObject); 
+				return; 
+			}
 		else if (epackage == EnvironmentPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
 			case EnvironmentPackage.CONTAINER:
@@ -134,6 +151,9 @@ public class CBSSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				return; 
 			case RepositoryPackage.PARAMETER:
 				sequence_Parameter(context, (componentbasedsystem.repository.Parameter) semanticObject); 
+				return; 
+			case RepositoryPackage.REPOSITORY:
+				sequence_Repository(context, (Repository) semanticObject); 
 				return; 
 			case RepositoryPackage.SIGNATURE:
 				sequence_Signature(context, (Signature) semanticObject); 
@@ -243,6 +263,20 @@ public class CBSSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     Assembly returns Assembly
+	 *
+	 * Constraint:
+	 *     (name=EString (compositeComponents+=CompositeComponent compositeComponents+=CompositeComponent*)?)
+	 * </pre>
+	 */
+	protected void sequence_Assembly(ISerializationContext context, Assembly semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
 	 *     Component returns AtomicComponent
 	 *     AtomicComponent returns AtomicComponent
 	 *
@@ -292,6 +326,7 @@ public class CBSSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     Type returns CollectionType
 	 *     ParameterType returns CollectionType
 	 *     CollectionType returns CollectionType
 	 *
@@ -348,6 +383,48 @@ public class CBSSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 * </pre>
 	 */
 	protected void sequence_ComplexType(ISerializationContext context, ComplexType semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     ComponentBasedSystemContainer returns ComponentBasedSystemContainer
+	 *
+	 * Constraint:
+	 *     (
+	 *         repository=Repository | 
+	 *         (assemblies+=Assembly assemblies+=Assembly*) | 
+	 *         (environments+=Environment environments+=Environment*) | 
+	 *         (systems+=System systems+=System*)
+	 *     )+
+	 * </pre>
+	 */
+	protected void sequence_ComponentBasedSystemContainer(ISerializationContext context, ComponentBasedSystemContainer semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Component returns CompositeComponent
+	 *     CompositeComponent returns CompositeComponent
+	 *
+	 * Constraint:
+	 *     (
+	 *         name=EString 
+	 *         (requires+=[Interface|EString] requires+=[Interface|EString]*)? 
+	 *         (provides+=[Interface|EString] provides+=[Interface|EString]*)? 
+	 *         (childContexts+=AssemblyContext childContexts+=AssemblyContext*)? 
+	 *         (assemblyConnectors+=AssemblyConnector assemblyConnectors+=AssemblyConnector*)? 
+	 *         (requiredDelegationConnectors+=RequiredDelegationConnector requiredDelegationConnectors+=RequiredDelegationConnector*)? 
+	 *         (providedDelegationConnectors+=ProvidedDelegationConnector providedDelegationConnectors+=ProvidedDelegationConnector*)?
+	 *     )
+	 * </pre>
+	 */
+	protected void sequence_CompositeComponent(ISerializationContext context, CompositeComponent semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -525,6 +602,20 @@ public class CBSSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getProvidedRoleAccess().getInterfaceInterfaceEStringParserRuleCall_0_1(), semanticObject.eGet(AssemblyPackage.Literals.PROVIDED_ROLE__INTERFACE, false));
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Repository returns Repository
+	 *
+	 * Constraint:
+	 *     ((interfaces+=Interface interfaces+=Interface*)? (components+=AtomicComponent components+=AtomicComponent*)? (types+=Type types+=Type*)?)
+	 * </pre>
+	 */
+	protected void sequence_Repository(ISerializationContext context, Repository semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
