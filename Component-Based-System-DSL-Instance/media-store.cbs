@@ -130,24 +130,30 @@ assemblies {
 			childContexts {
 				MediaManagerContext {
 					instance MediaManager
-					provide(MediaStore)
-					require(Sound)
+					provide(IMediaStore MediaStore)
+					require(ISound Sound)
 				},
 				DigitalWaterMarkingContext {
 					instance DigitalWaterMarking
-					provide(Sound)
+					provide(ISound Sound)
 				},
 				DBCachContext {
 					instance DBCache
-					provide(AudioDB)
-					require(AudioDB)
+					provide(IAudioDB AudioDB)
+					require(IAudioDB AudioDB)
 				}
-				
+			
 			}
-//			requiredDelegationConnectors {
-//				//We need to iniliaze roles first!!
-//			}
+			
+			requiredDelegationConnectors {
+				"DBCachContext.IAudioDB"
+			}
+			
+			providedDelegationConnectors {
+				"MediaManagerContext.IMediaStore"
+			}
 		}
+
 	}
 }
 
@@ -173,14 +179,19 @@ systems{
 		childContexts= {
 			WebGUIContext {
 				instance WebGUI
-				provide (HTTP)
-				require (MediaStore)
+				provide (IHTTP HTTP)
+				require (IMediaStore MediaStore)
 			},
 			PoolingAudioDBContext {
 				instance PoolingAudioDB
-				provide (AudioDB)
+				provide (IAudioDB AudioDB)
 			}
 		}
+		
+		providedDelegationConnectors={
+			"WebGUIContext.IHTTP"
+		}
+		
 		allocation= {
 			env= mediaFileEnv
 			allocationContexts= {

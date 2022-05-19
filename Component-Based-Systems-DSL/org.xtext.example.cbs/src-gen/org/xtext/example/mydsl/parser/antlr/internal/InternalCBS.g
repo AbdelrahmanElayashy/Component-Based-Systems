@@ -1923,18 +1923,39 @@ ruleProvidedRole returns [EObject current=null]
 }:
 	(
 		(
-			{
-				if ($current==null) {
-					$current = createModelElement(grammarAccess.getProvidedRoleRule());
+			(
+				{
+					newCompositeNode(grammarAccess.getProvidedRoleAccess().getNameEStringParserRuleCall_0_0());
 				}
-			}
-			{
-				newCompositeNode(grammarAccess.getProvidedRoleAccess().getInterfaceInterfaceCrossReference_0());
-			}
-			ruleEString
-			{
-				afterParserOrEnumRuleCall();
-			}
+				lv_name_0_0=ruleEString
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getProvidedRoleRule());
+					}
+					set(
+						$current,
+						"name",
+						lv_name_0_0,
+						"org.xtext.example.mydsl.CBS.EString");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getProvidedRoleRule());
+					}
+				}
+				{
+					newCompositeNode(grammarAccess.getProvidedRoleAccess().getInterfaceInterfaceCrossReference_1_0());
+				}
+				ruleEString
+				{
+					afterParserOrEnumRuleCall();
+				}
+			)
 		)
 	)
 ;
@@ -1956,18 +1977,39 @@ ruleRequiredRole returns [EObject current=null]
 }:
 	(
 		(
-			{
-				if ($current==null) {
-					$current = createModelElement(grammarAccess.getRequiredRoleRule());
+			(
+				{
+					newCompositeNode(grammarAccess.getRequiredRoleAccess().getNameEStringParserRuleCall_0_0());
 				}
-			}
-			{
-				newCompositeNode(grammarAccess.getRequiredRoleAccess().getInterfaceInterfaceCrossReference_0());
-			}
-			ruleEString
-			{
-				afterParserOrEnumRuleCall();
-			}
+				lv_name_0_0=ruleEString
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getRequiredRoleRule());
+					}
+					set(
+						$current,
+						"name",
+						lv_name_0_0,
+						"org.xtext.example.mydsl.CBS.EString");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getRequiredRoleRule());
+					}
+				}
+				{
+					newCompositeNode(grammarAccess.getRequiredRoleAccess().getInterfaceInterfaceCrossReference_1_0());
+				}
+				ruleEString
+				{
+					afterParserOrEnumRuleCall();
+				}
+			)
 		)
 	)
 ;

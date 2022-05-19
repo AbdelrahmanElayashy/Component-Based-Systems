@@ -1389,41 +1389,69 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	}
 	public class ProvidedRoleElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.CBS.ProvidedRole");
-		private final Assignment cInterfaceAssignment = (Assignment)rule.eContents().get(1);
-		private final CrossReference cInterfaceInterfaceCrossReference_0 = (CrossReference)cInterfaceAssignment.eContents().get(0);
-		private final RuleCall cInterfaceInterfaceEStringParserRuleCall_0_1 = (RuleCall)cInterfaceInterfaceCrossReference_0.eContents().get(1);
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cNameEStringParserRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
+		private final Assignment cInterfaceAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final CrossReference cInterfaceInterfaceCrossReference_1_0 = (CrossReference)cInterfaceAssignment_1.eContents().get(0);
+		private final RuleCall cInterfaceInterfaceEStringParserRuleCall_1_0_1 = (RuleCall)cInterfaceInterfaceCrossReference_1_0.eContents().get(1);
 		
 		//ProvidedRole returns assembly::ProvidedRole:
-		//        interface=[repository::Interface|EString];
-		@Override public ParserRule getRule() { return rule; }
-		
-		//interface=[repository::Interface|EString]
-		public Assignment getInterfaceAssignment() { return cInterfaceAssignment; }
-		
-		//[repository::Interface|EString]
-		public CrossReference getInterfaceInterfaceCrossReference_0() { return cInterfaceInterfaceCrossReference_0; }
-		
-		//EString
-		public RuleCall getInterfaceInterfaceEStringParserRuleCall_0_1() { return cInterfaceInterfaceEStringParserRuleCall_0_1; }
-	}
-	public class RequiredRoleElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.CBS.RequiredRole");
-		private final Assignment cInterfaceAssignment = (Assignment)rule.eContents().get(1);
-		private final CrossReference cInterfaceInterfaceCrossReference_0 = (CrossReference)cInterfaceAssignment.eContents().get(0);
-		private final RuleCall cInterfaceInterfaceEStringParserRuleCall_0_1 = (RuleCall)cInterfaceInterfaceCrossReference_0.eContents().get(1);
-		
-		//RequiredRole returns assembly::RequiredRole:
+		//    name=EString
 		//    interface=[repository::Interface|EString];
 		@Override public ParserRule getRule() { return rule; }
 		
+		//name=EString
 		//interface=[repository::Interface|EString]
-		public Assignment getInterfaceAssignment() { return cInterfaceAssignment; }
+		public Group getGroup() { return cGroup; }
 		
-		//[repository::Interface|EString]
-		public CrossReference getInterfaceInterfaceCrossReference_0() { return cInterfaceInterfaceCrossReference_0; }
+		//name=EString
+		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
 		
 		//EString
-		public RuleCall getInterfaceInterfaceEStringParserRuleCall_0_1() { return cInterfaceInterfaceEStringParserRuleCall_0_1; }
+		public RuleCall getNameEStringParserRuleCall_0_0() { return cNameEStringParserRuleCall_0_0; }
+		
+		//interface=[repository::Interface|EString]
+		public Assignment getInterfaceAssignment_1() { return cInterfaceAssignment_1; }
+		
+		//[repository::Interface|EString]
+		public CrossReference getInterfaceInterfaceCrossReference_1_0() { return cInterfaceInterfaceCrossReference_1_0; }
+		
+		//EString
+		public RuleCall getInterfaceInterfaceEStringParserRuleCall_1_0_1() { return cInterfaceInterfaceEStringParserRuleCall_1_0_1; }
+	}
+	public class RequiredRoleElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.CBS.RequiredRole");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cNameEStringParserRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
+		private final Assignment cInterfaceAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final CrossReference cInterfaceInterfaceCrossReference_1_0 = (CrossReference)cInterfaceAssignment_1.eContents().get(0);
+		private final RuleCall cInterfaceInterfaceEStringParserRuleCall_1_0_1 = (RuleCall)cInterfaceInterfaceCrossReference_1_0.eContents().get(1);
+		
+		//RequiredRole returns assembly::RequiredRole:
+		//    name=EString
+		//    interface=[repository::Interface|EString];
+		@Override public ParserRule getRule() { return rule; }
+		
+		//name=EString
+		//interface=[repository::Interface|EString]
+		public Group getGroup() { return cGroup; }
+		
+		//name=EString
+		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		
+		//EString
+		public RuleCall getNameEStringParserRuleCall_0_0() { return cNameEStringParserRuleCall_0_0; }
+		
+		//interface=[repository::Interface|EString]
+		public Assignment getInterfaceAssignment_1() { return cInterfaceAssignment_1; }
+		
+		//[repository::Interface|EString]
+		public CrossReference getInterfaceInterfaceCrossReference_1_0() { return cInterfaceInterfaceCrossReference_1_0; }
+		
+		//EString
+		public RuleCall getInterfaceInterfaceEStringParserRuleCall_1_0_1() { return cInterfaceInterfaceEStringParserRuleCall_1_0_1; }
 	}
 	public class RepositoryElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.CBS.Repository");
@@ -2939,7 +2967,8 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	}
 	
 	//ProvidedRole returns assembly::ProvidedRole:
-	//        interface=[repository::Interface|EString];
+	//    name=EString
+	//    interface=[repository::Interface|EString];
 	public ProvidedRoleElements getProvidedRoleAccess() {
 		return pProvidedRole;
 	}
@@ -2949,6 +2978,7 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	}
 	
 	//RequiredRole returns assembly::RequiredRole:
+	//    name=EString
 	//    interface=[repository::Interface|EString];
 	public RequiredRoleElements getRequiredRoleAccess() {
 		return pRequiredRole;

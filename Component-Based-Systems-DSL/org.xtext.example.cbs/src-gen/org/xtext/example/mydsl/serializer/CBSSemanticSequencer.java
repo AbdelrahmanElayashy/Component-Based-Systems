@@ -591,16 +591,19 @@ public class CBSSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     ProvidedRole returns ProvidedRole
 	 *
 	 * Constraint:
-	 *     interface=[Interface|EString]
+	 *     (name=EString interface=[Interface|EString])
 	 * </pre>
 	 */
 	protected void sequence_ProvidedRole(ISerializationContext context, ProvidedRole semanticObject) {
 		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, AssemblyPackage.Literals.PROVIDED_ROLE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AssemblyPackage.Literals.PROVIDED_ROLE__NAME));
 			if (transientValues.isValueTransient(semanticObject, AssemblyPackage.Literals.PROVIDED_ROLE__INTERFACE) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AssemblyPackage.Literals.PROVIDED_ROLE__INTERFACE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getProvidedRoleAccess().getInterfaceInterfaceEStringParserRuleCall_0_1(), semanticObject.eGet(AssemblyPackage.Literals.PROVIDED_ROLE__INTERFACE, false));
+		feeder.accept(grammarAccess.getProvidedRoleAccess().getNameEStringParserRuleCall_0_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getProvidedRoleAccess().getInterfaceInterfaceEStringParserRuleCall_1_0_1(), semanticObject.eGet(AssemblyPackage.Literals.PROVIDED_ROLE__INTERFACE, false));
 		feeder.finish();
 	}
 	
@@ -645,16 +648,19 @@ public class CBSSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     RequiredRole returns RequiredRole
 	 *
 	 * Constraint:
-	 *     interface=[Interface|EString]
+	 *     (name=EString interface=[Interface|EString])
 	 * </pre>
 	 */
 	protected void sequence_RequiredRole(ISerializationContext context, RequiredRole semanticObject) {
 		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, AssemblyPackage.Literals.REQUIRED_ROLE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AssemblyPackage.Literals.REQUIRED_ROLE__NAME));
 			if (transientValues.isValueTransient(semanticObject, AssemblyPackage.Literals.REQUIRED_ROLE__INTERFACE) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AssemblyPackage.Literals.REQUIRED_ROLE__INTERFACE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getRequiredRoleAccess().getInterfaceInterfaceEStringParserRuleCall_0_1(), semanticObject.eGet(AssemblyPackage.Literals.REQUIRED_ROLE__INTERFACE, false));
+		feeder.accept(grammarAccess.getRequiredRoleAccess().getNameEStringParserRuleCall_0_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getRequiredRoleAccess().getInterfaceInterfaceEStringParserRuleCall_1_0_1(), semanticObject.eGet(AssemblyPackage.Literals.REQUIRED_ROLE__INTERFACE, false));
 		feeder.finish();
 	}
 	

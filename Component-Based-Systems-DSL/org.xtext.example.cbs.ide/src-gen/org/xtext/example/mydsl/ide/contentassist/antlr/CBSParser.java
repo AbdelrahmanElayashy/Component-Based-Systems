@@ -88,6 +88,8 @@ public class CBSParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getAssemblyContextAccess().getGroup_5(), "rule__AssemblyContext__Group_5__0");
 			builder.put(grammarAccess.getAssemblyContextAccess().getGroup_5_3(), "rule__AssemblyContext__Group_5_3__0");
 			builder.put(grammarAccess.getAssemblyConnectorAccess().getGroup(), "rule__AssemblyConnector__Group__0");
+			builder.put(grammarAccess.getProvidedRoleAccess().getGroup(), "rule__ProvidedRole__Group__0");
+			builder.put(grammarAccess.getRequiredRoleAccess().getGroup(), "rule__RequiredRole__Group__0");
 			builder.put(grammarAccess.getRepositoryAccess().getGroup(), "rule__Repository__Group__0");
 			builder.put(grammarAccess.getRepositoryAccess().getGroup_3(), "rule__Repository__Group_3__0");
 			builder.put(grammarAccess.getRepositoryAccess().getGroup_3_3(), "rule__Repository__Group_3_3__0");
@@ -182,8 +184,10 @@ public class CBSParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getAssemblyConnectorAccess().getProvidingRoleAssignment_3(), "rule__AssemblyConnector__ProvidingRoleAssignment_3");
 			builder.put(grammarAccess.getRequiredDelegationConnectorAccess().getRequiringRoleAssignment(), "rule__RequiredDelegationConnector__RequiringRoleAssignment");
 			builder.put(grammarAccess.getProvidedDelegationConnectorAccess().getProvidingRoleAssignment(), "rule__ProvidedDelegationConnector__ProvidingRoleAssignment");
-			builder.put(grammarAccess.getProvidedRoleAccess().getInterfaceAssignment(), "rule__ProvidedRole__InterfaceAssignment");
-			builder.put(grammarAccess.getRequiredRoleAccess().getInterfaceAssignment(), "rule__RequiredRole__InterfaceAssignment");
+			builder.put(grammarAccess.getProvidedRoleAccess().getNameAssignment_0(), "rule__ProvidedRole__NameAssignment_0");
+			builder.put(grammarAccess.getProvidedRoleAccess().getInterfaceAssignment_1(), "rule__ProvidedRole__InterfaceAssignment_1");
+			builder.put(grammarAccess.getRequiredRoleAccess().getNameAssignment_0(), "rule__RequiredRole__NameAssignment_0");
+			builder.put(grammarAccess.getRequiredRoleAccess().getInterfaceAssignment_1(), "rule__RequiredRole__InterfaceAssignment_1");
 			builder.put(grammarAccess.getRepositoryAccess().getInterfacesAssignment_3_2(), "rule__Repository__InterfacesAssignment_3_2");
 			builder.put(grammarAccess.getRepositoryAccess().getInterfacesAssignment_3_3_1(), "rule__Repository__InterfacesAssignment_3_3_1");
 			builder.put(grammarAccess.getRepositoryAccess().getComponentsAssignment_4_2(), "rule__Repository__ComponentsAssignment_4_2");

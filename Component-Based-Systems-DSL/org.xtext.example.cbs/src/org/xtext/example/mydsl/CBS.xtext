@@ -111,10 +111,12 @@ ProvidedDelegationConnector returns assembly::ProvidedDelegationConnector:
 	 providingRole=[assembly::ProvidedRole|EString];
 
 ProvidedRole returns assembly::ProvidedRole:
-		interface=[repository::Interface|EString];
+	name=EString
+	interface=[repository::Interface|EString];
 	
 
 RequiredRole returns assembly::RequiredRole:
+	name=EString
 	interface=[repository::Interface|EString];
 	
 
