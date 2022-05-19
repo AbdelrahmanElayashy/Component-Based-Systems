@@ -178,7 +178,7 @@ ParameterType returns types::ParameterType:
 	SimpleType | ComplexType | CollectionType;
 
 SimpleType returns types::SimpleType:
-	'type' type=SimpleTypeEnum;
+	'type' name=EString type=SimpleTypeEnum ;
 
 ComplexType returns types::ComplexType:
 	{types::ComplexType}
@@ -196,10 +196,10 @@ ComplexMember returns types::ComplexMember:
 
 Void returns types::Void:
 	{types::Void}
-	'Void';
+	name=EString;
 	
 CollectionType returns types::CollectionType:
-	type=CollectionTypeEnum '<' innerType=[types::ParameterType|EString] '>';
+	type=CollectionTypeEnum '<' innerType=[types::ParameterType|EString] '>' name=EString;
 
 enum CollectionTypeEnum returns types::CollectionTypeEnum:
 	List = 'List' | Map = 'Map';

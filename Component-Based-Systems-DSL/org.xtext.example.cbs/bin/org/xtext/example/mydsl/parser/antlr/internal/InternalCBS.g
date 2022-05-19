@@ -2814,9 +2814,28 @@ ruleSimpleType returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getSimpleTypeAccess().getTypeSimpleTypeEnumEnumRuleCall_1_0());
+					newCompositeNode(grammarAccess.getSimpleTypeAccess().getNameEStringParserRuleCall_1_0());
 				}
-				lv_type_1_0=ruleSimpleTypeEnum
+				lv_name_1_0=ruleEString
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getSimpleTypeRule());
+					}
+					set(
+						$current,
+						"name",
+						lv_name_1_0,
+						"org.xtext.example.mydsl.CBS.EString");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getSimpleTypeAccess().getTypeSimpleTypeEnumEnumRuleCall_2_0());
+				}
+				lv_type_2_0=ruleSimpleTypeEnum
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getSimpleTypeRule());
@@ -2824,7 +2843,7 @@ ruleSimpleType returns [EObject current=null]
 					set(
 						$current,
 						"type",
-						lv_type_1_0,
+						lv_type_2_0,
 						"org.xtext.example.mydsl.CBS.SimpleTypeEnum");
 					afterParserOrEnumRuleCall();
 				}
@@ -3017,10 +3036,25 @@ ruleVoid returns [EObject current=null]
 					$current);
 			}
 		)
-		otherlv_1='Void'
-		{
-			newLeafNode(otherlv_1, grammarAccess.getVoidAccess().getVoidKeyword_1());
-		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getVoidAccess().getNameEStringParserRuleCall_1_0());
+				}
+				lv_name_1_0=ruleEString
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getVoidRule());
+					}
+					set(
+						$current,
+						"name",
+						lv_name_1_0,
+						"org.xtext.example.mydsl.CBS.EString");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
 	)
 ;
 
@@ -3083,6 +3117,25 @@ ruleCollectionType returns [EObject current=null]
 		{
 			newLeafNode(otherlv_3, grammarAccess.getCollectionTypeAccess().getGreaterThanSignKeyword_3());
 		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getCollectionTypeAccess().getNameEStringParserRuleCall_4_0());
+				}
+				lv_name_4_0=ruleEString
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getCollectionTypeRule());
+					}
+					set(
+						$current,
+						"name",
+						lv_name_4_0,
+						"org.xtext.example.mydsl.CBS.EString");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
 	)
 ;
 

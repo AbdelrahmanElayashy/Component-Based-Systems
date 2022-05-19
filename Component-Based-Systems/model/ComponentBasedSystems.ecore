@@ -256,7 +256,10 @@
       </eClassifiers>
     </eSubpackages>
     <eSubpackages name="types" nsURI="http://www.example.org/types" nsPrefix="types">
-      <eClassifiers xsi:type="ecore:EClass" name="Type" abstract="true"/>
+      <eClassifiers xsi:type="ecore:EClass" name="Type" abstract="true">
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1"
+            eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eClassifiers>
       <eClassifiers xsi:type="ecore:EClass" name="ParameterType" abstract="true" eSuperTypes="#//repository/types/Type"/>
       <eClassifiers xsi:type="ecore:EClass" name="Void" eSuperTypes="#//repository/types/Type"/>
       <eClassifiers xsi:type="ecore:EClass" name="SimpleType" eSuperTypes="#//repository/types/ParameterType">
@@ -276,8 +279,6 @@
       <eClassifiers xsi:type="ecore:EClass" name="ComplexType" eSuperTypes="#//repository/types/ParameterType">
         <eStructuralFeatures xsi:type="ecore:EReference" name="members" upperBound="-1"
             eType="#//repository/types/ComplexMember" containment="true"/>
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1"
-            eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eClassifiers>
       <eClassifiers xsi:type="ecore:EClass" name="ComplexMember">
         <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1"

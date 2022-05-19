@@ -210,14 +210,17 @@ public class CBSParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getSignatureAccess().getParametersAssignment_3_1_1(), "rule__Signature__ParametersAssignment_3_1_1");
 			builder.put(grammarAccess.getParameterAccess().getTypeAssignment_0(), "rule__Parameter__TypeAssignment_0");
 			builder.put(grammarAccess.getParameterAccess().getNameAssignment_1(), "rule__Parameter__NameAssignment_1");
-			builder.put(grammarAccess.getSimpleTypeAccess().getTypeAssignment_1(), "rule__SimpleType__TypeAssignment_1");
+			builder.put(grammarAccess.getSimpleTypeAccess().getNameAssignment_1(), "rule__SimpleType__NameAssignment_1");
+			builder.put(grammarAccess.getSimpleTypeAccess().getTypeAssignment_2(), "rule__SimpleType__TypeAssignment_2");
 			builder.put(grammarAccess.getComplexTypeAccess().getNameAssignment_2(), "rule__ComplexType__NameAssignment_2");
 			builder.put(grammarAccess.getComplexTypeAccess().getMembersAssignment_4_0(), "rule__ComplexType__MembersAssignment_4_0");
 			builder.put(grammarAccess.getComplexTypeAccess().getMembersAssignment_4_1_1(), "rule__ComplexType__MembersAssignment_4_1_1");
 			builder.put(grammarAccess.getComplexMemberAccess().getNameAssignment_0(), "rule__ComplexMember__NameAssignment_0");
 			builder.put(grammarAccess.getComplexMemberAccess().getTypeAssignment_2(), "rule__ComplexMember__TypeAssignment_2");
+			builder.put(grammarAccess.getVoidAccess().getNameAssignment_1(), "rule__Void__NameAssignment_1");
 			builder.put(grammarAccess.getCollectionTypeAccess().getTypeAssignment_0(), "rule__CollectionType__TypeAssignment_0");
 			builder.put(grammarAccess.getCollectionTypeAccess().getInnerTypeAssignment_2(), "rule__CollectionType__InnerTypeAssignment_2");
+			builder.put(grammarAccess.getCollectionTypeAccess().getNameAssignment_4(), "rule__CollectionType__NameAssignment_4");
 			builder.put(grammarAccess.getServiceAccess().getImplementsAssignment_1(), "rule__Service__ImplementsAssignment_1");
 			builder.put(grammarAccess.getServiceAccess().getActionsAssignment_3(), "rule__Service__ActionsAssignment_3");
 			builder.put(grammarAccess.getServiceAccess().getActionsAssignment_4_1(), "rule__Service__ActionsAssignment_4_1");

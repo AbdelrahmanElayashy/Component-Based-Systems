@@ -174,7 +174,9 @@
           <genEnumLiterals ecoreEnumLiteral="ComponentBasedSystems.ecore#//repository/types/CollectionTypeEnum/List"/>
           <genEnumLiterals ecoreEnumLiteral="ComponentBasedSystems.ecore#//repository/types/CollectionTypeEnum/Map"/>
         </genEnums>
-        <genClasses image="false" ecoreClass="ComponentBasedSystems.ecore#//repository/types/Type"/>
+        <genClasses image="false" ecoreClass="ComponentBasedSystems.ecore#//repository/types/Type">
+          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentBasedSystems.ecore#//repository/types/Type/name"/>
+        </genClasses>
         <genClasses image="false" ecoreClass="ComponentBasedSystems.ecore#//repository/types/ParameterType"/>
         <genClasses ecoreClass="ComponentBasedSystems.ecore#//repository/types/Void"/>
         <genClasses ecoreClass="ComponentBasedSystems.ecore#//repository/types/SimpleType">
@@ -182,7 +184,6 @@
         </genClasses>
         <genClasses ecoreClass="ComponentBasedSystems.ecore#//repository/types/ComplexType">
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//repository/types/ComplexType/members"/>
-          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentBasedSystems.ecore#//repository/types/ComplexType/name"/>
         </genClasses>
         <genClasses ecoreClass="ComponentBasedSystems.ecore#//repository/types/ComplexMember">
           <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentBasedSystems.ecore#//repository/types/ComplexMember/name"/>

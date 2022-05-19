@@ -14,8 +14,8 @@ repository {
 				complexTypeA upload()
 			},
 			interface AudioDB {
-				complexTypeA queryDB(),
-				complexTypeA addFile()
+				complexTypeA queryDB(int param1),
+				Void addFile()
 			}
 		}
 		
@@ -108,7 +108,8 @@ repository {
 			type complexTypeA {
 				memberA: complexTypeA
 			},
-			type Int
+			type int Int,
+			Void
 		}
 	}
 }
@@ -131,7 +132,7 @@ assemblies {
 				MediaManagerContext {
 					instance MediaManager
 					provide(IMediaStore MediaStore)
-					require(ISound Sound)
+					require(ISound Sound, IAudioDB AudioDB)
 				},
 				DigitalWaterMarkingContext {
 					instance DigitalWaterMarking
@@ -143,6 +144,11 @@ assemblies {
 					require(IAudioDB AudioDB)
 				}
 			
+			}
+			
+			assemblyConnectors {
+				("MediaManagerContext.IAudioDB", "DBCachContext.IAudioDB"),
+				("MediaManagerContext.ISound", "DigitalWaterMarkingContext.ISound")
 			}
 			
 			requiredDelegationConnectors {

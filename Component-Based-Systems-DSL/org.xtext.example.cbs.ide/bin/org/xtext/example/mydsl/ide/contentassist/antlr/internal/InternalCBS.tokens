@@ -2,10 +2,10 @@
 ')'=43
 ','=25
 ':'=62
-';'=67
-'<'=64
-'>'=65
-'?'=71
+';'=66
+'<'=63
+'>'=64
+'?'=70
 'Boolean'=13
 'Char'=14
 'CompositeComponent'=45
@@ -19,7 +19,6 @@
 'Map'=20
 'String'=11
 'System'=28
-'Void'=63
 'allocates'=37
 'allocation='=29
 'allocationContexts='=35
@@ -28,7 +27,7 @@
 'assemblyConnectors'=49
 'assemblyConnectors='=31
 'atomicComponent'=59
-'branch'=70
+'branch'=69
 'childContexts'=48
 'childContexts='=30
 'components'=56
@@ -36,14 +35,14 @@
 'containers='=39
 'env='=34
 'environments'=26
-'externalCall'=69
+'externalCall'=68
 'instance'=52
 'interface'=58
 'interfaces'=55
-'internalCall'=68
+'internalCall'=67
 'link'=41
 'linkers='=40
-'loop'=72
+'loop'=71
 'provide'=53
 'providedDelegationConnectors'=51
 'providedDelegationConnectors='=33
@@ -53,7 +52,7 @@
 'requiredDelegationConnectors'=50
 'requiredDelegationConnectors='=32
 'requires'=46
-'service'=66
+'service'=65
 'services'=60
 'systems'=27
 'type'=61
@@ -128,4 +127,3 @@ T__68=68
 T__69=69
 T__70=70
 T__71=71
-T__72=72

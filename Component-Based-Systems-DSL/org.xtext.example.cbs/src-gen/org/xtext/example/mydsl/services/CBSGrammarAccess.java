@@ -2033,24 +2033,32 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.CBS.SimpleType");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cTypeKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cTypeSimpleTypeEnumEnumRuleCall_1_0 = (RuleCall)cTypeAssignment_1.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameEStringParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Assignment cTypeAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cTypeSimpleTypeEnumEnumRuleCall_2_0 = (RuleCall)cTypeAssignment_2.eContents().get(0);
 		
 		//SimpleType returns types::SimpleType:
-		//    'type' type=SimpleTypeEnum;
+		//    'type' name=EString type=SimpleTypeEnum ;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'type' type=SimpleTypeEnum
+		//'type' name=EString type=SimpleTypeEnum
 		public Group getGroup() { return cGroup; }
 		
 		//'type'
 		public Keyword getTypeKeyword_0() { return cTypeKeyword_0; }
 		
+		//name=EString
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//EString
+		public RuleCall getNameEStringParserRuleCall_1_0() { return cNameEStringParserRuleCall_1_0; }
+		
 		//type=SimpleTypeEnum
-		public Assignment getTypeAssignment_1() { return cTypeAssignment_1; }
+		public Assignment getTypeAssignment_2() { return cTypeAssignment_2; }
 		
 		//SimpleTypeEnum
-		public RuleCall getTypeSimpleTypeEnumEnumRuleCall_1_0() { return cTypeSimpleTypeEnumEnumRuleCall_1_0; }
+		public RuleCall getTypeSimpleTypeEnumEnumRuleCall_2_0() { return cTypeSimpleTypeEnumEnumRuleCall_2_0; }
 	}
 	public class ComplexTypeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.CBS.ComplexType");
@@ -2164,22 +2172,26 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.CBS.Void");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cVoidAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cVoidKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameEStringParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		
 		//Void returns types::Void:
 		//    {types::Void}
-		//    'Void';
+		//    name=EString;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//{types::Void}
-		//'Void'
+		//name=EString
 		public Group getGroup() { return cGroup; }
 		
 		//{types::Void}
 		public Action getVoidAction_0() { return cVoidAction_0; }
 		
-		//'Void'
-		public Keyword getVoidKeyword_1() { return cVoidKeyword_1; }
+		//name=EString
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//EString
+		public RuleCall getNameEStringParserRuleCall_1_0() { return cNameEStringParserRuleCall_1_0; }
 	}
 	public class CollectionTypeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.CBS.CollectionType");
@@ -2191,12 +2203,14 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		private final CrossReference cInnerTypeParameterTypeCrossReference_2_0 = (CrossReference)cInnerTypeAssignment_2.eContents().get(0);
 		private final RuleCall cInnerTypeParameterTypeEStringParserRuleCall_2_0_1 = (RuleCall)cInnerTypeParameterTypeCrossReference_2_0.eContents().get(1);
 		private final Keyword cGreaterThanSignKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cNameAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cNameEStringParserRuleCall_4_0 = (RuleCall)cNameAssignment_4.eContents().get(0);
 		
 		//CollectionType returns types::CollectionType:
-		//    type=CollectionTypeEnum '<' innerType=[types::ParameterType|EString] '>';
+		//    type=CollectionTypeEnum '<' innerType=[types::ParameterType|EString] '>' name=EString;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//type=CollectionTypeEnum '<' innerType=[types::ParameterType|EString] '>'
+		//type=CollectionTypeEnum '<' innerType=[types::ParameterType|EString] '>' name=EString
 		public Group getGroup() { return cGroup; }
 		
 		//type=CollectionTypeEnum
@@ -2219,6 +2233,12 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		
 		//'>'
 		public Keyword getGreaterThanSignKeyword_3() { return cGreaterThanSignKeyword_3; }
+		
+		//name=EString
+		public Assignment getNameAssignment_4() { return cNameAssignment_4; }
+		
+		//EString
+		public RuleCall getNameEStringParserRuleCall_4_0() { return cNameEStringParserRuleCall_4_0; }
 	}
 	public class AbstractActionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.CBS.AbstractAction");
@@ -3093,7 +3113,7 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	}
 	
 	//SimpleType returns types::SimpleType:
-	//    'type' type=SimpleTypeEnum;
+	//    'type' name=EString type=SimpleTypeEnum ;
 	public SimpleTypeElements getSimpleTypeAccess() {
 		return pSimpleType;
 	}
@@ -3139,7 +3159,7 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	
 	//Void returns types::Void:
 	//    {types::Void}
-	//    'Void';
+	//    name=EString;
 	public VoidElements getVoidAccess() {
 		return pVoid;
 	}
@@ -3149,7 +3169,7 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	}
 	
 	//CollectionType returns types::CollectionType:
-	//    type=CollectionTypeEnum '<' innerType=[types::ParameterType|EString] '>';
+	//    type=CollectionTypeEnum '<' innerType=[types::ParameterType|EString] '>' name=EString;
 	public CollectionTypeElements getCollectionTypeAccess() {
 		return pCollectionType;
 	}

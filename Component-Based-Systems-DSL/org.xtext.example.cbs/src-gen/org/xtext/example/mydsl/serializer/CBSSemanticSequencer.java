@@ -331,7 +331,7 @@ public class CBSSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     CollectionType returns CollectionType
 	 *
 	 * Constraint:
-	 *     (type=CollectionTypeEnum innerType=[ParameterType|EString])
+	 *     (type=CollectionTypeEnum innerType=[ParameterType|EString] name=EString)
 	 * </pre>
 	 */
 	protected void sequence_CollectionType(ISerializationContext context, CollectionType semanticObject) {
@@ -340,10 +340,13 @@ public class CBSSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TypesPackage.Literals.COLLECTION_TYPE__TYPE));
 			if (transientValues.isValueTransient(semanticObject, TypesPackage.Literals.COLLECTION_TYPE__INNER_TYPE) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TypesPackage.Literals.COLLECTION_TYPE__INNER_TYPE));
+			if (transientValues.isValueTransient(semanticObject, TypesPackage.Literals.TYPE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TypesPackage.Literals.TYPE__NAME));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getCollectionTypeAccess().getTypeCollectionTypeEnumEnumRuleCall_0_0(), semanticObject.getType());
 		feeder.accept(grammarAccess.getCollectionTypeAccess().getInnerTypeParameterTypeEStringParserRuleCall_2_0_1(), semanticObject.eGet(TypesPackage.Literals.COLLECTION_TYPE__INNER_TYPE, false));
+		feeder.accept(grammarAccess.getCollectionTypeAccess().getNameEStringParserRuleCall_4_0(), semanticObject.getName());
 		feeder.finish();
 	}
 	
@@ -701,16 +704,19 @@ public class CBSSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     SimpleType returns SimpleType
 	 *
 	 * Constraint:
-	 *     type=SimpleTypeEnum
+	 *     (name=EString type=SimpleTypeEnum)
 	 * </pre>
 	 */
 	protected void sequence_SimpleType(ISerializationContext context, SimpleType semanticObject) {
 		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, TypesPackage.Literals.TYPE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TypesPackage.Literals.TYPE__NAME));
 			if (transientValues.isValueTransient(semanticObject, TypesPackage.Literals.SIMPLE_TYPE__TYPE) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TypesPackage.Literals.SIMPLE_TYPE__TYPE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getSimpleTypeAccess().getTypeSimpleTypeEnumEnumRuleCall_1_0(), semanticObject.getType());
+		feeder.accept(grammarAccess.getSimpleTypeAccess().getNameEStringParserRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getSimpleTypeAccess().getTypeSimpleTypeEnumEnumRuleCall_2_0(), semanticObject.getType());
 		feeder.finish();
 	}
 	
@@ -743,11 +749,17 @@ public class CBSSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Void returns Void
 	 *
 	 * Constraint:
-	 *     {Void}
+	 *     name=EString
 	 * </pre>
 	 */
 	protected void sequence_Void(ISerializationContext context, componentbasedsystem.repository.types.Void semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, TypesPackage.Literals.TYPE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TypesPackage.Literals.TYPE__NAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getVoidAccess().getNameEStringParserRuleCall_1_0(), semanticObject.getName());
+		feeder.finish();
 	}
 	
 	
