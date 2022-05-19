@@ -119,6 +119,17 @@ RequiredRole returns assembly::RequiredRole:
 	
 
 // region repository
+/*
+ * TODO:
+ * - how to reference simple/collection types?
+ * - no strict order inside atomic component?
+ * - allow empty {}?
+ * - remove nesting of repository
+ * - correct usage of actions?
+ * 
+ * TODO general
+ * - document model changes
+ */ 
 
 Repository returns repository::Repository:
 	{repository::Repository}
@@ -142,15 +153,15 @@ AtomicComponent returns repository::AtomicComponent:
 	'atomicComponent'
 	name=EString
 	'{'
-		('requires' '{' requires+=[repository::Interface|EString] ( "," requires+=[repository::Interface|EString])* '}' )?
 		('provides' '{' provides+=[repository::Interface|EString] ( "," provides+=[repository::Interface|EString])* '}' )?
+		('requires' '{' requires+=[repository::Interface|EString] ( "," requires+=[repository::Interface|EString])* '}' )?
 		('services' '{' services+=Service ( "," services+=Service)* '}' )?
 	'}';
 
 Signature returns repository::Signature:
 	returnType=[types::Type|EString]
 	name=EString 
-	('(' parameters+=Parameter ( "," parameters+=Parameter)* ')' )?;
+	'('( parameters+=Parameter ( "," parameters+=Parameter)* )? ')';
 
 Parameter returns repository::Parameter:
 	type=[types::ParameterType|EString] 
@@ -170,6 +181,7 @@ SimpleType returns types::SimpleType:
 ComplexType returns types::ComplexType:
 	{types::ComplexType}
 	'type'
+	name=EString
 	'{'
 		(members+=ComplexMember ( "," members+=ComplexMember)* )?
 	'}';
@@ -217,14 +229,14 @@ BranchAction returns behavioraldescription::BranchAction:
 BranchTransition returns behavioraldescription::BranchTransition:
 	branchCondition=EString '?' 
 	'{' 
-		actions+=AbstractAction ( "," actions+=AbstractAction)*
+		actions+=AbstractAction ( ";" actions+=AbstractAction)*
 	'}';
 
 LoopAction returns behavioraldescription::LoopAction:
 	{behavioraldescription::LoopAction}
 	'loop'
 	'{'
-		bodyActions+=AbstractAction ( "," bodyActions+=AbstractAction)*
+		bodyActions+=AbstractAction ( ";" bodyActions+=AbstractAction)*
 	'}';
 	
 // region helper

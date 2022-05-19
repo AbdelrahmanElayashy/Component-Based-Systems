@@ -2,59 +2,90 @@ repository {
 	
 	repository {
 		interfaces {
-			
 			interface HTTP {
-
+				complexTypeA HTTPUpload(),
+				complexTypeA HTTPDownload()
 			},
-			
 			interface Sound {
-				
+				complexTypeA watermark()
 			},
-			
 			interface MediaStore {
-				
+				complexTypeA download(complexTypeA param1),
+				complexTypeA upload()
 			},
-			
 			interface AudioDB {
-				
+				complexTypeA queryDB(),
+				complexTypeA addFile()
 			}
-			
-			
 		}
 		
-		
 		components {
-			
 			atomicComponent WebGUI {
-				requires {
-					MediaStore
-				}
 				provides {
 					HTTP
 				}
-			},
-			
-			atomicComponent MediaManager {
 				requires {
-					Sound
+					MediaStore
 				}
+				services {
+					service "HTTP.HTTPUpload" {
+						internalCall;
+						externalCall "MediaStore.download"
+					},
+					service "HTTP.HTTPDownload" {
+						loop {
+							internalCall;
+							branch {
+								"b<=a" ? { internalCall },
+								"b>a" ? { internalCall }
+							}
+						}
+					}
+				}
+			},
+			atomicComponent MediaManager {
 				provides {
 					MediaStore
 				}
+				requires {
+					Sound
+				}
+				services {
+					service "MediaStore.download" {
+						internalCall
+					},
+					service "MediaStore.upload" {
+						internalCall
+					}
+				}
 			}
 			,
-			atomicComponent DBCach {
-				requires {
-					AudioDB
-				}
+			atomicComponent DBCache {
 				provides {
 					AudioDB
 				}
+				requires {
+					AudioDB
+				}
+				services {
+					service "AudioDB.queryDB" {
+						internalCall
+					},
+					service "AudioDB.addFile" {
+						internalCall
+					}
+				}
+					
 			}
 			,
 			atomicComponent DigitalWaterMarking {
 				provides {
 					Sound
+				}
+				services {
+				service "Sound.watermark" {
+						internalCall
+					}
 				}
 			}
 			,
@@ -62,8 +93,22 @@ repository {
 				provides {
 					AudioDB
 				}
+				services {
+					service "AudioDB.addFile" {
+						internalCall
+					},
+					service "AudioDB.queryDB" {
+						internalCall
+					}
+				}
 			}
-			
+		}
+		
+		types {
+			type complexTypeA {
+				memberA: complexTypeA
+			},
+			type Int
 		}
 	}
 }
@@ -93,7 +138,7 @@ assemblies {
 					provide(Sound)
 				},
 				DBCachContext {
-					instance DBCach
+					instance DBCache
 					provide(AudioDB)
 					require(AudioDB)
 				}

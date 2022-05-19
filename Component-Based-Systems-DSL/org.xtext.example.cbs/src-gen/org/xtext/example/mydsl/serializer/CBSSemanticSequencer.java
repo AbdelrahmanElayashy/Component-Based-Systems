@@ -283,8 +283,8 @@ public class CBSSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 * Constraint:
 	 *     (
 	 *         name=EString 
-	 *         (requires+=[Interface|EString] requires+=[Interface|EString]*)? 
 	 *         (provides+=[Interface|EString] provides+=[Interface|EString]*)? 
+	 *         (requires+=[Interface|EString] requires+=[Interface|EString]*)? 
 	 *         (services+=Service services+=Service*)?
 	 *     )
 	 * </pre>
@@ -379,7 +379,7 @@ public class CBSSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     ComplexType returns ComplexType
 	 *
 	 * Constraint:
-	 *     (members+=ComplexMember members+=ComplexMember*)?
+	 *     (name=EString (members+=ComplexMember members+=ComplexMember*)?)
 	 * </pre>
 	 */
 	protected void sequence_ComplexType(ISerializationContext context, ComplexType semanticObject) {
