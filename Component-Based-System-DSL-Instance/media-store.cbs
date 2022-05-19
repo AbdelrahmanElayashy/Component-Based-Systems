@@ -174,7 +174,7 @@ environments {
 
 systems{
 	
-	System mediaFile{
+	System mediaFileSystem{
 		// should we define atomic component context here!
 		childContexts= {
 			WebGUIContext {
@@ -185,7 +185,18 @@ systems{
 			PoolingAudioDBContext {
 				instance PoolingAudioDB
 				provide (IAudioDB AudioDB)
+			},
+			MediaStoreComposite {
+				instance "MediaStoreAssembly.MediaStoreComposite"
+				provide (IMediaStore MediaStore)
+				require (IAudioDB AudioDB)
 			}
+			
+		}
+		
+		assemblyConnectors= {
+			("WebGUIContext.IMediaStore","MediaStoreComposite.IMediaStore"),
+			("MediaStoreComposite.IAudioDB","PoolingAudioDBContext.IAudioDB")
 		}
 		
 		providedDelegationConnectors={
@@ -197,23 +208,15 @@ systems{
 			allocationContexts= {
 				{
 					container "mediaFileEnv.ApplicationServer"
-					allocates "MediaStoreAssembly.MediaStoreComposite.DBCachContext"
-				},
-			    {
-					container "mediaFileEnv.ApplicationServer"
-					allocates "MediaStoreAssembly.MediaStoreComposite.DigitalWaterMarkingContext"
+					allocates "mediaFileSystem.MediaStoreComposite"
 				},
 				{
 					container "mediaFileEnv.ApplicationServer"
-					allocates "MediaStoreAssembly.MediaStoreComposite.MediaManagerContext"
-				},
-				{
-					container "mediaFileEnv.ApplicationServer"
-					allocates "mediaFile.WebGUIContext"
+					allocates "mediaFileSystem.WebGUIContext"
 				},
 				{
 					container "mediaFileEnv.DatabaseServer"
-					allocates "mediaFile.PoolingAudioDBContext"
+					allocates "mediaFileSystem.PoolingAudioDBContext"
 				}
 			}
 		}
