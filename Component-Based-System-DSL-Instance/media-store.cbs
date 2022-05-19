@@ -1,0 +1,165 @@
+repository {
+	
+	repository {
+		interfaces {
+			
+			interface HTTP {
+
+			},
+			
+			interface Sound {
+				
+			},
+			
+			interface MediaStore {
+				
+			},
+			
+			interface AudioDB {
+				
+			}
+			
+			
+		}
+		
+		
+		components {
+			
+			atomicComponent WebGUI {
+				requires {
+					MediaStore
+				}
+				provides {
+					HTTP
+				}
+			},
+			
+			atomicComponent MediaManager {
+				requires {
+					Sound
+				}
+				provides {
+					MediaStore
+				}
+			}
+			,
+			atomicComponent DBCach {
+				requires {
+					AudioDB
+				}
+				provides {
+					AudioDB
+				}
+			}
+			,
+			atomicComponent DigitalWaterMarking {
+				provides {
+					Sound
+				}
+			}
+			,
+			atomicComponent PoolingAudioDB {
+				provides {
+					AudioDB
+				}
+			}
+			
+		}
+	}
+}
+
+
+assemblies {
+	// note : how to define assemblyContext for atomic component here!
+	assembly MediaStoreAssembly{
+		
+		
+		CompositeComponent MediaStoreComposite{
+			requires {
+				AudioDB
+			}
+			provides {
+				MediaStore
+			}
+			
+			childContexts {
+				MediaManagerContext {
+					instance MediaManager
+					provide(MediaStore)
+					require(Sound)
+				},
+				DigitalWaterMarkingContext {
+					instance DigitalWaterMarking
+					provide(Sound)
+				},
+				DBCachContext {
+					instance DBCach
+					provide(AudioDB)
+					require(AudioDB)
+				}
+				
+			}
+//			requiredDelegationConnectors {
+//				//We need to iniliaze roles first!!
+//			}
+		}
+	}
+}
+
+environments {
+	
+	Environment mediaFileEnv{
+		containers= {
+			ApplicationServer, 
+			DatabaseServer
+		}
+		linkers= {
+			link(ApplicationServer, DatabaseServer)
+		}
+	}
+	
+	
+}
+
+systems{
+	
+	System mediaFile{
+		// should we define atomic component context here!
+		childContexts= {
+			WebGUIContext {
+				instance WebGUI
+				provide (HTTP)
+				require (MediaStore)
+			},
+			PoolingAudioDBContext {
+				instance PoolingAudioDB
+				provide (AudioDB)
+			}
+		}
+		allocation= {
+			env= mediaFileEnv
+			allocationContexts= {
+				{
+					container "mediaFileEnv.ApplicationServer"
+					allocates "MediaStoreAssembly.MediaStoreComposite.DBCachContext"
+				},
+			    {
+					container "mediaFileEnv.ApplicationServer"
+					allocates "MediaStoreAssembly.MediaStoreComposite.DigitalWaterMarkingContext"
+				},
+				{
+					container "mediaFileEnv.ApplicationServer"
+					allocates "MediaStoreAssembly.MediaStoreComposite.MediaManagerContext"
+				},
+				{
+					container "mediaFileEnv.ApplicationServer"
+					allocates "mediaFile.WebGUIContext"
+				},
+				{
+					container "mediaFileEnv.DatabaseServer"
+					allocates "mediaFile.PoolingAudioDBContext"
+				}
+			}
+		}
+	}
+}
