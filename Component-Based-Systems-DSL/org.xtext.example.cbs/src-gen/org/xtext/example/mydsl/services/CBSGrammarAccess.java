@@ -254,22 +254,22 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		//    'System'
 		//    name=EString
 		//    '{'
-		//        ('childContexts=' '{' childContexts+=AssemblyContext ( "," childContexts+=AssemblyContext)* '}' )?
-		//        ('assemblyConnectors=' '{' assemblyConnectors+=AssemblyConnector ( "," assemblyConnectors+=AssemblyConnector)* '}' )?
-		//        ('requiredDelegationConnectors=' '{' requiredDelegationConnectors+=RequiredDelegationConnector ( "," requiredDelegationConnectors+=RequiredDelegationConnector)* '}' )?
-		//        ('providedDelegationConnectors=' '{' providedDelegationConnectors+=ProvidedDelegationConnector ( "," providedDelegationConnectors+=ProvidedDelegationConnector)* '}' )?
-		//        'allocation='     '{' allocation=Allocation     '}'
+		//        ('childContexts' '{' childContexts+=AssemblyContext ( "," childContexts+=AssemblyContext)* '}' )?
+		//        ('assemblyConnectors' '{' assemblyConnectors+=AssemblyConnector ( "," assemblyConnectors+=AssemblyConnector)* '}' )?
+		//        ('requiredDelegationConnectors' '{' requiredDelegationConnectors+=RequiredDelegationConnector ( "," requiredDelegationConnectors+=RequiredDelegationConnector)* '}' )?
+		//        ('providedDelegationConnectors' '{' providedDelegationConnectors+=ProvidedDelegationConnector ( "," providedDelegationConnectors+=ProvidedDelegationConnector)* '}' )?
+		//        'allocation'     '{' allocation=Allocation     '}'
 		//    '}';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'System'
 		//name=EString
 		//'{'
-		//    ('childContexts=' '{' childContexts+=AssemblyContext ( "," childContexts+=AssemblyContext)* '}' )?
-		//    ('assemblyConnectors=' '{' assemblyConnectors+=AssemblyConnector ( "," assemblyConnectors+=AssemblyConnector)* '}' )?
-		//    ('requiredDelegationConnectors=' '{' requiredDelegationConnectors+=RequiredDelegationConnector ( "," requiredDelegationConnectors+=RequiredDelegationConnector)* '}' )?
-		//    ('providedDelegationConnectors=' '{' providedDelegationConnectors+=ProvidedDelegationConnector ( "," providedDelegationConnectors+=ProvidedDelegationConnector)* '}' )?
-		//    'allocation='     '{' allocation=Allocation     '}'
+		//    ('childContexts' '{' childContexts+=AssemblyContext ( "," childContexts+=AssemblyContext)* '}' )?
+		//    ('assemblyConnectors' '{' assemblyConnectors+=AssemblyConnector ( "," assemblyConnectors+=AssemblyConnector)* '}' )?
+		//    ('requiredDelegationConnectors' '{' requiredDelegationConnectors+=RequiredDelegationConnector ( "," requiredDelegationConnectors+=RequiredDelegationConnector)* '}' )?
+		//    ('providedDelegationConnectors' '{' providedDelegationConnectors+=ProvidedDelegationConnector ( "," providedDelegationConnectors+=ProvidedDelegationConnector)* '}' )?
+		//    'allocation'     '{' allocation=Allocation     '}'
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
@@ -285,10 +285,10 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 		
-		//('childContexts=' '{' childContexts+=AssemblyContext ( "," childContexts+=AssemblyContext)* '}' )?
+		//('childContexts' '{' childContexts+=AssemblyContext ( "," childContexts+=AssemblyContext)* '}' )?
 		public Group getGroup_3() { return cGroup_3; }
 		
-		//'childContexts='
+		//'childContexts'
 		public Keyword getChildContextsKeyword_3_0() { return cChildContextsKeyword_3_0; }
 		
 		//'{'
@@ -315,10 +315,10 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_3_4() { return cRightCurlyBracketKeyword_3_4; }
 		
-		//('assemblyConnectors=' '{' assemblyConnectors+=AssemblyConnector ( "," assemblyConnectors+=AssemblyConnector)* '}' )?
+		//('assemblyConnectors' '{' assemblyConnectors+=AssemblyConnector ( "," assemblyConnectors+=AssemblyConnector)* '}' )?
 		public Group getGroup_4() { return cGroup_4; }
 		
-		//'assemblyConnectors='
+		//'assemblyConnectors'
 		public Keyword getAssemblyConnectorsKeyword_4_0() { return cAssemblyConnectorsKeyword_4_0; }
 		
 		//'{'
@@ -345,10 +345,10 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_4_4() { return cRightCurlyBracketKeyword_4_4; }
 		
-		//('requiredDelegationConnectors=' '{' requiredDelegationConnectors+=RequiredDelegationConnector ( "," requiredDelegationConnectors+=RequiredDelegationConnector)* '}' )?
+		//('requiredDelegationConnectors' '{' requiredDelegationConnectors+=RequiredDelegationConnector ( "," requiredDelegationConnectors+=RequiredDelegationConnector)* '}' )?
 		public Group getGroup_5() { return cGroup_5; }
 		
-		//'requiredDelegationConnectors='
+		//'requiredDelegationConnectors'
 		public Keyword getRequiredDelegationConnectorsKeyword_5_0() { return cRequiredDelegationConnectorsKeyword_5_0; }
 		
 		//'{'
@@ -375,10 +375,10 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_5_4() { return cRightCurlyBracketKeyword_5_4; }
 		
-		//('providedDelegationConnectors=' '{' providedDelegationConnectors+=ProvidedDelegationConnector ( "," providedDelegationConnectors+=ProvidedDelegationConnector)* '}' )?
+		//('providedDelegationConnectors' '{' providedDelegationConnectors+=ProvidedDelegationConnector ( "," providedDelegationConnectors+=ProvidedDelegationConnector)* '}' )?
 		public Group getGroup_6() { return cGroup_6; }
 		
-		//'providedDelegationConnectors='
+		//'providedDelegationConnectors'
 		public Keyword getProvidedDelegationConnectorsKeyword_6_0() { return cProvidedDelegationConnectorsKeyword_6_0; }
 		
 		//'{'
@@ -405,7 +405,7 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_6_4() { return cRightCurlyBracketKeyword_6_4; }
 		
-		//'allocation='
+		//'allocation'
 		public Keyword getAllocationKeyword_7() { return cAllocationKeyword_7; }
 		
 		//'{'
@@ -442,15 +442,15 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		private final Keyword cRightCurlyBracketKeyword_2_4 = (Keyword)cGroup_2.eContents().get(4);
 		
 		//Allocation returns allocation::Allocation:
-		//    'env=' environment=[environment::Environment|EString]
-		//    ('allocationContexts=' '{' allocationContexts+=AllocationContext ( "," allocationContexts+=AllocationContext)* '}' )?;
+		//    'env' environment=[environment::Environment|EString]
+		//    ('allocationContexts' '{' allocationContexts+=AllocationContext ( "," allocationContexts+=AllocationContext)* '}' )?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'env=' environment=[environment::Environment|EString]
-		//('allocationContexts=' '{' allocationContexts+=AllocationContext ( "," allocationContexts+=AllocationContext)* '}' )?
+		//'env' environment=[environment::Environment|EString]
+		//('allocationContexts' '{' allocationContexts+=AllocationContext ( "," allocationContexts+=AllocationContext)* '}' )?
 		public Group getGroup() { return cGroup; }
 		
-		//'env='
+		//'env'
 		public Keyword getEnvKeyword_0() { return cEnvKeyword_0; }
 		
 		//environment=[environment::Environment|EString]
@@ -462,10 +462,10 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		//EString
 		public RuleCall getEnvironmentEnvironmentEStringParserRuleCall_1_0_1() { return cEnvironmentEnvironmentEStringParserRuleCall_1_0_1; }
 		
-		//('allocationContexts=' '{' allocationContexts+=AllocationContext ( "," allocationContexts+=AllocationContext)* '}' )?
+		//('allocationContexts' '{' allocationContexts+=AllocationContext ( "," allocationContexts+=AllocationContext)* '}' )?
 		public Group getGroup_2() { return cGroup_2; }
 		
-		//'allocationContexts='
+		//'allocationContexts'
 		public Keyword getAllocationContextsKeyword_2_0() { return cAllocationContextsKeyword_2_0; }
 		
 		//'{'
@@ -585,8 +585,8 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		//    'Environment'
 		//    name=EString
 		//    '{'
-		//        ('containers=' '{' container+=Container ( "," container+=Container)* '}' )?
-		//        ('linkers=' '{' linker+=Linker ( "," linker+=Linker)* '}' )?
+		//        ('containers' '{' container+=Container ( "," container+=Container)* '}' )?
+		//        ('linkers' '{' linker+=Linker ( "," linker+=Linker)* '}' )?
 		//    '}';
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -594,8 +594,8 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		//'Environment'
 		//name=EString
 		//'{'
-		//    ('containers=' '{' container+=Container ( "," container+=Container)* '}' )?
-		//    ('linkers=' '{' linker+=Linker ( "," linker+=Linker)* '}' )?
+		//    ('containers' '{' container+=Container ( "," container+=Container)* '}' )?
+		//    ('linkers' '{' linker+=Linker ( "," linker+=Linker)* '}' )?
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
@@ -614,10 +614,10 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
 		
-		//('containers=' '{' container+=Container ( "," container+=Container)* '}' )?
+		//('containers' '{' container+=Container ( "," container+=Container)* '}' )?
 		public Group getGroup_4() { return cGroup_4; }
 		
-		//'containers='
+		//'containers'
 		public Keyword getContainersKeyword_4_0() { return cContainersKeyword_4_0; }
 		
 		//'{'
@@ -644,10 +644,10 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_4_4() { return cRightCurlyBracketKeyword_4_4; }
 		
-		//('linkers=' '{' linker+=Linker ( "," linker+=Linker)* '}' )?
+		//('linkers' '{' linker+=Linker ( "," linker+=Linker)* '}' )?
 		public Group getGroup_5() { return cGroup_5; }
 		
-		//'linkers='
+		//'linkers'
 		public Keyword getLinkersKeyword_5_0() { return cLinkersKeyword_5_0; }
 		
 		//'{'
@@ -705,57 +705,45 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	public class LinkerElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.CBS.Linker");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cLinkKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cLinksAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final CrossReference cLinksContainerCrossReference_2_0 = (CrossReference)cLinksAssignment_2.eContents().get(0);
-		private final RuleCall cLinksContainerEStringParserRuleCall_2_0_1 = (RuleCall)cLinksContainerCrossReference_2_0.eContents().get(1);
-		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cCommaKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Assignment cLinksAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final CrossReference cLinksContainerCrossReference_3_1_0 = (CrossReference)cLinksAssignment_3_1.eContents().get(0);
-		private final RuleCall cLinksContainerEStringParserRuleCall_3_1_0_1 = (RuleCall)cLinksContainerCrossReference_3_1_0.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cLinksAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final CrossReference cLinksContainerCrossReference_0_0 = (CrossReference)cLinksAssignment_0.eContents().get(0);
+		private final RuleCall cLinksContainerEStringParserRuleCall_0_0_1 = (RuleCall)cLinksContainerCrossReference_0_0.eContents().get(1);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cLessThanSignHyphenMinusGreaterThanSignKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cLinksAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final CrossReference cLinksContainerCrossReference_1_1_0 = (CrossReference)cLinksAssignment_1_1.eContents().get(0);
+		private final RuleCall cLinksContainerEStringParserRuleCall_1_1_0_1 = (RuleCall)cLinksContainerCrossReference_1_1_0.eContents().get(1);
 		
 		//Linker returns environment::Linker:
-		//    'link' '(' links+=[environment::Container|EString] ( "," links+=[environment::Container|EString])* ')' ;
+		//      links+=[environment::Container|EString] ( "<->" links+=[environment::Container|EString])* ;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'link' '(' links+=[environment::Container|EString] ( "," links+=[environment::Container|EString])* ')'
+		//links+=[environment::Container|EString] ( "<->" links+=[environment::Container|EString])*
 		public Group getGroup() { return cGroup; }
 		
-		//'link'
-		public Keyword getLinkKeyword_0() { return cLinkKeyword_0; }
-		
-		//'('
-		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
-		
 		//links+=[environment::Container|EString]
-		public Assignment getLinksAssignment_2() { return cLinksAssignment_2; }
+		public Assignment getLinksAssignment_0() { return cLinksAssignment_0; }
 		
 		//[environment::Container|EString]
-		public CrossReference getLinksContainerCrossReference_2_0() { return cLinksContainerCrossReference_2_0; }
+		public CrossReference getLinksContainerCrossReference_0_0() { return cLinksContainerCrossReference_0_0; }
 		
 		//EString
-		public RuleCall getLinksContainerEStringParserRuleCall_2_0_1() { return cLinksContainerEStringParserRuleCall_2_0_1; }
+		public RuleCall getLinksContainerEStringParserRuleCall_0_0_1() { return cLinksContainerEStringParserRuleCall_0_0_1; }
 		
-		//( "," links+=[environment::Container|EString])*
-		public Group getGroup_3() { return cGroup_3; }
+		//( "<->" links+=[environment::Container|EString])*
+		public Group getGroup_1() { return cGroup_1; }
 		
-		//","
-		public Keyword getCommaKeyword_3_0() { return cCommaKeyword_3_0; }
+		//"<->"
+		public Keyword getLessThanSignHyphenMinusGreaterThanSignKeyword_1_0() { return cLessThanSignHyphenMinusGreaterThanSignKeyword_1_0; }
 		
 		//links+=[environment::Container|EString]
-		public Assignment getLinksAssignment_3_1() { return cLinksAssignment_3_1; }
+		public Assignment getLinksAssignment_1_1() { return cLinksAssignment_1_1; }
 		
 		//[environment::Container|EString]
-		public CrossReference getLinksContainerCrossReference_3_1_0() { return cLinksContainerCrossReference_3_1_0; }
+		public CrossReference getLinksContainerCrossReference_1_1_0() { return cLinksContainerCrossReference_1_1_0; }
 		
 		//EString
-		public RuleCall getLinksContainerEStringParserRuleCall_3_1_0_1() { return cLinksContainerEStringParserRuleCall_3_1_0_1; }
-		
-		//')'
-		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
+		public RuleCall getLinksContainerEStringParserRuleCall_1_1_0_1() { return cLinksContainerEStringParserRuleCall_1_1_0_1; }
 	}
 	public class AssemblyElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.CBS.Assembly");
@@ -2815,11 +2803,11 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	//    'System'
 	//    name=EString
 	//    '{'
-	//        ('childContexts=' '{' childContexts+=AssemblyContext ( "," childContexts+=AssemblyContext)* '}' )?
-	//        ('assemblyConnectors=' '{' assemblyConnectors+=AssemblyConnector ( "," assemblyConnectors+=AssemblyConnector)* '}' )?
-	//        ('requiredDelegationConnectors=' '{' requiredDelegationConnectors+=RequiredDelegationConnector ( "," requiredDelegationConnectors+=RequiredDelegationConnector)* '}' )?
-	//        ('providedDelegationConnectors=' '{' providedDelegationConnectors+=ProvidedDelegationConnector ( "," providedDelegationConnectors+=ProvidedDelegationConnector)* '}' )?
-	//        'allocation='     '{' allocation=Allocation     '}'
+	//        ('childContexts' '{' childContexts+=AssemblyContext ( "," childContexts+=AssemblyContext)* '}' )?
+	//        ('assemblyConnectors' '{' assemblyConnectors+=AssemblyConnector ( "," assemblyConnectors+=AssemblyConnector)* '}' )?
+	//        ('requiredDelegationConnectors' '{' requiredDelegationConnectors+=RequiredDelegationConnector ( "," requiredDelegationConnectors+=RequiredDelegationConnector)* '}' )?
+	//        ('providedDelegationConnectors' '{' providedDelegationConnectors+=ProvidedDelegationConnector ( "," providedDelegationConnectors+=ProvidedDelegationConnector)* '}' )?
+	//        'allocation'     '{' allocation=Allocation     '}'
 	//    '}';
 	public SystemElements getSystemAccess() {
 		return pSystem;
@@ -2830,8 +2818,8 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	}
 	
 	//Allocation returns allocation::Allocation:
-	//    'env=' environment=[environment::Environment|EString]
-	//    ('allocationContexts=' '{' allocationContexts+=AllocationContext ( "," allocationContexts+=AllocationContext)* '}' )?;
+	//    'env' environment=[environment::Environment|EString]
+	//    ('allocationContexts' '{' allocationContexts+=AllocationContext ( "," allocationContexts+=AllocationContext)* '}' )?;
 	public AllocationElements getAllocationAccess() {
 		return pAllocation;
 	}
@@ -2859,8 +2847,8 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	//    'Environment'
 	//    name=EString
 	//    '{'
-	//        ('containers=' '{' container+=Container ( "," container+=Container)* '}' )?
-	//        ('linkers=' '{' linker+=Linker ( "," linker+=Linker)* '}' )?
+	//        ('containers' '{' container+=Container ( "," container+=Container)* '}' )?
+	//        ('linkers' '{' linker+=Linker ( "," linker+=Linker)* '}' )?
 	//    '}';
 	public EnvironmentElements getEnvironmentAccess() {
 		return pEnvironment;
@@ -2882,7 +2870,7 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	}
 	
 	//Linker returns environment::Linker:
-	//    'link' '(' links+=[environment::Container|EString] ( "," links+=[environment::Container|EString])* ')' ;
+	//      links+=[environment::Container|EString] ( "<->" links+=[environment::Container|EString])* ;
 	public LinkerElements getLinkerAccess() {
 		return pLinker;
 	}

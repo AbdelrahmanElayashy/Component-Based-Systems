@@ -116,7 +116,7 @@ repository {
 
 
 assemblies {
-	// note : how to define assemblyContext for atomic component here!
+	
 	assembly MediaStoreAssembly{
 		
 		
@@ -166,12 +166,12 @@ assemblies {
 environments {
 	
 	Environment mediaFileEnv{
-		containers= {
+		containers {
 			ApplicationServer, 
 			DatabaseServer
 		}
-		linkers= {
-			link(ApplicationServer, DatabaseServer)
+		linkers {
+			ApplicationServer <-> DatabaseServer
 		}
 	}
 	
@@ -181,8 +181,8 @@ environments {
 systems{
 	
 	System mediaFileSystem{
-		// should we define atomic component context here!
-		childContexts= {
+
+		childContexts {
 			WebGUIContext {
 				instance WebGUI
 				provide (IHTTP HTTP)
@@ -200,18 +200,18 @@ systems{
 			
 		}
 		
-		assemblyConnectors= {
+		assemblyConnectors {
 			("WebGUIContext.IMediaStore","MediaStoreComposite.IMediaStore"),
 			("MediaStoreComposite.IAudioDB","PoolingAudioDBContext.IAudioDB")
 		}
 		
-		providedDelegationConnectors={
+		providedDelegationConnectors{
 			"WebGUIContext.IHTTP"
 		}
 		
-		allocation= {
-			env= mediaFileEnv
-			allocationContexts= {
+		allocation {
+			env mediaFileEnv
+			allocationContexts {
 				{
 					container "mediaFileEnv.ApplicationServer"
 					allocates "mediaFileSystem.MediaStoreComposite"

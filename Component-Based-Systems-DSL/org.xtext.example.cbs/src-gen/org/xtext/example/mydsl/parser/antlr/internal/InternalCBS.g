@@ -379,7 +379,7 @@ ruleSystem returns [EObject current=null]
 			newLeafNode(otherlv_2, grammarAccess.getSystemAccess().getLeftCurlyBracketKeyword_2());
 		}
 		(
-			otherlv_3='childContexts='
+			otherlv_3='childContexts'
 			{
 				newLeafNode(otherlv_3, grammarAccess.getSystemAccess().getChildContextsKeyword_3_0());
 			}
@@ -437,7 +437,7 @@ ruleSystem returns [EObject current=null]
 			}
 		)?
 		(
-			otherlv_9='assemblyConnectors='
+			otherlv_9='assemblyConnectors'
 			{
 				newLeafNode(otherlv_9, grammarAccess.getSystemAccess().getAssemblyConnectorsKeyword_4_0());
 			}
@@ -495,7 +495,7 @@ ruleSystem returns [EObject current=null]
 			}
 		)?
 		(
-			otherlv_15='requiredDelegationConnectors='
+			otherlv_15='requiredDelegationConnectors'
 			{
 				newLeafNode(otherlv_15, grammarAccess.getSystemAccess().getRequiredDelegationConnectorsKeyword_5_0());
 			}
@@ -553,7 +553,7 @@ ruleSystem returns [EObject current=null]
 			}
 		)?
 		(
-			otherlv_21='providedDelegationConnectors='
+			otherlv_21='providedDelegationConnectors'
 			{
 				newLeafNode(otherlv_21, grammarAccess.getSystemAccess().getProvidedDelegationConnectorsKeyword_6_0());
 			}
@@ -610,7 +610,7 @@ ruleSystem returns [EObject current=null]
 				newLeafNode(otherlv_26, grammarAccess.getSystemAccess().getRightCurlyBracketKeyword_6_4());
 			}
 		)?
-		otherlv_27='allocation='
+		otherlv_27='allocation'
 		{
 			newLeafNode(otherlv_27, grammarAccess.getSystemAccess().getAllocationKeyword_7());
 		}
@@ -664,7 +664,7 @@ ruleAllocation returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='env='
+		otherlv_0='env'
 		{
 			newLeafNode(otherlv_0, grammarAccess.getAllocationAccess().getEnvKeyword_0());
 		}
@@ -685,7 +685,7 @@ ruleAllocation returns [EObject current=null]
 			)
 		)
 		(
-			otherlv_2='allocationContexts='
+			otherlv_2='allocationContexts'
 			{
 				newLeafNode(otherlv_2, grammarAccess.getAllocationAccess().getAllocationContextsKeyword_2_0());
 			}
@@ -863,7 +863,7 @@ ruleEnvironment returns [EObject current=null]
 			newLeafNode(otherlv_3, grammarAccess.getEnvironmentAccess().getLeftCurlyBracketKeyword_3());
 		}
 		(
-			otherlv_4='containers='
+			otherlv_4='containers'
 			{
 				newLeafNode(otherlv_4, grammarAccess.getEnvironmentAccess().getContainersKeyword_4_0());
 			}
@@ -921,7 +921,7 @@ ruleEnvironment returns [EObject current=null]
 			}
 		)?
 		(
-			otherlv_10='linkers='
+			otherlv_10='linkers'
 			{
 				newLeafNode(otherlv_10, grammarAccess.getEnvironmentAccess().getLinkersKeyword_5_0());
 			}
@@ -1046,14 +1046,6 @@ ruleLinker returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='link'
-		{
-			newLeafNode(otherlv_0, grammarAccess.getLinkerAccess().getLinkKeyword_0());
-		}
-		otherlv_1='('
-		{
-			newLeafNode(otherlv_1, grammarAccess.getLinkerAccess().getLeftParenthesisKeyword_1());
-		}
 		(
 			(
 				{
@@ -1062,7 +1054,7 @@ ruleLinker returns [EObject current=null]
 					}
 				}
 				{
-					newCompositeNode(grammarAccess.getLinkerAccess().getLinksContainerCrossReference_2_0());
+					newCompositeNode(grammarAccess.getLinkerAccess().getLinksContainerCrossReference_0_0());
 				}
 				ruleEString
 				{
@@ -1071,9 +1063,9 @@ ruleLinker returns [EObject current=null]
 			)
 		)
 		(
-			otherlv_3=','
+			otherlv_1='<->'
 			{
-				newLeafNode(otherlv_3, grammarAccess.getLinkerAccess().getCommaKeyword_3_0());
+				newLeafNode(otherlv_1, grammarAccess.getLinkerAccess().getLessThanSignHyphenMinusGreaterThanSignKeyword_1_0());
 			}
 			(
 				(
@@ -1083,7 +1075,7 @@ ruleLinker returns [EObject current=null]
 						}
 					}
 					{
-						newCompositeNode(grammarAccess.getLinkerAccess().getLinksContainerCrossReference_3_1_0());
+						newCompositeNode(grammarAccess.getLinkerAccess().getLinksContainerCrossReference_1_1_0());
 					}
 					ruleEString
 					{
@@ -1092,10 +1084,6 @@ ruleLinker returns [EObject current=null]
 				)
 			)
 		)*
-		otherlv_5=')'
-		{
-			newLeafNode(otherlv_5, grammarAccess.getLinkerAccess().getRightParenthesisKeyword_4());
-		}
 	)
 ;
 

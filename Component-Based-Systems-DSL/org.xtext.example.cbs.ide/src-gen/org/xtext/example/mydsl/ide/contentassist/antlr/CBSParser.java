@@ -65,7 +65,7 @@ public class CBSParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getEnvironmentAccess().getGroup_5_3(), "rule__Environment__Group_5_3__0");
 			builder.put(grammarAccess.getContainerAccess().getGroup(), "rule__Container__Group__0");
 			builder.put(grammarAccess.getLinkerAccess().getGroup(), "rule__Linker__Group__0");
-			builder.put(grammarAccess.getLinkerAccess().getGroup_3(), "rule__Linker__Group_3__0");
+			builder.put(grammarAccess.getLinkerAccess().getGroup_1(), "rule__Linker__Group_1__0");
 			builder.put(grammarAccess.getAssemblyAccess().getGroup(), "rule__Assembly__Group__0");
 			builder.put(grammarAccess.getAssemblyAccess().getGroup_4(), "rule__Assembly__Group_4__0");
 			builder.put(grammarAccess.getAssemblyAccess().getGroup_4_1(), "rule__Assembly__Group_4_1__0");
@@ -156,8 +156,8 @@ public class CBSParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getEnvironmentAccess().getLinkerAssignment_5_2(), "rule__Environment__LinkerAssignment_5_2");
 			builder.put(grammarAccess.getEnvironmentAccess().getLinkerAssignment_5_3_1(), "rule__Environment__LinkerAssignment_5_3_1");
 			builder.put(grammarAccess.getContainerAccess().getNameAssignment_1(), "rule__Container__NameAssignment_1");
-			builder.put(grammarAccess.getLinkerAccess().getLinksAssignment_2(), "rule__Linker__LinksAssignment_2");
-			builder.put(grammarAccess.getLinkerAccess().getLinksAssignment_3_1(), "rule__Linker__LinksAssignment_3_1");
+			builder.put(grammarAccess.getLinkerAccess().getLinksAssignment_0(), "rule__Linker__LinksAssignment_0");
+			builder.put(grammarAccess.getLinkerAccess().getLinksAssignment_1_1(), "rule__Linker__LinksAssignment_1_1");
 			builder.put(grammarAccess.getAssemblyAccess().getNameAssignment_2(), "rule__Assembly__NameAssignment_2");
 			builder.put(grammarAccess.getAssemblyAccess().getCompositeComponentsAssignment_4_0(), "rule__Assembly__CompositeComponentsAssignment_4_0");
 			builder.put(grammarAccess.getAssemblyAccess().getCompositeComponentsAssignment_4_1_1(), "rule__Assembly__CompositeComponentsAssignment_4_1_1");
