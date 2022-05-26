@@ -1,5 +1,55 @@
-transformation CbsTransformation();
+modeltype CBS uses 'platform:/resource/Component-Based-Systems/model/ComponentBasedSystems.ecore';
+modeltype PCM uses 'platform:/resource/Palladio-Core-PCM/bundles/org.palladiosimulator.pcm/model/pcm.ecore';
+	
+	
+transformation CBStoPCM(in source:CBS, out target:PCM);
 
 main() {
 
+	source.objectsOfType(CBS::environment::Space)->environments->
+			forEach(env) { env->map environmentToResourceEnvironment()};
+}
+
+
+mapping CBS::environment::Environment::environmentToResourceEnvironment():
+		PCM::resourceenvironment::ResourceEnvironment {
+
+	entityName := self.name;
+	resourceContainer_ResourceEnvironment += self.container->forEach(container) 
+	{ container->map containerToResourceContainer(result);};
+	linkingResources__ResourceEnvironment += self.linker->forEach(link) 
+	{ link->map linkerToLinkingResource(result);}
+
+}
+
+mapping CBS::environment::Linker::linkerToLinkingResource
+(env : PCM::resourceenvironment::ResourceEnvironment):
+		PCM::resourceenvironment::LinkingResource {
+		
+	log('Converting Linker : ' + self.name);
+	entityName := self.name;
+	resourceEnvironment_LinkingResource := env;
+	connectedResourceContainers_LinkingResource += self.links->forEach(container) 
+	{ 
+	   env.resourceContainer_ResourceEnvironment->
+	   		selectOne(p | p.entityName = container.name);
+	};
+	communicationLinkResourceSpecifications_LinkingResource := null;
+	log('########## End Converting ##########');
+}
+
+
+mapping CBS::environment::Container::containerToResourceContainer
+(env : PCM::resourceenvironment::ResourceEnvironment):
+		PCM::resourceenvironment::ResourceContainer {
+		
+	log('Converting Container : ' + self.name);
+	entityName := self.name;
+	resourceEnvironment_ResourceContainer := env;
+	parentResourceContainer__ResourceContainer := result;
+	activeResourceSpecifications_ResourceContainer := null;
+	nestedResourceContainers__ResourceContainer := null;
+	hddResourceSpecifications := null;
+	log('########## End Converting ##########');
+			
 }
