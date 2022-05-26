@@ -4,6 +4,7 @@
 package org.xtext.example.mydsl.tests
 
 import com.google.inject.Inject
+import componentbasedsystem.ComponentBasedSystemContainer
 import org.eclipse.xtext.testing.InjectWith
 import org.eclipse.xtext.testing.extensions.InjectionExtension
 import org.eclipse.xtext.testing.util.ParseHelper
@@ -15,7 +16,7 @@ import org.junit.jupiter.api.^extension.ExtendWith
 @InjectWith(CBSInjectorProvider)
 class CBSParsingTest {
 	@Inject
-	ParseHelper<componentbasedsystem.allocation.System> parseHelper
+	ParseHelper<ComponentBasedSystemContainer> parseHelper
 	
 	@Test
 	def void loadModel() {

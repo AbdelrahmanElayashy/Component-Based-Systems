@@ -4,13 +4,15 @@
 package org.xtext.example.mydsl.formatting2;
 
 import com.google.inject.Inject;
+import componentbasedsystem.ComponentBasedSystemContainer;
 import componentbasedsystem.allocation.Allocation;
+import componentbasedsystem.assembly.Assembly;
 import componentbasedsystem.assembly.AssemblyConnector;
 import componentbasedsystem.assembly.AssemblyContext;
 import componentbasedsystem.assembly.ProvidedDelegationConnector;
-import componentbasedsystem.assembly.ProvidedRole;
 import componentbasedsystem.assembly.RequiredDelegationConnector;
-import componentbasedsystem.assembly.RequiredRole;
+import componentbasedsystem.environment.Environment;
+import componentbasedsystem.repository.Repository;
 import java.util.Arrays;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -25,6 +27,22 @@ public class CBSFormatter extends AbstractFormatter2 {
   @Inject
   @Extension
   private CBSGrammarAccess _cBSGrammarAccess;
+  
+  protected void _format(final ComponentBasedSystemContainer componentBasedSystemContainer, @Extension final IFormattableDocument document) {
+    document.<Repository>format(componentBasedSystemContainer.getRepository());
+    EList<Assembly> _assemblies = componentBasedSystemContainer.getAssemblies();
+    for (final Assembly assembly : _assemblies) {
+      document.<Assembly>format(assembly);
+    }
+    EList<Environment> _environments = componentBasedSystemContainer.getEnvironments();
+    for (final Environment environment : _environments) {
+      document.<Environment>format(environment);
+    }
+    EList<componentbasedsystem.allocation.System> _systems = componentBasedSystemContainer.getSystems();
+    for (final componentbasedsystem.allocation.System system : _systems) {
+      document.<componentbasedsystem.allocation.System>format(system);
+    }
+  }
   
   protected void _format(final componentbasedsystem.allocation.System system, @Extension final IFormattableDocument document) {
     EList<AssemblyContext> _childContexts = system.getChildContexts();
@@ -46,17 +64,6 @@ public class CBSFormatter extends AbstractFormatter2 {
     document.<Allocation>format(system.getAllocation());
   }
   
-  protected void _format(final AssemblyContext assemblyContext, @Extension final IFormattableDocument document) {
-    EList<ProvidedRole> _providedRoles = assemblyContext.getProvidedRoles();
-    for (final ProvidedRole providedRole : _providedRoles) {
-      document.<ProvidedRole>format(providedRole);
-    }
-    EList<RequiredRole> _requiredRoles = assemblyContext.getRequiredRoles();
-    for (final RequiredRole requiredRole : _requiredRoles) {
-      document.<RequiredRole>format(requiredRole);
-    }
-  }
-  
   public void format(final Object system, final IFormattableDocument document) {
     if (system instanceof XtextResource) {
       _format((XtextResource)system, document);
@@ -64,8 +71,8 @@ public class CBSFormatter extends AbstractFormatter2 {
     } else if (system instanceof componentbasedsystem.allocation.System) {
       _format((componentbasedsystem.allocation.System)system, document);
       return;
-    } else if (system instanceof AssemblyContext) {
-      _format((AssemblyContext)system, document);
+    } else if (system instanceof ComponentBasedSystemContainer) {
+      _format((ComponentBasedSystemContainer)system, document);
       return;
     } else if (system instanceof EObject) {
       _format((EObject)system, document);

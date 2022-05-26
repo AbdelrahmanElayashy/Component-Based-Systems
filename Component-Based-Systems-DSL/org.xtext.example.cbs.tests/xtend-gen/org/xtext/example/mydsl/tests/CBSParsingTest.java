@@ -4,6 +4,7 @@
 package org.xtext.example.mydsl.tests;
 
 import com.google.inject.Inject;
+import componentbasedsystem.ComponentBasedSystemContainer;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -21,7 +22,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 @SuppressWarnings("all")
 public class CBSParsingTest {
   @Inject
-  private ParseHelper<componentbasedsystem.allocation.System> parseHelper;
+  private ParseHelper<ComponentBasedSystemContainer> parseHelper;
   
   @Test
   public void loadModel() {
@@ -29,7 +30,7 @@ public class CBSParsingTest {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("Hello Xtext!");
       _builder.newLine();
-      final componentbasedsystem.allocation.System result = this.parseHelper.parse(_builder);
+      final ComponentBasedSystemContainer result = this.parseHelper.parse(_builder);
       Assertions.assertNotNull(result);
       final EList<Resource.Diagnostic> errors = result.eResource().getErrors();
       boolean _isEmpty = errors.isEmpty();
