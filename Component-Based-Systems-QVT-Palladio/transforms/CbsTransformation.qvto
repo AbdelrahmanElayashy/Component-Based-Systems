@@ -8,9 +8,72 @@ main() {
 
 	source.objectsOfType(CBS::environment::Space)->environments->
 			forEach(env) { env->map environmentToResourceEnvironment()};
+			
+	source.objectsOfType(CBS::allocation::System)-> map CBSSystemToPCMSystem();
+}
+
+/////////////////////////////////////////////////
+///////////// Allocation ///////////////////////
+///////////////////////////////////////////////
+mapping CBS::allocation::System::CBSSystemToPCMSystem():
+	PCM::system::System {
+		
+	entityName := self.name;
+	assemblyContexts__ComposedStructure := self.childContexts->forEach(context)
+	{
+		context->map CBSAssemblyContextToPCMAssemblyContext();
+	};
+	
+	qosAnnotations_System := null;
 }
 
 
+/////////////////////////////////////////////////
+///////////// Assembly /////////////////////////
+///////////////////////////////////////////////
+
+mapping CBS::assembly::ProvidedDelegationConnector::
+		CBSProvidedDelgToPCMProvidedDelg():
+		PCM::core::composition::ProvidedDelegationConnector {
+		entityName := self.name;
+		// noch
+}
+
+mapping CBS::assembly::RequiredDelegationConnector::
+		CBSRequiredDelgToPCMRequiredDelg():
+		PCM::core::composition::RequiredDelegationConnector {
+		entityName := self.name;
+		// noch
+}
+
+mapping CBS::assembly::ProvidedRole::CBSProvidedRoleToPCMProvidedRole():
+		PCM::core::entity::ResourceProvidedRole {
+	entityName := self.name;
+	// should integerate with repo 
+	//providedResourceInterface__ResourceProvidedRole := self.interface;
+	resourceInterfaceProvidingEntity__ResourceProvidedRole := null;
+}
+
+mapping CBS::assembly::RequiredRole::CBSRequiredRoleToPCMRequiredRole():
+		PCM::core::entity::ResourceRequiredRole {
+	entityName := self.name;
+	// should integerate with repo 
+	//requiredResourceInterface__ResourceRequiredRole := self.interface;
+}
+
+mapping CBS::assembly::AssemblyContext::CBSAssemblyContextToPCMAssemblyContext():
+	PCM::core::composition::AssemblyContext {
+
+	entityName := self.name;
+	// should integerate with repo 
+	//encapsulatedComponent__AssemblyContext := self.instantiates;		
+} 
+
+
+
+/////////////////////////////////////////////////
+///////////// Environment //////////////////////
+///////////////////////////////////////////////
 mapping CBS::environment::Environment::environmentToResourceEnvironment():
 		PCM::resourceenvironment::ResourceEnvironment {
 
