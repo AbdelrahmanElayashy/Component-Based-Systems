@@ -1,229 +1,206 @@
 repository {
-	
-	repository {
-		interfaces {
-			interface HTTP {
-				complexTypeA HTTPUpload(),
-				complexTypeA HTTPDownload()
-			},
-			interface Sound {
-				complexTypeA watermark()
-			},
-			interface MediaStore {
-				complexTypeA download(complexTypeA param1),
-				complexTypeA upload()
-			},
-			interface AudioDB {
-				complexTypeA queryDB(int param1),
-				Void addFile()
-			}
+	interfaces {
+		interface HTTP {
+			complexTypeA HTTPUpload(),
+			complexTypeA HTTPDownload()
+		},
+		interface Sound {
+			complexTypeA watermark()
+		},
+		interface MediaStore {
+			complexTypeA download(complexTypeA param1),
+			complexTypeA upload()
+		},
+		interface AudioDB {
+			complexTypeA queryDB(int param1),
+			Void addFile()
 		}
-		
-		components {
-			atomicComponent WebGUI {
-				provides {
-					HTTP
-				}
-				requires {
-					MediaStore
-				}
-				services {
-					service "HTTP.HTTPUpload" {
+	}
+	
+	components {
+		atomicComponent WebGUI {
+			provides {
+				HTTP
+			}
+			requires {
+				MediaStore
+			}
+			services {
+				service "HTTP.HTTPUpload" {
+					internalCall;
+					externalCall "MediaStore.download"
+				},
+				service "HTTP.HTTPDownload" {
+					loop {
 						internalCall;
-						externalCall "MediaStore.download"
-					},
-					service "HTTP.HTTPDownload" {
-						loop {
-							internalCall;
-							branch {
-								"b<=a" ? { internalCall },
-								"b>a" ? { internalCall }
-							}
+						branch {
+							"b<=a" ? { internalCall },
+							"b>a" ? { internalCall }
 						}
 					}
 				}
-			},
-			atomicComponent MediaManager {
-				provides {
-					MediaStore
-				}
-				requires {
-					Sound
-				}
-				services {
-					service "MediaStore.download" {
-						internalCall
-					},
-					service "MediaStore.upload" {
-						internalCall
-					}
-				}
 			}
-			,
-			atomicComponent DBCache {
-				provides {
-					AudioDB
-				}
-				requires {
-					AudioDB
-				}
-				services {
-					service "AudioDB.queryDB" {
-						internalCall
-					},
-					service "AudioDB.addFile" {
-						internalCall
-					}
-				}
-					
-			}
-			,
-			atomicComponent DigitalWaterMarking {
-				provides {
-					Sound
-				}
-				services {
-				service "Sound.watermark" {
-						internalCall
-					}
-				}
-			}
-			,
-			atomicComponent PoolingAudioDB {
-				provides {
-					AudioDB
-				}
-				services {
-					service "AudioDB.addFile" {
-						internalCall
-					},
-					service "AudioDB.queryDB" {
-						internalCall
-					}
-				}
-			}
-		}
-		
-		types {
-			type complexTypeA {
-				memberA: complexTypeA
-			},
-			type int Int,
-			Void
-		}
-	}
-}
-
-
-assemblies {
-	
-	assembly MediaStoreAssembly{
-		
-		
-		CompositeComponent MediaStoreComposite{
-			requires {
-				AudioDB
-			}
+		},
+		atomicComponent MediaManager {
 			provides {
 				MediaStore
 			}
-			
-			childContexts {
-				MediaManagerContext {
-					instance MediaManager
-					provide(IMediaStore MediaStore)
-					require(ISound Sound, IAudioDB AudioDB)
+			requires {
+				Sound
+			}
+			services {
+				service "MediaStore.download" {
+					internalCall
 				},
-				DigitalWaterMarkingContext {
-					instance DigitalWaterMarking
-					provide(ISound Sound)
-				},
-				DBCachContext {
-					instance DBCache
-					provide(IAudioDB AudioDB)
-					require(IAudioDB AudioDB)
+				service "MediaStore.upload" {
+					internalCall
 				}
-			
 			}
-			
-			assemblyConnectors {
-				("MediaManagerContext.IAudioDB", "DBCachContext.IAudioDB"),
-				("MediaManagerContext.ISound", "DigitalWaterMarkingContext.ISound")
+		},
+		atomicComponent DBCache {
+			provides {
+				AudioDB
 			}
-			
-			requiredDelegationConnectors {
-				"DBCachContext.IAudioDB"
+			requires {
+				AudioDB
 			}
-			
-			providedDelegationConnectors {
-				"MediaManagerContext.IMediaStore"
+			services {
+				service "AudioDB.queryDB" {
+					internalCall
+				},
+				service "AudioDB.addFile" {
+					internalCall
+				}
+			}
+				
+		},
+		atomicComponent DigitalWaterMarking {
+			provides {
+				Sound
+			}
+			services {
+			service "Sound.watermark" {
+					internalCall
+				}
+			}
+		},
+		atomicComponent PoolingAudioDB {
+			provides {
+				AudioDB
+			}
+			services {
+				service "AudioDB.addFile" {
+					internalCall
+				},
+				service "AudioDB.queryDB" {
+					internalCall
+				}
 			}
 		}
-
+	}
+	types {
+		type complexTypeA {
+			memberA: complexTypeA
+		},
+		type int Int,
+		Void
 	}
 }
 
-environments {
-	
-	Environment mediaFileEnv{
-		containers {
-			ApplicationServer, 
-			DatabaseServer
+assembly MediaStoreAssembly{
+	CompositeComponent MediaStoreComposite{
+		requires {
+			AudioDB
 		}
-		linkers {
-			ApplicationServer <-> DatabaseServer
+		provides {
+			MediaStore
 		}
-	}
-	
-	
-}
-
-systems{
-	
-	System mediaFileSystem{
-
+		
 		childContexts {
-			WebGUIContext {
-				instance WebGUI
-				provide (IHTTP HTTP)
-				require (IMediaStore MediaStore)
+			MediaManagerContext {
+				instance MediaManager
+				provide(IMediaStore MediaStore)
+				require(ISound Sound, IAudioDB AudioDB)
 			},
-			PoolingAudioDBContext {
-				instance PoolingAudioDB
-				provide (IAudioDB AudioDB)
+			DigitalWaterMarkingContext {
+				instance DigitalWaterMarking
+				provide(ISound Sound)
 			},
-			MediaStoreComposite {
-				instance "MediaStoreAssembly.MediaStoreComposite"
-				provide (IMediaStore MediaStore)
-				require (IAudioDB AudioDB)
+			DBCachContext {
+				instance DBCache
+				provide(IAudioDB AudioDB)
+				require(IAudioDB AudioDB)
 			}
-			
+		
 		}
 		
 		assemblyConnectors {
-			("WebGUIContext.IMediaStore","MediaStoreComposite.IMediaStore"),
-			("MediaStoreComposite.IAudioDB","PoolingAudioDBContext.IAudioDB")
+			("MediaManagerContext.IAudioDB", "DBCachContext.IAudioDB"),
+			("MediaManagerContext.ISound", "DigitalWaterMarkingContext.ISound")
 		}
 		
-		providedDelegationConnectors{
-			"WebGUIContext.IHTTP"
+		requiredDelegationConnectors {
+			"DBCachContext.IAudioDB"
 		}
 		
-		allocation {
-			env mediaFileEnv
-			allocationContexts {
-				{
-					container "mediaFileEnv.ApplicationServer"
-					allocates "mediaFileSystem.MediaStoreComposite"
-				},
-				{
-					container "mediaFileEnv.ApplicationServer"
-					allocates "mediaFileSystem.WebGUIContext"
-				},
-				{
-					container "mediaFileEnv.DatabaseServer"
-					allocates "mediaFileSystem.PoolingAudioDBContext"
-				}
+		providedDelegationConnectors {
+			"MediaManagerContext.IMediaStore"
+		}
+	}
+
+}
+
+Environment mediaFileEnv{
+	containers {
+		ApplicationServer, 
+		DatabaseServer
+	}
+	linkers {
+		ApplicationServer <-> DatabaseServer
+	}
+}
+
+System mediaFileSystem{
+	childContexts {
+		WebGUIContext {
+			instance WebGUI
+			provide (IHTTP HTTP)
+			require (IMediaStore MediaStore)
+		},
+		PoolingAudioDBContext {
+			instance PoolingAudioDB
+			provide (IAudioDB AudioDB)
+		},
+		MediaStoreComposite {
+			instance "MediaStoreAssembly.MediaStoreComposite"
+			provide (IMediaStore MediaStore)
+			require (IAudioDB AudioDB)
+		}
+	}
+	
+	assemblyConnectors {
+		("WebGUIContext.IMediaStore","MediaStoreComposite.IMediaStore"),
+		("MediaStoreComposite.IAudioDB","PoolingAudioDBContext.IAudioDB")
+	}
+	
+	providedDelegationConnectors{
+		"WebGUIContext.IHTTP"
+	}
+	
+	allocation {
+		env mediaFileEnv
+		allocationContexts {
+			{
+				container "mediaFileEnv.ApplicationServer"
+				allocates "mediaFileSystem.MediaStoreComposite"
+			},
+			{
+				container "mediaFileEnv.ApplicationServer"
+				allocates "mediaFileSystem.WebGUIContext"
+			},
+			{
+				container "mediaFileEnv.DatabaseServer"
+				allocates "mediaFileSystem.PoolingAudioDBContext"
 			}
 		}
 	}

@@ -30,18 +30,9 @@ public class CBSFormatter extends AbstractFormatter2 {
   
   protected void _format(final ComponentBasedSystemContainer componentBasedSystemContainer, @Extension final IFormattableDocument document) {
     document.<Repository>format(componentBasedSystemContainer.getRepository());
-    EList<Assembly> _assemblies = componentBasedSystemContainer.getAssemblies();
-    for (final Assembly assembly : _assemblies) {
-      document.<Assembly>format(assembly);
-    }
-    EList<Environment> _environments = componentBasedSystemContainer.getEnvironments();
-    for (final Environment environment : _environments) {
-      document.<Environment>format(environment);
-    }
-    EList<componentbasedsystem.allocation.System> _systems = componentBasedSystemContainer.getSystems();
-    for (final componentbasedsystem.allocation.System system : _systems) {
-      document.<componentbasedsystem.allocation.System>format(system);
-    }
+    document.<Assembly>format(componentBasedSystemContainer.getAssembly());
+    document.<Environment>format(componentBasedSystemContainer.getEnvironment());
+    document.<componentbasedsystem.allocation.System>format(componentBasedSystemContainer.getSystem());
   }
   
   protected void _format(final componentbasedsystem.allocation.System system, @Extension final IFormattableDocument document) {

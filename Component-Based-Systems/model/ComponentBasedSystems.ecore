@@ -5,12 +5,12 @@
   <eClassifiers xsi:type="ecore:EClass" name="ComponentBasedSystemContainer">
     <eStructuralFeatures xsi:type="ecore:EReference" name="repository" eType="#//repository/Repository"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="environments" upperBound="-1"
-        eType="#//environment/Environment" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="assemblies" upperBound="-1"
-        eType="#//assembly/Assembly" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="systems" upperBound="-1"
-        eType="#//allocation/System" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="environment" eType="#//environment/Environment"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="assembly" eType="#//assembly/Assembly"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="system" eType="#//allocation/System"
+        containment="true"/>
   </eClassifiers>
   <eSubpackages name="assembly" nsURI="http://www.example.org/assembly" nsPrefix="assembly">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -123,10 +123,6 @@
           eType="#//environment/Container" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="linker" upperBound="-1"
           eType="#//environment/Linker" containment="true"/>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Space">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="environments" upperBound="-1"
-          eType="#//environment/Environment" containment="true"/>
     </eClassifiers>
   </eSubpackages>
   <eSubpackages name="allocation" nsURI="http://www.example.org/allocation" nsPrefix="allocation">

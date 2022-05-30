@@ -16,15 +16,9 @@ class CBSFormatter extends AbstractFormatter2 {
 	def dispatch void format(ComponentBasedSystemContainer componentBasedSystemContainer, extension IFormattableDocument document) {
 		// TODO: format HiddenRegions around keywords, attributes, cross references, etc. 
 		componentBasedSystemContainer.repository.format
-		for (assembly : componentBasedSystemContainer.assemblies) {
-			assembly.format
-		}
-		for (environment : componentBasedSystemContainer.environments) {
-			environment.format
-		}
-		for (system : componentBasedSystemContainer.systems) {
-			system.format
-		}
+		componentBasedSystemContainer.assembly.format		
+		componentBasedSystemContainer.environment.format
+		componentBasedSystemContainer.system.format
 	}
 
 	def dispatch void format(componentbasedsystem.allocation.System system, extension IFormattableDocument document) {

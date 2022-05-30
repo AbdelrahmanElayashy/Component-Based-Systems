@@ -396,12 +396,7 @@ public class CBSSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     ComponentBasedSystemContainer returns ComponentBasedSystemContainer
 	 *
 	 * Constraint:
-	 *     (
-	 *         repository=Repository | 
-	 *         (assemblies+=Assembly assemblies+=Assembly*) | 
-	 *         (environments+=Environment environments+=Environment*) | 
-	 *         (systems+=System systems+=System*)
-	 *     )+
+	 *     (repository=Repository | assembly=Assembly | environment=Environment | system=System)+
 	 * </pre>
 	 */
 	protected void sequence_ComponentBasedSystemContainer(ISerializationContext context, ComponentBasedSystemContainer semanticObject) {

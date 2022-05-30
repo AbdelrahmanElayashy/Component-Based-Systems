@@ -11,13 +11,13 @@ import "platform:/resource/Component-Based-Systems/model/ComponentBasedSystems.e
 
 
 ComponentBasedSystemContainer returns componentbasedsystem::ComponentBasedSystemContainer:
-	("repository" "{"repository = Repository "}")?
+	(repository = Repository)?
 	&
-	("assemblies" "{" assemblies+=Assembly ("," assemblies+=Assembly)* "}")?
+	(assembly = Assembly)?
 	&
-	("environments" "{" environments+=Environment ("," environments+=Environment)* "}")?
+	(environment = Environment)?
 	&
-	("systems" "{" systems+=System ("," systems+=System)* "}")?
+	(system = System)?
 ;
 
 // region allocation

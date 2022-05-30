@@ -7,8 +7,7 @@ transformation CBStoPCM(in source:CBS, out target:PCM);
 main() {
 	source.objectsOfType(CBS::repository::Repository) -> map repository2Repository();
 	
-	source.objectsOfType(CBS::environment::Space)->environments->
-			forEach(env) { env->map environmentToResourceEnvironment()};
+	source.objectsOfType(CBS::environment::Environment)->	map environmentToResourceEnvironment();
 			
 	source.objectsOfType(CBS::allocation::System)-> map CBSSystemToPCMSystem();
 }

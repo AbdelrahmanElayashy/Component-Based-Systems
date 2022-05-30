@@ -30,170 +30,58 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	public class ComponentBasedSystemContainerElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.CBS.ComponentBasedSystemContainer");
 		private final UnorderedGroup cUnorderedGroup = (UnorderedGroup)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cUnorderedGroup.eContents().get(0);
-		private final Keyword cRepositoryKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
-		private final Assignment cRepositoryAssignment_0_2 = (Assignment)cGroup_0.eContents().get(2);
-		private final RuleCall cRepositoryRepositoryParserRuleCall_0_2_0 = (RuleCall)cRepositoryAssignment_0_2.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_0_3 = (Keyword)cGroup_0.eContents().get(3);
-		private final Group cGroup_1 = (Group)cUnorderedGroup.eContents().get(1);
-		private final Keyword cAssembliesKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
-		private final Assignment cAssembliesAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
-		private final RuleCall cAssembliesAssemblyParserRuleCall_1_2_0 = (RuleCall)cAssembliesAssignment_1_2.eContents().get(0);
-		private final Group cGroup_1_3 = (Group)cGroup_1.eContents().get(3);
-		private final Keyword cCommaKeyword_1_3_0 = (Keyword)cGroup_1_3.eContents().get(0);
-		private final Assignment cAssembliesAssignment_1_3_1 = (Assignment)cGroup_1_3.eContents().get(1);
-		private final RuleCall cAssembliesAssemblyParserRuleCall_1_3_1_0 = (RuleCall)cAssembliesAssignment_1_3_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_1_4 = (Keyword)cGroup_1.eContents().get(4);
-		private final Group cGroup_2 = (Group)cUnorderedGroup.eContents().get(2);
-		private final Keyword cEnvironmentsKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_2_1 = (Keyword)cGroup_2.eContents().get(1);
-		private final Assignment cEnvironmentsAssignment_2_2 = (Assignment)cGroup_2.eContents().get(2);
-		private final RuleCall cEnvironmentsEnvironmentParserRuleCall_2_2_0 = (RuleCall)cEnvironmentsAssignment_2_2.eContents().get(0);
-		private final Group cGroup_2_3 = (Group)cGroup_2.eContents().get(3);
-		private final Keyword cCommaKeyword_2_3_0 = (Keyword)cGroup_2_3.eContents().get(0);
-		private final Assignment cEnvironmentsAssignment_2_3_1 = (Assignment)cGroup_2_3.eContents().get(1);
-		private final RuleCall cEnvironmentsEnvironmentParserRuleCall_2_3_1_0 = (RuleCall)cEnvironmentsAssignment_2_3_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_2_4 = (Keyword)cGroup_2.eContents().get(4);
-		private final Group cGroup_3 = (Group)cUnorderedGroup.eContents().get(3);
-		private final Keyword cSystemsKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_3_1 = (Keyword)cGroup_3.eContents().get(1);
-		private final Assignment cSystemsAssignment_3_2 = (Assignment)cGroup_3.eContents().get(2);
-		private final RuleCall cSystemsSystemParserRuleCall_3_2_0 = (RuleCall)cSystemsAssignment_3_2.eContents().get(0);
-		private final Group cGroup_3_3 = (Group)cGroup_3.eContents().get(3);
-		private final Keyword cCommaKeyword_3_3_0 = (Keyword)cGroup_3_3.eContents().get(0);
-		private final Assignment cSystemsAssignment_3_3_1 = (Assignment)cGroup_3_3.eContents().get(1);
-		private final RuleCall cSystemsSystemParserRuleCall_3_3_1_0 = (RuleCall)cSystemsAssignment_3_3_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_3_4 = (Keyword)cGroup_3.eContents().get(4);
+		private final Assignment cRepositoryAssignment_0 = (Assignment)cUnorderedGroup.eContents().get(0);
+		private final RuleCall cRepositoryRepositoryParserRuleCall_0_0 = (RuleCall)cRepositoryAssignment_0.eContents().get(0);
+		private final Assignment cAssemblyAssignment_1 = (Assignment)cUnorderedGroup.eContents().get(1);
+		private final RuleCall cAssemblyAssemblyParserRuleCall_1_0 = (RuleCall)cAssemblyAssignment_1.eContents().get(0);
+		private final Assignment cEnvironmentAssignment_2 = (Assignment)cUnorderedGroup.eContents().get(2);
+		private final RuleCall cEnvironmentEnvironmentParserRuleCall_2_0 = (RuleCall)cEnvironmentAssignment_2.eContents().get(0);
+		private final Assignment cSystemAssignment_3 = (Assignment)cUnorderedGroup.eContents().get(3);
+		private final RuleCall cSystemSystemParserRuleCall_3_0 = (RuleCall)cSystemAssignment_3.eContents().get(0);
 		
 		//ComponentBasedSystemContainer returns componentbasedsystem::ComponentBasedSystemContainer:
-		//    ("repository" "{"repository = Repository "}")?
+		//    (repository = Repository)?
 		//    &
-		//    ("assemblies" "{" assemblies+=Assembly ("," assemblies+=Assembly)* "}")?
+		//    (assembly = Assembly)?
 		//    &
-		//    ("environments" "{" environments+=Environment ("," environments+=Environment)* "}")?
+		//    (environment = Environment)?
 		//    &
-		//    ("systems" "{" systems+=System ("," systems+=System)* "}")?
+		//    (system = System)?
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//("repository" "{"repository = Repository "}")?
+		//(repository = Repository)?
 		//&
-		//("assemblies" "{" assemblies+=Assembly ("," assemblies+=Assembly)* "}")?
+		//(assembly = Assembly)?
 		//&
-		//("environments" "{" environments+=Environment ("," environments+=Environment)* "}")?
+		//(environment = Environment)?
 		//&
-		//("systems" "{" systems+=System ("," systems+=System)* "}")?
+		//(system = System)?
 		public UnorderedGroup getUnorderedGroup() { return cUnorderedGroup; }
 		
-		//("repository" "{"repository = Repository "}")?
-		public Group getGroup_0() { return cGroup_0; }
-		
-		//"repository"
-		public Keyword getRepositoryKeyword_0_0() { return cRepositoryKeyword_0_0; }
-		
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_0_1() { return cLeftCurlyBracketKeyword_0_1; }
-		
-		//repository = Repository
-		public Assignment getRepositoryAssignment_0_2() { return cRepositoryAssignment_0_2; }
+		//(repository = Repository)?
+		public Assignment getRepositoryAssignment_0() { return cRepositoryAssignment_0; }
 		
 		//Repository
-		public RuleCall getRepositoryRepositoryParserRuleCall_0_2_0() { return cRepositoryRepositoryParserRuleCall_0_2_0; }
+		public RuleCall getRepositoryRepositoryParserRuleCall_0_0() { return cRepositoryRepositoryParserRuleCall_0_0; }
 		
-		//"}"
-		public Keyword getRightCurlyBracketKeyword_0_3() { return cRightCurlyBracketKeyword_0_3; }
-		
-		//("assemblies" "{" assemblies+=Assembly ("," assemblies+=Assembly)* "}")?
-		public Group getGroup_1() { return cGroup_1; }
-		
-		//"assemblies"
-		public Keyword getAssembliesKeyword_1_0() { return cAssembliesKeyword_1_0; }
-		
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_1_1() { return cLeftCurlyBracketKeyword_1_1; }
-		
-		//assemblies+=Assembly
-		public Assignment getAssembliesAssignment_1_2() { return cAssembliesAssignment_1_2; }
+		//(assembly = Assembly)?
+		public Assignment getAssemblyAssignment_1() { return cAssemblyAssignment_1; }
 		
 		//Assembly
-		public RuleCall getAssembliesAssemblyParserRuleCall_1_2_0() { return cAssembliesAssemblyParserRuleCall_1_2_0; }
+		public RuleCall getAssemblyAssemblyParserRuleCall_1_0() { return cAssemblyAssemblyParserRuleCall_1_0; }
 		
-		//("," assemblies+=Assembly)*
-		public Group getGroup_1_3() { return cGroup_1_3; }
-		
-		//","
-		public Keyword getCommaKeyword_1_3_0() { return cCommaKeyword_1_3_0; }
-		
-		//assemblies+=Assembly
-		public Assignment getAssembliesAssignment_1_3_1() { return cAssembliesAssignment_1_3_1; }
-		
-		//Assembly
-		public RuleCall getAssembliesAssemblyParserRuleCall_1_3_1_0() { return cAssembliesAssemblyParserRuleCall_1_3_1_0; }
-		
-		//"}"
-		public Keyword getRightCurlyBracketKeyword_1_4() { return cRightCurlyBracketKeyword_1_4; }
-		
-		//("environments" "{" environments+=Environment ("," environments+=Environment)* "}")?
-		public Group getGroup_2() { return cGroup_2; }
-		
-		//"environments"
-		public Keyword getEnvironmentsKeyword_2_0() { return cEnvironmentsKeyword_2_0; }
-		
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_2_1() { return cLeftCurlyBracketKeyword_2_1; }
-		
-		//environments+=Environment
-		public Assignment getEnvironmentsAssignment_2_2() { return cEnvironmentsAssignment_2_2; }
+		//(environment = Environment)?
+		public Assignment getEnvironmentAssignment_2() { return cEnvironmentAssignment_2; }
 		
 		//Environment
-		public RuleCall getEnvironmentsEnvironmentParserRuleCall_2_2_0() { return cEnvironmentsEnvironmentParserRuleCall_2_2_0; }
+		public RuleCall getEnvironmentEnvironmentParserRuleCall_2_0() { return cEnvironmentEnvironmentParserRuleCall_2_0; }
 		
-		//("," environments+=Environment)*
-		public Group getGroup_2_3() { return cGroup_2_3; }
-		
-		//","
-		public Keyword getCommaKeyword_2_3_0() { return cCommaKeyword_2_3_0; }
-		
-		//environments+=Environment
-		public Assignment getEnvironmentsAssignment_2_3_1() { return cEnvironmentsAssignment_2_3_1; }
-		
-		//Environment
-		public RuleCall getEnvironmentsEnvironmentParserRuleCall_2_3_1_0() { return cEnvironmentsEnvironmentParserRuleCall_2_3_1_0; }
-		
-		//"}"
-		public Keyword getRightCurlyBracketKeyword_2_4() { return cRightCurlyBracketKeyword_2_4; }
-		
-		//("systems" "{" systems+=System ("," systems+=System)* "}")?
-		public Group getGroup_3() { return cGroup_3; }
-		
-		//"systems"
-		public Keyword getSystemsKeyword_3_0() { return cSystemsKeyword_3_0; }
-		
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_3_1() { return cLeftCurlyBracketKeyword_3_1; }
-		
-		//systems+=System
-		public Assignment getSystemsAssignment_3_2() { return cSystemsAssignment_3_2; }
+		//(system = System)?
+		public Assignment getSystemAssignment_3() { return cSystemAssignment_3; }
 		
 		//System
-		public RuleCall getSystemsSystemParserRuleCall_3_2_0() { return cSystemsSystemParserRuleCall_3_2_0; }
-		
-		//("," systems+=System)*
-		public Group getGroup_3_3() { return cGroup_3_3; }
-		
-		//","
-		public Keyword getCommaKeyword_3_3_0() { return cCommaKeyword_3_3_0; }
-		
-		//systems+=System
-		public Assignment getSystemsAssignment_3_3_1() { return cSystemsAssignment_3_3_1; }
-		
-		//System
-		public RuleCall getSystemsSystemParserRuleCall_3_3_1_0() { return cSystemsSystemParserRuleCall_3_3_1_0; }
-		
-		//"}"
-		public Keyword getRightCurlyBracketKeyword_3_4() { return cRightCurlyBracketKeyword_3_4; }
+		public RuleCall getSystemSystemParserRuleCall_3_0() { return cSystemSystemParserRuleCall_3_0; }
 	}
 	public class SystemElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.CBS.System");
@@ -2782,13 +2670,13 @@ public class CBSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 
 	
 	//ComponentBasedSystemContainer returns componentbasedsystem::ComponentBasedSystemContainer:
-	//    ("repository" "{"repository = Repository "}")?
+	//    (repository = Repository)?
 	//    &
-	//    ("assemblies" "{" assemblies+=Assembly ("," assemblies+=Assembly)* "}")?
+	//    (assembly = Assembly)?
 	//    &
-	//    ("environments" "{" environments+=Environment ("," environments+=Environment)* "}")?
+	//    (environment = Environment)?
 	//    &
-	//    ("systems" "{" systems+=System ("," systems+=System)* "}")?
+	//    (system = System)?
 	//;
 	public ComponentBasedSystemContainerElements getComponentBasedSystemContainerAccess() {
 		return pComponentBasedSystemContainer;

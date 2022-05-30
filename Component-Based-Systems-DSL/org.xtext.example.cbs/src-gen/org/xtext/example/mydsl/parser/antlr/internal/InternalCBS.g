@@ -88,37 +88,23 @@ ruleComponentBasedSystemContainer returns [EObject current=null]
 				{
 					getUnorderedGroupHelper().select(grammarAccess.getComponentBasedSystemContainerAccess().getUnorderedGroup(), 0);
 				}
-							({true}?=>(otherlv_1='repository'
-							{
-								newLeafNode(otherlv_1, grammarAccess.getComponentBasedSystemContainerAccess().getRepositoryKeyword_0_0());
-							}
-							otherlv_2='{'
-							{
-								newLeafNode(otherlv_2, grammarAccess.getComponentBasedSystemContainerAccess().getLeftCurlyBracketKeyword_0_1());
-							}
-							(
-								(
-									{
-										newCompositeNode(grammarAccess.getComponentBasedSystemContainerAccess().getRepositoryRepositoryParserRuleCall_0_2_0());
+							({true}?=>((
+								{
+									newCompositeNode(grammarAccess.getComponentBasedSystemContainerAccess().getRepositoryRepositoryParserRuleCall_0_0());
+								}
+								lv_repository_1_0=ruleRepository
+								{
+									if ($current==null) {
+										$current = createModelElementForParent(grammarAccess.getComponentBasedSystemContainerRule());
 									}
-									lv_repository_3_0=ruleRepository
-									{
-										if ($current==null) {
-											$current = createModelElementForParent(grammarAccess.getComponentBasedSystemContainerRule());
-										}
-										set(
-											$current,
-											"repository",
-											lv_repository_3_0,
-											"org.xtext.example.mydsl.CBS.Repository");
-										afterParserOrEnumRuleCall();
-									}
-								)
+									set(
+										$current,
+										"repository",
+										lv_repository_1_0,
+										"org.xtext.example.mydsl.CBS.Repository");
+									afterParserOrEnumRuleCall();
+								}
 							)
-							otherlv_4='}'
-							{
-								newLeafNode(otherlv_4, grammarAccess.getComponentBasedSystemContainerAccess().getRightCurlyBracketKeyword_0_3());
-							}
 							))
 				{ 
 					getUnorderedGroupHelper().returnFromSelection(grammarAccess.getComponentBasedSystemContainerAccess().getUnorderedGroup());
@@ -130,62 +116,23 @@ ruleComponentBasedSystemContainer returns [EObject current=null]
 				{
 					getUnorderedGroupHelper().select(grammarAccess.getComponentBasedSystemContainerAccess().getUnorderedGroup(), 1);
 				}
-							({true}?=>(otherlv_5='assemblies'
-							{
-								newLeafNode(otherlv_5, grammarAccess.getComponentBasedSystemContainerAccess().getAssembliesKeyword_1_0());
-							}
-							otherlv_6='{'
-							{
-								newLeafNode(otherlv_6, grammarAccess.getComponentBasedSystemContainerAccess().getLeftCurlyBracketKeyword_1_1());
-							}
-							(
-								(
-									{
-										newCompositeNode(grammarAccess.getComponentBasedSystemContainerAccess().getAssembliesAssemblyParserRuleCall_1_2_0());
-									}
-									lv_assemblies_7_0=ruleAssembly
-									{
-										if ($current==null) {
-											$current = createModelElementForParent(grammarAccess.getComponentBasedSystemContainerRule());
-										}
-										add(
-											$current,
-											"assemblies",
-											lv_assemblies_7_0,
-											"org.xtext.example.mydsl.CBS.Assembly");
-										afterParserOrEnumRuleCall();
-									}
-								)
-							)
-							(
-								otherlv_8=','
+							({true}?=>((
 								{
-									newLeafNode(otherlv_8, grammarAccess.getComponentBasedSystemContainerAccess().getCommaKeyword_1_3_0());
+									newCompositeNode(grammarAccess.getComponentBasedSystemContainerAccess().getAssemblyAssemblyParserRuleCall_1_0());
 								}
-								(
-									(
-										{
-											newCompositeNode(grammarAccess.getComponentBasedSystemContainerAccess().getAssembliesAssemblyParserRuleCall_1_3_1_0());
-										}
-										lv_assemblies_9_0=ruleAssembly
-										{
-											if ($current==null) {
-												$current = createModelElementForParent(grammarAccess.getComponentBasedSystemContainerRule());
-											}
-											add(
-												$current,
-												"assemblies",
-												lv_assemblies_9_0,
-												"org.xtext.example.mydsl.CBS.Assembly");
-											afterParserOrEnumRuleCall();
-										}
-									)
-								)
-							)*
-							otherlv_10='}'
-							{
-								newLeafNode(otherlv_10, grammarAccess.getComponentBasedSystemContainerAccess().getRightCurlyBracketKeyword_1_4());
-							}
+								lv_assembly_2_0=ruleAssembly
+								{
+									if ($current==null) {
+										$current = createModelElementForParent(grammarAccess.getComponentBasedSystemContainerRule());
+									}
+									set(
+										$current,
+										"assembly",
+										lv_assembly_2_0,
+										"org.xtext.example.mydsl.CBS.Assembly");
+									afterParserOrEnumRuleCall();
+								}
+							)
 							))
 				{ 
 					getUnorderedGroupHelper().returnFromSelection(grammarAccess.getComponentBasedSystemContainerAccess().getUnorderedGroup());
@@ -197,62 +144,23 @@ ruleComponentBasedSystemContainer returns [EObject current=null]
 				{
 					getUnorderedGroupHelper().select(grammarAccess.getComponentBasedSystemContainerAccess().getUnorderedGroup(), 2);
 				}
-							({true}?=>(otherlv_11='environments'
-							{
-								newLeafNode(otherlv_11, grammarAccess.getComponentBasedSystemContainerAccess().getEnvironmentsKeyword_2_0());
-							}
-							otherlv_12='{'
-							{
-								newLeafNode(otherlv_12, grammarAccess.getComponentBasedSystemContainerAccess().getLeftCurlyBracketKeyword_2_1());
-							}
-							(
-								(
-									{
-										newCompositeNode(grammarAccess.getComponentBasedSystemContainerAccess().getEnvironmentsEnvironmentParserRuleCall_2_2_0());
-									}
-									lv_environments_13_0=ruleEnvironment
-									{
-										if ($current==null) {
-											$current = createModelElementForParent(grammarAccess.getComponentBasedSystemContainerRule());
-										}
-										add(
-											$current,
-											"environments",
-											lv_environments_13_0,
-											"org.xtext.example.mydsl.CBS.Environment");
-										afterParserOrEnumRuleCall();
-									}
-								)
-							)
-							(
-								otherlv_14=','
+							({true}?=>((
 								{
-									newLeafNode(otherlv_14, grammarAccess.getComponentBasedSystemContainerAccess().getCommaKeyword_2_3_0());
+									newCompositeNode(grammarAccess.getComponentBasedSystemContainerAccess().getEnvironmentEnvironmentParserRuleCall_2_0());
 								}
-								(
-									(
-										{
-											newCompositeNode(grammarAccess.getComponentBasedSystemContainerAccess().getEnvironmentsEnvironmentParserRuleCall_2_3_1_0());
-										}
-										lv_environments_15_0=ruleEnvironment
-										{
-											if ($current==null) {
-												$current = createModelElementForParent(grammarAccess.getComponentBasedSystemContainerRule());
-											}
-											add(
-												$current,
-												"environments",
-												lv_environments_15_0,
-												"org.xtext.example.mydsl.CBS.Environment");
-											afterParserOrEnumRuleCall();
-										}
-									)
-								)
-							)*
-							otherlv_16='}'
-							{
-								newLeafNode(otherlv_16, grammarAccess.getComponentBasedSystemContainerAccess().getRightCurlyBracketKeyword_2_4());
-							}
+								lv_environment_3_0=ruleEnvironment
+								{
+									if ($current==null) {
+										$current = createModelElementForParent(grammarAccess.getComponentBasedSystemContainerRule());
+									}
+									set(
+										$current,
+										"environment",
+										lv_environment_3_0,
+										"org.xtext.example.mydsl.CBS.Environment");
+									afterParserOrEnumRuleCall();
+								}
+							)
 							))
 				{ 
 					getUnorderedGroupHelper().returnFromSelection(grammarAccess.getComponentBasedSystemContainerAccess().getUnorderedGroup());
@@ -264,62 +172,23 @@ ruleComponentBasedSystemContainer returns [EObject current=null]
 				{
 					getUnorderedGroupHelper().select(grammarAccess.getComponentBasedSystemContainerAccess().getUnorderedGroup(), 3);
 				}
-							({true}?=>(otherlv_17='systems'
-							{
-								newLeafNode(otherlv_17, grammarAccess.getComponentBasedSystemContainerAccess().getSystemsKeyword_3_0());
-							}
-							otherlv_18='{'
-							{
-								newLeafNode(otherlv_18, grammarAccess.getComponentBasedSystemContainerAccess().getLeftCurlyBracketKeyword_3_1());
-							}
-							(
-								(
-									{
-										newCompositeNode(grammarAccess.getComponentBasedSystemContainerAccess().getSystemsSystemParserRuleCall_3_2_0());
-									}
-									lv_systems_19_0=ruleSystem
-									{
-										if ($current==null) {
-											$current = createModelElementForParent(grammarAccess.getComponentBasedSystemContainerRule());
-										}
-										add(
-											$current,
-											"systems",
-											lv_systems_19_0,
-											"org.xtext.example.mydsl.CBS.System");
-										afterParserOrEnumRuleCall();
-									}
-								)
-							)
-							(
-								otherlv_20=','
+							({true}?=>((
 								{
-									newLeafNode(otherlv_20, grammarAccess.getComponentBasedSystemContainerAccess().getCommaKeyword_3_3_0());
+									newCompositeNode(grammarAccess.getComponentBasedSystemContainerAccess().getSystemSystemParserRuleCall_3_0());
 								}
-								(
-									(
-										{
-											newCompositeNode(grammarAccess.getComponentBasedSystemContainerAccess().getSystemsSystemParserRuleCall_3_3_1_0());
-										}
-										lv_systems_21_0=ruleSystem
-										{
-											if ($current==null) {
-												$current = createModelElementForParent(grammarAccess.getComponentBasedSystemContainerRule());
-											}
-											add(
-												$current,
-												"systems",
-												lv_systems_21_0,
-												"org.xtext.example.mydsl.CBS.System");
-											afterParserOrEnumRuleCall();
-										}
-									)
-								)
-							)*
-							otherlv_22='}'
-							{
-								newLeafNode(otherlv_22, grammarAccess.getComponentBasedSystemContainerAccess().getRightCurlyBracketKeyword_3_4());
-							}
+								lv_system_4_0=ruleSystem
+								{
+									if ($current==null) {
+										$current = createModelElementForParent(grammarAccess.getComponentBasedSystemContainerRule());
+									}
+									set(
+										$current,
+										"system",
+										lv_system_4_0,
+										"org.xtext.example.mydsl.CBS.System");
+									afterParserOrEnumRuleCall();
+								}
+							)
 							))
 				{ 
 					getUnorderedGroupHelper().returnFromSelection(grammarAccess.getComponentBasedSystemContainerAccess().getUnorderedGroup());

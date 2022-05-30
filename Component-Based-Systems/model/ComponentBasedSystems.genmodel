@@ -8,9 +8,9 @@
   <genPackages prefix="Componentbasedsystem" disposableProviderFactory="true" ecorePackage="ComponentBasedSystems.ecore#/">
     <genClasses ecoreClass="ComponentBasedSystems.ecore#//ComponentBasedSystemContainer">
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//ComponentBasedSystemContainer/repository"/>
-      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//ComponentBasedSystemContainer/environments"/>
-      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//ComponentBasedSystemContainer/assemblies"/>
-      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//ComponentBasedSystemContainer/systems"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//ComponentBasedSystemContainer/environment"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//ComponentBasedSystemContainer/assembly"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//ComponentBasedSystemContainer/system"/>
     </genClasses>
     <nestedGenPackages prefix="Assembly" basePackage="componentbasedsystem" disposableProviderFactory="true"
         ecorePackage="ComponentBasedSystems.ecore#//assembly">
@@ -78,9 +78,6 @@
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentBasedSystems.ecore#//environment/Environment/name"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//environment/Environment/container"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//environment/Environment/linker"/>
-      </genClasses>
-      <genClasses ecoreClass="ComponentBasedSystems.ecore#//environment/Space">
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ComponentBasedSystems.ecore#//environment/Space/environments"/>
       </genClasses>
     </nestedGenPackages>
     <nestedGenPackages prefix="Allocation" basePackage="componentbasedsystem" disposableProviderFactory="true"
