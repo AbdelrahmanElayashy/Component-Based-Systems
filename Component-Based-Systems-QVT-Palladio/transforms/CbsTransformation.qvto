@@ -5,7 +5,8 @@ modeltype PCM uses 'platform:/resource/Palladio-Core-PCM/bundles/org.palladiosim
 transformation CBStoPCM(in source:CBS, out target:PCM);
 
 main() {
-
+	source.objectsOfType(CBS::repository::Repository) -> map repository2Repository();
+	
 	source.objectsOfType(CBS::environment::Space)->environments->
 			forEach(env) { env->map environmentToResourceEnvironment()};
 			
@@ -115,4 +116,96 @@ mapping CBS::environment::Container::containerToResourceContainer
 	hddResourceSpecifications := null;
 	log('########## End Converting ##########');
 			
+}
+
+/////////////////////////////////////////////////
+///////////// Repository ///////////////////////
+///////////////////////////////////////////////
+
+mapping CBS::repository::Repository::repository2Repository() : PCM::repository::Repository {
+	// id
+	
+	entityName := "Default Repository";
+	repositoryDescription := "Default Repository";
+	components__Repository := Set {}; // TODO  (BasicCompoenten)
+	interfaces__Repository := Set {}; // TODO (OperationInterface)
+	failureTypes__Repository := Set {}; // TODO
+	
+	dataTypes__Repository := Set{};
+	dataTypes__Repository := self.types -> map type2DataType(result);
+}
+
+// behavioral description
+
+// types
+abstract mapping CBS::repository::types::Type::type2DataTypeAbstract(repo: PCM::repository::Repository) : PCM::repository::DataType 
+{}
+
+mapping CBS::repository::types::Type::type2DataType (repo: PCM::repository::Repository) : PCM::repository::DataType
+disjuncts
+	CBS::repository::types::SimpleType::simpleType2primitiveDataType,
+	CBS::repository::types::CollectionType::collectionType2collectionDataType,
+	CBS::repository::types::ComplexType::complexType2compositeDataType
+{}
+
+mapping CBS::repository::types::SimpleType::simpleType2primitiveDataType(repo: PCM::repository::Repository) : PCM::repository::PrimitiveDataType inherits CBS::repository::types::Type::type2DataTypeAbstract
+when { self.oclIsKindOf(CBS::repository::types::SimpleType) }
+{
+	var simpleTypeInstance = self.oclAsType(CBS::repository::types::SimpleType);
+	repository__DataType := repo;
+	switch{
+		case (simpleTypeInstance.type = CBS::repository::types::SimpleTypeEnum::String) {
+			type := PCM::repository::PrimitiveTypeEnum::STRING;
+		}
+		case (simpleTypeInstance.type = CBS::repository::types::SimpleTypeEnum::Int) {
+			type := PCM::repository::PrimitiveTypeEnum::INT;
+		}
+		case (simpleTypeInstance.type = CBS::repository::types::SimpleTypeEnum::Boolean) {
+			type := PCM::repository::PrimitiveTypeEnum::BOOL;
+		}
+		case (simpleTypeInstance.type = CBS::repository::types::SimpleTypeEnum::Char) {
+			type := PCM::repository::PrimitiveTypeEnum::CHAR;
+		}
+		case (simpleTypeInstance.type = CBS::repository::types::SimpleTypeEnum::Date) {
+			// ! - no direct mapping exists
+			type := PCM::repository::PrimitiveTypeEnum::STRING;
+		}
+		case (simpleTypeInstance.type = CBS::repository::types::SimpleTypeEnum::Float) {
+			// ! - no direct mapping exists
+			type := PCM::repository::PrimitiveTypeEnum::LONG;
+		}
+		case (simpleTypeInstance.type = CBS::repository::types::SimpleTypeEnum::Long) {
+			type := PCM::repository::PrimitiveTypeEnum::LONG;
+		}
+	}
+}
+
+mapping CBS::repository::types::CollectionType::collectionType2collectionDataType(repo: PCM::repository::Repository) : PCM::repository::CollectionDataType inherits CBS::repository::types::Type::type2DataTypeAbstract
+when { self.oclIsKindOf(CBS::repository::types::CollectionType) }
+{
+	var collectionTypeInstance = self.oclAsType(CBS::repository::types::CollectionType);
+	var innerType := collectionTypeInstance.innerType.resolveone(PCM::repository::DataType);
+	
+	// id
+	repository__DataType := repo;
+	entityName := collectionTypeInstance.type.toString() + "<" + innerType.toString() + ">"; // .name?
+	innerType_CollectionDataType := innerType;
+}
+
+mapping CBS::repository::types::ComplexType::complexType2compositeDataType(repo: PCM::repository::Repository) : PCM::repository::CompositeDataType 
+when { self.oclIsKindOf(CBS::repository::types::ComplexType) }
+{
+	var complexTypeInstance = self.oclAsType(CBS::repository::types::ComplexType);
+	
+	// id
+	repository__DataType := repo;
+	entityName := complexTypeInstance.name;
+	parentType_CompositeDataType := Set{};
+	innerDeclaration_CompositeDataType := complexTypeInstance.members -> map complexMember2innerDeclaration(result);
+}
+
+mapping CBS::repository::types::ComplexMember::complexMember2innerDeclaration(compositeDataType: PCM::repository::CompositeDataType): PCM::repository::InnerDeclaration {
+	compositeDataType_InnerDeclaration := compositeDataType;
+	entityName := self.name;
+	datatype_InnerDeclaration := self.type.resolveone(PCM::repository::DataType);
 }
