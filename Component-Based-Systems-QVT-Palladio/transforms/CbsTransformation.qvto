@@ -1,8 +1,10 @@
 modeltype CBS uses 'platform:/resource/Component-Based-Systems/model/ComponentBasedSystems.ecore';
 modeltype PCM uses 'platform:/resource/Palladio-Core-PCM/bundles/org.palladiosimulator.pcm/model/pcm.ecore';
-	
+
 	
 transformation CBStoPCM(in source:CBS, out target:PCM);
+
+property idCounter: Integer = 1;
 
 main() {
 	source.objectsOfType(CBS::repository::Repository) -> map repository2Repository();
@@ -10,6 +12,12 @@ main() {
 	source.objectsOfType(CBS::environment::Environment)->	map environmentToResourceEnvironment();
 			
 	source.objectsOfType(CBS::allocation::System)-> map CBSSystemToPCMSystem();
+}
+
+helper getId(): String {
+	var res:= idCounter.toString();
+	idCounter := idCounter + 1;
+	return res;
 }
 
 /////////////////////////////////////////////////
@@ -92,10 +100,11 @@ mapping CBS::environment::Linker::linkerToLinkingResource
 	log('Converting Linker : ' + self.name);
 	entityName := self.name;
 	resourceEnvironment_LinkingResource := env;
-	connectedResourceContainers_LinkingResource += self.links->forEach(container) 
-	{ 
-	   env.resourceContainer_ResourceEnvironment->
-	   		selectOne(p | p.entityName = container.name);
+	
+	connectedResourceContainers_LinkingResource := Set{};
+	self.links -> forEach(c) {
+		log('resolve', c.resolveone(PCM::resourceenvironment::ResourceContainer));
+		connectedResourceContainers_LinkingResource += c.resolveone(PCM::resourceenvironment::ResourceContainer)
 	};
 	communicationLinkResourceSpecifications_LinkingResource := null;
 	log('########## End Converting ##########');
@@ -122,32 +131,119 @@ mapping CBS::environment::Container::containerToResourceContainer
 ///////////////////////////////////////////////
 
 mapping CBS::repository::Repository::repository2Repository() : PCM::repository::Repository {
-	// id
-	
+	id := getId();
 	entityName := "Default Repository";
 	repositoryDescription := "Default Repository";
-	components__Repository := Set {}; // TODO  (BasicCompoenten)
-	interfaces__Repository := Set {}; // TODO (OperationInterface)
-	failureTypes__Repository := Set {}; // TODO
-	
-	dataTypes__Repository := Set{};
-	dataTypes__Repository := self.types -> map type2DataType(result);
+	dataTypes__Repository := self.types -> map type2dataType(result);
+	interfaces__Repository := self.interfaces -> map interface2OperationInterface(result);
+	components__Repository := self.components -> map atomicComponenet2basicComponent(result);
+	failureTypes__Repository := Set {}; // note: no failures modeled in CBS
 }
 
-// behavioral description
+mapping CBS::repository::AtomicComponent::atomicComponenet2basicComponent(repo: PCM::repository::Repository): PCM::repository::BasicComponent {
+	id := getId();
+	entityName := self.name;
+	repository__RepositoryComponent := repo;
+	
+	providedRoles_InterfaceProvidingEntity := 
+		self.provides -> 
+		collect(i | i.resolveone(PCM::repository::OperationInterface)) -> 
+		forEach(interface) { new PCM::repository::OperationProvidedRole(self, result, interface) };
+	requiredRoles_InterfaceRequiringEntity:= 
+		self.requires -> 
+		collect(i | i.resolveone(PCM::repository::OperationInterface)) -> 
+		forEach(interface) { new PCM::repository::OperationRequiredRole(self, result, interface) };
+	
+	resourceRequiredRoles__ResourceInterfaceRequiringEntity := Set{}; // note: no concept of resources (TODO: verify)
+	passiveResource_BasicComponent := Set{}; // note: no concept of semaphores, e.g. in CBS
+	
+	parentCompleteComponentTypes := Set{}; // note: no concept of component inheritance in CBS
+	componentParameterUsage_ImplementationComponentType := Set{}; // note: no parameterization in CBS
+	componentType := PCM::repository::ComponentType::BUSINESS_COMPONENT; // note: default mapping - no related concept in CBS
+	
+	serviceEffectSpecifications__BasicComponent := null; // TODO: implement after behavioral description is completed
+}
 
-// types
-abstract mapping CBS::repository::types::Type::type2DataTypeAbstract(repo: PCM::repository::Repository) : PCM::repository::DataType 
+constructor PCM::repository::OperationProvidedRole::OperationProvidedRole(
+	originalComponent: CBS::repository::AtomicComponent,
+	newComponent: PCM::repository::BasicComponent,
+	interface: PCM::repository::OperationInterface
+	) {
+	id := getId();
+	entityName := originalComponent.name + ".provides:" + interface.entityName;
+	providingEntity_ProvidedRole := newComponent;
+	providedInterface__OperationProvidedRole := interface;
+};
+
+constructor PCM::repository::OperationRequiredRole::OperationRequiredRole(
+	originalComponent: CBS::repository::AtomicComponent,
+	newComponent: PCM::repository::BasicComponent,
+	interface: PCM::repository::OperationInterface
+	) {
+	id := getId();
+	entityName := originalComponent.name + ".provides:" + interface.entityName;
+	requiringEntity_RequiredRole := newComponent;
+	requiredInterface__OperationRequiredRole := interface;
+};
+
+mapping CBS::repository::Interface::interface2OperationInterface(repo: PCM::repository::Repository): PCM::repository::OperationInterface {
+	id := getId();
+	entityName := self.name;
+	repository__Interface := repo;
+	
+	signatures__OperationInterface := self.signatures -> map signature2operationSignature(result);
+	
+	parentInterfaces__Interface := Set {}; // note: no inheritance of interfaces in CBS 
+	protocols__Interface := Set {}; // note: no information about order of calls modeled in CBS
+	requiredCharacterisations := Set {}; // note: no variable characterization modeled in CBS
+}
+
+mapping CBS::repository::Signature::signature2operationSignature(interface: PCM::repository::OperationInterface): PCM::repository::OperationSignature {
+	id := getId();
+	entityName := self.name;
+	interface__OperationSignature := interface;
+	
+	parameters__OperationSignature := self.parameters -> map parameter2parameter(result);
+	if(self.returnType.oclIsKindOf(CBS::repository::types::Void)){
+		// TODO: is null correct to model "not set"?
+		returnType__OperationSignature := null; // note: void not modeled in PCM
+	} else {
+		returnType__OperationSignature := self.returnType.resolveone(PCM::repository::DataType);
+	};
+	
+	exceptions__Signature := Set {}; // note: no exceptions modeled in CBS
+	failureType := Set{}; // note: no failures modeled in CBS
+}
+
+mapping CBS::repository::Parameter::parameter2parameter(operation: PCM::repository::OperationSignature): PCM::repository::Parameter {
+	parameterName := self.name;
+	operationSignature__Parameter := operation;
+	
+	dataType__Parameter := self.type.resolveone(PCM::repository::DataType);
+	
+	infrastructureSignature__Parameter; // TODO: check meaning
+	eventType__Parameter; // TODO: check meaning
+	resourceSignature__Parameter; // TODO: check meaning
+	modifier__Parameter := PCM::repository::ParameterModifier::none;
+}
+
+
+// TODO: behavioral description
+
+/////////////////////////////////////////////////
+///////////// Types ////////////////////////////
+///////////////////////////////////////////////
+abstract mapping CBS::repository::types::Type::type2dataTypeAbstract(repo: PCM::repository::Repository) : PCM::repository::DataType 
 {}
 
-mapping CBS::repository::types::Type::type2DataType (repo: PCM::repository::Repository) : PCM::repository::DataType
+mapping CBS::repository::types::Type::type2dataType (repo: PCM::repository::Repository) : PCM::repository::DataType
 disjuncts
 	CBS::repository::types::SimpleType::simpleType2primitiveDataType,
 	CBS::repository::types::CollectionType::collectionType2collectionDataType,
 	CBS::repository::types::ComplexType::complexType2compositeDataType
 {}
 
-mapping CBS::repository::types::SimpleType::simpleType2primitiveDataType(repo: PCM::repository::Repository) : PCM::repository::PrimitiveDataType inherits CBS::repository::types::Type::type2DataTypeAbstract
+mapping CBS::repository::types::SimpleType::simpleType2primitiveDataType(repo: PCM::repository::Repository) : PCM::repository::PrimitiveDataType inherits CBS::repository::types::Type::type2dataTypeAbstract
 when { self.oclIsKindOf(CBS::repository::types::SimpleType) }
 {
 	var simpleTypeInstance = self.oclAsType(CBS::repository::types::SimpleType);
@@ -166,11 +262,11 @@ when { self.oclIsKindOf(CBS::repository::types::SimpleType) }
 			type := PCM::repository::PrimitiveTypeEnum::CHAR;
 		}
 		case (simpleTypeInstance.type = CBS::repository::types::SimpleTypeEnum::Date) {
-			// ! - no direct mapping exists
+			// note: no direct mapping exists
 			type := PCM::repository::PrimitiveTypeEnum::STRING;
 		}
 		case (simpleTypeInstance.type = CBS::repository::types::SimpleTypeEnum::Float) {
-			// ! - no direct mapping exists
+			// note: no direct mapping exists
 			type := PCM::repository::PrimitiveTypeEnum::LONG;
 		}
 		case (simpleTypeInstance.type = CBS::repository::types::SimpleTypeEnum::Long) {
@@ -179,15 +275,15 @@ when { self.oclIsKindOf(CBS::repository::types::SimpleType) }
 	}
 }
 
-mapping CBS::repository::types::CollectionType::collectionType2collectionDataType(repo: PCM::repository::Repository) : PCM::repository::CollectionDataType inherits CBS::repository::types::Type::type2DataTypeAbstract
+mapping CBS::repository::types::CollectionType::collectionType2collectionDataType(repo: PCM::repository::Repository) : PCM::repository::CollectionDataType inherits CBS::repository::types::Type::type2dataTypeAbstract
 when { self.oclIsKindOf(CBS::repository::types::CollectionType) }
 {
 	var collectionTypeInstance = self.oclAsType(CBS::repository::types::CollectionType);
 	var innerType := collectionTypeInstance.innerType.resolveone(PCM::repository::DataType);
 	
-	// id
+	id := getId();
 	repository__DataType := repo;
-	entityName := collectionTypeInstance.type.toString() + "<" + innerType.toString() + ">"; // .name?
+	entityName := collectionTypeInstance.type.toString() + "<" + collectionTypeInstance.innerType.name + ">";
 	innerType_CollectionDataType := innerType;
 }
 
@@ -196,10 +292,10 @@ when { self.oclIsKindOf(CBS::repository::types::ComplexType) }
 {
 	var complexTypeInstance = self.oclAsType(CBS::repository::types::ComplexType);
 	
-	// id
+	id := getId();
 	repository__DataType := repo;
 	entityName := complexTypeInstance.name;
-	parentType_CompositeDataType := Set{};
+	parentType_CompositeDataType := Set{}; // note: no inheritance of complex types in CBS
 	innerDeclaration_CompositeDataType := complexTypeInstance.members -> map complexMember2innerDeclaration(result);
 }
 
