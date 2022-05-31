@@ -7,6 +7,13 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
+import org.eclipse.emf.ecore.util.EcoreUtil
+import org.xtext.example.mydsl.CBSStandaloneSetup
+import com.google.inject.Injector
+import org.eclipse.xtext.resource.XtextResourceSet
+import java.io.IOException
+import org.eclipse.emf.common.util.URI
+import java.nio.file.Paths
 
 /**
  * Generates code from your model files on save.
@@ -16,10 +23,22 @@ import org.eclipse.xtext.generator.IGeneratorContext
 class CBSGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-//		fsa.generateFile('greetings.txt', 'People to greet: ' + 
-//			resource.allContents
-//				.filter(Greeting)
-//				.map[name]
-//				.join(', '))
+		val Injector injector = new CBSStandaloneSetup().createInjectorAndDoEMFRegistration();
+		
+		val XtextResourceSet resourceSet = injector.getInstance(XtextResourceSet);
+		
+		EcoreUtil.resolveAll(resource);
+		
+		var String filename = Paths.get(resource.URI.path).getFileName().toString().replaceFirst("[.][^.]+$", "");
+		fsa.generateFile(filename+ ".xmi", "")
+		val URI outputURI = fsa.getURI(filename+ ".xmi")
+		
+		val Resource xmiResource = resourceSet.createResource(outputURI);
+		xmiResource.getContents().add(resource.getContents().get(0));
+		try {
+			xmiResource.save(null);
+		} catch (IOException e) {
+			e.printStackTrace();	
+		}
 	}
 }
