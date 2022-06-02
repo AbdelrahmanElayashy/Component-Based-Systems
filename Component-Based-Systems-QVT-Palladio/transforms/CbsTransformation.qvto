@@ -9,30 +9,58 @@ property idCounter: Integer = 1;
 main() {
 	source.objectsOfType(CBS::repository::Repository) -> map repository2Repository();
 	
-	source.objectsOfType(CBS::environment::Environment)->	map environmentToResourceEnvironment();
-			
-	source.objectsOfType(CBS::allocation::System)-> map CBSSystemToPCMSystem();
+	var env := source.objectsOfType(CBS::environment::Environment)->map environmentToResourceEnvironment()->asOrderedSet()->first();
+
+	var sys := source.objectsOfType(CBS::allocation::System)-> map CBSSystemToPCMSystem()->asOrderedSet()->first();
+	
+	source.objectsOfType(CBS::allocation::Allocation)-> map CBSAllocation2PCMAllocation(env, sys);
 }
 
-helper getId(): String {
-	var res:= idCounter.toString();
-	idCounter := idCounter + 1;
-	return res;
-}
+
 
 /////////////////////////////////////////////////
 ///////////// Allocation ///////////////////////
 ///////////////////////////////////////////////
+mapping CBS::allocation::Allocation::CBSAllocation2PCMAllocation
+		(env : PCM::resourceenvironment::ResourceEnvironment,
+		 system : PCM::system::System):
+		PCM::allocation::Allocation {
+			
+	id := getId();
+	entityName := "Default allocation";
+	targetResourceEnvironment_Allocation := env;
+	system_Allocation := system;
+	allocationContexts_Allocation := self.allocationContexts->forEach(context) {
+		context-> map CBSAllocationContext2PCMAllocationContext(result);
+	}
+}
+
+mapping CBS::allocation::AllocationContext::CBSAllocationContext2PCMAllocationContext
+		(allocation : PCM::allocation::Allocation): 
+		PCM::allocation::AllocationContext {
+	
+	id := getId();
+	entityName := "AllocationContext " + getId();
+	allocation_AllocationContext := allocation;
+	resourceContainer_AllocationContext := self.container.resolveone(PCM::resourceenvironment::ResourceContainer);
+	assemblyContext_AllocationContext := self.allocates.resolveone(PCM::core::composition::AssemblyContext);
+			
+}
+
+
+/////////////////////////////////////////////////
+///////////// System ///////////////////////////
+///////////////////////////////////////////////
 mapping CBS::allocation::System::CBSSystemToPCMSystem():
 	PCM::system::System {
 		
+	id := getId();
 	entityName := self.name;
 	assemblyContexts__ComposedStructure := self.childContexts->forEach(context)
 	{
 		context->map CBSAssemblyContextToPCMAssemblyContext();
 	};
 	
-	qosAnnotations_System := null;
 }
 
 
@@ -40,95 +68,83 @@ mapping CBS::allocation::System::CBSSystemToPCMSystem():
 ///////////// Assembly /////////////////////////
 ///////////////////////////////////////////////
 
-mapping CBS::assembly::ProvidedDelegationConnector::
-		CBSProvidedDelgToPCMProvidedDelg():
-		PCM::core::composition::ProvidedDelegationConnector {
-		entityName := self.name;
-		// noch
-}
-
-mapping CBS::assembly::RequiredDelegationConnector::
-		CBSRequiredDelgToPCMRequiredDelg():
-		PCM::core::composition::RequiredDelegationConnector {
-		entityName := self.name;
-		// noch
-}
-
-mapping CBS::assembly::ProvidedRole::CBSProvidedRoleToPCMProvidedRole():
-		PCM::core::entity::ResourceProvidedRole {
-	entityName := self.name;
-	// should integerate with repo 
-	//providedResourceInterface__ResourceProvidedRole := self.interface;
-	resourceInterfaceProvidingEntity__ResourceProvidedRole := null;
-}
-
-mapping CBS::assembly::RequiredRole::CBSRequiredRoleToPCMRequiredRole():
-		PCM::core::entity::ResourceRequiredRole {
-	entityName := self.name;
-	// should integerate with repo 
-	//requiredResourceInterface__ResourceRequiredRole := self.interface;
-}
-
 mapping CBS::assembly::AssemblyContext::CBSAssemblyContextToPCMAssemblyContext():
 	PCM::core::composition::AssemblyContext {
 
 	entityName := self.name;
-	// should integerate with repo 
-	//encapsulatedComponent__AssemblyContext := self.instantiates;		
+	// need mapping between component 2 repository component!
+	//encapsulatedComponent__AssemblyContext := self.instantiates-> map Component2RepositoryComponent();
+
 } 
 
 
 
-/////////////////////////////////////////////////
-///////////// Environment //////////////////////
-///////////////////////////////////////////////
-mapping CBS::environment::Environment::environmentToResourceEnvironment():
-		PCM::resourceenvironment::ResourceEnvironment {
+mapping CBS::assembly::ProvidedDelegationConnector::CBSProvidedDelgToPCMProvidedDelg
+		(
+		originalComponent: CBS::repository::AtomicComponent,
+		newComponent: PCM::repository::BasicComponent,
+		interface: PCM::repository::OperationInterface
+		):
+		PCM::core::composition::ProvidedDelegationConnector {
+		
+		entityName := self.name;
+		innerProvidedRole_ProvidedDelegationConnector := 
+					new PCM::repository::OperationProvidedRole(originalComponent, newComponent, interface);
 
-	entityName := self.name;
-	resourceContainer_ResourceEnvironment += self.container->forEach(container) 
-	{ container->map containerToResourceContainer(result);};
-	linkingResources__ResourceEnvironment += self.linker->forEach(link) 
-	{ link->map linkerToLinkingResource(result);}
 
 }
 
-mapping CBS::environment::Linker::linkerToLinkingResource
-(env : PCM::resourceenvironment::ResourceEnvironment):
-		PCM::resourceenvironment::LinkingResource {
+mapping CBS::assembly::RequiredDelegationConnector::CBSRequiredDelgToPCMRequiredDelg
+		(
+		originalComponent: CBS::repository::AtomicComponent,
+		newComponent: PCM::repository::BasicComponent,
+		interface: PCM::repository::OperationInterface
+		):
+		PCM::core::composition::RequiredDelegationConnector {
 		
-	log('Converting Linker : ' + self.name);
-	entityName := self.name;
-	resourceEnvironment_LinkingResource := env;
+		entityName := self.name;
+		innerRequiredRole_RequiredDelegationConnector := 
+					new PCM::repository::OperationRequiredRole(originalComponent, newComponent, interface);
 	
-	connectedResourceContainers_LinkingResource := Set{};
-	self.links -> forEach(c) {
-		log('resolve', c.resolveone(PCM::resourceenvironment::ResourceContainer));
-		connectedResourceContainers_LinkingResource += c.resolveone(PCM::resourceenvironment::ResourceContainer)
-	};
-	communicationLinkResourceSpecifications_LinkingResource := null;
-	log('########## End Converting ##########');
 }
 
-
-mapping CBS::environment::Container::containerToResourceContainer
-(env : PCM::resourceenvironment::ResourceEnvironment):
-		PCM::resourceenvironment::ResourceContainer {
-		
-	log('Converting Container : ' + self.name);
+mapping CBS::assembly::ProvidedRole::CBSProvidedRoleToPCMProvidedRole
+		(repo: PCM::repository::Repository):
+		PCM::repository::OperationProvidedRole {
+	id := getId();
 	entityName := self.name;
-	resourceEnvironment_ResourceContainer := env;
-	parentResourceContainer__ResourceContainer := result;
-	activeResourceSpecifications_ResourceContainer := null;
-	nestedResourceContainers__ResourceContainer := null;
-	hddResourceSpecifications := null;
-	log('########## End Converting ##########');
-			
+	providedInterface__OperationProvidedRole := self.interface-> 
+		map interface2OperationInterface(repo)->asOrderedSet()->first();
+
+	
 }
+
+mapping CBS::assembly::RequiredRole::CBSRequiredRoleToPCMRequiredRole
+		(repo: PCM::repository::Repository):
+		PCM::repository::OperationRequiredRole {
+	
+	id := getId();
+	entityName := self.name;
+	requiredInterface__OperationRequiredRole := self.interface->
+		map interface2OperationInterface(repo)->asOrderedSet()->first();
+}
+
+
+
+
+
 
 /////////////////////////////////////////////////
 ///////////// Repository ///////////////////////
 ///////////////////////////////////////////////
+
+abstract mapping CBS::repository::Component::Component2RepositoryComponent():
+		PCM::repository::RepositoryComponent {
+
+	// es fehlt noch!
+}
+
+
 
 mapping CBS::repository::Repository::repository2Repository() : PCM::repository::Repository {
 	id := getId();
@@ -228,6 +244,57 @@ mapping CBS::repository::Parameter::parameter2parameter(operation: PCM::reposito
 }
 
 
+/////////////////////////////////////////////////
+///////////// Environment //////////////////////
+///////////////////////////////////////////////
+mapping CBS::environment::Environment::environmentToResourceEnvironment():
+		PCM::resourceenvironment::ResourceEnvironment {
+
+	idCounter := getId().toInteger();
+	entityName := self.name;
+	resourceContainer_ResourceEnvironment += self.container->forEach(container) 
+	{ container->map containerToResourceContainer(result);};
+	linkingResources__ResourceEnvironment += self.linker->forEach(link) 
+	{ link->map linkerToLinkingResource(result);}
+
+}
+
+mapping CBS::environment::Linker::linkerToLinkingResource
+(env : PCM::resourceenvironment::ResourceEnvironment):
+		PCM::resourceenvironment::LinkingResource {
+		
+	log('Converting Linker : ' + self.name);
+	id := getId();
+	entityName := self.name;
+	resourceEnvironment_LinkingResource := env;
+	
+	connectedResourceContainers_LinkingResource := Set{};
+	self.links -> forEach(c) {
+		log('resolve', c.resolveone(PCM::resourceenvironment::ResourceContainer));
+		connectedResourceContainers_LinkingResource += c.resolveone(PCM::resourceenvironment::ResourceContainer)
+	};
+	communicationLinkResourceSpecifications_LinkingResource := null;
+	log('########## End Converting ##########');
+}
+
+
+mapping CBS::environment::Container::containerToResourceContainer
+(env : PCM::resourceenvironment::ResourceEnvironment):
+		PCM::resourceenvironment::ResourceContainer {
+		
+	log('Converting Container : ' + self.name);
+	id := getId();
+	entityName := self.name;
+	resourceEnvironment_ResourceContainer := env;
+	parentResourceContainer__ResourceContainer := result;
+	activeResourceSpecifications_ResourceContainer := null;
+	nestedResourceContainers__ResourceContainer := null;
+	hddResourceSpecifications := null;
+	log('########## End Converting ##########');
+			
+}
+
+
 // TODO: behavioral description
 
 /////////////////////////////////////////////////
@@ -303,4 +370,11 @@ mapping CBS::repository::types::ComplexMember::complexMember2innerDeclaration(co
 	compositeDataType_InnerDeclaration := compositeDataType;
 	entityName := self.name;
 	datatype_InnerDeclaration := self.type.resolveone(PCM::repository::DataType);
+}
+
+
+helper getId(): String {
+	var res:= idCounter.toString();
+	idCounter := idCounter + 1;
+	return res;
 }
