@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<environment:Environment
-    xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:environment="platform:/resource/Component-Based-Systems/model/ComponentBasedSystems.ecore#//environment"
-    xsi:schemaLocation="platform:/resource/Component-Based-Systems/model/ComponentBasedSystems.ecore#//environment">
-  <container
-      name="Application"/>
-  <container
-      name="Database"/>
-  <linker name="LinkAppWithDatabase"
-      links="//@container.0 //@container.1"/>
+<environment:Environment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:environment="http://www.example.org/environment" xsi:schemaLocation="http://www.example.org/environment ../../../Component-Based-Systems/model/ComponentBasedSystems.ecore#//environment">
+  <container name="Application"/>
+  <container name="Database"/>
+  <linker name="LinkAppWithDatabase" links="//@container.0 //@container.1"/>
 </environment:Environment>

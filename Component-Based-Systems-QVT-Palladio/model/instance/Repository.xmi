@@ -1,34 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<repository:Repository
-    xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:behavioraldescription="platform:/resource/Component-Based-Systems/model/ComponentBasedSystems.ecore#//repository/behavioraldescription"
-    xmlns:repository="platform:/resource/Component-Based-Systems/model/ComponentBasedSystems.ecore#//repository"
-    xmlns:types="platform:/resource/Component-Based-Systems/model/ComponentBasedSystems.ecore#//repository/types"
-    xsi:schemaLocation="platform:/resource/Component-Based-Systems/model/ComponentBasedSystems.ecore#//repository/behavioraldescription platform:/resource/Component-Based-Systems/model/ComponentBasedSystems.ecore#//repository platform:/resource/Component-Based-Systems/model/ComponentBasedSystems.ecore#//repository/types">
-    <interfaces
-      name="ListMaker">
-    <signatures
-        name="makeList"
-        returnType="//@types.1">
-      <parameters
-          name="From"
-          type="//@types.0"/>
-      <parameters
-          name="To"
-          type="//@types.0"/>
+<repository:Repository xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:repository="http://www.example.org/repository" xmlns:types="http://www.example.org/types" xsi:schemaLocation="http://www.example.org/repository ../../../Component-Based-Systems/model/ComponentBasedSystems.ecore#//repository http://www.example.org/types ../../../Component-Based-Systems/model/ComponentBasedSystems.ecore#//repository/types">
+  <interfaces name="HTTP">
+    <signatures name="makeList" returnType="//@types.1">
+      <parameters name="From" type="//@types.0"/>
+      <parameters name="To" type="//@types.0"/>
     </signatures>
   </interfaces>
-  <components
-      name="ListCache"
-      requires="//@interfaces.0"
-      provides="//@interfaces.0">
-  </components>
-  <types xsi:type="types:SimpleType"
-      name="Int Type"
-      type="Int"/>
-  <types xsi:type="types:CollectionType"
-      name="Int List"
-      innerType="//@types.0"/>
+  <interfaces name="MediaStore"/>
+  <interfaces name="Sound"/>
+  <interfaces name="AudioDB "/>
+  <components name="MediaManager" requires="//@interfaces.2" provides="//@interfaces.1"/>
+  <components name="DBCache " requires="//@interfaces.3" provides="//@interfaces.3"/>
+  <components name="DigitalWaterMarking " provides="//@interfaces.2"/>
+  <components name="PoolingAudioDB " provides="//@interfaces.3"/>
+  <components name="WebGUIContext " requires="//@interfaces.1" provides="//@interfaces.0"/>
+  <types xsi:type="types:SimpleType" name="Int Type" type="Int"/>
+  <types xsi:type="types:CollectionType" name="Int List" innerType="//@types.0"/>
 </repository:Repository>
