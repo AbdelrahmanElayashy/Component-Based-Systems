@@ -8,13 +8,15 @@ property idCounter: Integer = 1;
 
 main() {
 	var repo := source.objectsOfType(CBS::repository::Repository) -> map repository2Repository()->asOrderedSet()->first();
-	repo.components__Repository += source.objectsOfType(CBS::assembly::Assembly).compositeComponents -> map compositeComponent2compositeComponent(repo);
+	
+	repo.components__Repository += source.objectsOfType(CBS::assembly::Assembly).compositeComponents 
+		-> map compositeComponent2compositeComponent(repo);
 	
 	var env := source.objectsOfType(CBS::environment::Environment)->map environmentToResourceEnvironment()->asOrderedSet()->first();
 
 	var sys := source.objectsOfType(CBS::allocation::System)-> map CBSSystemToPCMSystem()->asOrderedSet()->first();
 	
-	source.objectsOfType(CBS::allocation::Allocation)-> map CBSAllocation2PCMAllocation(env, sys);
+	var allocation := source.objectsOfType(CBS::allocation::Allocation)-> map CBSAllocation2PCMAllocation(env, sys);
 }
 
 /////////////////////////////////////////////////
@@ -24,14 +26,13 @@ mapping CBS::allocation::Allocation::CBSAllocation2PCMAllocation
 		(env : PCM::resourceenvironment::ResourceEnvironment,
 		 system : PCM::system::System):
 		PCM::allocation::Allocation {
-			
+	
 	id := getId();
 	entityName := "Default allocation";
 	targetResourceEnvironment_Allocation := env;
 	system_Allocation := system;
-	allocationContexts_Allocation := self.allocationContexts->forEach(context) {
-		context-> map CBSAllocationContext2PCMAllocationContext(result);
-	}
+	allocationContexts_Allocation := self.allocationContexts-> map CBSAllocationContext2PCMAllocationContext(result);
+	
 }
 
 mapping CBS::allocation::AllocationContext::CBSAllocationContext2PCMAllocationContext
@@ -55,10 +56,8 @@ mapping CBS::allocation::System::CBSSystemToPCMSystem():
 		
 	id := getId();
 	entityName := self.name;
-	assemblyContexts__ComposedStructure := self.childContexts->forEach(context)
-	{
-		context->map CBSAssemblyContextToPCMAssemblyContext(result);
-	};
+	assemblyContexts__ComposedStructure := self.childContexts-> map CBSAssemblyContextToPCMAssemblyContext(result);
+
 }
 
 /////////////////////////////////////////////////

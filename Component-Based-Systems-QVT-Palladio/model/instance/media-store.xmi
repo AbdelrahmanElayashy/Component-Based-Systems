@@ -194,14 +194,18 @@
       </childContexts>
       <assemblyConnectors
           requiringRole="//@assembly/@compositeComponents.0/@childContexts.0/@requiredRoles.1"
-          providingRole="//@assembly/@compositeComponents.0/@childContexts.2/@providedRoles.0"/>
+          providingRole="//@assembly/@compositeComponents.0/@childContexts.2/@providedRoles.0"
+          name="AudioDBConnector"/>
       <assemblyConnectors
           requiringRole="//@assembly/@compositeComponents.0/@childContexts.0/@requiredRoles.0"
-          providingRole="//@assembly/@compositeComponents.0/@childContexts.1/@providedRoles.0"/>
+          providingRole="//@assembly/@compositeComponents.0/@childContexts.1/@providedRoles.0"
+          name="SoundConnector"/>
       <requiredDelegationConnectors
-          requiringRole="//@assembly/@compositeComponents.0/@childContexts.2/@requiredRoles.0"/>
+          requiringRole="//@assembly/@compositeComponents.0/@childContexts.2/@requiredRoles.0"
+          name="AudioDB-RequiredDelegation"/>
       <providedDelegationConnectors
-          providingRole="//@assembly/@compositeComponents.0/@childContexts.0/@providedRoles.0"/>
+          providingRole="//@assembly/@compositeComponents.0/@childContexts.0/@providedRoles.0"
+          name="MediaStore-ProvidedDelegation"/>
     </compositeComponents>
   </assembly>
   <system name="mediaFileSystem">

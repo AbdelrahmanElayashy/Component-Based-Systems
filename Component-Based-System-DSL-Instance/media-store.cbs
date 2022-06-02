@@ -6,6 +6,7 @@ repository {
 		},
 		interface Sound {
 			complexTypeA watermark()
+			
 		},
 		interface MediaStore {
 			complexTypeA download(complexTypeA param1),
