@@ -84,7 +84,7 @@
     </components>
     <components
         name="MediaManager"
-        requires="//@repository/@interfaces.1"
+        requires="//@repository/@interfaces.1 //@repository/@interfaces.3"
         provides="//@repository/@interfaces.2">
       <services
           implements="//@repository/@interfaces.2/@signatures.0">

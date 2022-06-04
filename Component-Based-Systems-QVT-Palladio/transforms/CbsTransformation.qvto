@@ -1,5 +1,6 @@
 modeltype CBS uses 'platform:/resource/Component-Based-Systems/model/ComponentBasedSystems.ecore';
 modeltype PCM uses 'platform:/resource/Palladio-Core-PCM/bundles/org.palladiosimulator.pcm/model/pcm.ecore';
+modeltype A uses 'platform:/resource/de.uka.ipd.sdq.identifier/model/identifier.ecore';
 
 	
 transformation CBStoPCM(in source:CBS, out target:PCM);
@@ -8,9 +9,6 @@ property idCounter: Integer = 1;
 
 main() {
 	var repo := source.objectsOfType(CBS::repository::Repository) -> map repository2Repository()->asOrderedSet()->first();
-	
-	repo.components__Repository += source.objectsOfType(CBS::assembly::Assembly).compositeComponents 
-		-> map compositeComponent2compositeComponent(repo);
 	
 	var env := source.objectsOfType(CBS::environment::Environment)->map environmentToResourceEnvironment()->asOrderedSet()->first();
 
@@ -57,32 +55,17 @@ mapping CBS::allocation::System::CBSSystemToPCMSystem():
 	id := getId();
 	entityName := self.name;
 	assemblyContexts__ComposedStructure := self.childContexts-> map CBSAssemblyContextToPCMAssemblyContext(result);
-
+	
+	
 }
 
 /////////////////////////////////////////////////
 ///////////// Assembly /////////////////////////
 ///////////////////////////////////////////////
 
-abstract mapping CBS::assembly::ComposedSystem::composedSystem2composedStructure(): PCM::core::composition::ComposedStructure {
-	id := getId();
-	entityName := "Default (to be overwritten)";
-	assemblyContexts__ComposedStructure := self.childContexts -> map CBSAssemblyContextToPCMAssemblyContext(result);
-	
-	connectors__ComposedStructure := Set{};
-	connectors__ComposedStructure += self.providedDelegationConnectors -> map CBSProvidedDelgToPCMProvidedDelg(result);
-	connectors__ComposedStructure += self.requiredDelegationConnectors -> map CBSRequiredDelgToPCMRequiredDelg(result);
-	connectors__ComposedStructure += self.assemblyConnectors -> map assemblyConnector2assemblyConnector(result);
-	
-	resourceRequiredDelegationConnectors_ComposedStructure; // TODO: check meaning
-	eventChannel__ComposedStructure; // TODO: check meaning
-}
-
 // TODO: reuse parts for component/system
-mapping CBS::assembly::CompositeComponent::compositeComponent2compositeComponent(repo: PCM::repository::Repository): 
-	PCM::repository::CompositeComponent {
-	id := getId();
-	entityName := self.name;
+mapping CBS::assembly::CompositeComponent::compositeComponent2compositeComponent(repo: PCM::repository::Repository): PCM::repository::CompositeComponent 
+	inherits CBS::repository::Component::component2ImplementationComponentType {
 	assemblyContexts__ComposedStructure := self.childContexts -> map CBSAssemblyContextToPCMAssemblyContext(result);
 	
 	connectors__ComposedStructure := Set{};
@@ -90,35 +73,7 @@ mapping CBS::assembly::CompositeComponent::compositeComponent2compositeComponent
 	connectors__ComposedStructure += self.requiredDelegationConnectors -> map CBSRequiredDelgToPCMRequiredDelg(result);
 	connectors__ComposedStructure += self.assemblyConnectors -> map assemblyConnector2assemblyConnector(result);
 	
-	resourceRequiredDelegationConnectors_ComposedStructure := Set{}; // TODO: check meaning
-	eventChannel__ComposedStructure := Set{}; // TODO: check meaning
-	
-	providedRoles_InterfaceProvidingEntity := 
-		self.childContexts.providedRoles -> forEach(role) {role -> map providedRole2providedRole(); };
-	requiredRoles_InterfaceRequiringEntity :=
-		self.childContexts.requiredRoles -> forEach(role) {role -> map requiredRole2requiredRole(); };
-	
-	repository__RepositoryComponent := repo;
-	
-	parentCompleteComponentTypes := Set{}; // note: no concept of component inheritance in CBS
-	componentParameterUsage_ImplementationComponentType := Set{}; // note: no parameterization in CBS
-	componentType := PCM::repository::ComponentType::BUSINESS_COMPONENT; // note: default mapping - no related concept in CBS
-	
-	resourceRequiredRoles__ResourceInterfaceRequiringEntity := Set{}; // note: no concept of resources (TODO: verify)
-}
-
-mapping CBS::assembly::ProvidedRole::providedRole2providedRole(): PCM::repository::OperationProvidedRole {
-	id := getId();
-	entityName := self.name;
-	providedInterface__OperationProvidedRole := self.interface.resolveone(PCM::repository::OperationInterface);
-	providingEntity_ProvidedRole := self.assemblyContext.instantiates.resolveone(PCM::repository::RepositoryComponent);
-}
-
-mapping CBS::assembly::RequiredRole::requiredRole2requiredRole(): PCM::repository::OperationRequiredRole {
-	id := getId();
-	entityName := self.name;
-	requiredInterface__OperationRequiredRole := self.interface.resolveone(PCM::repository::OperationInterface);
-	requiringEntity_RequiredRole := self.assemblyContext.instantiates.resolveone(PCM::repository::RepositoryComponent);
+	resourceRequiredDelegationConnectors_ComposedStructure := Set{}; // note: no conept of resources in CBS
 }
 
 mapping CBS::assembly::AssemblyContext::CBSAssemblyContextToPCMAssemblyContext(parentStructure: PCM::core::composition::ComposedStructure):
@@ -128,31 +83,53 @@ mapping CBS::assembly::AssemblyContext::CBSAssemblyContextToPCMAssemblyContext(p
 	
 	parentStructure__AssemblyContext := parentStructure;
 	encapsulatedComponent__AssemblyContext := self.instantiates.resolveone(PCM::repository::RepositoryComponent);
-	configParameterUsages__AssemblyContext := Set{}; // TODO: check meaning
-} 
+	configParameterUsages__AssemblyContext := Set{}; // note: no parameterization in CBS
+}
 
-mapping CBS::assembly::ProvidedDelegationConnector::CBSProvidedDelgToPCMProvidedDelg(parentStructure: PCM::core::composition::ComposedStructure):
+helper findMatchingRequiredRole(roles: Set(PCM::repository::RequiredRole), interface: PCM::repository:: OperationInterface): PCM::repository::OperationRequiredRole {
+	// TODO: check if there is a more safe implementation
+	return roles 
+		-> selectByKind(PCM::repository::OperationRequiredRole)
+		-> select(r | r.requiredInterface__OperationRequiredRole = interface)
+		-> asOrderedSet()
+		-> first();
+}
+
+helper findMatchingProvidedRole(roles: Set(PCM::repository::ProvidedRole), interface: PCM::repository:: OperationInterface): PCM::repository::OperationProvidedRole{
+	// TODO: check if there is a more safe implementation
+	return roles
+	-> selectByKind(PCM::repository::OperationProvidedRole)
+	-> select(r | r.providedInterface__OperationProvidedRole = interface)
+	-> asOrderedSet()
+	-> first();
+}
+
+mapping CBS::assembly::ProvidedDelegationConnector::CBSProvidedDelgToPCMProvidedDelg(parentStructure: PCM::repository::CompositeComponent):
 	PCM::core::composition::ProvidedDelegationConnector {
 	id := getId();
 	entityName := self.name;
 	
+	parentStructure__Connector := parentStructure;
 	assemblyContext_ProvidedDelegationConnector := self.providingRole.assemblyContext.resolveone(PCM::core::composition::AssemblyContext);
 	
-	parentStructure__Connector := parentStructure;
-	innerProvidedRole_ProvidedDelegationConnector := self.providingRole.resolveone(PCM::repository::OperationProvidedRole);
-	outerProvidedRole_ProvidedDelegationConnector; // TODO: check meaning
+	var interface := self.providingRole.interface.resolveone(PCM::repository::OperationInterface);
+	innerProvidedRole_ProvidedDelegationConnector := 
+		findMatchingProvidedRole(self.providingRole.assemblyContext.instantiates.resolveone(PCM::repository::RepositoryComponent).providedRoles_InterfaceProvidingEntity, interface);
+	outerProvidedRole_ProvidedDelegationConnector := findMatchingProvidedRole(parentStructure.providedRoles_InterfaceProvidingEntity, interface);
 }
 
-mapping CBS::assembly::RequiredDelegationConnector::CBSRequiredDelgToPCMRequiredDelg(parentStructure: PCM::core::composition::ComposedStructure):
+mapping CBS::assembly::RequiredDelegationConnector::CBSRequiredDelgToPCMRequiredDelg(parentStructure: PCM::repository::CompositeComponent):
 	PCM::core::composition::RequiredDelegationConnector {
 	id := getId();
 	entityName := self.name;
 	
+	parentStructure__Connector := parentStructure;
 	assemblyContext_RequiredDelegationConnector := self.requiringRole.assemblyContext.resolveone(PCM::core::composition::AssemblyContext);
 	
-	parentStructure__Connector := parentStructure;
-	innerRequiredRole_RequiredDelegationConnector := self.requiringRole.resolveone(PCM::repository::OperationRequiredRole);
-	outerRequiredRole_RequiredDelegationConnector; // TODO: check meaning
+	var interface := self.requiringRole.interface.resolveone(PCM::repository::OperationInterface);
+	innerRequiredRole_RequiredDelegationConnector := 
+		findMatchingRequiredRole(self.requiringRole.assemblyContext.instantiates.resolveone(PCM::repository::RepositoryComponent).requiredRoles_InterfaceRequiringEntity, interface);
+	outerRequiredRole_RequiredDelegationConnector := findMatchingRequiredRole(parentStructure.requiredRoles_InterfaceRequiringEntity, interface);
 }
 
 mapping CBS::assembly::AssemblyConnector::assemblyConnector2assemblyConnector(parentStructure: PCM::core::composition::ComposedStructure): 
@@ -160,11 +137,17 @@ mapping CBS::assembly::AssemblyConnector::assemblyConnector2assemblyConnector(pa
 	id := getId();
 	entityName := self.name;
 	parentStructure__Connector := parentStructure;
-	requiringAssemblyContext_AssemblyConnector:= self.requiringRole.assemblyContext.resolveone(PCM::core::composition::AssemblyContext);
-	providingAssemblyContext_AssemblyConnector:= self.providingRole.assemblyContext.resolveone(PCM::core::composition::AssemblyContext);
 	
-	requiredRole_AssemblyConnector := self.requiringRole.resolveone(PCM::repository::OperationRequiredRole);
-	providedRole_AssemblyConnector := self.providingRole.resolveone(PCM::repository::OperationProvidedRole);
+	var requiringAssemblyContext := self.requiringRole.assemblyContext.resolveone(PCM::core::composition::AssemblyContext);
+	var providingAssemblyContext := self.providingRole.assemblyContext.resolveone(PCM::core::composition::AssemblyContext);
+	requiringAssemblyContext_AssemblyConnector := requiringAssemblyContext;
+	providingAssemblyContext_AssemblyConnector := providingAssemblyContext;
+	
+	var interface := self.requiringRole.interface.resolveone(PCM::repository::OperationInterface);
+	requiredRole_AssemblyConnector :=
+		findMatchingRequiredRole(requiringAssemblyContext.encapsulatedComponent__AssemblyContext.requiredRoles_InterfaceRequiringEntity, interface);
+	providedRole_AssemblyConnector := 
+		findMatchingProvidedRole(providingAssemblyContext.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity, interface);
 }
 
 /////////////////////////////////////////////////
@@ -177,53 +160,66 @@ mapping CBS::repository::Repository::repository2Repository() : PCM::repository::
 	repositoryDescription := "Default Repository";
 	dataTypes__Repository := self.types -> map type2dataType(result);
 	interfaces__Repository := self.interfaces -> map interface2OperationInterface(result);
-	components__Repository := self.components -> map atomicComponenet2basicComponent(result);
+	
+	var basicComponents := self.components -> map atomicComponenet2basicComponent(result);
+	var compositeComponents := source.objectsOfType(CBS::assembly::Assembly).compositeComponents 
+		-> map compositeComponent2compositeComponent(result);
+	
+	components__Repository := basicComponents -> asBag() -> union(compositeComponents);
 	failureTypes__Repository := Set {}; // note: no failures modeled in CBS
 }
 
-mapping CBS::repository::AtomicComponent::atomicComponenet2basicComponent(repo: PCM::repository::Repository): PCM::repository::BasicComponent {
+abstract mapping CBS::repository::Component::component2interfaceProvidingRequieringEntity(repo: PCM::repository::Repository): PCM::core::entity::InterfaceProvidingRequiringEntity {
 	id := getId();
 	entityName := self.name;
-	repository__RepositoryComponent := repo;
 	
 	providedRoles_InterfaceProvidingEntity := 
 		self.provides -> 
 		collect(i | i.resolveone(PCM::repository::OperationInterface)) -> 
-		forEach(interface) { new PCM::repository::OperationProvidedRole(self, result, interface) };
+		collect(interface | new PCM::repository::OperationProvidedRole(self, result, interface));
 	requiredRoles_InterfaceRequiringEntity := 
 		self.requires -> 
 		collect(i | i.resolveone(PCM::repository::OperationInterface)) -> 
-		forEach(interface) { new PCM::repository::OperationRequiredRole(self, result, interface) };
+		collect(interface | new PCM::repository::OperationRequiredRole(self, result, interface));
 	
-	resourceRequiredRoles__ResourceInterfaceRequiringEntity := Set{}; // note: no concept of resources (TODO: verify)
-	passiveResource_BasicComponent := Set{}; // note: no concept of semaphores, e.g. in CBS
+	resourceRequiredRoles__ResourceInterfaceRequiringEntity := Set{}; // note: no concept of resources
+}
+
+abstract mapping CBS::repository::Component::component2ImplementationComponentType(repo: PCM::repository::Repository): PCM::repository::ImplementationComponentType 
+	inherits CBS::repository::Component::component2interfaceProvidingRequieringEntity {
+	repository__RepositoryComponent := repo;
 	
 	parentCompleteComponentTypes := Set{}; // note: no concept of component inheritance in CBS
 	componentParameterUsage_ImplementationComponentType := Set{}; // note: no parameterization in CBS
 	componentType := PCM::repository::ComponentType::BUSINESS_COMPONENT; // note: default mapping - no related concept in CBS
-	
+}
+
+
+mapping CBS::repository::AtomicComponent::atomicComponenet2basicComponent(repo: PCM::repository::Repository): PCM::repository::BasicComponent 
+	inherits CBS::repository::Component::component2ImplementationComponentType {
+	passiveResource_BasicComponent := Set{}; // note: no concept of semaphores, e.g. in CBS
 	serviceEffectSpecifications__BasicComponent := null; // TODO: implement after behavioral description is completed
 }
 
 constructor PCM::repository::OperationProvidedRole::OperationProvidedRole(
-	originalComponent: CBS::repository::AtomicComponent,
-	newComponent: PCM::repository::BasicComponent,
+	originalComponent: CBS::repository::Component,
+	providingEntity: PCM::core::entity::InterfaceProvidingRequiringEntity,
 	interface: PCM::repository::OperationInterface
 	) {
 	id := getId();
 	entityName := originalComponent.name + ".provides:" + interface.entityName;
-	providingEntity_ProvidedRole := newComponent;
+	providingEntity_ProvidedRole := providingEntity;
 	providedInterface__OperationProvidedRole := interface;
 };
 
 constructor PCM::repository::OperationRequiredRole::OperationRequiredRole(
-	originalComponent: CBS::repository::AtomicComponent,
-	newComponent: PCM::repository::BasicComponent,
+	originalComponent: CBS::repository::Component,
+	requiringEntity: PCM::core::entity::InterfaceProvidingRequiringEntity,
 	interface: PCM::repository::OperationInterface
 	) {
 	id := getId();
 	entityName := originalComponent.name + ".provides:" + interface.entityName;
-	requiringEntity_RequiredRole := newComponent;
+	requiringEntity_RequiredRole := requiringEntity;
 	requiredInterface__OperationRequiredRole := interface;
 };
 
@@ -277,43 +273,31 @@ mapping CBS::environment::Environment::environmentToResourceEnvironment():
 	PCM::resourceenvironment::ResourceEnvironment {
 	
 	entityName := self.name;
-	resourceContainer_ResourceEnvironment += self.container->forEach(container) 
-	{ container->map containerToResourceContainer(result);};
-	linkingResources__ResourceEnvironment += self.linker->forEach(link) 
-	{ link->map linkerToLinkingResource(result);}
+	resourceContainer_ResourceEnvironment := self.container->collect(container | container->map containerToResourceContainer(result));
+	linkingResources__ResourceEnvironment := self.linker->collect(link | link-> map linkerToLinkingResource(result));
 }
 
-mapping CBS::environment::Linker::linkerToLinkingResource
-(env : PCM::resourceenvironment::ResourceEnvironment):
+mapping CBS::environment::Linker::linkerToLinkingResource (env : PCM::resourceenvironment::ResourceEnvironment):
 	PCM::resourceenvironment::LinkingResource {
 		
-	log('Converting Linker : ' + self.name);
 	id := getId();
 	entityName := self.name;
 	resourceEnvironment_LinkingResource := env;
 	
-	connectedResourceContainers_LinkingResource := Set{};
-	self.links -> forEach(c) {
-		log('resolve', c.resolveone(PCM::resourceenvironment::ResourceContainer));
-		connectedResourceContainers_LinkingResource += c.resolveone(PCM::resourceenvironment::ResourceContainer)
-	};
+	connectedResourceContainers_LinkingResource := 	self.links -> collect(link | link.resolveone(PCM::resourceenvironment::ResourceContainer));
 	communicationLinkResourceSpecifications_LinkingResource := null; // TODO
-	log('########## End Converting ##########');
 }
 
 
-mapping CBS::environment::Container::containerToResourceContainer
-(env : PCM::resourceenvironment::ResourceEnvironment):
+mapping CBS::environment::Container::containerToResourceContainer (env : PCM::resourceenvironment::ResourceEnvironment):
 	PCM::resourceenvironment::ResourceContainer {
-	log('Converting Container : ' + self.name);
 	id := getId();
 	entityName := self.name;
 	resourceEnvironment_ResourceContainer := env;
 	parentResourceContainer__ResourceContainer := result;
 	activeResourceSpecifications_ResourceContainer := null; // TODO
 	nestedResourceContainers__ResourceContainer := null; // TODO
-	hddResourceSpecifications := null; // TODO
-	log('########## End Converting ##########');	
+	hddResourceSpecifications := null; // TODO	
 }
 
 /////////////////////////////////////////////////
