@@ -1,6 +1,9 @@
 modeltype CBS uses 'platform:/resource/Component-Based-Systems/model/ComponentBasedSystems.ecore';
 modeltype PCM uses 'platform:/resource/Palladio-Core-PCM/bundles/org.palladiosimulator.pcm/model/pcm.ecore';
-modeltype A uses 'platform:/resource/de.uka.ipd.sdq.identifier/model/identifier.ecore';
+modeltype STOEX uses 'platform:/resource/de.uka.ipd.sdq.stoex/bin/stoex.ecore';
+
+modeltype ecore uses 'http://www.eclipse.org/emf/2002/Ecore';
+
 
 transformation CBStoPCM(in source:CBS, out target:PCM);
 
@@ -14,6 +17,12 @@ main() {
 	var sys := source.objectsOfType(CBS::allocation::System)-> map CBSSystemToPCMSystem()->asOrderedSet()->first();
 	
 	var allocation := source.objectsOfType(CBS::allocation::Allocation)-> map CBSAllocation2PCMAllocation(env, sys);
+	
+	var debug := source.objectsOfType(CBS::repository::behavioraldescription::ExternalCallAction)-> asSequence() -> first().resolveone(PCM::seff::ExternalCallAction) -> oclAsType(ecore::EObject).eContainer();// -> eContainer();
+	var debug2 := debug -> asSequence() -> first() -> oclAsType(ecore::EObject).eContainer();
+	
+	var val := source.objectsOfType(CBS::repository::behavioraldescription::ExternalCallAction)-> asSequence() -> first().resolveone(PCM::seff::ExternalCallAction);
+	var res:= val.oclAsType(ecore::EObject)->closure(eContainer())->select( entity | entity.oclIsKindOf(pcm::core::entity::InterfaceRequiringEntity)).oclAsType(pcm::core::entity::InterfaceRequiringEntity).requiredRoles_InterfaceRequiringEntity->includes(val.role_ExternalService);
 }
 
 /////////////////////////////////////////////////
@@ -220,7 +229,7 @@ abstract mapping CBS::repository::Component::component2ImplementationComponentTy
 mapping CBS::repository::AtomicComponent::atomicComponenet2basicComponent(repo: PCM::repository::Repository): PCM::repository::BasicComponent 
 	inherits CBS::repository::Component::component2ImplementationComponentType {
 	passiveResource_BasicComponent := Set{}; // note: no concept of semaphores, e.g. in CBS
-	serviceEffectSpecifications__BasicComponent := null; // TODO: implement after behavioral description is completed
+	serviceEffectSpecifications__BasicComponent := self.services -> map service2resourceDemandingSEFF(result);
 }
 
 constructor PCM::repository::OperationProvidedRole::OperationProvidedRole(
@@ -284,7 +293,178 @@ mapping CBS::repository::Parameter::parameter2parameter(operation: PCM::reposito
 	modifier__Parameter := PCM::repository::ParameterModifier::none;
 }
 
-// TODO: behavioral description
+/////////////////////////////////////////////////
+///////////// Behavioral Description ///////////
+///////////////////////////////////////////////
+
+mapping CBS::repository::behavioraldescription::Service::service2resourceDemandingSEFF(parentComponent: PCM::repository::BasicComponent): PCM::seff::ResourceDemandingSEFF {
+	id := getId();
+	seffTypeID := "1";
+	basicComponent_ServiceEffectSpecification := parentComponent;
+	
+	describedService__SEFF := self.implements.resolveone(PCM::repository::Signature);
+	
+	steps_Behaviour := transformSteps(self.actions -> asSequence(), parentComponent);
+	
+	abstractLoopAction_ResourceDemandingBehaviour := null;
+	abstractBranchTransition_ResourceDemandingBehaviour := null;
+	resourceDemandingInternalBehaviours := Set{}; // no internal methods in CBS
+}
+
+constructor PCM::seff::StartAction::StartAction(){
+	id := getId();
+	entityName := "Start Action";
+	
+	resourceDemandingBehaviour_AbstractAction;
+	predecessor_AbstractAction := null; //to be set later
+	successor_AbstractAction := null;
+	
+	infrastructureCall__Action := Set{}; // note: not modeled in CBS
+	resourceCall__Action := Set{}; // note: not modeled in CBS
+	resourceDemand_Action := Set{}; // note: not modeled in CBS
+}
+
+constructor PCM::seff::StopAction::StopAction(){
+	id := getId();
+	entityName := "Stop Action";
+	
+	resourceDemandingBehaviour_AbstractAction := null; //TODO
+	predecessor_AbstractAction := null; //to be set later
+	successor_AbstractAction := null;
+	
+	infrastructureCall__Action := Set{}; // note: not modeled in CBS
+	resourceCall__Action := Set{}; // note: not modeled in CBS
+	resourceDemand_Action := Set{}; // note: not modeled in CBS
+}
+
+helper transformSteps(steps: Sequence(CBS::repository::behavioraldescription::AbstractAction), component: PCM::core::entity::InterfaceRequiringEntity): Sequence(PCM::seff::AbstractAction) {
+	var mappedSteps: Sequence(PCM::seff::AbstractAction) := steps -> map abstractAction2abstractAction(component);
+	var startAction := new PCM::seff::StartAction();
+	var stopAction := new PCM::seff::StopAction();
+	
+	var prev : PCM::seff::AbstractAction := startAction;
+	mappedSteps -> forEach(step){
+		step.predecessor_AbstractAction := prev;
+		prev := step;
+	};
+	
+	var after : PCM::seff::AbstractAction := stopAction;
+	mappedSteps -> reverse() -> forEach(step){
+		step.successor_AbstractAction := after;
+		after := step;
+	};
+	
+	return mappedSteps -> reverse() -> append(startAction) -> reverse() -> append(stopAction);
+}
+
+abstract mapping CBS::repository::behavioraldescription::AbstractAction::abstractAction2abstractActionAbstract(component: PCM::core::entity::InterfaceRequiringEntity): PCM::seff::AbstractAction {
+	id := getId();
+	predecessor_AbstractAction := null; // set later
+	successor_AbstractAction := null; // set later
+	resourceDemandingBehaviour_AbstractAction := null; // TODO: check meaning
+}
+
+mapping CBS::repository::behavioraldescription::AbstractAction::abstractAction2abstractAction(component: PCM::core::entity::InterfaceRequiringEntity): PCM::seff::AbstractAction
+disjuncts
+	CBS::repository::behavioraldescription::InternalAction::internalAction2internalAction,
+	CBS::repository::behavioraldescription::ExternalCallAction::externalCallAction2ExternalCallAction,
+	CBS::repository::behavioraldescription::BranchAction::branchAction2branchAction,
+	CBS::repository::behavioraldescription::LoopAction::loopAction2loopAction
+{} 
+
+mapping CBS::repository::behavioraldescription::InternalAction::internalAction2internalAction(component: PCM::core::entity::InterfaceRequiringEntity): PCM::seff::InternalAction
+inherits CBS::repository::behavioraldescription::AbstractAction::abstractAction2abstractActionAbstract
+when {self.oclIsKindOf(CBS::repository::behavioraldescription::InternalAction)}
+{
+	entityName := "Default Internal Action";
+	infrastructureCall__Action := Set{}; // note: not modeled in CBS
+	resourceCall__Action := Set{}; // note: not modeled in CBS
+	resourceDemand_Action := Set{}; // note: not modeled in CBS
+	internalFailureOccurrenceDescriptions__InternalAction := Set{}; // note: not modeled in CBS
+}
+
+mapping CBS::repository::behavioraldescription::ExternalCallAction::externalCallAction2ExternalCallAction(component: PCM::core::entity::InterfaceRequiringEntity): PCM::seff::ExternalCallAction
+inherits CBS::repository::behavioraldescription::AbstractAction::abstractAction2abstractActionAbstract
+when {self.oclIsKindOf(CBS::repository::behavioraldescription::ExternalCallAction)}
+{
+	entityName := "Default External Call Action";
+	inputVariableUsages__CallAction := Set{}; // note: no parametrization in CBS
+	returnVariableUsage__CallReturnAction := Set{}; // note: no parametrization in CBS
+	failureTypes_FailureHandlingEntity := Set{}; // note: not modeled in CBS
+	
+	calledService_ExternalService := self.requiredService.resolveone(PCM::repository::OperationSignature);
+	role_ExternalService := 
+		component.requiredRoles_InterfaceRequiringEntity
+		-> selectByKind(PCM::repository::OperationRequiredRole)
+		-> select(r | r.requiredInterface__OperationRequiredRole.signatures__OperationInterface -> includes(calledService_ExternalService))
+		-> asSequence()
+		-> first();
+	retryCount := 1; // note: default value
+}
+
+mapping CBS::repository::behavioraldescription::BranchAction::branchAction2branchAction(component: PCM::core::entity::InterfaceRequiringEntity): PCM::seff::BranchAction
+inherits CBS::repository::behavioraldescription::AbstractAction::abstractAction2abstractActionAbstract
+when {self.oclIsKindOf(CBS::repository::behavioraldescription::BranchAction)}
+{
+	entityName := "Default Branch Action";
+	infrastructureCall__Action := Set{}; // note: not modeled in CBS
+	resourceCall__Action := Set{}; // note: not modeled in CBS
+	resourceDemand_Action := Set{}; // note: not modeled in CBS
+	
+	branches_Branch := self.branches -> map branchTransition2guardedBranchTransition(result, component);
+}
+
+constructor PCM::core::PCMRandomVariable::PCMRandomVariable(branchCondition: String, transition: PCM::seff::GuardedBranchTransition){
+	guardedBranchTransition_PCMRandomVariable := transition;
+	specification := branchCondition;
+}
+constructor STOEX::BoolLiteral::BoolLiteral(){
+	value := true;
+}
+
+constructor PCM::core::PCMRandomVariable::PCMRandomVariable(loopExpression: String, loopAction: PCM::seff::LoopAction){
+	loopAction_PCMRandomVariable := loopAction;
+	specification := "true";
+}
+
+constructor PCM::seff::ResourceDemandingBehaviour::ResourceDemandingBehaviour(
+	branchTransition: PCM::seff::AbstractBranchTransition, 
+	loopAction: PCM::seff::AbstractLoopAction, 
+	steps: Sequence(CBS::repository::behavioraldescription::AbstractAction),
+	component: PCM::core::entity::InterfaceRequiringEntity)
+{	
+	id := getId();
+	abstractBranchTransition_ResourceDemandingBehaviour := branchTransition;
+	abstractLoopAction_ResourceDemandingBehaviour := loopAction;
+	
+	steps_Behaviour := transformSteps(steps, component);
+}
+
+mapping CBS::repository::behavioraldescription::BranchTransition::branchTransition2guardedBranchTransition(branchAction: PCM::seff::BranchAction, component: PCM::core::entity::InterfaceRequiringEntity): 
+	PCM::seff::GuardedBranchTransition 
+{
+	id := getId();
+	entityName := "Condition: " + self.branchCondition;
+	branchAction_AbstractBranchTransition := branchAction;
+	branchBehaviour_BranchTransition := new PCM::seff::ResourceDemandingBehaviour(result, null, self.actions -> asSequence(), component);
+	
+	branchCondition_GuardedBranchTransition := new PCM::core::PCMRandomVariable(self.branchCondition, result);
+}
+
+mapping CBS::repository::behavioraldescription::LoopAction::loopAction2loopAction(component: PCM::core::entity::InterfaceRequiringEntity): PCM::seff::LoopAction
+inherits CBS::repository::behavioraldescription::AbstractAction::abstractAction2abstractActionAbstract
+when {self.oclIsKindOf(CBS::repository::behavioraldescription::LoopAction)}
+{
+	entityName := "Default Loop Action";
+	infrastructureCall__Action := Set{}; // note: not modeled in CBS
+	resourceCall__Action := Set{}; // note: not modeled in CBS
+	resourceDemand_Action := Set{}; // note: not modeled in CBS
+	
+	bodyBehaviour_Loop := new PCM::seff::ResourceDemandingBehaviour(null, result, self.bodyActions -> asSequence(), component); 
+	
+	iterationCount_LoopAction := new PCM::core::PCMRandomVariable("default loop expression", result);
+}
+
 
 /////////////////////////////////////////////////
 ///////////// Environment //////////////////////
