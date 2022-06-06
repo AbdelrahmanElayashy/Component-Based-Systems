@@ -12,17 +12,11 @@ property idCounter: Integer = 1;
 main() {
 	var repo := source.objectsOfType(CBS::repository::Repository) -> map repository2Repository()->asOrderedSet()->first();
 	
-	var env := source.objectsOfType(CBS::environment::Environment)->map environmentToResourceEnvironment()->asOrderedSet()->first();
+	var env := source.objectsOfType(CBS::environment::Environment)->map environmentToResourceEnvironment(repo)->asOrderedSet()->first();
 
 	var sys := source.objectsOfType(CBS::allocation::System)-> map CBSSystemToPCMSystem()->asOrderedSet()->first();
 	
 	var allocation := source.objectsOfType(CBS::allocation::Allocation)-> map CBSAllocation2PCMAllocation(env, sys);
-	
-	var debug := source.objectsOfType(CBS::repository::behavioraldescription::ExternalCallAction)-> asSequence() -> first().resolveone(PCM::seff::ExternalCallAction) -> oclAsType(ecore::EObject).eContainer();// -> eContainer();
-	var debug2 := debug -> asSequence() -> first() -> oclAsType(ecore::EObject).eContainer();
-	
-	var val := source.objectsOfType(CBS::repository::behavioraldescription::ExternalCallAction)-> asSequence() -> first().resolveone(PCM::seff::ExternalCallAction);
-	var res:= val.oclAsType(ecore::EObject)->closure(eContainer())->select( entity | entity.oclIsKindOf(pcm::core::entity::InterfaceRequiringEntity)).oclAsType(pcm::core::entity::InterfaceRequiringEntity).requiredRoles_InterfaceRequiringEntity->includes(val.role_ExternalService);
 }
 
 /////////////////////////////////////////////////
@@ -34,7 +28,7 @@ mapping CBS::allocation::Allocation::CBSAllocation2PCMAllocation
 		PCM::allocation::Allocation {
 	
 	id := getId();
-	entityName := "Default allocation";
+	entityName := "System " + system.entityName;
 	targetResourceEnvironment_Allocation := env;
 	system_Allocation := system;
 	allocationContexts_Allocation := self.allocationContexts-> map CBSAllocationContext2PCMAllocationContext(result);
@@ -46,10 +40,10 @@ mapping CBS::allocation::AllocationContext::CBSAllocationContext2PCMAllocationCo
 		PCM::allocation::AllocationContext {
 	
 	id := getId();
-	entityName := "AllocationContext " + getId();
 	allocation_AllocationContext := allocation;
 	resourceContainer_AllocationContext := self.container.resolveone(PCM::resourceenvironment::ResourceContainer);
 	assemblyContext_AllocationContext := self.allocates.resolveone(PCM::core::composition::AssemblyContext);
+	entityName := "Allocation " + assemblyContext_AllocationContext.entityName;
 			
 }
 
@@ -250,6 +244,7 @@ constructor PCM::repository::OperationRequiredRole::OperationRequiredRole(
 	entityName := providingEntityName + ".provides:" + interface.entityName;
 	requiringEntity_RequiredRole := requiringEntity;
 	requiredInterface__OperationRequiredRole := interface;
+	
 };
 
 mapping CBS::repository::Interface::interface2OperationInterface(repo: PCM::repository::Repository): PCM::repository::OperationInterface {
@@ -418,6 +413,7 @@ constructor PCM::core::PCMRandomVariable::PCMRandomVariable(branchCondition: Str
 	guardedBranchTransition_PCMRandomVariable := transition;
 	specification := branchCondition;
 }
+
 constructor STOEX::BoolLiteral::BoolLiteral(){
 	value := true;
 }
@@ -469,25 +465,60 @@ when {self.oclIsKindOf(CBS::repository::behavioraldescription::LoopAction)}
 /////////////////////////////////////////////////
 ///////////// Environment //////////////////////
 ///////////////////////////////////////////////
-mapping CBS::environment::Environment::environmentToResourceEnvironment():
+mapping CBS::environment::Environment::environmentToResourceEnvironment(repo : PCM::repository::Repository):
 	PCM::resourceenvironment::ResourceEnvironment {
 	
 	entityName := self.name;
 	resourceContainer_ResourceEnvironment := self.container->collect(container | container->map containerToResourceContainer(result));
-	linkingResources__ResourceEnvironment := self.linker->collect(link | link-> map linkerToLinkingResource(result));
+	linkingResources__ResourceEnvironment := self.linker->collect(link | link-> map linkerToLinkingResource(result, repo));
+
 }
 
-mapping CBS::environment::Linker::linkerToLinkingResource (env : PCM::resourceenvironment::ResourceEnvironment):
+mapping CBS::environment::Linker::linkerToLinkingResource
+		(env : PCM::resourceenvironment::ResourceEnvironment,
+		repo : PCM::repository::Repository):
 	PCM::resourceenvironment::LinkingResource {
 		
 	id := getId();
 	entityName := self.name;
-	resourceEnvironment_LinkingResource := env;
-	
+	resourceEnvironment_LinkingResource := env;	
 	connectedResourceContainers_LinkingResource := 	self.links -> collect(link | link.resolveone(PCM::resourceenvironment::ResourceContainer));
-	communicationLinkResourceSpecifications_LinkingResource := null;
+	communicationLinkResourceSpecifications_LinkingResource :=
+		new PCM::resourceenvironment::CommunicationLinkResourceSpecification(result, repo);
+	
 }
 
+// note : no communicationLinkResourceSpecification in CBS
+constructor PCM::resourceenvironment::CommunicationLinkResourceSpecification
+			::CommunicationLinkResourceSpecification
+			(linkingResource : PCM::resourceenvironment::LinkingResource, repo: PCM::repository::Repository) {
+	
+	failureProbability := 0;
+	communicationLinkResourceType_CommunicationLinkResourceSpecification := 
+		new PCM::resourcetype::CommunicationLinkResourceType(repo);
+	latency_CommunicationLinkResourceSpecification := new PCM::core::PCMRandomVariable();
+	linkingResource_CommunicationLinkResourceSpecification := linkingResource;
+	throughput_CommunicationLinkResourceSpecification := new PCM::core::PCMRandomVariable();
+	
+	
+}
+
+// note : no CommunicationLinkResourceType in CBS
+constructor PCM::resourcetype::CommunicationLinkResourceType::CommunicationLinkResourceType
+	(repo : PCM::repository::Repository) {
+	 resourceRepository_ResourceType := new PCM::resourcetype::ResourceRepository();
+}
+
+constructor PCM::resourcetype::ResourceRepository::ResourceRepository() {
+	
+}
+
+//note : no RandomVariable in CBS
+constructor PCM::core::PCMRandomVariable::PCMRandomVariable() {
+	
+	//note : no sepcification in CBS
+	specification := "default specification";
+}
 
 mapping CBS::environment::Container::containerToResourceContainer (env : PCM::resourceenvironment::ResourceEnvironment):
 	PCM::resourceenvironment::ResourceContainer {
