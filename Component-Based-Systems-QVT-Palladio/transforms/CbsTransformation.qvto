@@ -8,9 +8,17 @@ modeltype ecore uses 'http://www.eclipse.org/emf/2002/Ecore';
 transformation CBStoPCM(in source:CBS, out target:PCM);
 
 property idCounter: Integer = 1;
+property defaultResourceRepository: PCM::resourcetype::ResourceRepository = null;
+property defaultCommunicationResourceType : PCM::resourcetype::CommunicationLinkResourceType = null;
+	
 
 main() {
 	var repo := source.objectsOfType(CBS::repository::Repository) -> map repository2Repository()->asOrderedSet()->first();
+	
+	defaultResourceRepository := new PCM::resourcetype::ResourceRepository();
+	defaultCommunicationResourceType := new PCM::resourcetype::CommunicationLinkResourceType(defaultResourceRepository);
+	defaultResourceRepository.availableResourceTypes_ResourceRepository -> including(defaultCommunicationResourceType);
+	
 	
 	var env := source.objectsOfType(CBS::environment::Environment)->map environmentToResourceEnvironment(repo)->asOrderedSet()->first();
 
@@ -485,36 +493,38 @@ mapping CBS::environment::Linker::linkerToLinkingResource
 	connectedResourceContainers_LinkingResource := 	self.links -> collect(link | link.resolveone(PCM::resourceenvironment::ResourceContainer));
 	communicationLinkResourceSpecifications_LinkingResource :=
 		new PCM::resourceenvironment::CommunicationLinkResourceSpecification(result, repo);
-	
 }
 
 // note : no communicationLinkResourceSpecification in CBS
 constructor PCM::resourceenvironment::CommunicationLinkResourceSpecification
 			::CommunicationLinkResourceSpecification
 			(linkingResource : PCM::resourceenvironment::LinkingResource, repo: PCM::repository::Repository) {
-	
+	id := getId();
 	failureProbability := 0;
-	communicationLinkResourceType_CommunicationLinkResourceSpecification := 
-		new PCM::resourcetype::CommunicationLinkResourceType(repo);
-	latency_CommunicationLinkResourceSpecification := new PCM::core::PCMRandomVariable();
+	communicationLinkResourceType_CommunicationLinkResourceSpecification := defaultCommunicationResourceType;
+	latency_CommunicationLinkResourceSpecification := new PCM::core::PCMRandomVariable(result, true);
 	linkingResource_CommunicationLinkResourceSpecification := linkingResource;
-	throughput_CommunicationLinkResourceSpecification := new PCM::core::PCMRandomVariable();
-	
-	
+	throughput_CommunicationLinkResourceSpecification := new PCM::core::PCMRandomVariable(result, false);
 }
 
 // note : no CommunicationLinkResourceType in CBS
 constructor PCM::resourcetype::CommunicationLinkResourceType::CommunicationLinkResourceType
-	(repo : PCM::repository::Repository) {
-	 resourceRepository_ResourceType := new PCM::resourcetype::ResourceRepository();
+	(repo : PCM::resourcetype::ResourceRepository) {
+	id := getId();
+ 	resourceRepository_ResourceType := repo;
 }
 
 constructor PCM::resourcetype::ResourceRepository::ResourceRepository() {
-	
+
 }
 
 //note : no RandomVariable in CBS
-constructor PCM::core::PCMRandomVariable::PCMRandomVariable() {
+constructor PCM::core::PCMRandomVariable::PCMRandomVariable(baseType: PCM::resourceenvironment::CommunicationLinkResourceSpecification, isForLatency: Boolean) {
+	if (isForLatency){
+		communicationLinkResourceSpecification_latency_PCMRandomVariable := baseType;
+	} else {
+		communicationLinkResourceSpecifcation_throughput_PCMRandomVariable := baseType;
+	};
 	
 	//note : no sepcification in CBS
 	specification := "default specification";
