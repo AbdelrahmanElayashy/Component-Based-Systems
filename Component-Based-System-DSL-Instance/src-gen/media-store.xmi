@@ -2,23 +2,25 @@
 <componentbasedsystem:ComponentBasedSystemContainer xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:behavioraldescription="http://www.example.org/behavioraldescription" xmlns:componentbasedsystem="http://www.example.org/componentbasedsystem" xmlns:types="http://www.example.org/types">
   <repository>
     <interfaces name="HTTP">
-      <signatures name="HTTPUpload" returnType="//@repository/@types.0"/>
-      <signatures name="HTTPDownload" returnType="//@repository/@types.0"/>
+      <signatures name="HTTPUpload" returnType="//@repository/@types.1"/>
+      <signatures name="HTTPDownload" returnType="//@repository/@types.1"/>
     </interfaces>
     <interfaces name="Sound">
-      <signatures name="watermark" returnType="//@repository/@types.0"/>
+      <signatures name="watermark" returnType="//@repository/@types.1"/>
     </interfaces>
     <interfaces name="MediaStore">
-      <signatures name="download" returnType="//@repository/@types.0">
-        <parameters name="param1" type="//@repository/@types.0"/>
-      </signatures>
-      <signatures name="upload" returnType="//@repository/@types.0"/>
-    </interfaces>
-    <interfaces name="AudioDB">
-      <signatures name="queryDB" returnType="//@repository/@types.0">
+      <signatures name="download" returnType="//@repository/@types.1">
+        <parameters name="param3" type="//@repository/@types.1"/>
+        <parameters name="param2" type="//@repository/@types.1"/>
         <parameters name="param1" type="//@repository/@types.1"/>
       </signatures>
-      <signatures name="addFile" returnType="//@repository/@types.2"/>
+      <signatures name="upload" returnType="//@repository/@types.1"/>
+    </interfaces>
+    <interfaces name="AudioDB">
+      <signatures name="queryDB" returnType="//@repository/@types.1">
+        <parameters name="param1" type="//@repository/@types.1"/>
+      </signatures>
+      <signatures name="addFile" returnType="//@repository/@types.1"/>
     </interfaces>
     <components name="WebGUI" requires="//@repository/@interfaces.2" provides="//@repository/@interfaces.0">
       <services implements="//@repository/@interfaces.0/@signatures.0">

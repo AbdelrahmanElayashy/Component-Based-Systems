@@ -4,19 +4,10 @@
 package org.xtext.example.mydsl.generator
 
 import com.google.inject.Inject
-import componentbasedsystem.repository.AtomicComponent
-import componentbasedsystem.repository.Interface
-import componentbasedsystem.repository.Parameter
-import componentbasedsystem.repository.Repository
-import componentbasedsystem.repository.Signature
-import componentbasedsystem.repository.types.SimpleType
-import componentbasedsystem.repository.types.Type
-import componentbasedsystem.repository.types.Void
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
-import org.eclipse.xtext.naming.IQualifiedNameProvider
 
 /**
  * Generates code from your model files on save.
@@ -25,113 +16,11 @@ import org.eclipse.xtext.naming.IQualifiedNameProvider
  */
 class CBSGenerator extends AbstractGenerator {
 	
-	@Inject extension IQualifiedNameProvider;
-
+	@Inject CBSToJavaGenerator cbsToJavaGenerator;
+	@Inject CBSToXMIGenerator cbsToXMIGenerator;
+	
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		
-		/*
-		 * TODO list:
-		 * - add name to repository
-		 * - separate code of generators
-		 */
-   		 for(e: resource.allContents.toIterable.filter(Repository)) {
-   		 	fsa.generateFile("repository/Helper.java", e.compile)
-   		 }
-   		 
-   		 for(e: resource.allContents.toIterable.filter(Interface)) {
-       		 fsa.generateFile(
-            	"repository/I" + e.fullyQualifiedName.toString("/") + ".java",
-            	e.compile)
-   		 }
-   		 
-   		 for(atomicComponent: resource.allContents.toIterable.filter(AtomicComponent)){
-   		 	fsa.generateFile(
-   		 		"repository/" + atomicComponent.name + "/" + atomicComponent.name + "Impl.java",
-   		 		atomicComponent.compile
-   		 	)
-   		 }
-		
-//		val Injector injector = new CBSStandaloneSetup().createInjectorAndDoEMFRegistration();
-//		
-//		val XtextResourceSet resourceSet = injector.getInstance(XtextResourceSet);
-//		
-//		EcoreUtil.resolveAll(resource);
-//		
-//		var String filename = Paths.get(resource.URI.path).getFileName().toString().replaceFirst("[.][^.]+$", "");
-//		fsa.generateFile(filename+ ".xmi", "")
-//		val URI outputURI = fsa.getURI(filename+ ".xmi")
-//		
-//		val Resource xmiResource = resourceSet.createResource(outputURI);
-//		xmiResource.getContents().add(resource.getContents().get(0));
-//		try {
-//			xmiResource.save(null);
-//		} catch (IOException e) {
-//			e.printStackTrace();	
-//		}
-
-
+		cbsToJavaGenerator.doGenerate(resource, fsa, context);
+		cbsToXMIGenerator.doGenerate(resource, fsa, context);
 	}
-	
-	def compile(Repository repository)'''
-		package repository;
-		     
-		public class Helper {
-			public static void assertNotNull(Object interface){
-				assert interface != null;
-			}
-		}
-		'''
-	
-	def compile(Interface i)'''
-		package repository;
-		
-		public interface I«i.name» {
-			«FOR signature: i.signatures»
-				«signature.compile»
-			«ENDFOR»
-		}'''
-			
-	def compile(AtomicComponent atomicComponent) '''
-		package repository.«atomicComponent.name»;
-		
-		«FOR requiredInterface: atomicComponent.requires»
-			import repository.I«requiredInterface.name»;
-		«ENDFOR»
-		import repository.Helper;
-		
-		public class «atomicComponent.name»Impl «FOR providedInterface: atomicComponent.provides BEFORE 'implements ' SEPARATOR ','»I«providedInterface.name»«ENDFOR» {
-			«FOR requiredInterface: atomicComponent.requires»
-			I«requiredInterface.name» i«requiredInterface.name»;
-			«ENDFOR»
-			
-			«FOR requiredInterface: atomicComponent.requires»
-			public void setI«requiredInterface.name»(I«requiredInterface.name» i«requiredInterface.name»){
-				Helper.assertNotNull(this.i«requiredInterface.name»);
-				this.i«requiredInterface.name» = i«requiredInterface.name»;
-			}
-			«ENDFOR»
-			
-			«FOR providedInterface: atomicComponent.provides»«FOR method: providedInterface.signatures»
-			//Implementing «method.name» from interface I«providedInterface.name»
-			@Override
-			public «method.returnType.compile» «method.name»(«FOR parameter: method.parameters SEPARATOR ', '»«parameter.compile»«ENDFOR»){
-				«FOR requiredInterface: atomicComponent.requires»
-				Helper.assertNotNull(this.i«requiredInterface.name»);
-				«ENDFOR»
-				// TODO: insert code here
-			}
-			
-			«ENDFOR»«ENDFOR»
-		}
-	'''
-	
-	def compile(Signature signature)'''
-	    public «signature.returnType.name» «signature.name»(«FOR parameter: signature.parameters SEPARATOR ', '»«parameter.compile»«ENDFOR»);
-	  	'''
-  
-    def compile(Parameter parameter)
-    	'''«parameter.type.compile» «parameter.name»'''
-
-	def compile(Type type)
-		'''«IF type instanceof Void»void«ELSEIF type instanceof SimpleType»«type.type.getName().toLowerCase()»«ELSE»notSupportedType«ENDIF»'''
 }
