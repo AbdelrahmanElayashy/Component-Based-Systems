@@ -1,20 +1,20 @@
 repository {
 	interfaces {
 		interface HTTP {
-			complexTypeA HTTPUpload(),
-			complexTypeA HTTPDownload()
+			int HTTPUpload(),
+			int HTTPDownload()
 		},
 		interface Sound {
-			complexTypeA watermark()
+			int watermark()
 			
 		},
 		interface MediaStore {
-			complexTypeA download(complexTypeA param1),
-			complexTypeA upload()
+			int download(int param3, int param2, int param1),
+			int upload()
 		},
 		interface AudioDB {
-			complexTypeA queryDB(int param1),
-			Void addFile()
+			int queryDB(int param1),
+			int addFile()
 		}
 	}
 	

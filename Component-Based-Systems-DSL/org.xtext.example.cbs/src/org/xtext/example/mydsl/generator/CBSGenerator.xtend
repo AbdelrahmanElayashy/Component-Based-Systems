@@ -14,6 +14,12 @@ import org.eclipse.xtext.resource.XtextResourceSet
 import java.io.IOException
 import org.eclipse.emf.common.util.URI
 import java.nio.file.Paths
+import componentbasedsystem.repository.Repository
+import componentbasedsystem.repository.Interface
+import org.eclipse.xtext.naming.IQualifiedNameProvider
+import com.google.inject.Inject
+import componentbasedsystem.repository.Signature
+import componentbasedsystem.repository.Parameter
 
 /**
  * Generates code from your model files on save.
@@ -21,24 +27,67 @@ import java.nio.file.Paths
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
  */
 class CBSGenerator extends AbstractGenerator {
+	
+	@Inject extension IQualifiedNameProvider;
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		val Injector injector = new CBSStandaloneSetup().createInjectorAndDoEMFRegistration();
+		  
+   		 for(e: resource.allContents.toIterable.filter(Repository)) {
+       		 fsa.generateFile("repository/Helper.java", e.compile)
+   		 }
+   		 
+   		 for(e: resource.allContents.toIterable.filter(Interface)) {
+       		 fsa.generateFile(
+            	"repository/I" + e.fullyQualifiedName.toString("/") + ".java",
+            	e.compile)
+   		 }
 		
-		val XtextResourceSet resourceSet = injector.getInstance(XtextResourceSet);
-		
-		EcoreUtil.resolveAll(resource);
-		
-		var String filename = Paths.get(resource.URI.path).getFileName().toString().replaceFirst("[.][^.]+$", "");
-		fsa.generateFile(filename+ ".xmi", "")
-		val URI outputURI = fsa.getURI(filename+ ".xmi")
-		
-		val Resource xmiResource = resourceSet.createResource(outputURI);
-		xmiResource.getContents().add(resource.getContents().get(0));
-		try {
-			xmiResource.save(null);
-		} catch (IOException e) {
-			e.printStackTrace();	
-		}
+//		val Injector injector = new CBSStandaloneSetup().createInjectorAndDoEMFRegistration();
+//		
+//		val XtextResourceSet resourceSet = injector.getInstance(XtextResourceSet);
+//		
+//		EcoreUtil.resolveAll(resource);
+//		
+//		var String filename = Paths.get(resource.URI.path).getFileName().toString().replaceFirst("[.][^.]+$", "");
+//		fsa.generateFile(filename+ ".xmi", "")
+//		val URI outputURI = fsa.getURI(filename+ ".xmi")
+//		
+//		val Resource xmiResource = resourceSet.createResource(outputURI);
+//		xmiResource.getContents().add(resource.getContents().get(0));
+//		try {
+//			xmiResource.save(null);
+//		} catch (IOException e) {
+//			e.printStackTrace();	
+//		}
+
+
 	}
+	
+  def compile(Repository e)'''
+     package repository;
+     
+     public class Helper {
+     }
+  '''
+  
+  
+    def compile(Interface e)'''
+    
+    package repository;
+   
+     public interface I«e.name» {
+     	  «FOR f:e.signatures»
+        «f.compile»
+     	   «ENDFOR»
+     }
+  '''
+  
+    def compile(Signature e)'''
+     public «e.returnType.name» «e.name»(«FOR f:e.parameters SEPARATOR ','»«f.compile»«ENDFOR»);
+     
+  '''
+  
+    def compile(Parameter e)'''
+     	«e.type.name» «e.name» 
+  '''
 }
