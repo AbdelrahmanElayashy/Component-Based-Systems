@@ -18,10 +18,10 @@ import org.eclipse.xtext.generator.IGeneratorContext;
 public class CBSGenerator extends AbstractGenerator {
   @Inject
   private CBSToJavaGenerator cbsToJavaGenerator;
-  
+
   @Inject
   private CBSToXMIGenerator cbsToXMIGenerator;
-  
+
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
     this.cbsToJavaGenerator.doGenerate(resource, fsa, context);

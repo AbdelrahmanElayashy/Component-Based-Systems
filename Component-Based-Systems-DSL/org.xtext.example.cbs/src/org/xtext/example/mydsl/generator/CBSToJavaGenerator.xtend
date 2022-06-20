@@ -24,50 +24,35 @@ import org.eclipse.xtext.generator.IGeneratorContext
 class CBSToJavaGenerator extends AbstractGenerator {
 	
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-	
-		/*
-		 * TODO list:
-		 * - add name to repository
-		 * - separate code of generators
-		 */
+
 		 
-		 var repositories = resource.allContents.toIterable.filter(Repository);
-		 var repositoryCounter = 1;
-		 
-   		 for(repository: repositories) {
-   		 	var String repositoryName;
-   		 	
-   		 	if(repositories.size <= 1){
-   		 		repositoryName = "repository";
-   		 	} else {
-   		 		repositoryName = "repository" + repositoryCounter;
-   		 		repositoryCounter++;
-   		 	}
-   		 	
-   		 	fsa.generateFile(repositoryName + "/Helper.java", repository.compile)
-   		 	
-   		 	for(i: repository.interfaces) {
-       		 fsa.generateFile(repositoryName + "/I" + i.name + ".java", i.compile)
-   		 	}
-   		 	
-   		 	for(atomicComponent: repository.components){
-   		 		fsa.generateFile(repositoryName + "/" + atomicComponent.name + "/" + atomicComponent.name + "Impl.java", atomicComponent.compile)
-   		 	}
-   		 }
+		 var repository = resource.allContents.toIterable.filter(Repository).get(0);
+		 var repositoryName = 'repository'
+   	
+	 	fsa.generateFile(repositoryName + "/Helper.java", repository.compile(repositoryName))
+	 	
+	 	for(i: repository.interfaces) {
+   		 fsa.generateFile(repositoryName + "/I" + i.name + ".java", i.compile(repositoryName))
+	 	}
+	 	
+	 	for(atomicComponent: repository.components){
+	 		fsa.generateFile(repositoryName + "/" + atomicComponent.name + "/" + atomicComponent.name + "Impl.java", atomicComponent.compile(repositoryName))
+	 	}
+   		 
 	}
 	
-	def compile(Repository repository)'''
-		package repository;
+	def compile(Repository repository, String repositoryName)'''
+		package «repositoryName»;
 		     
 		public class Helper {
-			public static void assertNotNull(Object interface){
-				assert interface != null;
+			public static void assertNotNull(Object component){
+				assert component != null;
 			}
 		}
 		'''
 	
-	def compile(Interface i)'''
-		package repository;
+	def compile(Interface i, String repositoryName)'''
+		package «repositoryName»;
 		
 		public interface I«i.name» {
 			«FOR signature: i.signatures»
@@ -75,8 +60,8 @@ class CBSToJavaGenerator extends AbstractGenerator {
 			«ENDFOR»
 		}'''
 			
-	def compile(AtomicComponent atomicComponent) '''
-		package repository.«atomicComponent.name»;
+	def compile(AtomicComponent atomicComponent, String repositoryName) '''
+		package «repositoryName».«atomicComponent.name»;
 		
 		«FOR requiredInterface: atomicComponent.requires»
 			import repository.I«requiredInterface.name»;

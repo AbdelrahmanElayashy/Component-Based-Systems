@@ -18,7 +18,7 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 
 /**
@@ -30,54 +30,43 @@ import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 public class CBSToJavaGenerator extends AbstractGenerator {
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
-    Iterable<Repository> repositories = Iterables.<Repository>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Repository.class);
-    int repositoryCounter = 1;
-    for (final Repository repository : repositories) {
-      {
-        String repositoryName = null;
-        int _size = IterableExtensions.size(repositories);
-        boolean _lessEqualsThan = (_size <= 1);
-        if (_lessEqualsThan) {
-          repositoryName = "repository";
-        } else {
-          repositoryName = ("repository" + Integer.valueOf(repositoryCounter));
-          repositoryCounter++;
-        }
-        fsa.generateFile((repositoryName + "/Helper.java"), this.compile(repository));
-        EList<Interface> _interfaces = repository.getInterfaces();
-        for (final Interface i : _interfaces) {
-          String _name = i.getName();
-          String _plus = ((repositoryName + "/I") + _name);
-          String _plus_1 = (_plus + ".java");
-          fsa.generateFile(_plus_1, this.compile(i));
-        }
-        EList<AtomicComponent> _components = repository.getComponents();
-        for (final AtomicComponent atomicComponent : _components) {
-          String _name_1 = atomicComponent.getName();
-          String _plus_2 = ((repositoryName + "/") + _name_1);
-          String _plus_3 = (_plus_2 + "/");
-          String _name_2 = atomicComponent.getName();
-          String _plus_4 = (_plus_3 + _name_2);
-          String _plus_5 = (_plus_4 + "Impl.java");
-          fsa.generateFile(_plus_5, this.compile(atomicComponent));
-        }
-      }
+    Repository repository = ((Repository[])Conversions.unwrapArray((Iterables.<Repository>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Repository.class)), Repository.class))[0];
+    String repositoryName = "repository";
+    fsa.generateFile((repositoryName + "/Helper.java"), this.compile(repository, repositoryName));
+    EList<Interface> _interfaces = repository.getInterfaces();
+    for (final Interface i : _interfaces) {
+      String _name = i.getName();
+      String _plus = ((repositoryName + "/I") + _name);
+      String _plus_1 = (_plus + ".java");
+      fsa.generateFile(_plus_1, this.compile(i, repositoryName));
+    }
+    EList<AtomicComponent> _components = repository.getComponents();
+    for (final AtomicComponent atomicComponent : _components) {
+      String _name_1 = atomicComponent.getName();
+      String _plus_2 = ((repositoryName + "/") + _name_1);
+      String _plus_3 = (_plus_2 + "/");
+      String _name_2 = atomicComponent.getName();
+      String _plus_4 = (_plus_3 + _name_2);
+      String _plus_5 = (_plus_4 + "Impl.java");
+      fsa.generateFile(_plus_5, this.compile(atomicComponent, repositoryName));
     }
   }
-  
-  public CharSequence compile(final Repository repository) {
+
+  public CharSequence compile(final Repository repository, final String repositoryName) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("package repository;");
-    _builder.newLine();
+    _builder.append("package ");
+    _builder.append(repositoryName);
+    _builder.append(";");
+    _builder.newLineIfNotEmpty();
     _builder.append("     ");
     _builder.newLine();
     _builder.append("public class Helper {");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("public static void assertNotNull(Object interface){");
+    _builder.append("public static void assertNotNull(Object component){");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("assert interface != null;");
+    _builder.append("assert component != null;");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("}");
@@ -86,11 +75,13 @@ public class CBSToJavaGenerator extends AbstractGenerator {
     _builder.newLine();
     return _builder;
   }
-  
-  public CharSequence compile(final Interface i) {
+
+  public CharSequence compile(final Interface i, final String repositoryName) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("package repository;");
-    _builder.newLine();
+    _builder.append("package ");
+    _builder.append(repositoryName);
+    _builder.append(";");
+    _builder.newLineIfNotEmpty();
     _builder.newLine();
     _builder.append("public interface I");
     String _name = i.getName();
@@ -109,10 +100,12 @@ public class CBSToJavaGenerator extends AbstractGenerator {
     _builder.append("}");
     return _builder;
   }
-  
-  public CharSequence compile(final AtomicComponent atomicComponent) {
+
+  public CharSequence compile(final AtomicComponent atomicComponent, final String repositoryName) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("package repository.");
+    _builder.append("package ");
+    _builder.append(repositoryName);
+    _builder.append(".");
     String _name = atomicComponent.getName();
     _builder.append(_name);
     _builder.append(";");
@@ -276,7 +269,7 @@ public class CBSToJavaGenerator extends AbstractGenerator {
     _builder.newLine();
     return _builder;
   }
-  
+
   public CharSequence compile(final Signature signature) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("public ");
@@ -303,7 +296,7 @@ public class CBSToJavaGenerator extends AbstractGenerator {
     _builder.newLineIfNotEmpty();
     return _builder;
   }
-  
+
   public CharSequence compile(final Parameter parameter) {
     StringConcatenation _builder = new StringConcatenation();
     CharSequence _compile = this.compile(parameter.getType());
@@ -313,7 +306,7 @@ public class CBSToJavaGenerator extends AbstractGenerator {
     _builder.append(_name);
     return _builder;
   }
-  
+
   public CharSequence compile(final Type type) {
     StringConcatenation _builder = new StringConcatenation();
     {
