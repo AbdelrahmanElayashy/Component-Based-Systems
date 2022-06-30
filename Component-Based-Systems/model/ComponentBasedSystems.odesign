@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="CBS" version="12.0.0.2017041100">
+  <ownedViewpoints name="ComponentBasedSystem" label="CBS">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="repository" domainClass="repository::Repository" enablePopupBars="true">
+      <metamodel href="ComponentBasedSystems.ecore#/"/>
+      <metamodel href="ComponentBasedSystems.ecore#//assembly"/>
+      <metamodel href="ComponentBasedSystems.ecore#//environment"/>
+      <metamodel href="ComponentBasedSystems.ecore#//allocation"/>
+      <metamodel href="ComponentBasedSystems.ecore#//repository"/>
+      <metamodel href="ComponentBasedSystems.ecore#//repository/behavioraldescription"/>
+      <metamodel href="ComponentBasedSystems.ecore#//repository/types"/>
+      <defaultLayer name="Default">
+        <nodeMappings name="AtomicComponent" domainClass="repository::AtomicComponent">
+          <style xsi:type="style:SquareDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+          </style>
+        </nodeMappings>
+        <toolSections>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="CreateAtomicComponent" label="AtomicComponent" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@nodeMappings[name='AtomicComponent']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="AtomicComponent" referenceName="components"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>
