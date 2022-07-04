@@ -17,6 +17,22 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
           </style>
         </nodeMappings>
+        <edgeMappings name="Provided Interface" sourceMapping="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@nodeMappings[name='AtomicComponent']" targetMapping="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='Interface']" targetFinderExpression="feature:provides">
+          <style sizeComputationExpression="2" centeredSourceMappings="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@nodeMappings[name='AtomicComponent']" centeredTargetMappings="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='Interface']">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="9" labelExpression="&lt;&lt;provides>>">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Required Interface" sourceMapping="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@nodeMappings[name='AtomicComponent']" targetMapping="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='Interface']" targetFinderExpression="feature:requires">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="9" labelExpression="&lt;&lt;requires>>">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
         <containerMappings name="Interface" labelDirectEdit="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" domainClass="Interface" childrenPresentation="List">
           <subNodeMappings name="Signature" labelDirectEdit="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:signatures" domainClass="Signature">
             <conditionnalStyles predicateExpression="[self.returnType.oclIsUndefined()/]">
@@ -97,6 +113,28 @@
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository::Signature" referenceName="signatures">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'method' + container.eAllContents()->filter(repository::Signature)->size()"/>
                 </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="&lt;&lt;provides>>" edgeMappings="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@edgeMappings[name='Provided%20Interface']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="provides" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="&lt;&lt;requires>>" edgeMappings="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@edgeMappings[name='Required%20Interface']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="requires" valueExpression="var:target"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
