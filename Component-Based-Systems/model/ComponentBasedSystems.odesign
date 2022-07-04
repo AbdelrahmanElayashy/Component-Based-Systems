@@ -17,7 +17,7 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
           </style>
         </nodeMappings>
-        <containerMappings name="Interface" deletionDescription="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Interface']" labelDirectEdit="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" domainClass="Interface" childrenPresentation="List">
+        <containerMappings name="Interface" labelDirectEdit="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" domainClass="Interface" childrenPresentation="List">
           <subNodeMappings name="Signature" labelDirectEdit="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:signatures" domainClass="Signature">
             <conditionnalStyles predicateExpression="[self.returnType.oclIsUndefined()/]">
               <style xsi:type="style:SquareDescription" labelExpression="aql:'void' + ' ' + self.name + '(' + 'TODO(Paremeters)' + ')'" labelPosition="node" resizeKind="NSEW">
@@ -86,28 +86,6 @@
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository::Interface" referenceName="interfaces">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Interface' + container.eContents()->filter(repository::Interface)->size()"/>
                 </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" documentation="needed?" name="Interface">
-            <element name="element"/>
-            <elementView name="elementView"/>
-            <containerView name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool_1:For" expression="[self.eContainer().eAllContents()->selectByType(AtomicComponent)/]">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="[i.oclAsType(AtomicComponent).provides.contains(element)/]">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:i">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="provides" valueExpression="self.provides.excluding(element)"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="[i.oclAsType(AtomicComponent).requires.contains(element)/]">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:i">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="requires" valueExpression="self.requires.excluding(element)"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool_1:RemoveElement"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
