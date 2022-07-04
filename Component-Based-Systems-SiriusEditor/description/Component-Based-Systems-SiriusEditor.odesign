@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="CBS" version="12.0.0.2017041100">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="Component-Based-Systems-SiriusEditor" version="12.0.0.2017041100">
   <ownedViewpoints name="ComponentBasedSystem" label="CBS">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="repository" domainClass="repository::Repository" enablePopupBars="true">
-      <metamodel href="ComponentBasedSystems.ecore#/"/>
-      <metamodel href="ComponentBasedSystems.ecore#//assembly"/>
-      <metamodel href="ComponentBasedSystems.ecore#//environment"/>
-      <metamodel href="ComponentBasedSystems.ecore#//allocation"/>
-      <metamodel href="ComponentBasedSystems.ecore#//repository"/>
-      <metamodel href="ComponentBasedSystems.ecore#//repository/behavioraldescription"/>
-      <metamodel href="ComponentBasedSystems.ecore#//repository/types"/>
+      <metamodel href="../../Component-Based-Systems/model/ComponentBasedSystems.ecore#/"/>
+      <metamodel href="../../Component-Based-Systems/model/ComponentBasedSystems.ecore#//assembly"/>
+      <metamodel href="../../Component-Based-Systems/model/ComponentBasedSystems.ecore#//environment"/>
+      <metamodel href="../../Component-Based-Systems/model/ComponentBasedSystems.ecore#//allocation"/>
+      <metamodel href="../../Component-Based-Systems/model/ComponentBasedSystems.ecore#//repository"/>
+      <metamodel href="../../Component-Based-Systems/model/ComponentBasedSystems.ecore#//repository/behavioraldescription"/>
+      <metamodel href="../../Component-Based-Systems/model/ComponentBasedSystems.ecore#//repository/types"/>
       <defaultLayer name="Default">
         <nodeMappings name="AtomicComponent" labelDirectEdit="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" domainClass="repository::AtomicComponent">
           <style xsi:type="style:SquareDescription" labelSize="12" sizeComputationExpression="10" labelPosition="node" resizeKind="NSEW" width="20" height="10">
@@ -35,43 +35,13 @@
         </edgeMappings>
         <containerMappings name="Interface" labelDirectEdit="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" domainClass="Interface" childrenPresentation="List">
           <subNodeMappings name="Signature" labelDirectEdit="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:signatures" domainClass="Signature">
-            <conditionnalStyles predicateExpression="[self.returnType.oclIsUndefined()/]">
-              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql:'void' + ' ' + self.name + '(' + 'TODO(Paremeters)' + ')'" labelPosition="node" resizeKind="NSEW">
-                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-              </style>
-            </conditionnalStyles>
-            <conditionnalStyles predicateExpression="[self.returnType.oclIsKindOf(SimpleType)/]">
-              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql:self.returnType.oclAsType(types::SimpleType).type.toString().toLower()+ ' ' + self.name + '(' + 'TODO(Paremeters)' + ')'" labelPosition="node" resizeKind="NSEW">
-                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-              </style>
-            </conditionnalStyles>
-            <conditionnalStyles predicateExpression="[self.returnType.oclIsKindOf(ComplexType)/]">
-              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql:self.returnType.name.substring(1, 1).toLower() + self.returnType.name.substring(2, self.returnType.name.size()) + ' ' + self.name + '(' + 'TODO(Paremeters)' + ')'" labelPosition="node" resizeKind="NSEW">
-                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-              </style>
-            </conditionnalStyles>
-            <conditionnalStyles predicateExpression="[self.returnType.oclIsKindOf(CollectionType)/]">
-              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql:if self.returnType.oclIsTypeOf(types::CollectionType) and self.returnType.oclAsType(types::CollectionType).innerType.oclIsTypeOf(types::SimpleType) then self.returnType.oclAsType(types::CollectionType).innerType.oclAsType(types::SimpleType).type.toString().toLower() + '[]' else self.returnType.oclAsType(types::CollectionType).name endif  + ' ' + self.name + '(' + 'TODO(Parameters' + ')'" labelPosition="node" resizeKind="NSEW">
-                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-              </style>
-            </conditionnalStyles>
-            <conditionnalStyles predicateExpression="[self.returnType.oclIsKindOf(Void)/]">
-              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql:'void' + ' ' + self.name + '(' + 'TODO(Paremeters)' + ')'" labelPosition="node" resizeKind="NSEW">
-                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-              </style>
-            </conditionnalStyles>
+            <style xsi:type="style:SquareDescription" labelSize="12" labelExpression="aql:self.returnType.getDataTypeName() + ' ' + self.name + '(' + self.printParameters() + ')'" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
           </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="aql: '&lt;&lt;Interface>> '.concat(self.name)">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelExpression="aql: '&lt;&lt;Interface>> '.concat(self.name)" iconPath="/Component-Based-Systems/icons/interface_1.png">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -90,7 +60,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Interface" containerMappings="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='Interface']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Interface" containerMappings="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='Interface']" iconPath="/Component-Based-Systems/icons/interface_1.png">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -171,5 +141,6 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
+    <ownedJavaExtensions qualifiedClassName="componentBasedSystems.Services"/>
   </ownedViewpoints>
 </description:Group>
