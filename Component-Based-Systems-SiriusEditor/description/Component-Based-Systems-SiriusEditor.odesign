@@ -11,7 +11,7 @@
       <metamodel href="../../Component-Based-Systems/model/ComponentBasedSystems.ecore#//repository/types"/>
       <defaultLayer name="Default">
         <nodeMappings name="AtomicComponent" labelDirectEdit="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" domainClass="repository::AtomicComponent">
-          <style xsi:type="style:SquareDescription" labelSize="12" sizeComputationExpression="10" labelPosition="node" resizeKind="NSEW" width="20" height="10">
+          <style xsi:type="style:SquareDescription" labelSize="12" iconPath="/Component-Based-Systems-SiriusEditor/icons/Component.png" sizeComputationExpression="10" labelPosition="node" resizeKind="NSEW" width="20" height="10">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -35,13 +35,13 @@
         </edgeMappings>
         <containerMappings name="Interface" labelDirectEdit="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" domainClass="Interface" childrenPresentation="List">
           <subNodeMappings name="Signature" labelDirectEdit="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:signatures" domainClass="Signature">
-            <style xsi:type="style:SquareDescription" labelSize="12" labelExpression="aql:self.returnType.getDataTypeName() + ' ' + self.name + '(' + self.printParameters() + ')'" labelPosition="node" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="aql:self.returnType.getDataTypeName() + ' ' + self.name + '(' + self.printParameters() + ')'" iconPath="/Component-Based-Systems-SiriusEditor/icons/Method.png" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelExpression="aql: '&lt;&lt;Interface>> '.concat(self.name)" iconPath="/Component-Based-Systems/icons/interface_1.png">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelExpression="aql: '&lt;&lt;Interface>> '.concat(self.name)" iconPath="/Component-Based-Systems-SiriusEditor/icons/Interface.png">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -49,7 +49,7 @@
           </style>
         </containerMappings>
         <toolSections>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="CreateAtomicComponent" label="AtomicComponent" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@nodeMappings[name='AtomicComponent']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="CreateAtomicComponent" label="AtomicComponent" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@nodeMappings[name='AtomicComponent']" iconPath="/Component-Based-Systems-SiriusEditor/icons/Component.png">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -60,7 +60,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Interface" containerMappings="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='Interface']" iconPath="/Component-Based-Systems/icons/interface_1.png">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Interface" containerMappings="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='Interface']" iconPath="/Component-Based-Systems-SiriusEditor/icons/Interface.png">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -71,7 +71,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Signature" nodeMappings="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='Interface']/@subNodeMappings[name='Signature']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Signature" nodeMappings="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='Interface']/@subNodeMappings[name='Signature']" iconPath="/Component-Based-Systems-SiriusEditor/icons/Method.png">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>

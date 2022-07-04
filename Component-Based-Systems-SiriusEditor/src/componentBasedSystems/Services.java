@@ -43,10 +43,10 @@ public class Services {
 		} else if(dataType instanceof Void) {
 			type = "void";
 		} else if (dataType instanceof SimpleType) {
-			type = firstCharToLowerCase(((SimpleType) dataType).getType().name());
+			type = ((SimpleType) dataType).getType().name().toLowerCase();
 		} else if ((dataType instanceof CollectionType)) {
 			String innerTypeString = getDataTypeName(((CollectionType) dataType).getInnerType());
-			String collectionTypeString = firstCharToLowerCase(((CollectionType) dataType).getType().name());
+			String collectionTypeString = ((CollectionType) dataType).getType().name().toLowerCase();
 			type = collectionTypeString + "<" + innerTypeString + ">";
 		} else if ((dataType instanceof ComplexType)) {
 			type = firstCharToLowerCase(((ComplexType) dataType).getName());
