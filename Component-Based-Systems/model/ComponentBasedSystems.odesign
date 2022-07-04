@@ -10,39 +10,45 @@
       <metamodel href="ComponentBasedSystems.ecore#//repository/behavioraldescription"/>
       <metamodel href="ComponentBasedSystems.ecore#//repository/types"/>
       <defaultLayer name="Default">
-        <nodeMappings name="AtomicComponent" domainClass="repository::AtomicComponent">
+        <nodeMappings name="AtomicComponent" labelDirectEdit="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" domainClass="repository::AtomicComponent">
           <style xsi:type="style:SquareDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
           </style>
         </nodeMappings>
-        <containerMappings name="Interface" domainClass="Interface" childrenPresentation="List">
-          <subNodeMappings name="Signature" semanticCandidatesExpression="feature:signatures" domainClass="Signature">
-            <borderedNodeMappings name="Signature" semanticCandidatesExpression="feature:eContainer" domainClass="Signature"/>
-            <conditionnalStyles predicateExpression="[self.returnType.oclIsKindOf(types::Void)/]">
-              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql:'void' + ' ' + self.name + '(' + 'TODO(Paremeters)' + ')'" labelPosition="node" resizeKind="NSEW">
+        <containerMappings name="Interface" deletionDescription="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Interface']" labelDirectEdit="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" domainClass="Interface" childrenPresentation="List">
+          <subNodeMappings name="Signature" labelDirectEdit="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:signatures" domainClass="Signature">
+            <conditionnalStyles predicateExpression="[self.returnType.oclIsUndefined()/]">
+              <style xsi:type="style:SquareDescription" labelExpression="aql:'void' + ' ' + self.name + '(' + 'TODO(Paremeters)' + ')'" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               </style>
             </conditionnalStyles>
-            <conditionnalStyles predicateExpression="[self.returnType.oclIsKindOf(types::SimpleType)/]">
+            <conditionnalStyles predicateExpression="[self.returnType.oclIsKindOf(SimpleType)/]">
               <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql:self.returnType.oclAsType(types::SimpleType).type.toString().toLower()+ ' ' + self.name + '(' + 'TODO(Paremeters)' + ')'" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               </style>
             </conditionnalStyles>
-            <conditionnalStyles predicateExpression="[self.returnType.oclIsKindOf(types::ComplexType)/]">
+            <conditionnalStyles predicateExpression="[self.returnType.oclIsKindOf(ComplexType)/]">
               <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql:self.returnType.name.substring(1, 1).toLower() + self.returnType.name.substring(2, self.returnType.name.size()) + ' ' + self.name + '(' + 'TODO(Paremeters)' + ')'" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               </style>
             </conditionnalStyles>
-            <conditionnalStyles predicateExpression="[self.returnType.oclIsKindOf(types::CollectionType)/]">
+            <conditionnalStyles predicateExpression="[self.returnType.oclIsKindOf(CollectionType)/]">
               <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql:if self.returnType.oclIsTypeOf(types::CollectionType) and self.returnType.oclAsType(types::CollectionType).innerType.oclIsTypeOf(types::SimpleType) then self.returnType.oclAsType(types::CollectionType).innerType.oclAsType(types::SimpleType).type.toString().toLower() + '[]' else self.returnType.oclAsType(types::CollectionType).name endif  + ' ' + self.name + '(' + 'TODO(Parameters' + ')'" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </conditionnalStyles>
+            <conditionnalStyles predicateExpression="[self.returnType.oclIsKindOf(Void)/]">
+              <style xsi:type="style:SquareDescription" labelExpression="aql:'void' + ' ' + self.name + '(' + 'TODO(Paremeters)' + ')'" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -63,6 +69,56 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="AtomicComponent" referenceName="components"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Edit Name" inputLabelExpression="feature:name">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Interface" containerMappings="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='Interface']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository::Interface" referenceName="interfaces">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Interface' + container.eContents()->filter(repository::Interface)->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" documentation="needed?" name="Interface">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:For" expression="[self.eContainer().eAllContents()->selectByType(AtomicComponent)/]">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="[i.oclAsType(AtomicComponent).provides.contains(element)/]">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:i">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="provides" valueExpression="self.provides.excluding(element)"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="[i.oclAsType(AtomicComponent).requires.contains(element)/]">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:i">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="requires" valueExpression="self.requires.excluding(element)"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:RemoveElement"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Signature" nodeMappings="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='Interface']/@subNodeMappings[name='Signature']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository::Signature" referenceName="signatures">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'method' + container.eAllContents()->filter(repository::Signature)->size()"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>

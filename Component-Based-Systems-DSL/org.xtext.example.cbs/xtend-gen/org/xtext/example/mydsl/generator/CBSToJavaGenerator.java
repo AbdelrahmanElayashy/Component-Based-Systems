@@ -51,7 +51,7 @@ public class CBSToJavaGenerator extends AbstractGenerator {
       fsa.generateFile(_plus_5, this.compile(atomicComponent, repositoryName));
     }
   }
-
+  
   public CharSequence compile(final Repository repository, final String repositoryName) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package ");
@@ -75,7 +75,7 @@ public class CBSToJavaGenerator extends AbstractGenerator {
     _builder.newLine();
     return _builder;
   }
-
+  
   public CharSequence compile(final Interface i, final String repositoryName) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package ");
@@ -100,7 +100,7 @@ public class CBSToJavaGenerator extends AbstractGenerator {
     _builder.append("}");
     return _builder;
   }
-
+  
   public CharSequence compile(final AtomicComponent atomicComponent, final String repositoryName) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package ");
@@ -269,7 +269,7 @@ public class CBSToJavaGenerator extends AbstractGenerator {
     _builder.newLine();
     return _builder;
   }
-
+  
   public CharSequence compile(final Signature signature) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("public ");
@@ -296,7 +296,7 @@ public class CBSToJavaGenerator extends AbstractGenerator {
     _builder.newLineIfNotEmpty();
     return _builder;
   }
-
+  
   public CharSequence compile(final Parameter parameter) {
     StringConcatenation _builder = new StringConcatenation();
     CharSequence _compile = this.compile(parameter.getType());
@@ -306,7 +306,7 @@ public class CBSToJavaGenerator extends AbstractGenerator {
     _builder.append(_name);
     return _builder;
   }
-
+  
   public CharSequence compile(final Type type) {
     StringConcatenation _builder = new StringConcatenation();
     {
