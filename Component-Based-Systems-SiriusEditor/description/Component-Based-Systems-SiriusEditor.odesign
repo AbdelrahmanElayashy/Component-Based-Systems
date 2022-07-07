@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="Component-Based-Systems-SiriusEditor" version="12.0.0.2017041100">
   <ownedViewpoints name="ComponentBasedSystem" label="CBS">
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="repository" domainClass="repository::Repository" enablePopupBars="true">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="ComponentsAndInterfaces" domainClass="componentbasedsystem::ComponentBasedSystemContainer" enablePopupBars="true">
       <metamodel href="../../Component-Based-Systems/model/ComponentBasedSystems.ecore#/"/>
       <metamodel href="../../Component-Based-Systems/model/ComponentBasedSystems.ecore#//assembly"/>
       <metamodel href="../../Component-Based-Systems/model/ComponentBasedSystems.ecore#//environment"/>
@@ -10,22 +10,22 @@
       <metamodel href="../../Component-Based-Systems/model/ComponentBasedSystems.ecore#//repository/behavioraldescription"/>
       <metamodel href="../../Component-Based-Systems/model/ComponentBasedSystems.ecore#//repository/types"/>
       <defaultLayer name="Default">
-        <nodeMappings name="AtomicComponent" labelDirectEdit="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" domainClass="repository::AtomicComponent">
+        <nodeMappings name="AtomicComponent" labelDirectEdit="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='ComponentsAndInterfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" domainClass="repository::AtomicComponent">
           <style xsi:type="style:SquareDescription" labelSize="12" iconPath="/Component-Based-Systems-SiriusEditor/icons/Component.png" sizeComputationExpression="10" labelPosition="node" resizeKind="NSEW" width="20" height="10">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </nodeMappings>
-        <edgeMappings name="Provided Interface" deletionDescription="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20Provided%20Interface']" sourceMapping="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@nodeMappings[name='AtomicComponent']" targetMapping="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='Interface']" targetFinderExpression="feature:provides">
-          <style sizeComputationExpression="2" centeredSourceMappings="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@nodeMappings[name='AtomicComponent']" centeredTargetMappings="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='Interface']">
+        <edgeMappings name="Provided Interface" deletionDescription="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='ComponentsAndInterfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20Provided%20Interface']" sourceMapping="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='ComponentsAndInterfaces']/@defaultLayer/@nodeMappings[name='AtomicComponent']" targetMapping="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='ComponentsAndInterfaces']/@defaultLayer/@containerMappings[name='Interface']" targetFinderExpression="feature:provides">
+          <style sizeComputationExpression="2" centeredSourceMappings="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='ComponentsAndInterfaces']/@defaultLayer/@nodeMappings[name='AtomicComponent']" centeredTargetMappings="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='ComponentsAndInterfaces']/@defaultLayer/@containerMappings[name='Interface']">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelSize="9" labelExpression="&lt;&lt;provides>>">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="Required Interface" deletionDescription="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20Required%20Interface']" sourceMapping="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@nodeMappings[name='AtomicComponent']" targetMapping="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='Interface']" targetFinderExpression="feature:requires">
+        <edgeMappings name="Required Interface" deletionDescription="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='ComponentsAndInterfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20Required%20Interface']" sourceMapping="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='ComponentsAndInterfaces']/@defaultLayer/@nodeMappings[name='AtomicComponent']" targetMapping="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='ComponentsAndInterfaces']/@defaultLayer/@containerMappings[name='Interface']" targetFinderExpression="feature:requires">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelSize="9" labelExpression="&lt;&lt;requires>>">
@@ -33,8 +33,8 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="Interface" labelDirectEdit="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" domainClass="Interface" childrenPresentation="List">
-          <subNodeMappings name="Signature" labelDirectEdit="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:signatures" doubleClickDescription="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='']" domainClass="Signature">
+        <containerMappings name="Interface" labelDirectEdit="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='ComponentsAndInterfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" domainClass="Interface" childrenPresentation="List">
+          <subNodeMappings name="Signature" labelDirectEdit="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='ComponentsAndInterfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:signatures" doubleClickDescription="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='ComponentsAndInterfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='']" domainClass="Signature">
             <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="aql:self.returnType.getDataTypeName() + ' ' + self.name + '(' + self.printParameters() + ')'" iconPath="/Component-Based-Systems-SiriusEditor/icons/Method.png" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -49,29 +49,29 @@
           </style>
         </containerMappings>
         <toolSections>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="CreateAtomicComponent" label="AtomicComponent" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@nodeMappings[name='AtomicComponent']" iconPath="/Component-Based-Systems-SiriusEditor/icons/Component.png">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="CreateAtomicComponent" label="AtomicComponent" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='ComponentsAndInterfaces']/@defaultLayer/@nodeMappings[name='AtomicComponent']" iconPath="/Component-Based-Systems-SiriusEditor/icons/Component.png">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql: container.repository">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="AtomicComponent" referenceName="components">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'atomicComponent' + container.eAllContents()->filter(repository::AtomicComponent)->size()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Interface" containerMappings="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='Interface']" iconPath="/Component-Based-Systems-SiriusEditor/icons/Interface.png">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Interface" containerMappings="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='ComponentsAndInterfaces']/@defaultLayer/@containerMappings[name='Interface']" iconPath="/Component-Based-Systems-SiriusEditor/icons/Interface.png">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql: container.repository">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository::Interface" referenceName="interfaces">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Interface' + container.eContents()->filter(repository::Interface)->size()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Signature" nodeMappings="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='Interface']/@subNodeMappings[name='Signature']" iconPath="/Component-Based-Systems-SiriusEditor/icons/Method.png">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Signature" nodeMappings="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='ComponentsAndInterfaces']/@defaultLayer/@containerMappings[name='Interface']/@subNodeMappings[name='Signature']" iconPath="/Component-Based-Systems-SiriusEditor/icons/Method.png">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -82,7 +82,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Provided Interface" edgeMappings="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@edgeMappings[name='Provided%20Interface']">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Provided Interface" edgeMappings="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='ComponentsAndInterfaces']/@defaultLayer/@edgeMappings[name='Provided%20Interface']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -93,7 +93,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Required Interface" edgeMappings="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@edgeMappings[name='Required%20Interface']">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Required Interface" edgeMappings="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='ComponentsAndInterfaces']/@defaultLayer/@edgeMappings[name='Required%20Interface']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -138,7 +138,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" mappings="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='Interface']/@subNodeMappings[name='Signature']">
+          <ownedTools xsi:type="tool:DoubleClickDescription" mappings="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='ComponentsAndInterfaces']/@defaultLayer/@containerMappings[name='Interface']/@subNodeMappings[name='Signature']">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -150,7 +150,7 @@
                   <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                     <initialOperation/>
                   </buttons>
-                  <page name="Edit Signature Page" domainClass="Signature" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='']/@initialOperation/@firstModelOperations/@subModelOperations.0/@groups.0"/>
+                  <page name="Edit Signature Page" domainClass="Signature" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='ComponentsAndInterfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='']/@initialOperation/@firstModelOperations/@subModelOperations.0/@groups.0"/>
                   <groups name="Edit Signature Group">
                     <controls xsi:type="properties:TextDescription" name="Edit Name" labelExpression="name" valueExpression="aql: self.name">
                       <initialOperation>
@@ -181,7 +181,7 @@
                                 <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                                   <initialOperation/>
                                 </buttons>
-                                <page name="Default Page" labelExpression="Page" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='']/@initialOperation/@firstModelOperations/@subModelOperations.0/@groups.0/@controls.2/@actions.0/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@groups.0"/>
+                                <page name="Default Page" labelExpression="Page" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='ComponentsAndInterfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='']/@initialOperation/@firstModelOperations/@subModelOperations.0/@groups.0/@controls.2/@actions.0/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@groups.0"/>
                                 <groups name="Default Group" labelExpression="Group" semanticCandidateExpression="var:self">
                                   <controls xsi:type="properties:TextDescription" name="Edit Name" labelExpression="name" valueExpression="aql: self.name">
                                     <initialOperation>
