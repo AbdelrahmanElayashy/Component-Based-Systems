@@ -166,22 +166,22 @@
                         </firstModelOperations>
                       </initialOperation>
                     </controls>
-                    <controls xsi:type="properties:ListDescription" name="parameter" labelExpression="parameters" valueExpression="aql: self.parameters" displayExpression="aql: value.name">
+                    <controls xsi:type="properties:ListDescription" name="parameter" labelExpression="parameters" valueExpression="aql: self.parameters" displayExpression="aql: value.type.getDataTypeName() + ' ' + value.name">
                       <onClickOperation>
                         <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self"/>
                       </onClickOperation>
-                      <actions labelExpression="Create Parameter">
+                      <actions labelExpression="Create parameter">
                         <initialOperation>
                           <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
                             <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository::Parameter" referenceName="parameters">
-                              <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="New Dialog">
+                              <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Create New Paramter">
                                 <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                                   <initialOperation/>
                                 </buttons>
                                 <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                                   <initialOperation/>
                                 </buttons>
-                                <page name="Default Page" labelExpression="Page" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='ComponentsAndInterfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='']/@initialOperation/@firstModelOperations/@subModelOperations.0/@groups.0/@controls.2/@actions.0/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@groups.0"/>
+                                <page name="Create Parameter" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='ComponentsAndInterfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='']/@initialOperation/@firstModelOperations/@subModelOperations.0/@groups.0/@controls.2/@actions.0/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@groups.0"/>
                                 <groups name="Default Group" labelExpression="Group" semanticCandidateExpression="var:self">
                                   <controls xsi:type="properties:TextDescription" name="Edit Name" labelExpression="name" valueExpression="aql: self.name">
                                     <initialOperation>
@@ -190,20 +190,21 @@
                                       </firstModelOperations>
                                     </initialOperation>
                                   </controls>
-                                  <controls xsi:type="properties:SelectDescription" name="Edit Return Type" labelExpression="type" valueExpression="aql: self.type" candidatesExpression="aql: self.eContainer().eContainer().eContainer().types" candidateDisplayExpression="aql: candidate.name">
+                                  <controls xsi:type="properties:SelectDescription" name="Edit Type" labelExpression="type" valueExpression="aql: self.type" candidatesExpression="aql: self.eContainer().eContainer().eContainer().types->filter(types::ParameterType)->asSequence()" candidateDisplayExpression="aql: candidate.name">
                                     <initialOperation>
                                       <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
                                         <subModelOperations xsi:type="tool_1:SetValue" featureName="type" valueExpression="var:newValue"/>
                                       </firstModelOperations>
                                     </initialOperation>
                                   </controls>
+                                  <style barStyle="NO_TITLE" toggleStyle="NONE"/>
                                 </groups>
                               </subModelOperations>
                             </subModelOperations>
                           </firstModelOperations>
                         </initialOperation>
                       </actions>
-                      <actions labelExpression="Delete Parameter">
+                      <actions labelExpression="Delete parameter">
                         <initialOperation>
                           <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
                             <subModelOperations xsi:type="tool_1:Unset" featureName="parameters" elementExpression="var:selection"/>
@@ -211,6 +212,9 @@
                         </initialOperation>
                       </actions>
                     </controls>
+                    <style barStyle="NO_TITLE" toggleStyle="NONE" expandedByDefault="true">
+                      <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                    </style>
                   </groups>
                 </subModelOperations>
               </firstModelOperations>
