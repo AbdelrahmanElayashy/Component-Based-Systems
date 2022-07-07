@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="Component-Based-Systems-SiriusEditor" version="12.0.0.2017041100">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="Component-Based-Systems-SiriusEditor" version="12.0.0.2017041100">
   <ownedViewpoints name="ComponentBasedSystem" label="CBS">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="repository" domainClass="repository::Repository" enablePopupBars="true">
       <metamodel href="../../Component-Based-Systems/model/ComponentBasedSystems.ecore#/"/>
@@ -34,7 +34,7 @@
           </style>
         </edgeMappings>
         <containerMappings name="Interface" labelDirectEdit="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" domainClass="Interface" childrenPresentation="List">
-          <subNodeMappings name="Signature" labelDirectEdit="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:signatures" domainClass="Signature">
+          <subNodeMappings name="Signature" labelDirectEdit="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:signatures" doubleClickDescription="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='']" domainClass="Signature">
             <style xsi:type="style:SquareDescription" labelSize="10" labelExpression="aql:self.returnType.getDataTypeName() + ' ' + self.name + '(' + self.printParameters() + ')'" iconPath="/Component-Based-Systems-SiriusEditor/icons/Method.png" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -134,6 +134,39 @@
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:source">
                     <subModelOperations xsi:type="tool_1:Unset" featureName="requires" elementExpression="aql:target"/>
                   </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DoubleClickDescription" mappings="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='Interface']/@subNodeMappings[name='Signature']">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="aql: 'Edit Signature ' + self.name">
+                  <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                    <initialOperation/>
+                  </buttons>
+                  <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                    <initialOperation/>
+                  </buttons>
+                  <page name="Edit Signature Page" domainClass="Signature" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='ComponentBasedSystem']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='']/@initialOperation/@firstModelOperations/@subModelOperations.0/@groups.0"/>
+                  <groups name="Edit Signature Group">
+                    <controls xsi:type="properties:TextDescription" name="Edit Name" labelExpression="name" valueExpression="aql: self.name">
+                      <initialOperation>
+                        <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                          <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:newValue"/>
+                        </firstModelOperations>
+                      </initialOperation>
+                    </controls>
+                    <controls xsi:type="properties:SelectDescription" name="Edit Return Type" labelExpression="return type" valueExpression="aql: self.returnType" candidatesExpression="aql:self.eContainer().eContainer().types" candidateDisplayExpression="aql: candidate.name">
+                      <initialOperation>
+                        <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                          <subModelOperations xsi:type="tool_1:SetValue" featureName="returnType" valueExpression="var:newValue"/>
+                        </firstModelOperations>
+                      </initialOperation>
+                    </controls>
+                  </groups>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
