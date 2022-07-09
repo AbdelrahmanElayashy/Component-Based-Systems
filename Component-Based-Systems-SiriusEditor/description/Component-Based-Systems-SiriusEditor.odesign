@@ -194,7 +194,7 @@
                         </firstModelOperations>
                       </initialOperation>
                     </controls>
-                    <controls xsi:type="properties:SelectDescription" name="Edit Return Type" labelExpression="return type" valueExpression="aql: self.returnType" candidatesExpression="aql:self.eContainer().eContainer().types" candidateDisplayExpression="aql: candidate.name">
+                    <controls xsi:type="properties:SelectDescription" name="Edit Return Type" labelExpression="return type" valueExpression="aql: self.returnType" candidatesExpression="aql:self.eContainer().eContainer().types" candidateDisplayExpression="aql: candidate.getDataTypeName()">
                       <initialOperation>
                         <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
                           <subModelOperations xsi:type="tool:SetValue" featureName="returnType" valueExpression="var:newValue"/>
@@ -225,7 +225,7 @@
                                       </firstModelOperations>
                                     </initialOperation>
                                   </controls>
-                                  <controls xsi:type="properties:SelectDescription" name="Edit Type" labelExpression="type" valueExpression="aql: self.type" candidatesExpression="aql: self.eContainer().eContainer().eContainer().types->filter(types::ParameterType)->asSequence()" candidateDisplayExpression="aql: candidate.name">
+                                  <controls xsi:type="properties:SelectDescription" name="Edit Type" labelExpression="type" valueExpression="aql: self.type" candidatesExpression="aql: self.eContainer().eContainer().eContainer().types->filter(types::ParameterType)->asSequence()" candidateDisplayExpression="aql: candidate.getDataTypeName()">
                                     <initialOperation>
                                       <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
                                         <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="var:newValue"/>
