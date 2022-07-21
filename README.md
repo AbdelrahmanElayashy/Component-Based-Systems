@@ -2,30 +2,30 @@
 
 ## Dokumentation Aufgaben
 ### Aufgabe 1
-- Metamodell: [here](Component-Based-Systems\model)
-- Instanz: [here](Component-Based-Systems-Instance\MediaFiles.componentbasedsystem)
+- Metamodell: [here](Component-Based-Systems/model)
+- Instanz: [here](Component-Based-Systems-Instance/MediaFiles.componentbasedsystem)
 - Dokumentation zu Modelländerungen: [here](#metamodel-changes)
 - Dokumentation zu Constraints: [here](#metamodel-constraints)
 
 ### Aufgabe 2
 - Projekt: [here](Component-Based-Systems-DSL)
-- DSL: [here](Component-Based-Systems-DSL\org.xtext.example.cbs\src\org\xtext\example\mydsl\CBS.xtext)
-- Code for automated save: [here](Component-Based-Systems-DSL\org.xtext.example.cbs\src\org\xtext\example\mydsl\generator\GBSToXMIGenerator.xtend)
-- MediaFiles as DSL:  [here](Component-Based-System-DSL-Instance\MediaFiles.cbs)
-- MediaFiles as XMI (generated from DSL): [here](Component-Based-System-DSL-Instance\MediaFiles.cbs)
+- DSL: [here](Component-Based-Systems-DSL/org.xtext.example.cbs/src/org/xtext/example/mydsl/CBS.xtext)
+- Code for automated save: [here](Component-Based-Systems-DSL/org.xtext.example.cbs/src/org/xtext/example/mydsl/generator/GBSToXMIGenerator.xtend)
+- MediaFiles as DSL:  [here](Component-Based-System-DSL-Instance/MediaFiles.cbs)
+- MediaFiles as XMI (generated from DSL): [here](Component-Based-System-DSL-Instance/MediaFiles.cbs)
 
 ### Aufgabe 3
-- Transformation: [here](Component-Based-Systems-QVT-Palladio\transforms\CbsTranformation.qvto)
-- MediaFiles.pcm (transformiert): [here](Component-Based-Systems-QVT-Palladio\transforms\MediaFiles.pcm)
+- Transformation: [here](Component-Based-Systems-QVT-Palladio/transforms/CbsTranformation.qvto)
+- MediaFiles.pcm (transformiert): [here](Component-Based-Systems-QVT-Palladio/transforms/MediaFiles.pcm)
 
 ### Aufgabe 4
-- Generator: [here](Component-Based-Systems-DSL\org.xtext.example.cbs\src\org\xtext\example\mydsl\generator\CBSToJavaGenerator.xtend)
-- MediaFiles as JAVA (generated from DSL): [here](Component-Based-System-DSL-Instance\src-gen\repository)
+- Generator: [here](Component-Based-Systems-DSL/org.xtext.example.cbs/src/org/xtext/example/mydsl/generator/CBSToJavaGenerator.xtend)
+- MediaFiles as JAVA (generated from DSL): [here](Component-Based-System-DSL-Instance/src-gen/repository)
 
 ### Aufgabe 5
 - Projekt: [here](Component-Based-Systems-SiriusEditor)
-- Description: [here](\Component-Based-Systems-SiriusEditor\description\Component-Based-Systems-SiriusEditor.odesign)
-- Services: [here](Component-Based-Systems-SiriusEditor\src\componentBasedSystems\services.java)
+- Description: [here](/Component-Based-Systems-SiriusEditor/description/Component-Based-Systems-SiriusEditor.odesign)
+- Services: [here](Component-Based-Systems-SiriusEditor/src/componentBasedSystems/services.java)
 - Demo Project: [here](Component-Based-Systems-Sirius-Instance)
   - Diagramm "ComponentsAndInterfaces" which is a child of MediaFiles.componentbasedsystem/ComponentBasedSystemContainer
 
