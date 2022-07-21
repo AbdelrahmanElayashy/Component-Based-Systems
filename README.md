@@ -2,31 +2,31 @@
 
 ## Dokumentation Aufgaben
 ### Aufgabe 1
-- Metamodell: [a relative link](Component-Based-Systems\model)
-- Instanz: [a relative link](Component-Based-Systems-Instance\MediaFiles.componentbasedsystem)
-- Dokumentation zu Modelländerungen: [Link to Header](#metamodel-changes)
-- Dokumentation zu Constraints: [Link to Header](#metamodel-constraints)
+- Metamodell: [here](Component-Based-Systems\model)
+- Instanz: [here](Component-Based-Systems-Instance\MediaFiles.componentbasedsystem)
+- Dokumentation zu Modelländerungen: [here](#metamodel-changes)
+- Dokumentation zu Constraints: [here](#metamodel-constraints)
 
 ### Aufgabe 2
-- Projekt: [a relative link](Component-Based-Systems-DSL)
-- DSL: [a relative link](Component-Based-Systems-DSL\org.xtext.example.cbs\src\org\xtext\example\mydsl\CBS.xtext)
-- Code for automated save: [a relative link](Component-Based-Systems-DSL\org.xtext.example.cbs\src\org\xtext\example\mydsl\generator\GBSToXMIGenerator.xtend)
-- MediaFiles as DSL:  [a relative link](Component-Based-System-DSL-Instance\MediaFiles.cbs)
-- MediaFiles as XMI (generated from DSL): [a relative link](Component-Based-System-DSL-Instance\MediaFiles.cbs)
+- Projekt: [here](Component-Based-Systems-DSL)
+- DSL: [here](Component-Based-Systems-DSL\org.xtext.example.cbs\src\org\xtext\example\mydsl\CBS.xtext)
+- Code for automated save: [here](Component-Based-Systems-DSL\org.xtext.example.cbs\src\org\xtext\example\mydsl\generator\GBSToXMIGenerator.xtend)
+- MediaFiles as DSL:  [here](Component-Based-System-DSL-Instance\MediaFiles.cbs)
+- MediaFiles as XMI (generated from DSL): [here](Component-Based-System-DSL-Instance\MediaFiles.cbs)
 
 ### Aufgabe 3
-- Transformation: [a relative link](Component-Based-Systems-QVT-Palladio\transforms\CbsTranformation.qvto)
-- MediaFiles.pcm (transformiert): [a relative link](Component-Based-Systems-QVT-Palladio\transforms\MediaFiles.pcm)
+- Transformation: [here](Component-Based-Systems-QVT-Palladio\transforms\CbsTranformation.qvto)
+- MediaFiles.pcm (transformiert): [here](Component-Based-Systems-QVT-Palladio\transforms\MediaFiles.pcm)
 
 ### Aufgabe 4
-- Generator: [a relative link](Component-Based-Systems-DSL\org.xtext.example.cbs\src\org\xtext\example\mydsl\generator\CBSToJavaGenerator.xtend)
-- MediaFiles as JAVA (generated from DSL): [a relative link](Component-Based-System-DSL-Instance\src-gen\repository)
+- Generator: [here](Component-Based-Systems-DSL\org.xtext.example.cbs\src\org\xtext\example\mydsl\generator\CBSToJavaGenerator.xtend)
+- MediaFiles as JAVA (generated from DSL): [here](Component-Based-System-DSL-Instance\src-gen\repository)
 
 ### Aufgabe 5
-- Projekt: [a relative link](Component-Based-Systems-SiriusEditor)
-- Description: [a relative link](\Component-Based-Systems-SiriusEditor\description\Component-Based-Systems-SiriusEditor.odesign)
-- Services: [a relative link](Component-Based-Systems-SiriusEditor\src\componentBasedSystems\services.java)
-- Demo Project: [a relative link](Component-Based-Systems-Sirius-Instance)
+- Projekt: [here](Component-Based-Systems-SiriusEditor)
+- Description: [here](\Component-Based-Systems-SiriusEditor\description\Component-Based-Systems-SiriusEditor.odesign)
+- Services: [here](Component-Based-Systems-SiriusEditor\src\componentBasedSystems\services.java)
+- Demo Project: [here](Component-Based-Systems-Sirius-Instance)
   - Diagramm "ComponentsAndInterfaces" which is a child of MediaFiles.componentbasedsystem/ComponentBasedSystemContainer
 
 ## Metamodel constraints
