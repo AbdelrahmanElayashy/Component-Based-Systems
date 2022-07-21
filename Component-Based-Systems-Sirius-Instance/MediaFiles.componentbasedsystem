@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<componentbasedsystem:ComponentBasedSystemContainer xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:behavioraldescription="http://www.example.org/behavioraldescription" xmlns:componentbasedsystem="http://www.example.org/componentbasedsystem" xmlns:types="http://www.example.org/types">
+  <repository>
+    <interfaces name="MediaStore">
+      <signatures name="download" returnType="//@repository/@types.1"/>
+      <signatures name="upload" returnType="//@repository/@types.1"/>
+    </interfaces>
+    <interfaces name="Sound">
+      <signatures name="watermark" returnType="//@repository/@types.0"/>
+    </interfaces>
+    <interfaces name="AudioDB">
+      <signatures name="queryDB" returnType="//@repository/@types.0"/>
+      <signatures name="addFile" returnType="//@repository/@types.0"/>
+    </interfaces>
+    <interfaces name="HTTP">
+      <signatures name="HTTPDownload" returnType="//@repository/@types.0"/>
+      <signatures name="HTPPUpload" returnType="//@repository/@types.0"/>
+    </interfaces>
+    <components name="MediaManager" requires="//@repository/@interfaces.2 //@repository/@interfaces.1" provides="//@repository/@interfaces.0">
+      <services implements="//@repository/@interfaces.0/@signatures.0">
+        <actions xsi:type="behavioraldescription:ExternalCallAction" requiredService="//@repository/@interfaces.2/@signatures.0"/>
+      </services>
+      <services implements="//@repository/@interfaces.0/@signatures.1">
+        <actions xsi:type="behavioraldescription:ExternalCallAction" requiredService="//@repository/@interfaces.1/@signatures.0"/>
+      </services>
+    </components>
+    <components name="DBCache" requires="//@repository/@interfaces.2" provides="//@repository/@interfaces.2">
+      <services implements="//@repository/@interfaces.2/@signatures.0">
+        <actions xsi:type="behavioraldescription:LoopAction">
+          <bodyActions xsi:type="behavioraldescription:InternalAction"/>
+        </actions>
+        <actions xsi:type="behavioraldescription:BranchAction">
+          <branches branchCondition="notInCache">
+            <actions xsi:type="behavioraldescription:ExternalCallAction" requiredService="//@repository/@interfaces.2/@signatures.0"/>
+          </branches>
+        </actions>
+      </services>
+      <services implements="//@repository/@interfaces.2/@signatures.1">
+        <actions xsi:type="behavioraldescription:InternalAction"/>
+      </services>
+    </components>
+    <components name="DigitalWatermarking" provides="//@repository/@interfaces.1">
+      <services implements="//@repository/@interfaces.1/@signatures.0">
+        <actions xsi:type="behavioraldescription:InternalAction"/>
+      </services>
+    </components>
+    <components name="WebGUI" requires="//@repository/@interfaces.0" provides="//@repository/@interfaces.3">
+      <services implements="//@repository/@interfaces.3/@signatures.1">
+        <actions xsi:type="behavioraldescription:InternalAction"/>
+      </services>
+      <services implements="//@repository/@interfaces.3/@signatures.0">
+        <actions xsi:type="behavioraldescription:InternalAction"/>
+      </services>
+    </components>
+    <components name="PoolingAudioDB" provides="//@repository/@interfaces.2">
+      <services implements="//@repository/@interfaces.2/@signatures.0">
+        <actions xsi:type="behavioraldescription:InternalAction"/>
+      </services>
+      <services implements="//@repository/@interfaces.2/@signatures.1">
+        <actions xsi:type="behavioraldescription:InternalAction"/>
+      </services>
+    </components>
+    <types xsi:type="types:Void" name="void"/>
+    <types xsi:type="types:SimpleType" name="String"/>
+  </repository>
+  <environment name="MainEnvironment">
+    <container name="Application Server"/>
+    <container name="Database Server"/>
+    <linker name="LAN" links="//@environment/@container.0 //@environment/@container.1"/>
+  </environment>
+  <assembly>
+    <compositeComponents name="MediaStore" requires="//@repository/@interfaces.2" provides="//@repository/@interfaces.0">
+      <childContexts instantiates="//@repository/@components.1" name="DBCacheContext">
+        <providedRoles name="AudioDB Provider (DBCache)" interface="//@repository/@interfaces.2"/>
+        <requiredRoles name="AudioDB Consumer (DBCache)" interface="//@repository/@interfaces.2"/>
+      </childContexts>
+      <childContexts instantiates="//@repository/@components.2" name="DigitalWatermarkingContext">
+        <providedRoles name="Sound Provider (DigitalWatermarking)" interface="//@repository/@interfaces.1"/>
+      </childContexts>
+      <childContexts instantiates="//@repository/@components.0" name="MediaManagerContext">
+        <providedRoles name="MediaStore Provider (MediaManager)" interface="//@repository/@interfaces.0"/>
+        <requiredRoles name="Sound Consumer (MediaManager)" interface="//@repository/@interfaces.1"/>
+        <requiredRoles name="AudioDB Consumer (MediaManager)" interface="//@repository/@interfaces.2"/>
+      </childContexts>
+      <assemblyConnectors requiringRole="//@assembly/@compositeComponents.0/@childContexts.2/@requiredRoles.0" providingRole="//@assembly/@compositeComponents.0/@childContexts.1/@providedRoles.0" name="Sound Connector (MediaManager - DigitalWatermarking)"/>
+      <assemblyConnectors requiringRole="//@assembly/@compositeComponents.0/@childContexts.2/@requiredRoles.1" providingRole="//@assembly/@compositeComponents.0/@childContexts.0/@providedRoles.0" name="AudioDB Connector (MediaManager - DBCache)"/>
+      <requiredDelegationConnectors requiringRole="//@assembly/@compositeComponents.0/@childContexts.0/@requiredRoles.0" name="AudioDB RequiredDelegationConnector (DBCache)"/>
+      <providedDelegationConnectors providingRole="//@assembly/@compositeComponents.0/@childContexts.2/@providedRoles.0" name="MediaStore ProvidedDelegationConnector (MediaManager)"/>
+    </compositeComponents>
+  </assembly>
+  <system name="Media System">
+    <childContexts instantiates="//@repository/@components.3" name="WebGUI Context">
+      <providedRoles name="HTTP Provider (WebGUI)" interface="//@repository/@interfaces.3"/>
+      <requiredRoles name="MediaStore Consumer (WebGUI)" interface="//@repository/@interfaces.0"/>
+    </childContexts>
+    <childContexts instantiates="//@assembly/@compositeComponents.0" name="MediaStore Context">
+      <providedRoles name="MediaStore Provider (MediaStore)" interface="//@repository/@interfaces.0"/>
+      <requiredRoles name="AudioDB Consumer (MediaStore)" interface="//@repository/@interfaces.2"/>
+    </childContexts>
+    <childContexts instantiates="//@repository/@components.4" name="PoolingAudioDB Context">
+      <providedRoles name="AudioDB Provider (PoolingAudioDB)" interface="//@repository/@interfaces.2"/>
+    </childContexts>
+    <assemblyConnectors requiringRole="//@system/@childContexts.0/@requiredRoles.0" providingRole="//@system/@childContexts.1/@providedRoles.0" name="MediaStore Connector (WebGUI - MediaStore)"/>
+    <assemblyConnectors requiringRole="//@system/@childContexts.1/@requiredRoles.0" providingRole="//@system/@childContexts.2/@providedRoles.0" name="AudioDB Connector (MediaStore - PoolingAudioDB)"/>
+    <providedDelegationConnectors providingRole="//@system/@childContexts.0/@providedRoles.0" name="HTTP Provider ProvidedDelegationConnector (System)"/>
+    <allocation environment="//@environment">
+      <allocationContexts container="//@environment/@container.0" allocates="//@system/@childContexts.0"/>
+      <allocationContexts container="//@environment/@container.0" allocates="//@system/@childContexts.1"/>
+      <allocationContexts container="//@environment/@container.1" allocates="//@system/@childContexts.2"/>
+    </allocation>
+  </system>
+</componentbasedsystem:ComponentBasedSystemContainer>

@@ -27,14 +27,14 @@ public class CBSFormatter extends AbstractFormatter2 {
   @Inject
   @Extension
   private CBSGrammarAccess _cBSGrammarAccess;
-  
+
   protected void _format(final ComponentBasedSystemContainer componentBasedSystemContainer, @Extension final IFormattableDocument document) {
     document.<Repository>format(componentBasedSystemContainer.getRepository());
     document.<Assembly>format(componentBasedSystemContainer.getAssembly());
     document.<Environment>format(componentBasedSystemContainer.getEnvironment());
     document.<componentbasedsystem.allocation.System>format(componentBasedSystemContainer.getSystem());
   }
-  
+
   protected void _format(final componentbasedsystem.allocation.System system, @Extension final IFormattableDocument document) {
     EList<AssemblyContext> _childContexts = system.getChildContexts();
     for (final AssemblyContext assemblyContext : _childContexts) {
@@ -54,7 +54,7 @@ public class CBSFormatter extends AbstractFormatter2 {
     }
     document.<Allocation>format(system.getAllocation());
   }
-  
+
   public void format(final Object system, final IFormattableDocument document) {
     if (system instanceof XtextResource) {
       _format((XtextResource)system, document);

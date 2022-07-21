@@ -2,8 +2,8 @@
 <componentbasedsystem:ComponentBasedSystemContainer xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:behavioraldescription="http://www.example.org/behavioraldescription" xmlns:componentbasedsystem="http://www.example.org/componentbasedsystem" xmlns:types="http://www.example.org/types">
   <repository>
     <interfaces name="MediaStore">
-      <signatures name="download" returnType="//@repository/@types.0"/>
-      <signatures name="upload" returnType="//@repository/@types.0"/>
+      <signatures name="download" returnType="//@repository/@types.1"/>
+      <signatures name="upload" returnType="//@repository/@types.1"/>
     </interfaces>
     <interfaces name="Sound">
       <signatures name="watermark" returnType="//@repository/@types.0"/>
@@ -18,21 +18,28 @@
     </interfaces>
     <components name="MediaManager" requires="//@repository/@interfaces.2 //@repository/@interfaces.1" provides="//@repository/@interfaces.0">
       <services implements="//@repository/@interfaces.0/@signatures.0">
-        <actions xsi:type="behavioraldescription:InternalAction"/>
+        <actions xsi:type="behavioraldescription:ExternalCallAction" requiredService="//@repository/@interfaces.2/@signatures.0"/>
       </services>
       <services implements="//@repository/@interfaces.0/@signatures.1">
-        <actions xsi:type="behavioraldescription:InternalAction"/>
+        <actions xsi:type="behavioraldescription:ExternalCallAction" requiredService="//@repository/@interfaces.1/@signatures.0"/>
       </services>
     </components>
     <components name="DBCache" requires="//@repository/@interfaces.2" provides="//@repository/@interfaces.2">
       <services implements="//@repository/@interfaces.2/@signatures.0">
-        <actions xsi:type="behavioraldescription:InternalAction"/>
+        <actions xsi:type="behavioraldescription:LoopAction">
+          <bodyActions xsi:type="behavioraldescription:InternalAction"/>
+        </actions>
+        <actions xsi:type="behavioraldescription:BranchAction">
+          <branches branchCondition="notInCache">
+            <actions xsi:type="behavioraldescription:ExternalCallAction" requiredService="//@repository/@interfaces.2/@signatures.0"/>
+          </branches>
+        </actions>
       </services>
       <services implements="//@repository/@interfaces.2/@signatures.1">
         <actions xsi:type="behavioraldescription:InternalAction"/>
       </services>
     </components>
-    <components name="DigitalWatermarking">
+    <components name="DigitalWatermarking" provides="//@repository/@interfaces.1">
       <services implements="//@repository/@interfaces.1/@signatures.0">
         <actions xsi:type="behavioraldescription:InternalAction"/>
       </services>
@@ -53,7 +60,8 @@
         <actions xsi:type="behavioraldescription:InternalAction"/>
       </services>
     </components>
-    <types xsi:type="types:Void"/>
+    <types xsi:type="types:Void" name="void"/>
+    <types xsi:type="types:SimpleType" name="String"/>
   </repository>
   <environment name="MainEnvironment">
     <container name="Application Server"/>

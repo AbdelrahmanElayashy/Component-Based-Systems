@@ -27,11 +27,11 @@ repository {
 				MediaStore
 			}
 			services {
-				service "HTTP.HTTPUpload" {
+				service HTTP.HTTPUpload {
 					internalCall;
-					externalCall "MediaStore.download"
+					externalCall MediaStore.download
 				},
-				service "HTTP.HTTPDownload" {
+				service HTTP.HTTPDownload {
 					loop {
 						internalCall;
 						branch {
@@ -50,10 +50,10 @@ repository {
 				Sound
 			}
 			services {
-				service "MediaStore.download" {
+				service MediaStore.download {
 					internalCall
 				},
-				service "MediaStore.upload" {
+				service MediaStore.upload {
 					internalCall
 				}
 			}
@@ -66,10 +66,10 @@ repository {
 				AudioDB
 			}
 			services {
-				service "AudioDB.queryDB" {
+				service AudioDB.queryDB {
 					internalCall
 				},
-				service "AudioDB.addFile" {
+				service AudioDB.addFile {
 					internalCall
 				}
 			}
@@ -80,7 +80,7 @@ repository {
 				Sound
 			}
 			services {
-			service "Sound.watermark" {
+			service Sound.watermark {
 					internalCall
 				}
 			}
@@ -90,10 +90,10 @@ repository {
 				AudioDB
 			}
 			services {
-				service "AudioDB.addFile" {
+				service AudioDB.addFile {
 					internalCall
 				},
-				service "AudioDB.queryDB" {
+				service AudioDB.queryDB {
 					internalCall
 				}
 			}
@@ -132,23 +132,21 @@ assembly MediaStoreAssembly{
 				provide(IAudioDB AudioDB)
 				require(IAudioDB AudioDB)
 			}
-		
 		}
 		
 		assemblyConnectors {
-			("MediaManagerContext.IAudioDB", "DBCachContext.IAudioDB"),
-			("MediaManagerContext.ISound", "DigitalWaterMarkingContext.ISound")
+			(MediaManagerContext.IAudioDB, DBCachContext.IAudioDB),
+			(MediaManagerContext.ISound, DigitalWaterMarkingContext.ISound)
 		}
 		
 		requiredDelegationConnectors {
-			"DBCachContext.IAudioDB"
+			DBCachContext.IAudioDB
 		}
 		
 		providedDelegationConnectors {
-			"MediaManagerContext.IMediaStore"
+			MediaManagerContext.IMediaStore
 		}
 	}
-
 }
 
 Environment mediaFileEnv{
@@ -173,35 +171,35 @@ System mediaFileSystem{
 			provide (IAudioDB AudioDB)
 		},
 		MediaStoreComposite {
-			instance "MediaStoreAssembly.MediaStoreComposite"
+			instance MediaStoreAssembly.MediaStoreComposite
 			provide (IMediaStore MediaStore)
 			require (IAudioDB AudioDB)
 		}
 	}
 	
 	assemblyConnectors {
-		("WebGUIContext.IMediaStore","MediaStoreComposite.IMediaStore"),
-		("MediaStoreComposite.IAudioDB","PoolingAudioDBContext.IAudioDB")
+		(WebGUIContext.IMediaStore,MediaStoreComposite.IMediaStore),
+		(MediaStoreComposite.IAudioDB,PoolingAudioDBContext.IAudioDB)
 	}
 	
 	providedDelegationConnectors{
-		"WebGUIContext.IHTTP"
+		WebGUIContext.IHTTP
 	}
 	
 	allocation {
 		env mediaFileEnv
 		allocationContexts {
 			{
-				container "mediaFileEnv.ApplicationServer"
-				allocates "mediaFileSystem.MediaStoreComposite"
+				container mediaFileEnv.ApplicationServer
+				allocates mediaFileSystem.MediaStoreComposite
 			},
 			{
-				container "mediaFileEnv.ApplicationServer"
-				allocates "mediaFileSystem.WebGUIContext"
+				container mediaFileEnv.ApplicationServer
+				allocates mediaFileSystem.WebGUIContext
 			},
 			{
-				container "mediaFileEnv.DatabaseServer"
-				allocates "mediaFileSystem.PoolingAudioDBContext"
+				container mediaFileEnv.DatabaseServer
+				allocates mediaFileSystem.PoolingAudioDBContext
 			}
 		}
 	}

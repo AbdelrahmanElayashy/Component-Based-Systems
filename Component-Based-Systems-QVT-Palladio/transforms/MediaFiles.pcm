@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:allocation="http://palladiosimulator.org/PalladioComponentModel/Allocation/5.2" xmlns:composition="http://palladiosimulator.org/PalladioComponentModel/Core/Composition/5.2" xmlns:repository="http://palladiosimulator.org/PalladioComponentModel/Repository/5.2" xmlns:resourceenvironment="http://palladiosimulator.org/PalladioComponentModel/ResourceEnvironment/5.2" xmlns:resourcetype="http://palladiosimulator.org/PalladioComponentModel/ResourceType/5.2" xmlns:seff="http://palladiosimulator.org/PalladioComponentModel/SEFF/5.2" xmlns:system="http://palladiosimulator.org/PalladioComponentModel/System/5.2" xsi:schemaLocation="http://palladiosimulator.org/PalladioComponentModel/Allocation/5.2 ../../Palladio-Core-PCM/bundles/org.palladiosimulator.pcm/model/pcm.ecore#//allocation http://palladiosimulator.org/PalladioComponentModel/Core/Composition/5.2 ../../Palladio-Core-PCM/bundles/org.palladiosimulator.pcm/model/pcm.ecore#//core/composition http://palladiosimulator.org/PalladioComponentModel/Repository/5.2 ../../Palladio-Core-PCM/bundles/org.palladiosimulator.pcm/model/pcm.ecore#//repository http://palladiosimulator.org/PalladioComponentModel/ResourceEnvironment/5.2 ../../Palladio-Core-PCM/bundles/org.palladiosimulator.pcm/model/pcm.ecore#//resourceenvironment http://palladiosimulator.org/PalladioComponentModel/ResourceType/5.2 ../../Palladio-Core-PCM/bundles/org.palladiosimulator.pcm/model/pcm.ecore#//resourcetype http://palladiosimulator.org/PalladioComponentModel/SEFF/5.2 ../../Palladio-Core-PCM/bundles/org.palladiosimulator.pcm/model/pcm.ecore#//seff http://palladiosimulator.org/PalladioComponentModel/System/5.2 ../../Palladio-Core-PCM/bundles/org.palladiosimulator.pcm/model/pcm.ecore#//system">
+  <repository:Repository id="1" entityName="Default Repository" repositoryDescription="Default Repository">
+    <components__Repository xsi:type="repository:CompositeComponent" id="73" entityName="MediaStore">
+      <assemblyContexts__ComposedStructure id="76" entityName="DBCacheContext" encapsulatedComponent__AssemblyContext="25"/>
+      <assemblyContexts__ComposedStructure id="77" entityName="DigitalWatermarkingContext" encapsulatedComponent__AssemblyContext="46"/>
+      <assemblyContexts__ComposedStructure id="78" entityName="MediaManagerContext" encapsulatedComponent__AssemblyContext="13"/>
+      <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="79" entityName="MediaStore ProvidedDelegationConnector (MediaManager)" innerProvidedRole_ProvidedDelegationConnector="14" outerProvidedRole_ProvidedDelegationConnector="74" assemblyContext_ProvidedDelegationConnector="78"/>
+      <connectors__ComposedStructure xsi:type="composition:RequiredDelegationConnector" id="80" entityName="AudioDB RequiredDelegationConnector (DBCache)" innerRequiredRole_RequiredDelegationConnector="27" outerRequiredRole_RequiredDelegationConnector="75" assemblyContext_RequiredDelegationConnector="76"/>
+      <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="81" entityName="Sound Connector (MediaManager - DigitalWatermarking)" requiringAssemblyContext_AssemblyConnector="78" providingAssemblyContext_AssemblyConnector="77" providedRole_AssemblyConnector="47" requiredRole_AssemblyConnector="16"/>
+      <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="82" entityName="AudioDB Connector (MediaManager - DBCache)" requiringAssemblyContext_AssemblyConnector="78" providingAssemblyContext_AssemblyConnector="76" providedRole_AssemblyConnector="26" requiredRole_AssemblyConnector="15"/>
+      <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="74" entityName="MediaStore.provides:MediaStore" providedInterface__OperationProvidedRole="2"/>
+      <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="75" entityName="MediaStore.provides:AudioDB" requiredInterface__OperationRequiredRole="7"/>
+    </components__Repository>
+    <components__Repository xsi:type="repository:BasicComponent" id="13" entityName="MediaManager">
+      <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="14" entityName="MediaManager.provides:MediaStore" providedInterface__OperationProvidedRole="2"/>
+      <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="16" entityName="MediaManager.provides:Sound" requiredInterface__OperationRequiredRole="5"/>
+      <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="15" entityName="MediaManager.provides:AudioDB" requiredInterface__OperationRequiredRole="7"/>
+      <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="21" describedService__SEFF="4">
+        <steps_Behaviour xsi:type="seff:StartAction" id="23" entityName="Start Action" successor_AbstractAction="22"/>
+        <steps_Behaviour xsi:type="seff:InternalAction" id="22" entityName="Default Internal Action" predecessor_AbstractAction="23" successor_AbstractAction="24"/>
+        <steps_Behaviour xsi:type="seff:StopAction" id="24" entityName="Stop Action" predecessor_AbstractAction="22"/>
+      </serviceEffectSpecifications__BasicComponent>
+      <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="17" describedService__SEFF="3">
+        <steps_Behaviour xsi:type="seff:InternalAction" id="18" entityName="Default Internal Action" predecessor_AbstractAction="19" successor_AbstractAction="20"/>
+        <steps_Behaviour xsi:type="seff:StopAction" id="20" entityName="Stop Action" predecessor_AbstractAction="18"/>
+        <steps_Behaviour xsi:type="seff:StartAction" id="19" entityName="Start Action" successor_AbstractAction="18"/>
+      </serviceEffectSpecifications__BasicComponent>
+    </components__Repository>
+    <components__Repository xsi:type="repository:BasicComponent" id="46" entityName="DigitalWatermarking">
+      <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="47" entityName="DigitalWatermarking.provides:Sound" providedInterface__OperationProvidedRole="5"/>
+      <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="48" describedService__SEFF="6">
+        <steps_Behaviour xsi:type="seff:StopAction" id="51" entityName="Stop Action" predecessor_AbstractAction="49"/>
+        <steps_Behaviour xsi:type="seff:InternalAction" id="49" entityName="Default Internal Action" predecessor_AbstractAction="50" successor_AbstractAction="51"/>
+        <steps_Behaviour xsi:type="seff:StartAction" id="50" entityName="Start Action" successor_AbstractAction="49"/>
+      </serviceEffectSpecifications__BasicComponent>
+    </components__Repository>
+    <components__Repository xsi:type="repository:BasicComponent" id="25" entityName="DBCache">
+      <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="26" entityName="DBCache.provides:AudioDB" providedInterface__OperationProvidedRole="7"/>
+      <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="27" entityName="DBCache.provides:AudioDB" requiredInterface__OperationRequiredRole="7"/>
+      <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="42" describedService__SEFF="9">
+        <steps_Behaviour xsi:type="seff:StartAction" id="44" entityName="Start Action" successor_AbstractAction="43"/>
+        <steps_Behaviour xsi:type="seff:InternalAction" id="43" entityName="Default Internal Action" predecessor_AbstractAction="44" successor_AbstractAction="45"/>
+        <steps_Behaviour xsi:type="seff:StopAction" id="45" entityName="Stop Action" predecessor_AbstractAction="43"/>
+      </serviceEffectSpecifications__BasicComponent>
+      <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="28" describedService__SEFF="8">
+        <steps_Behaviour xsi:type="seff:StartAction" id="40" entityName="Start Action" successor_AbstractAction="29"/>
+        <steps_Behaviour xsi:type="seff:StopAction" id="41" entityName="Stop Action" predecessor_AbstractAction="34"/>
+        <steps_Behaviour xsi:type="seff:LoopAction" id="29" entityName="Default Loop Action" predecessor_AbstractAction="40" successor_AbstractAction="34">
+          <bodyBehaviour_Loop id="30">
+            <steps_Behaviour xsi:type="seff:StartAction" id="32" entityName="Start Action" successor_AbstractAction="31"/>
+            <steps_Behaviour xsi:type="seff:StopAction" id="33" entityName="Stop Action" predecessor_AbstractAction="31"/>
+            <steps_Behaviour xsi:type="seff:InternalAction" id="31" entityName="Default Internal Action" predecessor_AbstractAction="32" successor_AbstractAction="33"/>
+          </bodyBehaviour_Loop>
+          <iterationCount_LoopAction specification="true"/>
+        </steps_Behaviour>
+        <steps_Behaviour xsi:type="seff:BranchAction" id="34" entityName="Default Branch Action" predecessor_AbstractAction="29" successor_AbstractAction="41">
+          <branches_Branch xsi:type="seff:GuardedBranchTransition" id="35" entityName="Condition: notInCache">
+            <branchBehaviour_BranchTransition id="36">
+              <steps_Behaviour xsi:type="seff:InternalAction" id="37" entityName="Default Internal Action" predecessor_AbstractAction="38" successor_AbstractAction="39"/>
+              <steps_Behaviour xsi:type="seff:StartAction" id="38" entityName="Start Action" successor_AbstractAction="37"/>
+              <steps_Behaviour xsi:type="seff:StopAction" id="39" entityName="Stop Action" predecessor_AbstractAction="37"/>
+            </branchBehaviour_BranchTransition>
+            <branchCondition_GuardedBranchTransition specification="notInCache"/>
+          </branches_Branch>
+        </steps_Behaviour>
+      </serviceEffectSpecifications__BasicComponent>
+    </components__Repository>
+    <components__Repository xsi:type="repository:BasicComponent" id="52" entityName="WebGUI">
+      <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="53" entityName="WebGUI.provides:HTTP" providedInterface__OperationProvidedRole="10"/>
+      <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="54" entityName="WebGUI.provides:MediaStore" requiredInterface__OperationRequiredRole="2"/>
+      <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="59" describedService__SEFF="11">
+        <steps_Behaviour xsi:type="seff:StopAction" id="62" entityName="Stop Action" predecessor_AbstractAction="60"/>
+        <steps_Behaviour xsi:type="seff:StartAction" id="61" entityName="Start Action" successor_AbstractAction="60"/>
+        <steps_Behaviour xsi:type="seff:InternalAction" id="60" entityName="Default Internal Action" predecessor_AbstractAction="61" successor_AbstractAction="62"/>
+      </serviceEffectSpecifications__BasicComponent>
+      <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="55" describedService__SEFF="12">
+        <steps_Behaviour xsi:type="seff:StopAction" id="58" entityName="Stop Action" predecessor_AbstractAction="56"/>
+        <steps_Behaviour xsi:type="seff:StartAction" id="57" entityName="Start Action" successor_AbstractAction="56"/>
+        <steps_Behaviour xsi:type="seff:InternalAction" id="56" entityName="Default Internal Action" predecessor_AbstractAction="57" successor_AbstractAction="58"/>
+      </serviceEffectSpecifications__BasicComponent>
+    </components__Repository>
+    <components__Repository xsi:type="repository:BasicComponent" id="63" entityName="PoolingAudioDB">
+      <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="64" entityName="PoolingAudioDB.provides:AudioDB" providedInterface__OperationProvidedRole="7"/>
+      <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="69" describedService__SEFF="9">
+        <steps_Behaviour xsi:type="seff:InternalAction" id="70" entityName="Default Internal Action" predecessor_AbstractAction="71" successor_AbstractAction="72"/>
+        <steps_Behaviour xsi:type="seff:StartAction" id="71" entityName="Start Action" successor_AbstractAction="70"/>
+        <steps_Behaviour xsi:type="seff:StopAction" id="72" entityName="Stop Action" predecessor_AbstractAction="70"/>
+      </serviceEffectSpecifications__BasicComponent>
+      <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="65" describedService__SEFF="8">
+        <steps_Behaviour xsi:type="seff:InternalAction" id="66" entityName="Default Internal Action" predecessor_AbstractAction="67" successor_AbstractAction="68"/>
+        <steps_Behaviour xsi:type="seff:StopAction" id="68" entityName="Stop Action" predecessor_AbstractAction="66"/>
+        <steps_Behaviour xsi:type="seff:StartAction" id="67" entityName="Start Action" successor_AbstractAction="66"/>
+      </serviceEffectSpecifications__BasicComponent>
+    </components__Repository>
+    <interfaces__Repository xsi:type="repository:OperationInterface" id="7" entityName="AudioDB">
+      <signatures__OperationInterface id="8" entityName="queryDB"/>
+      <signatures__OperationInterface id="9" entityName="addFile"/>
+    </interfaces__Repository>
+    <interfaces__Repository xsi:type="repository:OperationInterface" id="2" entityName="MediaStore">
+      <signatures__OperationInterface id="3" entityName="download" returnType__OperationSignature="/0/@dataTypes__Repository.0"/>
+      <signatures__OperationInterface id="4" entityName="upload" returnType__OperationSignature="/0/@dataTypes__Repository.0"/>
+    </interfaces__Repository>
+    <interfaces__Repository xsi:type="repository:OperationInterface" id="5" entityName="Sound">
+      <signatures__OperationInterface id="6" entityName="watermark"/>
+    </interfaces__Repository>
+    <interfaces__Repository xsi:type="repository:OperationInterface" id="10" entityName="HTTP">
+      <signatures__OperationInterface id="11" entityName="HTTPDownload"/>
+      <signatures__OperationInterface id="12" entityName="HTPPUpload"/>
+    </interfaces__Repository>
+    <dataTypes__Repository xsi:type="repository:PrimitiveDataType" type="STRING"/>
+  </repository:Repository>
+  <resourcetype:ResourceRepository>
+    <availableResourceTypes_ResourceRepository xsi:type="resourcetype:CommunicationLinkResourceType" id="83"/>
+  </resourcetype:ResourceRepository>
+  <resourceenvironment:ResourceEnvironment entityName="MainEnvironment">
+    <linkingResources__ResourceEnvironment id="86" entityName="LAN" connectedResourceContainers_LinkingResource="84 85">
+      <communicationLinkResourceSpecifications_LinkingResource id="87" communicationLinkResourceType_CommunicationLinkResourceSpecification="83">
+        <latency_CommunicationLinkResourceSpecification specification="default specification"/>
+        <throughput_CommunicationLinkResourceSpecification specification="default specification"/>
+      </communicationLinkResourceSpecifications_LinkingResource>
+    </linkingResources__ResourceEnvironment>
+    <resourceContainer_ResourceEnvironment id="84" entityName="Application Server"/>
+    <resourceContainer_ResourceEnvironment id="85" entityName="Database Server"/>
+  </resourceenvironment:ResourceEnvironment>
+  <system:System id="88" entityName="Media System">
+    <assemblyContexts__ComposedStructure id="91" entityName="PoolingAudioDB Context" encapsulatedComponent__AssemblyContext="63"/>
+    <assemblyContexts__ComposedStructure id="90" entityName="MediaStore Context" encapsulatedComponent__AssemblyContext="73"/>
+    <assemblyContexts__ComposedStructure id="89" entityName="WebGUI Context" encapsulatedComponent__AssemblyContext="52"/>
+    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="93" entityName="HTTP Provider ProvidedDelegationConnector (System)" innerProvidedRole_ProvidedDelegationConnector="53" outerProvidedRole_ProvidedDelegationConnector="92" assemblyContext_ProvidedDelegationConnector="89"/>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="94" entityName="MediaStore Connector (WebGUI - MediaStore)" requiringAssemblyContext_AssemblyConnector="89" providingAssemblyContext_AssemblyConnector="90" providedRole_AssemblyConnector="74" requiredRole_AssemblyConnector="54"/>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="95" entityName="AudioDB Connector (MediaStore - PoolingAudioDB)" requiringAssemblyContext_AssemblyConnector="90" providingAssemblyContext_AssemblyConnector="91" providedRole_AssemblyConnector="64" requiredRole_AssemblyConnector="75"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="92" entityName="Media System.provides:HTTP" providedInterface__OperationProvidedRole="10"/>
+  </system:System>
+  <allocation:Allocation id="96" entityName="System Media System" targetResourceEnvironment_Allocation="/2" system_Allocation="88">
+    <allocationContexts_Allocation id="99" entityName="Allocation PoolingAudioDB Context" resourceContainer_AllocationContext="85" assemblyContext_AllocationContext="91"/>
+    <allocationContexts_Allocation id="98" entityName="Allocation MediaStore Context" resourceContainer_AllocationContext="84" assemblyContext_AllocationContext="90"/>
+    <allocationContexts_Allocation id="97" entityName="Allocation WebGUI Context" resourceContainer_AllocationContext="84" assemblyContext_AllocationContext="89"/>
+  </allocation:Allocation>
+</xmi:XMI>

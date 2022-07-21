@@ -1,6 +1,5 @@
 modeltype CBS uses 'platform:/resource/Component-Based-Systems/model/ComponentBasedSystems.ecore';
 modeltype PCM uses 'platform:/resource/Palladio-Core-PCM/bundles/org.palladiosimulator.pcm/model/pcm.ecore';
-modeltype STOEX uses 'platform:/resource/de.uka.ipd.sdq.stoex/bin/stoex.ecore';
 
 modeltype ecore uses 'http://www.eclipse.org/emf/2002/Ecore';
 
@@ -20,53 +19,42 @@ main() {
 	defaultResourceRepository.availableResourceTypes_ResourceRepository -> including(defaultCommunicationResourceType);
 	
 	
-	var env := source.objectsOfType(CBS::environment::Environment)->map environmentToResourceEnvironment(repo)->asOrderedSet()->first();
+	var env := source.objectsOfType(CBS::environment::Environment)->map environment2resourceEnvironment(repo)->asOrderedSet()->first();
 
-	var sys := source.objectsOfType(CBS::allocation::System)-> map CBSSystemToPCMSystem()->asOrderedSet()->first();
+	var sys := source.objectsOfType(CBS::allocation::System)-> map system2system()->asOrderedSet()->first();
 	
-	var allocation := source.objectsOfType(CBS::allocation::Allocation)-> map CBSAllocation2PCMAllocation(env, sys);
+	var allocation := source.objectsOfType(CBS::allocation::Allocation)-> map allocation2allocation(env, sys);
 }
 
 /////////////////////////////////////////////////
 ///////////// Allocation ///////////////////////
 ///////////////////////////////////////////////
-mapping CBS::allocation::Allocation::CBSAllocation2PCMAllocation
-		(env : PCM::resourceenvironment::ResourceEnvironment,
-		 system : PCM::system::System):
-		PCM::allocation::Allocation {
-	
+mapping CBS::allocation::Allocation::allocation2allocation(env : PCM::resourceenvironment::ResourceEnvironment, system : PCM::system::System): PCM::allocation::Allocation {
 	id := getId();
 	entityName := "System " + system.entityName;
 	targetResourceEnvironment_Allocation := env;
 	system_Allocation := system;
 	allocationContexts_Allocation := self.allocationContexts-> map CBSAllocationContext2PCMAllocationContext(result);
-	
 }
 
-mapping CBS::allocation::AllocationContext::CBSAllocationContext2PCMAllocationContext
-		(allocation : PCM::allocation::Allocation): 
-		PCM::allocation::AllocationContext {
-	
+mapping CBS::allocation::AllocationContext::CBSAllocationContext2PCMAllocationContext(allocation : PCM::allocation::Allocation): PCM::allocation::AllocationContext {
 	id := getId();
 	allocation_AllocationContext := allocation;
 	resourceContainer_AllocationContext := self.container.resolveone(PCM::resourceenvironment::ResourceContainer);
 	assemblyContext_AllocationContext := self.allocates.resolveone(PCM::core::composition::AssemblyContext);
-	entityName := "Allocation " + assemblyContext_AllocationContext.entityName;
-			
+	entityName := "Allocation " + assemblyContext_AllocationContext.entityName;	
 }
-
 
 /////////////////////////////////////////////////
 ///////////// System ///////////////////////////
 ///////////////////////////////////////////////
 
-// TODO: reuse code from other mappings
-// problem: CBS System does not provide/require interfaces
-mapping CBS::allocation::System::CBSSystemToPCMSystem(): PCM::system::System {
+// note: can't reuse existing mappings because CBS System does not provide/require interfaces
+mapping CBS::allocation::System::system2system(): PCM::system::System {
 	id := getId();
 	entityName := self.name;
 	
-	assemblyContexts__ComposedStructure := self.childContexts -> map CBSAssemblyContextToPCMAssemblyContext(result);
+	assemblyContexts__ComposedStructure := self.childContexts -> map assemblyContext2assemblyContext(result);
 	
 	self.providedDelegationConnectors.providingRole.interface;
 	
@@ -80,8 +68,8 @@ mapping CBS::allocation::System::CBSSystemToPCMSystem(): PCM::system::System {
 		collect(interface | new PCM::repository::OperationRequiredRole(self.name, result, interface));
 	
 	connectors__ComposedStructure := Set{};
-	connectors__ComposedStructure += self.providedDelegationConnectors -> map CBSProvidedDelgToPCMProvidedDelg(result);
-	connectors__ComposedStructure += self.requiredDelegationConnectors -> map CBSRequiredDelgToPCMRequiredDelg(result);
+	connectors__ComposedStructure += self.providedDelegationConnectors -> map providedDelgegationConnector2providedDelgationConnector(result);
+	connectors__ComposedStructure += self.requiredDelegationConnectors -> map requiredDelgegationConnector2pcmRequiredDelgationConnector(result);
 	connectors__ComposedStructure += self.assemblyConnectors -> map assemblyConnector2assemblyConnector(result);
 	
 	resourceRequiredDelegationConnectors_ComposedStructure := Set{}; // note: no conept of resources in CBS
@@ -96,12 +84,12 @@ mapping CBS::allocation::System::CBSSystemToPCMSystem(): PCM::system::System {
 ///////////////////////////////////////////////
 
 mapping CBS::assembly::CompositeComponent::compositeComponent2compositeComponent(repo: PCM::repository::Repository): PCM::repository::CompositeComponent 
-	inherits CBS::repository::Component::component2ImplementationComponentType {
-	assemblyContexts__ComposedStructure := self.childContexts -> map CBSAssemblyContextToPCMAssemblyContext(result);
+	inherits CBS::repository::Component::component2implementationComponentType {
+	assemblyContexts__ComposedStructure := self.childContexts -> map assemblyContext2assemblyContext(result);
 	
 	connectors__ComposedStructure := Set{};
-	connectors__ComposedStructure += self.providedDelegationConnectors -> map CBSProvidedDelgToPCMProvidedDelg(result);
-	connectors__ComposedStructure += self.requiredDelegationConnectors -> map CBSRequiredDelgToPCMRequiredDelg(result);
+	connectors__ComposedStructure += self.providedDelegationConnectors -> map providedDelgegationConnector2providedDelgationConnector(result);
+	connectors__ComposedStructure += self.requiredDelegationConnectors -> map requiredDelgegationConnector2pcmRequiredDelgationConnector(result);
 	connectors__ComposedStructure += self.assemblyConnectors -> map assemblyConnector2assemblyConnector(result);
 	
 	resourceRequiredDelegationConnectors_ComposedStructure := Set{}; // note: no conept of resources in CBS
@@ -109,7 +97,7 @@ mapping CBS::assembly::CompositeComponent::compositeComponent2compositeComponent
 	eventChannel__ComposedStructure := Set{}; // no concept of events in CBS
 }
 
-mapping CBS::assembly::AssemblyContext::CBSAssemblyContextToPCMAssemblyContext(parentStructure: PCM::core::composition::ComposedStructure):
+mapping CBS::assembly::AssemblyContext::assemblyContext2assemblyContext(parentStructure: PCM::core::composition::ComposedStructure):
 	PCM::core::composition::AssemblyContext {
 	id := getId();
 	entityName := self.name;
@@ -120,7 +108,6 @@ mapping CBS::assembly::AssemblyContext::CBSAssemblyContextToPCMAssemblyContext(p
 }
 
 helper findMatchingRequiredRole(roles: Set(PCM::repository::RequiredRole), interface: PCM::repository:: OperationInterface): PCM::repository::OperationRequiredRole {
-	// TODO: check if there is a more safe implementation
 	return roles 
 		-> selectByKind(PCM::repository::OperationRequiredRole)
 		-> select(r | r.requiredInterface__OperationRequiredRole = interface)
@@ -129,7 +116,6 @@ helper findMatchingRequiredRole(roles: Set(PCM::repository::RequiredRole), inter
 }
 
 helper findMatchingProvidedRole(roles: Set(PCM::repository::ProvidedRole), interface: PCM::repository:: OperationInterface): PCM::repository::OperationProvidedRole{
-	// TODO: check if there is a more safe implementation
 	return roles
 	-> selectByKind(PCM::repository::OperationProvidedRole)
 	-> select(r | r.providedInterface__OperationProvidedRole = interface)
@@ -137,7 +123,7 @@ helper findMatchingProvidedRole(roles: Set(PCM::repository::ProvidedRole), inter
 	-> first();
 }
 
-mapping CBS::assembly::ProvidedDelegationConnector::CBSProvidedDelgToPCMProvidedDelg(parentStructure: PCM::core::entity::ComposedProvidingRequiringEntity):
+mapping CBS::assembly::ProvidedDelegationConnector::providedDelgegationConnector2providedDelgationConnector(parentStructure: PCM::core::entity::ComposedProvidingRequiringEntity):
 	PCM::core::composition::ProvidedDelegationConnector {
 	id := getId();
 	entityName := self.name;
@@ -151,7 +137,7 @@ mapping CBS::assembly::ProvidedDelegationConnector::CBSProvidedDelgToPCMProvided
 	outerProvidedRole_ProvidedDelegationConnector := findMatchingProvidedRole(parentStructure.providedRoles_InterfaceProvidingEntity, interface);
 }
 
-mapping CBS::assembly::RequiredDelegationConnector::CBSRequiredDelgToPCMRequiredDelg(parentStructure: PCM::core::entity::ComposedProvidingRequiringEntity):
+mapping CBS::assembly::RequiredDelegationConnector::requiredDelgegationConnector2pcmRequiredDelgationConnector(parentStructure: PCM::core::entity::ComposedProvidingRequiringEntity):
 	PCM::core::composition::RequiredDelegationConnector {
 	id := getId();
 	entityName := self.name;
@@ -192,7 +178,7 @@ mapping CBS::repository::Repository::repository2Repository() : PCM::repository::
 	entityName := "Default Repository";
 	repositoryDescription := "Default Repository";
 	dataTypes__Repository := self.types -> map type2dataType(result);
-	interfaces__Repository := self.interfaces -> map interface2OperationInterface(result);
+	interfaces__Repository := self.interfaces -> map interface2operationInterface(result);
 	
 	var basicComponents := self.components -> map atomicComponenet2basicComponent(result);
 	var compositeComponents := source.objectsOfType(CBS::assembly::Assembly).compositeComponents 
@@ -218,7 +204,7 @@ abstract mapping CBS::repository::Component::component2interfaceProvidingRequier
 	resourceRequiredRoles__ResourceInterfaceRequiringEntity := Set{}; // note: no concept of resources
 }
 
-abstract mapping CBS::repository::Component::component2ImplementationComponentType(repo: PCM::repository::Repository): PCM::repository::ImplementationComponentType 
+abstract mapping CBS::repository::Component::component2implementationComponentType(repo: PCM::repository::Repository): PCM::repository::ImplementationComponentType 
 	inherits CBS::repository::Component::component2interfaceProvidingRequieringEntity {
 	repository__RepositoryComponent := repo;
 	
@@ -229,7 +215,7 @@ abstract mapping CBS::repository::Component::component2ImplementationComponentTy
 
 
 mapping CBS::repository::AtomicComponent::atomicComponenet2basicComponent(repo: PCM::repository::Repository): PCM::repository::BasicComponent 
-	inherits CBS::repository::Component::component2ImplementationComponentType {
+	inherits CBS::repository::Component::component2implementationComponentType {
 	passiveResource_BasicComponent := Set{}; // note: no concept of semaphores, e.g. in CBS
 	serviceEffectSpecifications__BasicComponent := self.services -> map service2resourceDemandingSEFF(result);
 }
@@ -255,7 +241,7 @@ constructor PCM::repository::OperationRequiredRole::OperationRequiredRole(
 	
 };
 
-mapping CBS::repository::Interface::interface2OperationInterface(repo: PCM::repository::Repository): PCM::repository::OperationInterface {
+mapping CBS::repository::Interface::interface2operationInterface(repo: PCM::repository::Repository): PCM::repository::OperationInterface {
 	id := getId();
 	entityName := self.name;
 	repository__Interface := repo;
@@ -274,8 +260,7 @@ mapping CBS::repository::Signature::signature2operationSignature(interface: PCM:
 	
 	parameters__OperationSignature := self.parameters -> map parameter2parameter(result);
 	if(self.returnType.oclIsKindOf(CBS::repository::types::Void)){
-		// TODO: is null correct to model "not set"?
-		returnType__OperationSignature := null; // note: void not modeled in PCM
+		returnType__OperationSignature := null; // note: void = null in PCM
 	} else {
 		returnType__OperationSignature := self.returnType.resolveone(PCM::repository::DataType);
 	};
@@ -319,8 +304,8 @@ constructor PCM::seff::StartAction::StartAction(){
 	entityName := "Start Action";
 	
 	resourceDemandingBehaviour_AbstractAction;
-	predecessor_AbstractAction := null; //to be set later
-	successor_AbstractAction := null;
+	predecessor_AbstractAction := null; // to be set later
+	successor_AbstractAction := null;  // to be set later
 	
 	infrastructureCall__Action := Set{}; // note: not modeled in CBS
 	resourceCall__Action := Set{}; // note: not modeled in CBS
@@ -331,9 +316,9 @@ constructor PCM::seff::StopAction::StopAction(){
 	id := getId();
 	entityName := "Stop Action";
 	
-	resourceDemandingBehaviour_AbstractAction := null; //TODO
+	resourceDemandingBehaviour_AbstractAction := null; // note: not modeled in CBS
 	predecessor_AbstractAction := null; //to be set later
-	successor_AbstractAction := null;
+	successor_AbstractAction := null;  // to be set later
 	
 	infrastructureCall__Action := Set{}; // note: not modeled in CBS
 	resourceCall__Action := Set{}; // note: not modeled in CBS
@@ -364,13 +349,13 @@ abstract mapping CBS::repository::behavioraldescription::AbstractAction::abstrac
 	id := getId();
 	predecessor_AbstractAction := null; // set later
 	successor_AbstractAction := null; // set later
-	resourceDemandingBehaviour_AbstractAction := null; // TODO: check meaning
+	resourceDemandingBehaviour_AbstractAction := null; // note: not modeled in CBS
 }
 
 mapping CBS::repository::behavioraldescription::AbstractAction::abstractAction2abstractAction(component: PCM::core::entity::InterfaceRequiringEntity): PCM::seff::AbstractAction
 disjuncts
 	CBS::repository::behavioraldescription::InternalAction::internalAction2internalAction,
-	CBS::repository::behavioraldescription::ExternalCallAction::externalCallAction2ExternalCallAction,
+	CBS::repository::behavioraldescription::ExternalCallAction::externalCallAction2externalCallAction,
 	CBS::repository::behavioraldescription::BranchAction::branchAction2branchAction,
 	CBS::repository::behavioraldescription::LoopAction::loopAction2loopAction
 {} 
@@ -386,7 +371,7 @@ when {self.oclIsKindOf(CBS::repository::behavioraldescription::InternalAction)}
 	internalFailureOccurrenceDescriptions__InternalAction := Set{}; // note: not modeled in CBS
 }
 
-mapping CBS::repository::behavioraldescription::ExternalCallAction::externalCallAction2ExternalCallAction(component: PCM::core::entity::InterfaceRequiringEntity): PCM::seff::ExternalCallAction
+mapping CBS::repository::behavioraldescription::ExternalCallAction::externalCallAction2externalCallAction(component: PCM::core::entity::InterfaceRequiringEntity): PCM::seff::ExternalCallAction
 inherits CBS::repository::behavioraldescription::AbstractAction::abstractAction2abstractActionAbstract
 when {self.oclIsKindOf(CBS::repository::behavioraldescription::ExternalCallAction)}
 {
@@ -420,10 +405,6 @@ when {self.oclIsKindOf(CBS::repository::behavioraldescription::BranchAction)}
 constructor PCM::core::PCMRandomVariable::PCMRandomVariable(branchCondition: String, transition: PCM::seff::GuardedBranchTransition){
 	guardedBranchTransition_PCMRandomVariable := transition;
 	specification := branchCondition;
-}
-
-constructor STOEX::BoolLiteral::BoolLiteral(){
-	value := true;
 }
 
 constructor PCM::core::PCMRandomVariable::PCMRandomVariable(loopExpression: String, loopAction: PCM::seff::LoopAction){
@@ -469,20 +450,19 @@ when {self.oclIsKindOf(CBS::repository::behavioraldescription::LoopAction)}
 	iterationCount_LoopAction := new PCM::core::PCMRandomVariable("default loop expression", result);
 }
 
-
 /////////////////////////////////////////////////
 ///////////// Environment //////////////////////
 ///////////////////////////////////////////////
-mapping CBS::environment::Environment::environmentToResourceEnvironment(repo : PCM::repository::Repository):
-	PCM::resourceenvironment::ResourceEnvironment {
+
+mapping CBS::environment::Environment::environment2resourceEnvironment(repo : PCM::repository::Repository):PCM::resourceenvironment::ResourceEnvironment {
 	
 	entityName := self.name;
-	resourceContainer_ResourceEnvironment := self.container->collect(container | container->map containerToResourceContainer(result));
-	linkingResources__ResourceEnvironment := self.linker->collect(link | link-> map linkerToLinkingResource(result, repo));
+	resourceContainer_ResourceEnvironment := self.container->collect(container | container->map container2resourceContainer(result));
+	linkingResources__ResourceEnvironment := self.linker->collect(link | link-> map linker2linkingResource(result, repo));
 
 }
 
-mapping CBS::environment::Linker::linkerToLinkingResource
+mapping CBS::environment::Linker::linker2linkingResource
 		(env : PCM::resourceenvironment::ResourceEnvironment,
 		repo : PCM::repository::Repository):
 	PCM::resourceenvironment::LinkingResource {
@@ -496,9 +476,8 @@ mapping CBS::environment::Linker::linkerToLinkingResource
 }
 
 // note : no communicationLinkResourceSpecification in CBS
-constructor PCM::resourceenvironment::CommunicationLinkResourceSpecification
-			::CommunicationLinkResourceSpecification
-			(linkingResource : PCM::resourceenvironment::LinkingResource, repo: PCM::repository::Repository) {
+constructor PCM::resourceenvironment::CommunicationLinkResourceSpecification::CommunicationLinkResourceSpecification
+	(linkingResource : PCM::resourceenvironment::LinkingResource, repo: PCM::repository::Repository) {
 	id := getId();
 	failureProbability := 0;
 	communicationLinkResourceType_CommunicationLinkResourceSpecification := defaultCommunicationResourceType;
@@ -530,7 +509,7 @@ constructor PCM::core::PCMRandomVariable::PCMRandomVariable(baseType: PCM::resou
 	specification := "default specification";
 }
 
-mapping CBS::environment::Container::containerToResourceContainer (env : PCM::resourceenvironment::ResourceEnvironment):
+mapping CBS::environment::Container::container2resourceContainer (env : PCM::resourceenvironment::ResourceEnvironment):
 	PCM::resourceenvironment::ResourceContainer {
 	id := getId();
 	entityName := self.name;
@@ -554,7 +533,8 @@ disjuncts
 	CBS::repository::types::ComplexType::complexType2compositeDataType
 {}
 
-mapping CBS::repository::types::SimpleType::simpleType2primitiveDataType(repo: PCM::repository::Repository) : PCM::repository::PrimitiveDataType inherits CBS::repository::types::Type::type2dataTypeAbstract
+mapping CBS::repository::types::SimpleType::simpleType2primitiveDataType(repo: PCM::repository::Repository) : PCM::repository::PrimitiveDataType 
+inherits CBS::repository::types::Type::type2dataTypeAbstract
 when { self.oclIsKindOf(CBS::repository::types::SimpleType) }
 {
 	var simpleTypeInstance = self.oclAsType(CBS::repository::types::SimpleType);
@@ -586,7 +566,8 @@ when { self.oclIsKindOf(CBS::repository::types::SimpleType) }
 	}
 }
 
-mapping CBS::repository::types::CollectionType::collectionType2collectionDataType(repo: PCM::repository::Repository) : PCM::repository::CollectionDataType inherits CBS::repository::types::Type::type2dataTypeAbstract
+mapping CBS::repository::types::CollectionType::collectionType2collectionDataType(repo: PCM::repository::Repository) : PCM::repository::CollectionDataType 
+inherits CBS::repository::types::Type::type2dataTypeAbstract
 when { self.oclIsKindOf(CBS::repository::types::CollectionType) }
 {
 	var collectionTypeInstance = self.oclAsType(CBS::repository::types::CollectionType);

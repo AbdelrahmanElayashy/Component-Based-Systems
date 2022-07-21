@@ -23,7 +23,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 public class CBSParsingTest {
   @Inject
   private ParseHelper<ComponentBasedSystemContainer> parseHelper;
-  
+
   @Test
   public void loadModel() {
     try {

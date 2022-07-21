@@ -34,13 +34,13 @@ System returns allocation::System:
 	'}';
 	
 Allocation returns allocation::Allocation:
-	'env' environment=[environment::Environment|EString]
+	'env' environment=[environment::Environment|QualifiedName]
 	('allocationContexts' '{' allocationContexts+=AllocationContext ( "," allocationContexts+=AllocationContext)* '}' )?;
 
 AllocationContext returns allocation::AllocationContext:
 	'{'
-		'container' container=[environment::Container|EString]
-		'allocates' allocates=[assembly::AssemblyContext|EString]
+		'container' container=[environment::Container|QualifiedName]
+		'allocates' allocates=[assembly::AssemblyContext|QualifiedName]
 	'}';
 
 // region environment
@@ -59,7 +59,7 @@ Container returns environment::Container:
 	name=EString;
 
 Linker returns environment::Linker:
-	  links+=[environment::Container|EString] ( "<->" links+=[environment::Container|EString])* ;
+	  links+=[environment::Container|QualifiedName] ( "<->" links+=[environment::Container|QualifiedName])* ;
 	
 
 // region assembly
@@ -80,8 +80,8 @@ CompositeComponent returns assembly::CompositeComponent:
 	'CompositeComponent'
 	name=EString
 	'{'
-		('requires' '{' requires+=[repository::Interface|EString] ( "," requires+=[repository::Interface|EString])* '}' )?
-		('provides' '{' provides+=[repository::Interface|EString] ( "," provides+=[repository::Interface|EString])* '}' )?
+		('requires' '{' requires+=[repository::Interface|QualifiedName] ( "," requires+=[repository::Interface|QualifiedName])* '}' )?
+		('provides' '{' provides+=[repository::Interface|QualifiedName] ( "," provides+=[repository::Interface|QualifiedName])* '}' )?
 		('childContexts' '{' childContexts+=AssemblyContext ( "," childContexts+=AssemblyContext)* '}' )?
 		('assemblyConnectors' '{' assemblyConnectors+=AssemblyConnector ( "," assemblyConnectors+=AssemblyConnector)* '}' )?
 		('requiredDelegationConnectors' '{' requiredDelegationConnectors+=RequiredDelegationConnector ( "," requiredDelegationConnectors+=RequiredDelegationConnector)* '}' )?
@@ -91,47 +91,36 @@ CompositeComponent returns assembly::CompositeComponent:
 AssemblyContext returns assembly::AssemblyContext:
 	name=EString
 	'{'
-		'instance' instantiates=[repository::Component|EString]
+		'instance' instantiates=[repository::Component|QualifiedName]
 		('provide' '(' providedRoles+=ProvidedRole ( "," providedRoles+=ProvidedRole)* ')' )?
 		('require' '(' requiredRoles+=RequiredRole ( "," requiredRoles+=RequiredRole)* ')' )?
 	'}';
 
 AssemblyConnector returns assembly::AssemblyConnector:
 	'('
-	    requiringRole=[assembly::RequiredRole|EString]
+	    requiringRole=[assembly::RequiredRole|QualifiedName]
 	',' 
-		providingRole=[assembly::ProvidedRole|EString]
+		providingRole=[assembly::ProvidedRole|QualifiedName]
 	')';
 
 RequiredDelegationConnector returns assembly::RequiredDelegationConnector:
-	requiringRole=[assembly::RequiredRole|EString];
+	requiringRole=[assembly::RequiredRole|QualifiedName];
 	
 
 ProvidedDelegationConnector returns assembly::ProvidedDelegationConnector:
-	 providingRole=[assembly::ProvidedRole|EString];
+	 providingRole=[assembly::ProvidedRole|QualifiedName];
 
 ProvidedRole returns assembly::ProvidedRole:
 	name=EString
-	interface=[repository::Interface|EString];
+	interface=[repository::Interface|QualifiedName];
 	
 
 RequiredRole returns assembly::RequiredRole:
 	name=EString
-	interface=[repository::Interface|EString];
+	interface=[repository::Interface|QualifiedName];
 	
 
 // region repository
-/*
- * TODO:
- * - how to reference simple/collection types?
- * - no strict order inside atomic component?
- * - allow empty {}?
- * - remove nesting of repository
- * - correct usage of actions?
- * 
- * TODO general
- * - document model changes
- */ 
 
 Repository returns repository::Repository:
 	{repository::Repository}
@@ -155,18 +144,18 @@ AtomicComponent returns repository::AtomicComponent:
 	'atomicComponent'
 	name=EString
 	'{'
-		('provides' '{' provides+=[repository::Interface|EString] ( "," provides+=[repository::Interface|EString])* '}' )?
-		('requires' '{' requires+=[repository::Interface|EString] ( "," requires+=[repository::Interface|EString])* '}' )?
+		('provides' '{' provides+=[repository::Interface|QualifiedName] ( "," provides+=[repository::Interface|QualifiedName])* '}' )?
+		('requires' '{' requires+=[repository::Interface|QualifiedName] ( "," requires+=[repository::Interface|QualifiedName])* '}' )?
 		('services' '{' services+=Service ( "," services+=Service)* '}' )?
 	'}';
 
 Signature returns repository::Signature:
-	returnType=[types::Type|EString]
+	returnType=[types::Type|QualifiedName]
 	name=EString 
 	'('( parameters+=Parameter ( "," parameters+=Parameter)* )? ')';
 
 Parameter returns repository::Parameter:
-	type=[types::ParameterType|EString] 
+	type=[types::ParameterType|QualifiedName] 
 	name=EString;
 
 // region types
@@ -178,7 +167,7 @@ ParameterType returns types::ParameterType:
 	SimpleType | ComplexType | CollectionType;
 
 SimpleType returns types::SimpleType:
-	'type' name=EString type=SimpleTypeEnum ;
+	'type' name=EString type=SimpleTypeEnum;
 
 ComplexType returns types::ComplexType:
 	{types::ComplexType}
@@ -192,14 +181,14 @@ enum SimpleTypeEnum returns types::SimpleTypeEnum:
 	String = 'String' | Int = 'Int' | Boolean = 'Boolean' | Char = 'Char' | Date = 'Date' | Double = 'Double' | Float = 'Float' | Long = 'Long';
 
 ComplexMember returns types::ComplexMember:
-	name=EString ':' type=[types::ParameterType|EString];
+	name=EString ':' type=[types::ParameterType|QualifiedName];
 
 Void returns types::Void:
 	{types::Void}
 	name=EString;
 	
 CollectionType returns types::CollectionType:
-	type=CollectionTypeEnum '<' innerType=[types::ParameterType|EString] '>' name=EString;
+	type=CollectionTypeEnum '<' innerType=[types::ParameterType|QualifiedName] '>' name=EString;
 
 enum CollectionTypeEnum returns types::CollectionTypeEnum:
 	List = 'List' | Map = 'Map';
@@ -210,7 +199,7 @@ AbstractAction returns behavioraldescription::AbstractAction:
 	InternalAction | ExternalCallAction | BranchAction | LoopAction;
 
 Service returns behavioraldescription::Service:
-	'service' implements=[repository::Signature|EString]
+	'service' implements=[repository::Signature|QualifiedName]
 	'{'
 		actions+=AbstractAction ( ";" actions+=AbstractAction)*
 	'}';
@@ -220,7 +209,7 @@ InternalAction returns behavioraldescription::InternalAction:
 	'internalCall';
 
 ExternalCallAction returns behavioraldescription::ExternalCallAction:
-	'externalCall' requiredService=[repository::Signature|EString];
+	'externalCall' requiredService=[repository::Signature|QualifiedName];
 
 BranchAction returns behavioraldescription::BranchAction:
 	'branch'
@@ -245,3 +234,7 @@ LoopAction returns behavioraldescription::LoopAction:
 
 EString returns ecore::EString:
 	STRING | ID;
+	
+QualifiedName returns ecore::EString:
+	ID ('.' ID)*
+;
