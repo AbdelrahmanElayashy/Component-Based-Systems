@@ -1,6 +1,23 @@
 # Component-Based-Systems
 
 ## Dokumentation Aufgaben
+
+### Setup:
+- disable automatic build
+- clone and open Palladio-Core-PCM in Workspace
+- open all projects with Eclipse (except *-Instance)
+- open ComponentBasedSystems.genmodel
+  - generate Model Code
+  - generate Edit Code
+  - generate Editor Code
+- run GenerateCBS.mwe2 workflow in project or.xtext.example.cbs
+- enable automatic build
+- maybe clean/refresh/restart IDE
+- maybe add missing folders according to marker
+
+- select run as eclipse application on Component-Based-Systems project
+- open *-Instance projects
+
 ### Aufgabe 1
 - Metamodell: [here](Component-Based-Systems/model)
 - Instanz: [here](Component-Based-Systems-Instance/MediaFiles.componentbasedsystem)
